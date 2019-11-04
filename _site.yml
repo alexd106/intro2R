@@ -1,0 +1,24 @@
+name: "Alex Douglas"
+output_dir: "."
+navbar:
+  title: "QUADRAT Introduction to R"
+  left:
+    - text: "Introduction"
+      href: introduction.html
+    - text: "Lectures"
+      href: lectures.html
+    - text: "Exercises"
+      href: exercises.html
+    - text: "Data files"
+      href: datafiles.html
+  right:
+    - icon: fa-envelope fa-lg
+      href: contact.html
+    - icon: fa-github fa-lg
+      href: http://github.com/alexd106
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/scedacity
+output:
+  html_document:
+    theme: paper
+    css: 'styles.css'
