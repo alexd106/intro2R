@@ -11,6 +11,7 @@ output:
 
 Alex is a ... 
 
+- Email:
 - Web: 
 - Twitter: 
 - GitHub: 
@@ -20,6 +21,7 @@ Alex is a ...
 Deon is a ...  
 
 - Email:
+- Web:
 - Twitter:
 - GitHub:
 
@@ -28,6 +30,7 @@ Deon is a ...
 Ana is a ...  
 
 - Email:
+- Web:
 - Twitter:
 - GitHub:
 
