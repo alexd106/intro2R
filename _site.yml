@@ -30,7 +30,7 @@ navbar:
         - text: "----"
         - text: "People"
           icon: fa-user-friends
-          href: "people.html"
+          href: "People.html"
         - text: "----"
         - text: "Resources"
           icon: fa-question-circle
