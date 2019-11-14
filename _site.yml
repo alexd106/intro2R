@@ -21,9 +21,20 @@ navbar:
     - text: "Data"
       icon: fa-download
       href: "data.html"
-    - text: "People"
-      icon: fa-user-friends
-      href: "people.html"
+    - text: "Info"
+      icon: fa-question-circle
+      menu:
+        - text: "Syllabus"
+          icon: fa-graduation-cap
+          href: syllabus.html
+        - text: "----"
+        - text: "People"
+          icon: fa-user-friends
+          href: "people.html"
+        - text: "----"
+        - text: "Further resources"
+          icon: fa-info
+          href: "resources.html"
   right:
     - icon: fa-envelope fa-lg
       href: contact.html
