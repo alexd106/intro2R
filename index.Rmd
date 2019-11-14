@@ -1,6 +1,32 @@
 ---
+title: "QUADstats - an introduction to R"
+output: 
+  html_document:
+    toc: no
 ---
 
-<link rel="stylesheet" href="styles.css" type="text/css">
+\  
 
-Hello world. This is a test page. Some content will be added soon. Very soon. Really quite soon! honestly!
+### Course Introduction
+
+The purpose of this 3 day course is to introduce you to using R, an interactive environment for statistical computing. R in itself is not difficult to learn, but just like any new language the initial learning curve can be a little steep and you will need to use it frequently otherwise it’s easy to forget. My suggestion to you, is that whilst you are getting to grips with R, uninstall any other statistics software you have on your computer and only use R. This may seem a little extreme but will hopefully remove the temptation to ‘just do it quickly’ in a more familiar environment and consequently slow down your learning of R. Believe me, anything you can do in your existing statistics software package you can do in R (often better and more efficiently).
+
+A few notes about this course. I have tried to simplify the content of this course as much as possible and have based it on 15 years experience teaching (and learning!) R. It is not intended as an introductory statistics course, although I will be using some basic statistics to highlight some of R’s capabilities. My aim is to help you climb the initial learning curve and provide you with the basic skills to enable you to further your experience in using R. I have included a number of practical exercises for you to work through during the course and encourage you complete these in your own time - you certainly won’t learn how to use R by watching other people do it. I would also encourage you to practice what you have learnt during the course on your own data and also work through one of the many freely available introductory texts on R once the course is over (see here for more details).
+
+\  
+
+**[Click here to download the entire course archive as a zip file.](https://github.com/alexd106/alexd106.github.io/archive/gh-pages.zip)** Once downloaded and extracted, double-click the **`index.html`** file in the extracted folder to view the course material offline.
+
+----
+
+### FAQ
+
+#### What's this course all about?
+
+#### What are the pre-requisites?
+
+#### Do I need a laptop?
+
+#### Where do I get additional help?
+
+#### What do I do once the course has finished?

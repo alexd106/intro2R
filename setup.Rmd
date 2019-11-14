@@ -1,0 +1,41 @@
+---
+title: 'Setup Instructions'
+---
+
+Please follow the instructions under **_Get Data_** and **_Core Software_** headings below. Depending on the class you're taking, you may also need to follow additional setup instructions under the [**_Electives_**](#electives) heading.
+
+
+## Get Data
+
+Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navbar at the top. You can download all the data needed by downloading **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data.zip)** or by downloading individual data sets as needed at the **[<i class="fa fa-download"></i> Data](data.html)** page.
+
+
+## Core Lessons
+
+Install the following software.
+
+### R
+
+**Install R.** You'll need R version **3.6.0** or higher. Download and install R for [Windows](http://cran.r-project.org/bin/windows/base/) or [Mac](http://cran.r-project.org/bin/macosx/) (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS).
+
+### RStudio
+
+Download and install **[RStudio Desktop](https://www.rstudio.com/products/rstudio/download/)** version = 1.2.5019.
+
+R and RStudio are separate downloads and installations. **R** is the underlying statistical computing environment, but using R alone is no fun. **RStudio** is a graphical integrated development environment that makes using R much easier. You need R installed before you install RStudio.
+
+### CRAN packages
+
+We will need to install several core packages needed for most lessons. Launch RStudio (RStudio, *not R itself*). Ensure that you have internet access, then copy and paste the following commands, one-at-a-time, into the **Console** panel (usually the lower-left panel, by default) and hit the Enter/Return key. If you receive an error message when trying to install any particular package, please make note of which one you had trouble with, and [email one of the instructors](people.html) _prior to class_ with the command you typed and the error you received.
+
+
+_A few notes_:
+
+- Commands are case-sensitive. 
+- You must be connected to the internet.
+- Even if you've installed these packages in the past, do re-install the most recent version. Many of these packages are updated often, and we may use new features in the workshop that aren't available in older versions.
+- If you're using Windows you might see errors about not having permission to modify the existing libraries -- disregard these. You can avoid this by running RStudio as an administrator (right click the RStudio icon, then click "Run as Administrator").
+
+
+These commands may produce some notes or other output, but as long as they work without an error message, you're good to go. If you get a message that says something like: `Error in library(packageName) : there is no package called 'packageName'`, then the required packages did not install correctly. Please do not hesitate to [email one of the instructors](people.html) _prior to the course_ if you are still having difficulty.
+

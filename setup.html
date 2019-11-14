@@ -11,7 +11,7 @@
 
 
 
-<title>QUADstats - an introduction to R</title>
+<title>Setup Instructions</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -263,6 +266,96 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -270,6 +363,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -389,41 +492,46 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">QUADstats - an introduction to R</h1>
+<h1 class="title toc-ignore">Setup Instructions</h1>
 
 </div>
 
 
-<p> </p>
-<div id="course-introduction" class="section level3">
-<h3>Course Introduction</h3>
-<p>The purpose of this 3 day course is to introduce you to using R, an interactive environment for statistical computing. R in itself is not difficult to learn, but just like any new language the initial learning curve can be a little steep and you will need to use it frequently otherwise it’s easy to forget. My suggestion to you, is that whilst you are getting to grips with R, uninstall any other statistics software you have on your computer and only use R. This may seem a little extreme but will hopefully remove the temptation to ‘just do it quickly’ in a more familiar environment and consequently slow down your learning of R. Believe me, anything you can do in your existing statistics software package you can do in R (often better and more efficiently).</p>
-<p>A few notes about this course. I have tried to simplify the content of this course as much as possible and have based it on 15 years experience teaching (and learning!) R. It is not intended as an introductory statistics course, although I will be using some basic statistics to highlight some of R’s capabilities. My aim is to help you climb the initial learning curve and provide you with the basic skills to enable you to further your experience in using R. I have included a number of practical exercises for you to work through during the course and encourage you complete these in your own time - you certainly won’t learn how to use R by watching other people do it. I would also encourage you to practice what you have learnt during the course on your own data and also work through one of the many freely available introductory texts on R once the course is over (see here for more details).</p>
-<p> </p>
-<p><strong><a href="https://github.com/alexd106/alexd106.github.io/archive/gh-pages.zip">Click here to download the entire course archive as a zip file.</a></strong> Once downloaded and extracted, double-click the <strong><code>index.html</code></strong> file in the extracted folder to view the course material offline.</p>
-<hr />
+<p>Please follow the instructions under <strong><em>Get Data</em></strong> and <strong><em>Core Software</em></strong> headings below. Depending on the class you’re taking, you may also need to follow additional setup instructions under the <a href="#electives"><strong><em>Electives</em></strong></a> heading.</p>
+<div id="get-data" class="section level2">
+<h2>Get Data</h2>
+<p>Click the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link on the navbar at the top. You can download all the data needed by downloading <strong><a href="data.zip">this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i></a></strong> or by downloading individual data sets as needed at the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> page.</p>
 </div>
-<div id="faq" class="section level3">
-<h3>FAQ</h3>
-<div id="whats-this-course-all-about" class="section level4">
-<h4>What’s this course all about?</h4>
+<div id="core-lessons" class="section level2">
+<h2>Core Lessons</h2>
+<p>Install the following software.</p>
+<div id="r" class="section level3">
+<h3>R</h3>
+<p><strong>Install R.</strong> You’ll need R version <strong>3.6.0</strong> or higher. Download and install R for <a href="http://cran.r-project.org/bin/windows/base/">Windows</a> or <a href="http://cran.r-project.org/bin/macosx/">Mac</a> (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS).</p>
 </div>
-<div id="what-are-the-pre-requisites" class="section level4">
-<h4>What are the pre-requisites?</h4>
+<div id="rstudio" class="section level3">
+<h3>RStudio</h3>
+<p>Download and install <strong><a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a></strong> version = 1.2.5019.</p>
+<p>R and RStudio are separate downloads and installations. <strong>R</strong> is the underlying statistical computing environment, but using R alone is no fun. <strong>RStudio</strong> is a graphical integrated development environment that makes using R much easier. You need R installed before you install RStudio.</p>
 </div>
-<div id="do-i-need-a-laptop" class="section level4">
-<h4>Do I need a laptop?</h4>
-</div>
-<div id="where-do-i-get-additional-help" class="section level4">
-<h4>Where do I get additional help?</h4>
-</div>
-<div id="what-do-i-do-once-the-course-has-finished" class="section level4">
-<h4>What do I do once the course has finished?</h4>
+<div id="cran-packages" class="section level3">
+<h3>CRAN packages</h3>
+<p>We will need to install several core packages needed for most lessons. Launch RStudio (RStudio, <em>not R itself</em>). Ensure that you have internet access, then copy and paste the following commands, one-at-a-time, into the <strong>Console</strong> panel (usually the lower-left panel, by default) and hit the Enter/Return key. If you receive an error message when trying to install any particular package, please make note of which one you had trouble with, and <a href="people.html">email one of the instructors</a> <em>prior to class</em> with the command you typed and the error you received.</p>
+<p><em>A few notes</em>:</p>
+<ul>
+<li>Commands are case-sensitive.</li>
+<li>You must be connected to the internet.</li>
+<li>Even if you’ve installed these packages in the past, do re-install the most recent version. Many of these packages are updated often, and we may use new features in the workshop that aren’t available in older versions.</li>
+<li>If you’re using Windows you might see errors about not having permission to modify the existing libraries – disregard these. You can avoid this by running RStudio as an administrator (right click the RStudio icon, then click “Run as Administrator”).</li>
+</ul>
+<p>These commands may produce some notes or other output, but as long as they work without an error message, you’re good to go. If you get a message that says something like: <code>Error in library(packageName) : there is no package called 'packageName'</code>, then the required packages did not install correctly. Please do not hesitate to <a href="people.html">email one of the instructors</a> <em>prior to the course</em> if you are still having difficulty.</p>
 </div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

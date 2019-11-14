@@ -1,0 +1,38 @@
+---
+title: "People"
+output: 
+  html_document:
+    toc: yes
+---
+
+## Teaching team
+
+#### Alex Douglas
+
+Alex is a ... 
+
+- Web: 
+- Twitter: 
+- GitHub: 
+
+#### Deon Roos  
+
+Deon is a ...  
+
+- Email:
+- Twitter:
+- GitHub:
+
+#### Ana 
+
+Ana is a ...  
+
+- Email:
+- Twitter:
+- GitHub:
+
+## Administrative Contacts  
+
+Izzie ....  
+- Email:
+- Twitter:

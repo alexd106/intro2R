@@ -3,7 +3,7 @@
 name: "QUADstats an introduction to R"
 output_dir: "."
 navbar:
-  title: "QUADstats - an introduction to R"
+  title: "QUADstats"
   icon: fa-home
   left:
     - text: "Home"
@@ -35,6 +35,7 @@ navbar:
         - text: "Resources"
           icon: fa-question-circle
           href: "resources.html"
+        - text: "----"
         - text: "Contact"
           icon: fa-envelope fa-lg
           href: contact.html
@@ -48,6 +49,14 @@ navbar:
 output:
   html_document:
     theme: paper
-    css: styles.css
+    toc: true
+    toc_depth: 2
+    toc_float:
+      collapsed: false
+    fig_align: center
+    css: 'styles.css'
+    # css:
+    #  - https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css
+    #  - styles.css
 
 exclude: ["LICENSE", "README.md", "*.Rproj", "*.key", "*.psd"]
