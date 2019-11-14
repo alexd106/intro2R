@@ -48,13 +48,13 @@ navbar:
 
 output:
   html_document:
-    theme: paper
+    theme: spacelab
     toc: true
     toc_depth: 2
     toc_float:
       collapsed: false
     fig_align: center
-    css: 'styles.css'
+    # css: 'styles.css'
     # css:
     #  - https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css
     #  - styles.css
