@@ -21,6 +21,9 @@ navbar:
     - text: "Data"
       icon: fa-download
       href: "data.html"
+    - text: "People"
+      icon: fa-user-friends
+      href: "people.html"
   right:
     - icon: fa-envelope fa-lg
       href: contact.html
@@ -32,3 +35,5 @@ output:
   html_document:
     theme: paper
     css: 'styles.css'
+
+exclude: ["LICENSE", "README.markdown", "CONTRIBUTING.markdown", "*.Rproj", "*.key", "*.psd"]
