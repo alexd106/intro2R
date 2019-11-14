@@ -32,16 +32,19 @@ navbar:
           icon: fa-user-friends
           href: "people.html"
         - text: "----"
-        - text: "Further resources"
-          icon: fa-info
+        - text: "Resources"
+          icon: fa-question-circle
           href: "resources.html"
-  right:
-    - icon: fa-envelope fa-lg
-      href: contact.html
-    - icon: fa-github fa-lg
-      href: http://github.com/alexd106
-    - icon: fa-twitter fa-lg
-      href: https://twitter.com/scedacity
+        - text: "Contact"
+          icon: fa-envelope fa-lg
+          href: contact.html
+        - text: "Source code"
+          icon: fa-github fa-lg
+          href: http://github.com/alexd106
+        - text: "Twitter"
+          icon: fa-twitter fa-lg
+          href: https://twitter.com/scedacity   
+
 output:
   html_document:
     theme: paper
