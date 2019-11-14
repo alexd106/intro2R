@@ -36,4 +36,4 @@ output:
     theme: paper
     css: styles.css
 
-exclude: ["LICENSE", "README.markdown", "CONTRIBUTING.markdown", "*.Rproj", "*.key", "*.psd"]
+exclude: ["LICENSE", "README.markdown", "*.Rproj", "*.key", "*.psd"]
