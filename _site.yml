@@ -1,9 +1,9 @@
 # See http://rmarkdown.rstudio.com/rmarkdown_websites.html
 
-name: "QUADstats An Introduction to R"
+name: "QUADstats an Introduction to R"
 output_dir: "."
 navbar:
-  title: "QUADstats - An Introduction to R"
+  title: "QUADstats - an Introduction to R"
   icon: fa-home
   left:
     - text: "Home"
