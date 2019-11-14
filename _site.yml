@@ -1,16 +1,26 @@
-name: "Alex Douglas"
+# See http://rmarkdown.rstudio.com/rmarkdown_websites.html
+
+name: "QUADRAT Introduction to R"
 output_dir: "."
 navbar:
-  title: "QUADRAT Introduction to R"
+  title: "QUADRAT: Introduction to R"
+  icon: fa-home
   left:
-    - text: "Introduction"
-      href: introduction.html
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Setup"
+      icon: fa-cog
+      href: setup.html
     - text: "Lectures"
+      icon: fa-university
       href: lectures.html
     - text: "Exercises"
+      icon: fa-book
       href: exercises.html
-    - text: "Data files"
-      href: datafiles.html
+    - text: "Data"
+      icon: fa-download
+      href: "data.html"
   right:
     - icon: fa-envelope fa-lg
       href: contact.html
