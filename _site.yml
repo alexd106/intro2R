@@ -1,9 +1,9 @@
 # See http://rmarkdown.rstudio.com/rmarkdown_websites.html
 
-name: "QUADRAT Introduction to R"
+name: "QUADStats An Introduction to R"
 output_dir: "."
 navbar:
-  title: "QUADRAT: Introduction to R"
+  title: "QUADStats - An Introduction to R"
   icon: fa-home
   left:
     - text: "Home"
@@ -34,6 +34,6 @@ navbar:
 output:
   html_document:
     theme: paper
-    css: 'styles.css'
+    css: styles.css
 
 exclude: ["LICENSE", "README.markdown", "CONTRIBUTING.markdown", "*.Rproj", "*.key", "*.psd"]
