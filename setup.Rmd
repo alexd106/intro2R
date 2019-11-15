@@ -21,7 +21,7 @@ You will need to download and install R and RStudio separately. **R** is the und
 
 ## Get the Data
 
-Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navbar at the top. You can download all the data needed by downloading **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](all_data.zip)** or by downloading individual data sets as needed at the **[<i class="fa fa-download"></i> Data](data.html)** page. If you download the zip file you will need to use your favourite software to uncompress this file (although most operating systems now have at least one built-in (un)compression tool). 
+Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navbar at the top. You can download all the data needed by downloading **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** or by downloading individual data sets as needed at the **[<i class="fa fa-download"></i> Data](data.html)** page. If you download the zip file you will need to use your favourite software to uncompress this file (although most operating systems now have at least one built-in (un)compression tool). 
 
 _A few notes_:
 
