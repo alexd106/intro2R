@@ -10,7 +10,6 @@ During the course we will be using both R and RStudio. If you're bringing your o
 <br>
 
 ## Core Software
-
 **Install R.** You'll need R version **3.6.0** or higher. Download and install R for [Windows](http://cran.r-project.org/bin/windows/base/),  [Mac](http://cran.r-project.org/bin/macosx/) (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS) or [linux](https://cran.r-project.org/bin/linux) (choose your flavour of linux).
 
 **Install RStudio.** Download and install [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) (version 1.2.5019).
@@ -20,8 +19,14 @@ You will need to download and install R and RStudio separately. **R** is the und
 <br>
 
 ## Get the Data
-
 Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navbar at the top. You can download all the data needed by downloading **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** or by downloading individual data sets as needed at the **[<i class="fa fa-download"></i> Data](data.html)** page. If you download the zip file you will need to use your favourite software to uncompress this file (although most operating systems now have at least one built-in (un)compression tool). 
+
+<br>
+
+## R markdown
+For those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html) to install R markdown on your laptop. Although we will only scratch the surface of R markdown during this course we plan to run a webinar on this subject in the near future.  
+
+<br>
 
 _A few notes_:
 
