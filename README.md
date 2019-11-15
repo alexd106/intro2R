@@ -1,4 +1,4 @@
 # alexd106.github.io
-QUADstats - an introduction to R
+QUADstat - An introduction to R
 
-https://alexd106.github.io/
+Rendered site: https://alexd106.github.io/
