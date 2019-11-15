@@ -16,7 +16,17 @@ Have fun!
 
 <br>
 
-[Exercise 1: Getting to know RStudio](exercise_1.html)
+[Exercise 1: Getting to know R and RStudio](exercise_1.html)
+
+[Exercise 2: Basic R operations](exercise_2.html)
+
+[Exercise 3: Importing and manipulating dataframes](exercise_3.html)
+
+[Exercise 4: Plotting data in R using base and lattice graphics](exercise_4.html)
+
+[Exercise 5: Simple statistics in R](exercise_5.html)
+
+[Exercise 6: Basic programnming in R](exercise_6.html)
 
 <br>
 

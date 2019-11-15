@@ -20,6 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -242,6 +243,14 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 
@@ -383,6 +392,14 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Exercise Solutions</h1>
@@ -391,12 +408,10 @@ $(document).ready(function () {
 
 
 <p><br></p>
-<p><a href="exercise_1_solution.html">Exercise 1 Solutions</a></p>
-<p><a href="exercise_2_solution.html">Exercise 2 Solutions</a></p>
-<p><a href="exercise_3_solution.html">Exercise 3 Solutions</a></p>
-<p><a href="exercise_4_solution.html">Exercise 4 Solutions</a></p>
-<p><a href="exercise_5_solution.html">Exercise 5 Solutions</a></p>
-<p><a href="exercise_6_solution.html">Exercise 6 Solutions</a></p>
+<div id="exercise-5" class="section level2">
+<h2>Exercise 5</h2>
+<p><br></p>
+</div>
 
 
 

@@ -1,0 +1,18 @@
+---
+title: 'Exercise Solutions'
+output: 
+  html_document:
+    toc: false
+    code_folding: hide
+---
+
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
+```
+
+<br>
+
+## Exercise 6
+
+<br>
