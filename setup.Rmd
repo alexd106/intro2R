@@ -24,7 +24,7 @@ Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navba
 <br>
 
 ## R markdown
-For those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html) to install R markdown on your laptop. Although we will only scratch the surface of R markdown during this course we plan to run a webinar on this subject in the near future.  
+Installing R markdown is not required for this course. However, for those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html) to install R markdown on your laptop. Although we will only scratch the surface of R markdown during this course we plan to run a webinar on this subject in the near future.  
 
 <br>
 
