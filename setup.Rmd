@@ -2,7 +2,7 @@
 title: 'Setup Instructions'
 ---
 
-Please follow the instructions under **_Get Data_** and **_Core Software_** headings below. Depending on the class you're taking, you may also need to follow additional setup instructions under the [**_Electives_**](#electives) heading.
+Please follow the instructions under **_Get the Data_** and **_Core Software_** headings below. Depending on the class you're taking, you may also need to follow additional setup instructions under the [**_Electives_**](#electives) heading.
 
 
 ## Get the Data
@@ -10,7 +10,7 @@ Please follow the instructions under **_Get Data_** and **_Core Software_** head
 Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navbar at the top. You can download all the data needed by downloading **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data.zip)** or by downloading individual data sets as needed at the **[<i class="fa fa-download"></i> Data](data.html)** page.
 
 
-## Core Lessons
+## Core Software
 
 Install the following software.
 

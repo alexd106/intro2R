@@ -33,9 +33,15 @@ navbar:
           href: "People.html"
         - text: "----"
         - text: "Resources"
-          icon: fa-question-circle
+          icon: fa-book
           href: "resources.html"
+        - text: "Feedback"
+          icon: fa-commenting
+          href: "feedback.html"
         - text: "----"
+        - text: "QUADRAT"
+          icon: fa-chrome
+          href: https://www.quadrat.ac.uk/
         - text: "Contact"
           icon: fa-envelope fa-lg
           href: contact.html
@@ -44,10 +50,11 @@ navbar:
           href: http://github.com/alexd106
         - text: "Twitter"
           icon: fa-twitter fa-lg
-          href: https://twitter.com/scedacity   
+          href: https://twitter.com/QUADRATdtp  
 
 output:
   html_document:
+    highlight: tango
     theme: spacelab
     toc: true
     toc_depth: 2

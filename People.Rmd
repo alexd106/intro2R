@@ -1,41 +1,61 @@
 ---
-title: "People"
+title: ""
 output: 
   html_document:
     toc: yes
 ---
+<br>
 
 ## Teaching team
 
+<br>
+
 #### Alex Douglas
 
-Alex is a ... 
+<div style= "float:left;position: relative; top: 5px;">
+![](images/alex.JPG)
+</div>
+
+Alex is a Reader in Biostatistics and has been teaching R for the last 15 years. 
 
 - Email:
-- Web: 
+- Web: https://www.abdn.ac.uk/people/a.douglas/
 - Twitter: 
 - GitHub: 
 
+<br><br><br><br>
+
 #### Deon Roos  
 
-Deon is a ...  
+<div style= "float:left;position: relative; top: 5px;">
+![](images/alex.JPG)
+</div>
+
+Alex is a Reader in Biostatistics and has been teaching R for the last 15 years. 
 
 - Email:
-- Web:
-- Twitter:
-- GitHub:
+- Web: https://www.abdn.ac.uk/people/a.douglas/
+- Twitter: 
+- GitHub: 
 
-#### Ana 
+<br><br><br><br>
 
-Ana is a ...  
+#### Ana Couto
+<div style= "float:left;position: relative; top: 5px;">
+![](images/alex.JPG)
+</div>
+
+Alex is a Reader in Biostatistics and has been teaching R for the last 15 years. 
 
 - Email:
-- Web:
-- Twitter:
-- GitHub:
+- Web: https://www.abdn.ac.uk/people/a.douglas/
+- Twitter: 
+- GitHub: 
+
+<br><br><br><br>
 
 ## Administrative Contacts  
-
+<br>
 Izzie ....  
 - Email:
 - Twitter:
