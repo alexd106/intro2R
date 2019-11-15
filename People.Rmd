@@ -17,7 +17,7 @@ knitr::include_graphics("images/alex.png")
 ```
 </div>
 
-Alex is a Reader in Biostatistics and has been teaching R for the last 15 years. 
+Alex is a Reader in Biostatistics at the University of Aberdeen and has been teaching (and learning) R for the last 15 years. 
 
 - Email: a(dot)douglas(at)abdn(dot)ac(dot)uk
 - Web: https://www.abdn.ac.uk/people/a.douglas/
@@ -33,7 +33,7 @@ knitr::include_graphics("images/deon.png")
 ```
 </div>
 
-Deon is a PhD student in applied ecology researching spatial variation of the temporal kind in population dynamics. He has been using and teaching R for 5 years. 
+Deon is a PhD student in applied ecology at the University of Aberdeen researching spatial variation of the temporal kind in population dynamics. He has been using and teaching R for 5 years. 
 
 - Email: deon(dot)roos(at)abdn(dot)ac(dot)uk
 - Web: https://www.abdn.ac.uk/people/deon.roos
@@ -50,7 +50,7 @@ knitr::include_graphics("images/ana.png")
 </div>
 
 
-Ana is a PhD student in Ecology looking at the ecology and physics of tidal stream habitats. She has been using and teaching R for 7 years. 
+Ana is a PhD student in Ecology at the University of Aberdeen looking at the ecology and physics of tidal stream habitats. She has been using and teaching R for 7 years. 
 
 - Email: a(dot)couto(dot)17(at)abdn(dot)ac(dot)uk
 - Web: https://www.abdn.ac.uk/people/r01ac17
