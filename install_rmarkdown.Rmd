@@ -61,7 +61,7 @@ If for some reason TinyTeX does not work on your Mac computer then you can try t
 With the rmarkdown package, RStudio/Pandoc, and LaTeX, you should be able to compile most R Markdown documents.
 
 <br>
-z
+
 ###Installing R Markdown on a University teaching computer
 
 The University computers already have R and RStudio installed with the required R packages (rmarkdown, knitr etc). However, if you want to generate PDF output, you will need to install LaTeX. For R Markdown users who have not installed LaTeX before, we recommend that you install [TinyTeX](https://yihui.name/tinytex/). You can install TinyTex from within R:
