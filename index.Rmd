@@ -1,5 +1,5 @@
 ---
-title: "QUADstats - an introduction to R"
+title: "QUADstat - An introduction to R"
 output: 
   html_document:
     toc: no

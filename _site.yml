@@ -1,9 +1,9 @@
 # See http://rmarkdown.rstudio.com/rmarkdown_websites.html
 
-name: "QUADstats an introduction to R"
+name: "QUADstat an introduction to R"
 output_dir: "."
 navbar:
-  title: "QUADstats"
+  title: "QUADstat"
   icon: fa-home
   left:
     - text: "Home"
@@ -54,8 +54,8 @@ navbar:
 
 output:
   html_document:
+    theme: flatly
     highlight: tango
-    theme: spacelab
     toc: true
     toc_depth: 2
     toc_float:
