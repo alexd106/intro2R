@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, tidy.opts=list(width.cutoff=55),tidy=TRUE)
 
 ###Installing R Markdown on a compter running MS Windows
 
-This guide assumes you have already installed [R](https://www.r-project.org) and the [RStudio IDE](https://www.rstudio.com). RStudio is not required but recommended, because it makes it easier to work with R Markdown. If you do not have RStudio IDE installed, you will also have to install [Pandoc](http://pandoc.org). If you have RStudio installed there is no need to install Pandoc separately because RStudio has bundled it. Next you can install the rmarkdown package in RStudio using the following code:
+This guide assumes you have already installed [R](https://www.r-project.org) and the [RStudio IDE](https://www.rstudio.com). RStudio is not required but recommended, because it makes it easier to work with R Markdown. If you do not have RStudio IDE installed, you will also have to install [Pandoc](http://pandoc.org). If you have RStudio installed there is no need to install Pandoc separately because its bundled with RStudio. Next you can install the rmarkdown package in RStudio using the following code:
 
 ```{r, eval = FALSE}
 # Install from CRAN
@@ -39,7 +39,7 @@ With the rmarkdown package, RStudio/Pandoc, and LaTeX, you should be able to com
 
 ###Installing R Markdown on a compter running Mac OSX
 
-This guide assumes you have already installed [R](https://www.r-project.org) and the [RStudio IDE](https://www.rstudio.com). RStudio is not required but recommended, because it makes it easier to work with R Markdown. If you do not have RStudio IDE installed, you will also have to install [Pandoc](http://pandoc.org). If you have RStudio installed there is no need to install Pandoc separately because RStudio has bundled it. Next you can install the rmarkdown package in RStudio using the following code:
+This guide assumes you have already installed [R](https://www.r-project.org) and the [RStudio IDE](https://www.rstudio.com). RStudio is not required but recommended, because it makes it easier to work with R Markdown. If you do not have RStudio IDE installed, you will also have to install [Pandoc](http://pandoc.org). If you have RStudio installed there is no need to install Pandoc separately because its bundled with RStudio. Next you can install the rmarkdown package in RStudio using the following code:
 
 ```{r, eval = FALSE}
 # Install from CRAN
