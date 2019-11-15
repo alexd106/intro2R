@@ -31,11 +31,11 @@ Alex is a Reader in Biostatistics and has been teaching R for the last 15 years.
 ![](images/alex.JPG)
 </div>
 
-Alex is a Reader in Biostatistics and has been teaching R for the last 15 years. 
+Deon is a PhD student in XXX . He has been using and teaching R for XXX years.... 
 
 - Email:
 - Web: https://www.abdn.ac.uk/people/a.douglas/
-- Twitter: 
+- Twitter: https://twitter.com/DeonRoos88
 - GitHub: 
 
 <br><br><br><br>
@@ -45,11 +45,11 @@ Alex is a Reader in Biostatistics and has been teaching R for the last 15 years.
 ![](images/alex.JPG)
 </div>
 
-Alex is a Reader in Biostatistics and has been teaching R for the last 15 years. 
+Ana is a PhD student in XXX . He has been using and teaching R for XXX years....  
 
 - Email:
 - Web: https://www.abdn.ac.uk/people/a.douglas/
-- Twitter: 
+- Twitter: https://twitter.com/AnaSofiaCouto
 - GitHub: 
 
 <br><br><br><br>

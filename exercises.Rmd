@@ -1,0 +1,8 @@
+---
+title: 'Exercises'
+output: 
+  html_document:
+    toc: false
+---
+
+Content to follow
