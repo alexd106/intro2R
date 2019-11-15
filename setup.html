@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -248,96 +245,6 @@ $(document).ready(function () {
 
 
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-.tocify-subheader {
-  display: inline;
-}
-.tocify-subheader .tocify-item {
-  font-size: 0.95em;
-}
-
-</style>
-
-
 
 </head>
 
@@ -345,16 +252,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -493,41 +390,28 @@ div.tocify {
 </div>
 
 
-<p>Please follow the instructions under <strong><em>Get the Data</em></strong> and <strong><em>Core Software</em></strong> headings below. Depending on the class you’re taking, you may also need to follow additional setup instructions under the <a href="#electives"><strong><em>Electives</em></strong></a> heading.</p>
-<div id="get-the-data" class="section level2">
-<h2>Get the Data</h2>
-<p>Click the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link on the navbar at the top. You can download all the data needed by downloading <strong><a href="data.zip">this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i></a></strong> or by downloading individual data sets as needed at the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> page.</p>
-</div>
+<p><br> During the course we will be using both R and RStudio. If you’re bringing your own laptop (see <a href="index.html">FAQ</a>) please follow the instructions under <strong><em>Core Software</em></strong> and <strong><em>Get the Data</em></strong> headings before you arrive. No worries if you are having problems installing the software, we will run a drop-in session from 14:00 - 15:30 on Monday 2<sup>nd</sup> December in room FN113 in the <a href="images/uoa_map.pdf">Fraser Noble building</a> (building No. 7 on the map) to troubleshoot installation problems (bring your laptop!). Alternatively you can <a href="people.html">email one of the instructors</a> prior to the course.<br />
+<br></p>
 <div id="core-software" class="section level2">
 <h2>Core Software</h2>
-<p>Install the following software.</p>
-<div id="r" class="section level3">
-<h3>R</h3>
-<p><strong>Install R.</strong> You’ll need R version <strong>3.6.0</strong> or higher. Download and install R for <a href="http://cran.r-project.org/bin/windows/base/">Windows</a> or <a href="http://cran.r-project.org/bin/macosx/">Mac</a> (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS).</p>
+<p><strong>Install R.</strong> You’ll need R version <strong>3.6.0</strong> or higher. Download and install R for <a href="http://cran.r-project.org/bin/windows/base/">Windows</a>, <a href="http://cran.r-project.org/bin/macosx/">Mac</a> (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS) or <a href="https://cran.r-project.org/bin/linux">linux</a> (choose your flavour of linux).</p>
+<p><strong>Install RStudio.</strong> Download and install <strong><a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a></strong> (version 1.2.5019).</p>
+<p>You will need to download and install R and RStudio separately. <strong>R</strong> is the underlying statistical computing environment. <strong>RStudio</strong> is a graphical integrated development environment (IDE) that makes using R somewhat easier. You need to install R before you install RStudio.</p>
+<p><br></p>
 </div>
-<div id="rstudio" class="section level3">
-<h3>RStudio</h3>
-<p>Download and install <strong><a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a></strong> version = 1.2.5019.</p>
-<p>R and RStudio are separate downloads and installations. <strong>R</strong> is the underlying statistical computing environment, but using R alone is no fun. <strong>RStudio</strong> is a graphical integrated development environment that makes using R much easier. You need R installed before you install RStudio.</p>
-</div>
-<div id="cran-packages" class="section level3">
-<h3>CRAN packages</h3>
-<p>We will need to install several core packages needed for most lessons. Launch RStudio (RStudio, <em>not R itself</em>). Ensure that you have internet access, then copy and paste the following commands, one-at-a-time, into the <strong>Console</strong> panel (usually the lower-left panel, by default) and hit the Enter/Return key. If you receive an error message when trying to install any particular package, please make note of which one you had trouble with, and <a href="people.html">email one of the instructors</a> <em>prior to class</em> with the command you typed and the error you received.</p>
+<div id="get-the-data" class="section level2">
+<h2>Get the Data</h2>
+<p>Click the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link on the navbar at the top. You can download all the data needed by downloading <strong><a href="data.zip">this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i></a></strong> or by downloading individual data sets as needed at the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> page. If you download the zip file you will need to use software to uncompress this file.</p>
 <p><em>A few notes</em>:</p>
 <ul>
-<li>Commands are case-sensitive.</li>
-<li>You must be connected to the internet.</li>
-<li>Even if you’ve installed these packages in the past, do re-install the most recent version. Many of these packages are updated often, and we may use new features in the workshop that aren’t available in older versions.</li>
+<li>During the course you must be connected to the internet via wifi (we will use eduroam which you should all have access to).</li>
 <li>If you’re using Windows you might see errors about not having permission to modify the existing libraries – disregard these. You can avoid this by running RStudio as an administrator (right click the RStudio icon, then click “Run as Administrator”).</li>
+<li>If you really dislike using RStudio then feel free to use an alternative IDE or script editor (see <a href="index.html">FAQ</a>).</li>
 </ul>
-<p>These commands may produce some notes or other output, but as long as they work without an error message, you’re good to go. If you get a message that says something like: <code>Error in library(packageName) : there is no package called 'packageName'</code>, then the required packages did not install correctly. Please do not hesitate to <a href="people.html">email one of the instructors</a> <em>prior to the course</em> if you are still having difficulty.</p>
-</div>
 </div>
 
 
 
-</div>
-</div>
 
 </div>
 

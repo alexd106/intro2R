@@ -11,22 +11,31 @@ output:
 
 The purpose of this 3 day course is to introduce you to using R, an interactive environment for statistical computing. R in itself is not difficult to learn, but just like any new language the initial learning curve can be a little steep and you will need to use it frequently otherwise it’s easy to forget. My suggestion to you, is that whilst you are getting to grips with R, uninstall any other statistics software you have on your computer and only use R. This may seem a little extreme but will hopefully remove the temptation to ‘just do it quickly’ in a more familiar environment and consequently slow down your learning of R. Believe me, anything you can do in your existing statistics software package you can do in R (often better and more efficiently).
 
-A few notes about this course. I have tried to simplify the content of this course as much as possible and have based it on 15 years experience teaching (and learning!) R. It is not intended as an introductory statistics course, although I will be using some basic statistics to highlight some of R’s capabilities. My aim is to help you climb the initial learning curve and provide you with the basic skills to enable you to further your experience in using R. I have included a number of practical exercises for you to work through during the course and encourage you complete these in your own time - you certainly won’t learn how to use R by watching other people do it. I would also encourage you to practice what you have learnt during the course on your own data and also work through one of the many freely available introductory texts on R once the course is over (see here for more details).
+A few notes about this course. I have tried to simplify the content of this course as much as possible and have based it on 15 years experience teaching (and learning!) R. It is not intended as an introductory statistics course, although I will be using some basic statistics to highlight some of R’s capabilities. My aim is to help you climb the initial learning curve and provide you with the basic skills to enable you to further your experience in using R. I have included a number of practical [exercises](exercises.html) for you to work through during the course and encourage you complete these in your own time - you certainly won’t learn how to use R by watching other people do it. 
 
 \  
-
-**[Click here to download the entire course archive as a zip file.](https://github.com/alexd106/alexd106.github.io/archive/gh-pages.zip)** Once downloaded and extracted, double-click the **`index.html`** file in the extracted folder to view the course material offline.
 
 ----
 
 ### FAQ
 
-#### What's this course all about?
-
-#### What are the pre-requisites?
+#### What are the pre-requisites for this course?
+This course assumes no previous experience or knowledge of using either R or RStudio. It also doesn't assume any knowledge of programming or using a command-line interface, but if you have some experience, the content won’t come as so much of a shock. But don’t panic. Command-line interfaces and programming languages like R are incredibly powerful and will be utterly transformative to your research. There’s a learning curve, and it’s pretty steep in the beginning, but it’s surmountable and the payoff is worth it!
 
 #### Do I need a laptop?
+No. We will provide desktop computers for those who do not wish to bring their own laptops to the course. All of the desktops will have both R and RStudio already installed but please bring along a USB flash drive to save your work. If you require a desktop computer then please make sure you have registered for a UoA visitor computing account prior to the start of the course (contact [Izzie Buchanan](people.html) for further details).
+
+#### What is the course timetable?
+See the course [syllabus](syllabus.html) for a general outline of the course content and timing. The course will start at 09:30 each morning and finish at 17:00. We will break for a one hour lunch break around 12:00. However, everyone learns R in their own way and at their own pace so this syllabus should be treated as indicative rather than absolute. There will also be plenty of opportunities to take short breaks during the course and we will also have a couple of 30 minute sessions on robust and reproducible research practices.  
+
+#### Where is the course held?
+All teaching will be held in room FN113 in the Fraser Noble building (building No. 7 on [this map](images/uoa_map.pdf) on the old Aberdeen campus).
+
+#### Why are you not teaching us 'tidyverse'?
+We have thought long and hard about whether to teach this course using the ['tidyverse'](https://www.tidyverse.org/) collection of packages and approaches (if you've never heard of 'tidyverse' before then don't worry about it!). In a perfect world we would have sufficient time to teach you both base R and 'tidyverse', however we only have 3 days together and this is not really enough time to cover both topics in sufficient detail. In the end we decided that it was more important that by the end of the course you have a good fundamental grasp of base R which will provide you with the foundation to go on and learn 'tidyverse' approaches in your own time (if you want to). Having said that, if you have previous experience using 'tidyverse' then feel free to complete the course exercises using this approach. 
 
 #### Where do I get additional help?
+It's inevitable that you will get stuck at some point either during the course or beyond. Whilst at the course please feel free to ask plenty of questions (remember, we've all been there!). After the course take a look at the [resources](resources.html) section of this website for further information.    
 
 #### What do I do once the course has finished?
+The only way to get more comfortable using R is to use R! I strongly suggest that having completed this course you start using R to summarise, manipulate, plot and analyse your own data as soon as possible. If you don't have any data yet, then ask your supervisor for some (I'm sure they will be delighted!) or follow one of the many excellent tutorials available online (see the [resources](resources.html) page for more information. 

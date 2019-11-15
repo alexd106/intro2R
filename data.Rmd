@@ -15,13 +15,15 @@ suppressPackageStartupMessages(library(dplyr))
 if (!file.exists("all_data.zip")) system("rm all_data.zip ; zip -r all_data.zip data -x '*.html' -x '*.DS_Store'")
 ```
 
-**Option 1: Download all the data**. Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](all_data.zip)** `r paste0("(", round(file.info("all_data.zip")$size/1e6, 2), " Mb)")` with all the data for the entire workshop. This may include additional datasets that we won't use here.
+<br>
+
+**Option 1: Download all the data**. Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](all_data.zip)** `r paste0("(", round(file.info("all_data.zip")$size/1e6, 2), " Mb)")` with all the data for the entire workshop. This may include additional datasets that we won't use here. You will need to uncompress this zip file using your favourite software (most operating systems now have at least one built-in (un)compression tool). 
 
   
 
 **Option 2: Download individual datasets as needed.** 
 
-- Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it ` workshop`. Inside that folder, make a folder called `data`, all lowercase. 
+- Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it ` workshop`. Inside that folder, make another folder called `data`, all lowercase. 
 
 - Download individual data files as needed, saving them to the new `workshop/data` folder you just made. Click to download. If data displays in your browser, right-click and select _Save link as..._ (or similar) to save to the desired location.
   
