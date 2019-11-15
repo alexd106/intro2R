@@ -1,8 +1,52 @@
 ---
-title: 'Resources'
+title: 'Further Resources'
 output: 
   html_document:
     toc: false
 ---
+<br>
 
-Content to follow
+## R resources
+
+### Getting Help
+
+- [Google it!](http://lmgtfy.com/?q=R+Error+in+library+there+is+no+package+called): Try Googling generalized versions of any error messages you get. That is, remove text that is specific to your problem (names of variables, paths, datasets, etc.). You'd be surprised how many other people have probably had the same problem and solved it.
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/r): There are over 100,000 questions tagged with "R" on SO. [Here are the most popular ones, ranked by vote](https://stackoverflow.com/questions/tagged/r?sort=votes). Always search before asking, and make a [reproducible example](http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example/5963610#5963610) if you want to get useful advice. This is a minimal example that allows others who are trying to help you to see the error themselves.
+- Read package vignettes. For example, see the [lme4 CRAN page](https://cran.r-project.org/web/packages/lme4/vignettes/lmer.pdf) to learn how to fit linear mixed effects models using the lme4 package. 
+
+<br>
+
+### General R Resources
+
+- [R-Project](https://cran.r-project.org/other-docs.html): User contributed documentation
+- [The R Journal](https://journal.r-project.org/): Journal of the R project for statistical computing
+- [TryR](http://tryr.codeschool.com/): An interactive, browser-based R tutor
+- [Swirl](http://swirlstats.com/): An R package that teaches you R (_and statistics!_) from within R
+- [Jenny Bryan's Stat 545 "Data wrangling, exploration, and analysis with R" course material](https://stat545-ubc.github.io/): An excellent resource for learning R and 'tidyverse'
+- [RStudio's printable cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
+- [Rseek](http://rseek.org/): A custom Google search for R-related sites
+- Bioconductor [vignettes](https://www.bioconductor.org/help/package-vignettes/), [workflows](https://www.bioconductor.org/help/workflows/), and [course/conference materials](https://www.bioconductor.org/help/course-materials/)
+
+<br>
+
+## R Markdown / Markdown resources
+
+- [Basic Markdown + R Markdown reference](http://bioconnector.github.io/markdown)
+- In-browser markdown editors: 
+    - Minimal: [bioconnector.github.io/markdown-editor](http://bioconnector.github.io/markdown-editor)
+    - Better: [stackedit.io](http://stackedit.io), [dillinger.io](http://dillinger.io)
+- [A good markdown reference](http://commonmark.org/help/)
+- [A good 10-minute markdown tutorial](http://commonmark.org/help/tutorial/)
+- [RStudio's R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) and [R Markdown Reference Sheet](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+- [The R Markdown documentation](<http://rmarkdown.rstudio.com/>) has an excellent [getting started guide](http://rmarkdown.rstudio.com/lesson-1.html), a [gallery of demos](http://rmarkdown.rstudio.com/gallery.html), and several [articles](http://rmarkdown.rstudio.com/articles.html) illustrating advanced usage.
+- [The knitr website](<http://yihui.name/knitr/>) has lots of useful reference material about how knitr works, [options](http://yihui.name/knitr/options/), and more.
+
+<br>
+
+## Git and GitHub resources
+
+- [Happy Git](https://happygitwithr.com/): Great resourse for using Git and GitHub
+- [Version control with RStudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN): RStudio support document for using version control
+- [Using Git from RStudio](https://nceas.github.io/oss-lessons/version-control/4-getting-started-with-git-in-RStudio.html): Good 10 minute guide
+- [The R Class](https://r-bio.github.io/intro-git-rstudio/): In depth guide to using GitHub with RStudio
+

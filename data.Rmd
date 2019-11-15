@@ -32,7 +32,7 @@ if (!file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r dat
 dir <- "data/"
 list.files(dir) %>%
   sort %>% 
-  grep("\\.html$", ., value=TRUE, invert=TRUE) %>% 
+  grep("\\.html$ | *.zip", ., value=TRUE, invert=TRUE) %>% 
   paste0("- [", ., "](", paste0(dir, .), ")") %>% 
   cat(sep="\n")
 ```
