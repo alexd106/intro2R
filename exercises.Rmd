@@ -4,5 +4,20 @@ output:
   html_document:
     toc: false
 ---
+<br>
 
-Content to follow
+### Exercises
+
+The following exercises will test your understanding of the material covered during this course. Each exercise corresponds to material covered in each section of the Introduction to R manual. It’s entirely up to you how you progress through these exercises, everyone learns at their own pace and in their own way. You can either work your way through each section of the manual and then test your understanding of the material by completing the associated exercise. Alternatively, you can start with each exercise and refer back to the appropriate material in the manual. Or find another way that works for you. Whichever approach you use, make sure that you write your R code in RStudio (or your favourite script editor), annotate it liberally and save it regularly. At the end of the course you will have many hundreds of lines of code that you can refer back to at a later date when you’ve forgotten most of it! Towards the end of the course I will release the solutions to the exercises [here](exercise_solutions.html). 
+
+Finally, just a word about the content of the exercises. Initially, some of the material in the exercises might strike you as ‘pointless’, ‘trivial’ or ‘irrelevant’ and you may even ask yourself what possible use is generating sequences of numbers, concatenating elements in a vector or ordering lists of names (to name but a few).  However, please stick with it, you’ll be amazed how many times you will use the skills (and code) that you have learned throughout these exercises when it comes to dealing with and analysing your own data. 
+
+Have fun!
+
+<br>
+
+[Exercise 1: Getting to know RStudio](exercise_1.html)
+
+<br>
+
+[Exercise solutions](exercise_solutions.html)

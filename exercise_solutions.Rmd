@@ -1,0 +1,10 @@
+---
+title: "Exercise Solutions"
+output: 
+  html_document:
+    toc: false
+---
+
+<br>
+
+[Exercise 1 Solutions](exercise_1_solution.html)

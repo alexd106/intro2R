@@ -1,0 +1,97 @@
+---
+title: 'Exercise Solutions'
+output: 
+  html_document:
+    toc: false
+    code_folding: hide
+---
+
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache=TRUE)
+```
+
+<br>
+
+## Exercise 1
+
+<br>
+
+1.	Start RStudio as described in Section 1.4 of the course manual.
+
+<br>
+
+2.	Identify and explore the different components of the RStudio Graphical User Interface (GUI). Explore the program, noting where commands are entered and the menu structure. Save this Script as ‘Aberdeen_R_course’ (or something similar) on your USB drive or in a folder on your network drive (H:\ in most cases). This will be your main R script file for the course to which you will add all your commands as you work through the manual and exercises. 
+
+<br>
+
+3.	Using internet explorer, navigate to the [R-project website](http://www.r-project.org) and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your USB drive or network drive.
+
+<br>
+
+4.	Use the search facility on the R-project website to search for items related to ‘introduction to R’ or something similar. 
+
+<br>
+
+5.	Start RStudio and create a new R Script. Explore the program, noting where commands are entered and the menu structure. Save this Script as ‘Aberdeen_R_course’ (or something similar) on your USB drive or in a folder on your network drive (H:\ in most cases). This will be your main R script file for the course to which you will add all your commands as you work through the manual and exercises.
+
+<br>
+
+6.	Using the R help system, find further information on the functions ```mean()``` and ```median()```. Type your commands in the RStudio script editor and then source them into the R console. Make sure you annotate your R script file with lots of explanatory comments (precede your comments with a ```#```. Examine the different components of the help file for each function (especially the examples section at the end of the help file).
+
+```{r Q6}
+help(mean)          # different methods of using help
+?mean
+help("mean")
+help("median")
+```
+<br>
+
+7.	Get a list of all the functions in R that contains the word ‘test’ (test is a character string). Find further information on at least one of these functions using the ```help()``` function.
+
+```{r Q7}
+apropos('test')
+
+help('cor.test')
+```
+<br>
+
+8.	Search the R help system for instances of the character string ‘plot’. Narrow your search by only searching for ‘plot’ in the ```nlme``` package.
+
+```{r Q8}
+help.search("plot")  # searches for all instances of the string 'plot'
+
+help.search("plot",package = "nlme") #only searches for plot in the package 'nlme'
+```
+<br>
+
+9.	Start R’s html help. Follow the link ‘search engines and keywords’ and search for the term ‘linear model’. Navigate through html help exploring the various links further.
+
+```{r Q9}
+help.start()        # starts R's html help system
+```
+<br>
+
+10.	Identify which packages are currently installed on your system.
+
+```{r Q10}
+installed.packages() # lists all installed packages
+
+row.names(installed.packages())	# lists just the package names
+```
+<br>
+
+11.	Determine the current working directory on your computer.
+
+```{r Q11}
+getwd()             # identifies the current working directory
+```
+<br>
+
+12.	Change the working directory to a folder either on your USB or network drive. 
+
+```{r Q12, eval = FALSE}
+setwd("/file/path")  # changes the working directory to a file path of your choice
+getwd()              # check if this has changed the working directory
+```
+
