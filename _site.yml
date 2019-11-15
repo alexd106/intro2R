@@ -44,7 +44,7 @@ navbar:
           href: https://www.quadrat.ac.uk/
         - text: "Contact"
           icon: fa-envelope fa-lg
-          href: contact.html
+          href: People.html
         - text: "Source code"
           icon: fa-github fa-lg
           href: http://github.com/alexd106
