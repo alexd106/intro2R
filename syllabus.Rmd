@@ -5,4 +5,36 @@ output:
     toc: false
 ---
 
-Content to follow
+<br>
+
+You will all learn to use R in your own way and at your own pace. The following timetable should only be viewed as a rough guide.
+
+<br>
+
+#### Monday 2^nd^ December 2019
+
+  - 14:00 - 15:30: Drop-in session for software installation issues (FN113)
+
+<br>
+
+#### Tuesday 3^rd^ December 2019 
+
+  - Morning: Introduction to the course, getting to know R and RStudio
+
+  - Afternoon: Basic R operations
+
+<br>
+
+#### Wednesday 4^th^ December 2019
+
+  - Morning: Importing and manipulating dataframes
+
+  - Afternoon: Plotting data in R using base and lattice graphics
+
+<br>
+
+#### Thursday 5^th^ December 2019
+
+  - Morning: Simple statistics in R
+
+  - Afternoon: Basic programnming in R (optional) or catchup
