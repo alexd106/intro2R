@@ -7,7 +7,7 @@ output:
 
 <br>
 
-You will all learn to use R in your own way and at your own pace. The following timetable should only be viewed as a rough guide.
+The course will start at 09:30 each morning and finish at 17:00. We will break for a one hour lunch break around 12:00. However, everyone learns R in their own way and at their own pace so this syllabus should be treated as indicative rather than absolute. There will also be plenty of opportunities to take short breaks during the course and we will also have a couple of 30 minute sessions on robust and reproducible research practices.
 
 <br>
 
