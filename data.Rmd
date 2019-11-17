@@ -23,8 +23,6 @@ if (!file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r dat
 
 - Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it ` workshop`. Inside that folder, make another folder called `data`, all lowercase. 
 
-\  
-
 - Download individual data files as needed, saving them to the new `workshop/data` folder you just made. Click to download. If data displays in your browser, right-click and select _Save link as..._ (or similar) to save to the desired location.
   
   

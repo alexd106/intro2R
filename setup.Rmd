@@ -6,7 +6,9 @@ output:
 ---
 
 \  
+
 During the course we will be using both R and RStudio. If you're bringing your own laptop (see [FAQ](index.html)) please follow the instructions under **_Core Software_** and **_Get the Data_** headings before you arrive. No worries if you are having problems installing the software, we will run a drop-in session from 14:00 - 15:30 on Monday 2^nd^ December in room FN113 in the [Fraser Noble building](images/uoa_map.pdf) (building No. 7 on the map) to troubleshoot installation problems (bring your laptop!). Alternatively you can [email one of the instructors](People.html) prior to the course.      
+
 \  
 
 ## Core Software
