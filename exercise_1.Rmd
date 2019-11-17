@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 <br>
 
-## Exercise 1
+## Exercise 1 : Getting to know R and RStudio
 
 <br>
 
