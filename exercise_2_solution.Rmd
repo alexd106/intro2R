@@ -11,8 +11,182 @@ output:
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
 ```
 
-<br>
+\  
 
-## Exercise 2
+## Exercise 2 : Basic R operations
 
-<br>
+\  
+
+1. Either create a new R script or continue with your previous R script in RStudio. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don't forget to comment out your metadata with a ```#``` at the beginning of the line. 
+
+\  
+
+2. Let's use R as a fancy calculator. Find the natural log, log10, log2, square root and the natural antilog of 12.43. Don't forget to write your code in RStudio's script editor and source the code into the console.
+
+```{r Q2, results = 'asis'}
+log(12.43)              # natural log
+log10(12.43)            # log to base 10
+log2(12.43)             # log to base 2
+log(12.43, base = 2)    # alternative log to base 2
+sqrt(12.43)             # square root
+exp(12.43)              # exponent
+```
+
+\  
+
+3. Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to a variable called ```area.circle```. Google is your friend if you can't remember the formula! Also, remember that R already knows about ```pi```.
+
+```{r Q3, , results = 'asis'}
+area.circle <- pi * (20/2)^2
+```
+
+\  
+
+4. Now for something a little more tricky. Calculate the cube root of 14 x 0.51. You might need to think creatively for a solution (hint: think exponents), and remember that R follows the usual order of mathematical operators so you might need to use brackets in your code (see [this page ](https://en.wikipedia.org/wiki/Order_of_operations) if you've never heard of this). 
+
+```{r Q4}
+(14 * 0.51)^(1/3)
+```
+
+\  
+
+5. Ok, you're now ready to explore one of R's basic (but very useful) data structures - vectors. A vector is a sequence of elements (or components) that are all of the same data type. Although technically not correct it might be useful to think of a vector as something like a single column in a spreadsheet. There are a multitude of ways to create vectors in R but you will use the concatenate function ```c()``` to create a vector called ```weight``` containing the weight (in kg) of 10 children: ```69, 62, 57, 59, 59, 64, 56, 66, 67, 66```. 
+
+```{r Q5}
+weight <- c(69, 62, 57, 59, 59, 64, 56, 66, 67, 66)
+```
+
+\  
+
+6. You can now do stuff your ```weight``` vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your ```weights``` vector. Next, extract the weights for the first five children and store these weights in a new variable called ```first.five```. Remember, you will need to use the square brackets ```[ ]``` to extract (aka indexing, subsetting) elements from a variable.
+
+```{r Q6, results = 'asis'}
+mean(weight)                                # calculate mean 
+var(weight)                                 # calculate variance
+sd(weight)                                  # calculate standard deviation
+range(weight)                               # range of weight values
+length(weight)                              # number of observations
+
+first.five <- weights[1:5]                  # extract first 5 weight values
+first.five <- weights[c(1, 2, 3, 4, 5)]     # alternative method
+```
+
+\  
+
+7. We're now going to use the the ```c()``` function again to create a vector called ```height``` containing the height (in cm) of the same 10 children: ```112, 102, 83, 84, 99, 90, 77, 112, 133, 112```. Use the ```summary()``` function to summarise these data. Extract the height of the 2nd, 3rd, 9th and 10th child and assign these heights to a variable called ```some.child```. Also extract all the heights of children less than or equal to 99 cm and assign to a variable called ```shorter.child```.
+
+```{r Q7, results = 'asis'}
+height <- c(112, 102, 83, 84, 99, 90, 77, 112, 133, 112)
+
+summary(height)   # summary statistics of height variable
+
+some.child <- height[c(2, 3, 9, 10)]      # extract the 2nd, 3rd, 9th, 10th height
+
+shorter.child <- height[height <= 99]     # extract all heights less than or equal to 99
+```
+
+\  
+
+8. Now you can use the information in your ```weight``` and ```height``` variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (in meters). Store the results of this calculation in a variable called ```bmi```. Note: you don’t need to do this calculation for each child individually, you can use the vectors in the equation  – this is called vectorisation.
+
+```{r Q8}
+bmi <- weight/(height/100)^2    # don't forget to convert height to meters
+```
+
+\  
+
+9. Now let's practice a very useful skill - creating sequences (honestly it is...). First use the ```seq()``` function to create a sequence of numbers ranging from 0 to 1 in steps of 0.1 (this is also a vector by the way) and assign this sequence to a variable called ```seq1```.
+
+```{r Q9}
+seq1 <- seq(from = 0, to = 1, by = 0.1)
+```
+
+\  
+
+10.	Next, create a sequence from 10 to 1 in steps of 0.5 and assign to a variable called ```seq2``` (Hint: you may find it easier to include the ```rev()``` function in your code).
+
+```{r Q10}
+seq2 <- rev(seq(from = 1, to = 10, by = 0.5))
+```
+
+\  
+
+11.	Let's go mad! Generate the following sequences. You will need to experiment with the arguments to the ```rep()``` function to generate these sequences:
+
+    + 1 2 3 1 2 3 1 2 3
+    + "a" "a" "a" "c" "c" "c" "e" "e" "e" "g" "g" "g"
+    + "a" "c" "e" "g" "a" "c" "e" "g" "a" "c" "e" "g"
+    + 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3
+    + 1 1 1 1 1 2 2 2 2 3 3 3 4 4 5
+    + 4 sevens, 3 twos, 1 eight and 5 ones
+
+```{r Q11}
+rep(1:3, times = 3)
+rep(c("a", "c", "e", "g"), each = 3)
+rep(c("a", "c", "e", "g"), times = 3)
+rep(1:3, each = 3, times = 2)
+rep(1:5, times = 5:1)
+rep(c(7, 2, 8, 1), times = c(4, 3, 1, 5))
+```
+
+\  
+
+12.	Ok, back to the variable ```height``` you created in Q7. Sort the values of ```height``` into ascending order (shortest to tallest) and assign the sorted vector to a new variable called ```height.sorted```. Now sort all heights into descending order and assign the new vector a name of your choice.
+
+```{r Q12}
+height.sorted <- sort(height)
+
+height.rev <- rev(sort(height))
+
+```
+
+\  
+
+13. Let's give the children some names. Create a new vector called ```child.names``` with the following names of the 10 children: ```"Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William"```. 
+
+```{r Q13}
+child.names <- c("Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William")
+```
+
+\  
+
+14. A really useful (and common) task is to sort the values of one variable by the order of another variable. To do this you will need to use the ```order()``` function in combination with the square bracket notation ```[ ]```.  Create a new variable called ```names.sort``` to store the names of the children sorted by child height (from shortest to tallest). Who is the shortest? who is the tallest child? If you're not sure how to do this, please ask one of the instructors.
+
+```{r Q14}
+height.ord <- order(height)   # get the indexes of the heights, smallest to tallest
+names.sort <- child.names[height.ord]     # Louise is shortest, Ronald is tallest
+```
+
+\  
+
+15. Now order the names of the children by descending values of weight and assign the result to a variable called ```weight.rev```. Who is the heaviest? Who is the lightest?
+
+```{r Q15}
+weight.ord <- rev(order(weight))
+weight.rev <- child.names[weight.ord]     # Alfred is heaviest, Louise is lightest
+```
+
+\  
+
+16. Almost there! In R, missing values are usually represented with an ```NA```. Missing data can be tricky to deal with in R (and in statistics more generally) and cause some surprising behaviour when using some functions. To explore this a little further let's create a vector called ```mydata``` with the values ```2, 4, 1, 6, 8, 5, NA, 4, 7```. Notice the value of the 7^th^ element of ```mydata``` is missing. Now use the ```mean()``` function to calculate the mean of the values in ```mydata```. What does R return? Confused? Next, take a look at the help page for the function ```mean()```. Can you figure out how to alter your use of the ```mean()``` function to calculate the mean without this missing value? 
+
+```{r Q16}
+mydata <- c(2, 4, 1, 6, 8, 5, NA, 4, 7)
+mean(mydata)    # returns NA!
+
+mean(mydata, na.rm = TRUE)    # returns 4.625
+```
+
+\  
+
+17. Finally, list all variables in your workspace that you have created in this exercise. Remove the variable ```seq1``` from the workspace. 
+
+```{r Q17}
+ls()          # list all variables in workspace
+rm(seq1)      # remove variable seq1 from the workspace
+ls()          # check seq1 has been removed
+```
+
+\  
+
+End of Exercise 2 
