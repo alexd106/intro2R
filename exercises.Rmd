@@ -4,7 +4,7 @@ output:
   html_document:
     toc: false
 ---
-<br>
+\  
 
 ### Exercises
 
@@ -14,7 +14,7 @@ Finally, just a word about the content of the exercises. Initially, some of the 
 
 Have fun!
 
-<br>
+\  
 
 [Exercise 1: Getting to know R and RStudio](exercise_1.html)
 
@@ -28,7 +28,7 @@ Have fun!
 
 [Exercise 6: Basic programnming in R](exercise_6.html)
 
-<br><br>
+\  
 
 [Pdf versions of exercises](exercise_pdf.html)
 

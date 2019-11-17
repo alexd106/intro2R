@@ -13,7 +13,7 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
 ```
 
-<br>
+\  
 
 Follow the links below for solutions to each of the exercises you have completed on this course. Click on the 'code' buttons to reveal the R code associated with each question. If you would prefer these solutions as R scripts for later offline use then you can [find these here](course_code.html).
 

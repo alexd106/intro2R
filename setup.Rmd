@@ -5,9 +5,9 @@ output:
     toc: false
 ---
 
-<br>
+\  
 During the course we will be using both R and RStudio. If you're bringing your own laptop (see [FAQ](index.html)) please follow the instructions under **_Core Software_** and **_Get the Data_** headings before you arrive. No worries if you are having problems installing the software, we will run a drop-in session from 14:00 - 15:30 on Monday 2^nd^ December in room FN113 in the [Fraser Noble building](images/uoa_map.pdf) (building No. 7 on the map) to troubleshoot installation problems (bring your laptop!). Alternatively you can [email one of the instructors](People.html) prior to the course.      
-<br>
+\  
 
 ## Core Software
 **Install R.** You'll need R version **3.6.0** or higher. Download and install R for [Windows](http://cran.r-project.org/bin/windows/base/),  [Mac](http://cran.r-project.org/bin/macosx/) (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS) or [linux](https://cran.r-project.org/bin/linux) (choose your flavour of linux).
@@ -16,17 +16,17 @@ During the course we will be using both R and RStudio. If you're bringing your o
 
 You will need to download and install R and RStudio separately. **R** is the underlying statistical computing environment. **RStudio** is a graphical integrated development environment (IDE) that makes using R somewhat easier. You need to install R before you install RStudio.
 
-<br>
+\  
 
 ## Get the Data
 Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navbar at the top. You can download all the data needed by downloading **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** or by downloading individual data sets as needed at the **[<i class="fa fa-download"></i> Data](data.html)** page. If you download the zip file you will need to use your favourite software to uncompress this file (although most operating systems now have at least one built-in (un)compression tool). 
 
-<br>
+\  
 
 ## R markdown
 Installing R markdown is not required for this course. However, for those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html) to install R markdown on your laptop. Although we will only scratch the surface of R markdown during this course we plan to run a webinar on this subject in the near future.  
 
-<br>
+\  
 
 _A few notes_:
 

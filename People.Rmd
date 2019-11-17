@@ -4,11 +4,11 @@ output:
   html_document:
     toc: yes
 ---
-<br>
+\  
 
 ## Teaching team
 
-<br>
+\  
 
 #### Alex Douglas
 <div style= "float:left;position: relative; top: 5px;">
@@ -24,7 +24,9 @@ Alex is a Reader in Biostatistics at the University of Aberdeen and has been tea
 - Twitter: https://twitter.com/Scedacity
 - GitHub: https://github.com/alexd106
 
-<br><br><br><br>
+\  
+
+\  
 
 #### Deon Roos  
 <div style= "float:left;position: relative; top: 5px;">
@@ -40,7 +42,9 @@ Deon is a PhD student in applied ecology at the University of Aberdeen researchi
 - Twitter: https://twitter.com/DeonRoos88
 - GitHub: https://github.com/Deon88
 
-<br><br><br><br>
+\  
+
+\  
 
 #### Ana Couto
 <div style= "float:left;position: relative; top: 5px;">
@@ -57,11 +61,15 @@ Ana is a PhD student in Ecology at the University of Aberdeen looking at the eco
 - Twitter: https://twitter.com/AnaSofiaCouto
 - GitHub:  https://github.com/Anofia
 
-<br><br><br><br><br>
+\  
+
+\  
 
 ## Administrative Contacts  
-<br>
-Izzie Buchanan (QUADRAT Partnership Co-ordinator)
+
+\  
+
+####Izzie Buchanan (QUADRAT Partnership Co-ordinator)
 
 - Email: quadrat(at)abdn(dot)ac(dot)uk
 - Twitter: https://twitter.com/quadratdtp

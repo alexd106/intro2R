@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE, tidy.opts=list(width.cutoff=55),tidy=TRUE)
 ```
 
-<br>
+\  
 
 ###Installing R Markdown on a compter running MS Windows
 
@@ -35,7 +35,7 @@ TinyTeX is a lightweight, portable, cross-platform, and easy-to-maintain LaTeX d
 
 With the rmarkdown package, RStudio/Pandoc, and LaTeX, you should be able to compile most R Markdown documents.
 
-<br>
+\  
 
 ###Installing R Markdown on a compter running Mac OSX
 
@@ -60,7 +60,7 @@ If for some reason TinyTeX does not work on your Mac computer then you can try t
   
 With the rmarkdown package, RStudio/Pandoc, and LaTeX, you should be able to compile most R Markdown documents.
 
-<br>
+\  
 
 ###Installing R Markdown on a University teaching computer
 
