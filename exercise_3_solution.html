@@ -582,15 +582,18 @@ whale.last &lt;-<span class="st"> </span>whale[-<span class="kw">c</span>(<span 
 
 whale<span class="fl">.200</span> &lt;-<span class="st"> </span>whale[whale$gradient &gt;<span class="st"> </span><span class="dv">200</span>, ]
 
-whale.low &lt;-<span class="st"> </span>whale[whale$water.noise ==<span class="st"> &#39;low&#39;</span>, ]
+whale.low &lt;-<span class="st"> </span>whale[whale$water.noise ==<span class="st"> &quot;low&quot;</span>, ]
 
-whale.high.may &lt;-<span class="st"> </span>whale[whale$water.noise ==<span class="st"> &#39;high&#39;</span> &amp;<span class="st"> </span>whale$month ==<span class="st"> &#39;May&#39;</span>, ]
+whale.high.may &lt;-<span class="st"> </span>whale[whale$water.noise ==<span class="st"> &quot;high&quot;</span> &amp;<span class="st"> </span>whale$month ==<span class="st"> &quot;May&quot;</span>, 
+    ]
 
-whale.subset &lt;-<span class="st"> </span>whale[whale$month ==<span class="st"> &#39;October&#39;</span> &amp;<span class="st"> </span>whale$water.noise ==<span class="st"> &#39;low&#39;</span> &amp;<span class="st"> </span>whale$gradient &gt;<span class="st"> </span><span class="dv">132</span>, ]
+whale.subset &lt;-<span class="st"> </span>whale[whale$month ==<span class="st"> &quot;October&quot;</span> &amp;<span class="st"> </span>whale$water.noise ==<span class="st"> &quot;low&quot;</span> &amp;<span class="st"> </span>
+<span class="st">    </span>whale$gradient &gt;<span class="st"> </span><span class="dv">132</span>, ]
 
-whale.lat.long &lt;-<span class="st"> </span>whale[whale$latitude &gt;<span class="st"> </span><span class="dv">60</span> &amp;<span class="st"> </span>whale$latitude &lt;<span class="st"> </span><span class="dv">61</span> &amp;<span class="st"> </span>whale$longitude &gt;<span class="st"> </span>-<span class="dv">6</span> &amp;<span class="st"> </span>whale$longitude &lt;<span class="st"> </span>-<span class="dv">4</span>, ]
+whale.lat.long &lt;-<span class="st"> </span>whale[whale$latitude &gt;<span class="st"> </span><span class="dv">60</span> &amp;<span class="st"> </span>whale$latitude &lt;<span class="st"> </span><span class="dv">61</span> &amp;<span class="st"> </span>whale$longitude &gt;<span class="st"> </span>
+<span class="st">    </span>-<span class="dv">6</span> &amp;<span class="st"> </span>whale$longitude &lt;<span class="st"> </span>-<span class="dv">4</span>, ]
 
-whale.nomed &lt;-<span class="st"> </span>whale[whale$water.noise !=<span class="st"> &#39;medium&#39;</span>, ]</code></pre></div>
+whale.nomed &lt;-<span class="st"> </span>whale[whale$water.noise !=<span class="st"> &quot;medium&quot;</span>, ]</code></pre></div>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
 <li>A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the <code>median()</code> function rather than hard coding the value 132.</li>
@@ -648,7 +651,7 @@ whale.rev.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</spa
 <span class="kw">with</span>(whale, <span class="kw">tapply</span>(number.whales, water.noise, mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))   
 
 <span class="co"># when using ultiple factors these need to be supplied as a list</span>
-<span class="kw">tapply</span>(whale$number.whales, <span class="kw">list</span>(whale$water.noise, whale$month), median, <span class="dt">na.rm =</span><span class="ot">TRUE</span>)    </code></pre></div>
+<span class="kw">tapply</span>(whale$number.whales, <span class="kw">list</span>(whale$water.noise, whale$month), median, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)    </code></pre></div>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">
 <li>Another useful function for summarising dataframes is <code>aggregate()</code>. Use R’s help facility (or Google) to look up how to use this function (especially the example code at the end of the help file). Use the <code>aggregate()</code> function to calculate the mean of time at station, number of whales, depth and gradient for each level of water noise (don’t forget about that sneaky NA value). Next calculate the mean of time at station, number of whales, depth and gradient for each level of water noise for each month. (Optional): For an extra bonus point see if you can figure out how to modify your previous code to display the mean values to 2 decimal places rather than the default of 3 decimal places.</li>

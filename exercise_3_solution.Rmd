@@ -120,7 +120,7 @@ whale.last <- whale[-c(1:10), -c("gradient")]
       + all observations from between latitudes 60.0 and 61.0 and longitudes -6.0 and -4.0
       + all rows that do not have a water noise level of medium
 
-```{r Q9, results = 'asis'}
+```{r Q9, tidy = TRUE}
 whale.1200 <- whale[whale$depth > 1200, ]
 
 whale.200 <- whale[whale$gradient > 200, ]
@@ -210,7 +210,7 @@ tapply(whale$number.whales, whale$water.noise, mean, na.rm = TRUE)
 with(whale, tapply(number.whales, water.noise, mean, na.rm = TRUE))   
 
 # when using ultiple factors these need to be supplied as a list
-tapply(whale$number.whales, list(whale$water.noise, whale$month), median, na.rm =TRUE)    
+tapply(whale$number.whales, list(whale$water.noise, whale$month), median, na.rm = TRUE)    
 
 ```
 
