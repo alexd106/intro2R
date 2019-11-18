@@ -25,6 +25,80 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -407,10 +481,199 @@ $(document).ready(function () {
 </div>
 
 
-<p><br></p>
-<div id="exercise-3" class="section level2">
-<h2>Exercise 3</h2>
-<p><br></p>
+<p> </p>
+<div id="exercise-3-importing-and-manipulating-dataframes" class="section level2">
+<h2>Exercise 3: Importing and manipulating dataframes</h2>
+<p> </p>
+<ol style="list-style-type: decimal">
+<li>As in previous exercises, either create a new R script or continue with your previous R script in RStudio. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+</ol>
+<p> </p>
+<ol start="2" style="list-style-type: decimal">
+<li>If you haven’t already followed the instructions in the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link in the navbar at the top of the course website let’s first create a directory structure for this workshop. First create a new folder somewhere on your computer that’s easy to get to (e.g., your Desktop or maybe a folder in Documents). Name it <code>workshop</code>. Inside that folder, make another folder called <code>data</code>, all lowercase. Next, download the data file <em>‘whaledata.xls’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory.</li>
+</ol>
+<p> </p>
+<ol start="3" style="list-style-type: decimal">
+<li>Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type (see the course manual if you’re not sure how to do this). Name the file <em>‘whaledata.txt’</em> and save it to the <code>data</code> directory. If you’re a Windows user be careful with file extensions (things like <em>.txt</em>). By default, Windows doesn’t show you the file extension (maybe the boffins at Microsoft don’t think you need to know complicated things like this?) so if you enter <em>‘whaledata.txt’</em> as a filename you might end up with a filename <em>’whaledata.txt.txt</em>’!</li>
+</ol>
+<p> </p>
+<ol start="4" style="list-style-type: decimal">
+<li>Time for a quick description of the <em>‘whaledata.txt’</em> dataset to get your bearings. These data were collected during two research cruises in the North Atlantic in May and October 2003. During these two months the research vessel visited multiple stations (areas) and marine mammal observers recorded the number of whales (who doesn’t love whales!) at each of these stations. The time the vessel spent at each station was also recorded along with other site specific variables such as the latitude and longitude, water depth and gradient of the seabed. The researchers also recorded the ambient level of sub-surface noise with a hydrophone and categorised this variable into ‘low’, ‘medium’ or ‘high’. The structure of these data is known as a rectangular dataset (aka ‘tidy’ data by the cool kids) with no missing cells. Each row is an individual observation and each column a separate variable. The variable names are contained in the first row of the dataset (aka a header).</li>
+</ol>
+<p> </p>
+<ol start="5" style="list-style-type: decimal">
+<li>Now let’s import the <em>‘whaledata.txt’</em> file into R. To do this you will use the workhorse function of data importing, <code>read.table()</code>. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don’t forget to include the appropriate arguments when using the <code>read.table()</code> function (remember that header?) and assign it a variable with an appropriate name (such as <code>whale</code>). Take a look at the course manual if you need any further information.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">whale &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;workshop/data/whaledata.txt&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p> </p>
+<ol start="6" style="list-style-type: decimal">
+<li>Once you have imported your data file nothing much seems to happen (don’t worry, this is normal). To examine the contents of the dataframe one option would be to just type the variable name (<code>whale</code>) into the console. This is probably not a good idea and doesn’t really tell you anything about the dataframe other than there’s alot of data (try it)!. A slightly better option is to use the <code>head()</code> function to display the first 5 rows of your dataframe. Again, this is likely to just fill up your console. A better option would be to use the <code>names()</code> function which will return a vector of variable names from your dataset. However, all you get are the names of the variables but no other information. A much, much better option is to use the <code>str()</code> function to display the structure of the dataset and a neat summary of your variables. Another advantage is that you can copy this information from the console and paste it into your R script (making sure it’s commented) for later reference. How many observations does this dataset have? How many variables are in this dataset? What type of variables are <code>month</code> and <code>water.noise</code>?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(whale)         <span class="co"># display the first 5 rows </span>
+<span class="kw">names</span>(whale)        <span class="co"># display the variable names</span>
+<span class="kw">str</span>(whale)          <span class="co"># display the structure of the dataframe whale</span>
+
+<span class="co"># &#39;data.frame&#39;: 100 obs. of  8 variables:</span>
+<span class="co">#  $ month          : Factor w/ 2 levels &quot;May&quot;,&quot;October&quot;: 1 1 1 1 ...</span>
+<span class="co">#  $ time.at.station: int  1344 1633 743 1050 1764 580 459 ...</span>
+<span class="co">#  $ water.noise    : Factor w/ 3 levels &quot;high&quot;,&quot;low&quot;,&quot;medium&quot;: 2 3 3 3 ...</span>
+<span class="co">#  $ number.whales  : int  7 13 12 10 12 10 5 8 11 12 ...</span>
+<span class="co">#  $ latitude       : num  60.4 60.4 60.5 60.3 60.4 ...</span>
+<span class="co">#  $ longitude      : num  -4.18 -4.19 -4.62 -4.35 -5.2 ...</span>
+<span class="co">#  $ depth          : int  520 559 1006 540 1000 1000 993 988 ...</span>
+<span class="co">#  $ gradient       : int  415 405 88 409 97 173 162 162 245 161 ..</span>
+
+<span class="co"># the dataframe whale has 100 observations</span>
+<span class="co"># the dataframe whale has 8 variables</span>
+<span class="co"># the variables month and water.noise are factors</span></code></pre></div>
+<p> </p>
+<ol start="7" style="list-style-type: decimal">
+<li>You can get another useful summary of your dataframe by using the <code>summary()</code> function. This will provide you with some useful summary statistics for each variable. Notice how the type of output depends on whether the variable is a factor or a number. Another useful feature of the <code>summary()</code> function is that it will also count the number of missing values in each variable. Which variables have missing values and how many?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(whale, <span class="dt">results =</span> <span class="st">&#39;asis&#39;</span>)
+
+<span class="co"># NOTE: I have removed the last 3 column information to save space!</span>
+
+ <span class="co">#    month    time.at.station  water.noise number.whales      latitude        </span>
+ <span class="co"># May    :50   Min.   :  60.0   high  :15   Min.   : 0.00   Min.   :60.29   </span>
+ <span class="co"># October:50   1st Qu.: 693.8   low   :28   1st Qu.: 9.00   1st Qu.:60.69   </span>
+ <span class="co">#              Median :1077.5   medium:57   Median :11.00   Median :61.29  </span>
+ <span class="co">#              Mean   :1064.7               Mean   :11.56   Mean   :61.16  </span>
+ <span class="co">#              3rd Qu.:1349.2               3rd Qu.:14.00   3rd Qu.:61.59     </span>
+ <span class="co">#              Max.   :2158.0               Max.   :28.00   Max.   :62.10     </span>
+ <span class="co">#                                           NA&#39;s   :1    </span>
+
+<span class="co"># the variable number.whales has one missing value (NA)</span></code></pre></div>
+<p> </p>
+<ol start="8" style="list-style-type: decimal">
+<li>Summarising and manipulating dataframes is a key skill to acquire when learning R. Although there are many ways to do this, we will concentrate on using the square bracket <code>[ ]</code> notation which you used previously with vectors. The key thing to remember when using <code>[ ]</code> with dataframes is that dataframes have two dimensions (think rows and columns) so you always need to specify which rows and which columns you want inside the <code>[ ]</code>. Let’s practice. Extract all the elements of the first 10 rows and the first 4 columns of the <code>whale</code> dataframe and assign to a new variable called <code>whale.sub</code>. Next, extract all observations (remember - rows) from the <code>whale</code> dataframe and the columns <code>month</code>, <code>water.noise</code> and <code>number.whales</code> and assign to a variable called <code>whale.num</code>. Now, extract the first 50 rows and all columns form the original dataframe and assign to a variable <code>whale.may</code> (there is a better way to do this with conditional statements - see below). Finally, extract all rows except the first 10 rows and all columns except the last column. Remember, for some of these questions you can specify the columns you want either by position or by name (remember the lecture?). Practice both ways. Do you have a preference? If so why?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first 10 rows and first 4 columns</span>
+whale.sub &lt;-<span class="st"> </span>whale[<span class="dv">1</span>:<span class="dv">10</span>, <span class="dv">1</span>:<span class="dv">4</span>]                                      
+
+<span class="co"># all rows and columns 1, 3 and 6</span>
+whale.num &lt;-<span class="st"> </span>whale[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] 
+<span class="co"># alternative way of indexing columns with named indexes</span>
+whale.num &lt;-<span class="st"> </span>whale[, <span class="kw">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;water.noise&quot;</span>, <span class="st">&quot;number.whales&quot;</span>)]    
+
+<span class="co"># first 50 rows and all columns</span>
+whale.may &lt;-<span class="st"> </span>whale[<span class="dv">1</span>:<span class="dv">50</span>, ]  
+
+<span class="co"># excluding first 10 rows and last column using negative indexing</span>
+whale.last &lt;-<span class="st"> </span>whale[-<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>), -<span class="dv">8</span>]  
+<span class="co"># more general way if you have lots of columns</span>
+whale.last &lt;-<span class="st"> </span>whale[-<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>), -<span class="kw">c</span>(<span class="kw">ncol</span>(whale))] 
+<span class="co"># NOTE: this doesn&#39;t work for named columns</span>
+whale.last &lt;-<span class="st"> </span>whale[-<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">10</span>), -<span class="kw">c</span>(<span class="st">&quot;gradient&quot;</span>)]   </code></pre></div>
+<p> </p>
+<ol start="9" style="list-style-type: decimal">
+<li><p>In addition to extracting rows and columns from your dataframe by position you can also use conditional statements to select particular rows based on some logical criteria. This is very useful but takes a bit of practice to get used to. Extract rows from your dataframe (all columns by default) based on the following criteria (note: you will need to assign the results of these statements to appropriately named variables, I’ll leave it up to you to use informative names!) :</p>
+<ul>
+<li>at depths greater than 1200 m</li>
+<li>gradient steeper than 200 degrees</li>
+<li>water noise level of ‘low’</li>
+<li>water.noise level of ‘high’ in the month of ‘May’</li>
+<li>month of ‘October’, water noise level of ‘low’ and gradient greater than the median value of gradient, 132 degrees</li>
+<li>all observations from between latitudes 60.0 and 61.0 and longitudes -6.0 and -4.0</li>
+<li>all rows that do not have a water noise level of medium</li>
+</ul></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">whale<span class="fl">.1200</span> &lt;-<span class="st"> </span>whale[whale$depth &gt;<span class="st"> </span><span class="dv">1200</span>, ]
+
+whale<span class="fl">.200</span> &lt;-<span class="st"> </span>whale[whale$gradient &gt;<span class="st"> </span><span class="dv">200</span>, ]
+
+whale.low &lt;-<span class="st"> </span>whale[whale$water.noise ==<span class="st"> &#39;low&#39;</span>, ]
+
+whale.high.may &lt;-<span class="st"> </span>whale[whale$water.noise ==<span class="st"> &#39;high&#39;</span> &amp;<span class="st"> </span>whale$month ==<span class="st"> &#39;May&#39;</span>, ]
+
+whale.subset &lt;-<span class="st"> </span>whale[whale$month ==<span class="st"> &#39;October&#39;</span> &amp;<span class="st"> </span>whale$water.noise ==<span class="st"> &#39;low&#39;</span> &amp;<span class="st"> </span>whale$gradient &gt;<span class="st"> </span><span class="dv">132</span>, ]
+
+whale.lat.long &lt;-<span class="st"> </span>whale[whale$latitude &gt;<span class="st"> </span><span class="dv">60</span> &amp;<span class="st"> </span>whale$latitude &lt;<span class="st"> </span><span class="dv">61</span> &amp;<span class="st"> </span>whale$longitude &gt;<span class="st"> </span>-<span class="dv">6</span> &amp;<span class="st"> </span>whale$longitude &lt;<span class="st"> </span>-<span class="dv">4</span>, ]
+
+whale.nomed &lt;-<span class="st"> </span>whale[whale$water.noise !=<span class="st"> &#39;medium&#39;</span>, ]</code></pre></div>
+<p> </p>
+<ol start="10" style="list-style-type: decimal">
+<li>A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the <code>median()</code> function rather than hard coding the value 132.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">whale.subset &lt;-<span class="st"> </span>whale[whale$month ==<span class="st"> &#39;October&#39;</span> &amp;<span class="st"> </span>whale$water.noise ==<span class="st"> &#39;low&#39;</span> &amp;<span class="st"> </span>whale$gradient &gt;<span class="st"> </span><span class="kw">median</span>(whale$gradient), ]</code></pre></div>
+<p> </p>
+<ol start="11" style="list-style-type: decimal">
+<li>However, when using functions in conditional statements you need to be careful. For example, write some code to extract all rows from the dataframe <code>whale</code> with depths greater than 1500 m and with a greater number of whales spotted than average. Can you see a problem with the output? Discuss the cause of this problem with an instructor and explore possible solutions.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># results in a dataframe filled with NAs. </span>
+whale.new &lt;-<span class="st"> </span>whale[whale$depth &gt;<span class="st"> </span><span class="dv">1500</span> &amp;<span class="st"> </span>whale$number.whales &gt;<span class="st"> </span><span class="kw">mean</span>(whale$number.whales), ]
+
+<span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.</span>
+<span class="co"># use the na.rm argument to ignore NAs</span>
+whale.new &lt;-<span class="st"> </span>whale[whale$depth &gt;<span class="st"> </span><span class="dv">1500</span> &amp;<span class="st"> </span>whale$number.whales &gt;<span class="st"> </span><span class="kw">mean</span>(whale$number.whales, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), ]  </code></pre></div>
+<p> </p>
+<ol start="12" style="list-style-type: decimal">
+<li>Although you have concentrated on using the square bracket <code>[ ]</code> notation to extract rows and columns from your dataframe, there are of course many other approaches. One such approach is to use the <code>subset()</code> function (see <code>?subset</code> or the manual for more details). Use the <code>subset()</code> function to extract all rows in ‘May’ with a time at station less than 1000 minutes and a depth greater than 1000 m. Also use <code>subset()</code> to extract data collected in ‘October’ from latitudes greater than 61 degrees but only include the columns <code>month</code>, <code>latitude</code>, <code>longitude</code> and <code>number.whales</code>.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">subset</span>(whale, month ==<span class="st"> &#39;May&#39;</span> &amp;<span class="st"> </span>time.at.station &lt;<span class="st"> </span><span class="dv">1000</span> &amp;<span class="st"> </span>depth &gt;<span class="st"> </span><span class="dv">1000</span>)
+
+<span class="kw">subset</span>(whale, month ==<span class="st"> &quot;October&quot;</span> &amp;<span class="st"> </span>latitude &gt;<span class="st"> </span><span class="dv">61</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;number.whales&quot;</span>))</code></pre></div>
+<p> </p>
+<ol start="13" style="list-style-type: decimal">
+<li>Another useful way to manipulated your dataframes is to sort the rows based on the value of a variable (or combinations of variables). Rather counter-intuitively you should use the <code>order()</code> function to sort your dataframes, not the <code>sort()</code> function. Ordering dataframes uses the same logic you practised in Q14 in Exercise 2. Let’s practice with a straight forward example. Use the <code>order()</code> function to sort all rows in the <code>whale</code> dataframe in ascending order of depth (shallowest to deepest). Store this sorted dataframe in a variable called <code>whale.depth.sort</code>.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">whale.depth.sort &lt;-<span class="st"> </span>whale[<span class="kw">order</span>(whale$depth), ]</code></pre></div>
+<p> </p>
+<ol start="14" style="list-style-type: decimal">
+<li>Now for something a little more complicated. Sort all rows in the <code>whale</code> dataframe by ascending order of depth within each level of water noise. The trick here is to remember that you can order by more than one variable when using the <code>order()</code> function. Don’t forget to assign your sorted dataframe to a new variable with a sensible name. Repeat the previous ordering but this time order by <strong>decending</strong> order of depth within each level of water noise.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># notice how the variable water.noise has been ordered - why?</span>
+whale.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</span>(whale$water.noise, whale$depth), ]        
+
+<span class="co"># use &#39;-&#39; to reverse the order of depth</span>
+whale.rev.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</span>(whale$water.noise, -whale$depth), ]   </code></pre></div>
+<p> </p>
+<ol start="15" style="list-style-type: decimal">
+<li>Often, we would like to summarise variables by, for example, calculating a mean, median or counting the number of observations. To do this for a single variable it’s fairly straight forward :</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(whale$time.at.station)     <span class="co"># mean time at station</span>
+<span class="kw">median</span>(whale$depth)             <span class="co"># median depth</span>
+<span class="kw">length</span>(whale$number.whales)     <span class="co"># number of observations</span></code></pre></div>
+<ol start="15" style="list-style-type: decimal">
+<li>(cont) Perhaps more interestingly, you might want summarise one variable conditional on the level of another factor variable. For example, write some R code to calculate the mean number of whales sighted at each of the three levels of water noise. Next, calculate the median number of whales sighted at each level of water noise and for each month.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(whale$number.whales, whale$water.noise, mean)      <span class="co"># notice the NA?</span>
+
+<span class="co"># use the na.rm argument again</span>
+<span class="kw">tapply</span>(whale$number.whales, whale$water.noise, mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)    
+
+<span class="co"># alternative method using the with() function. see ?with</span>
+<span class="kw">with</span>(whale, <span class="kw">tapply</span>(number.whales, water.noise, mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))   
+
+<span class="co"># when using ultiple factors these need to be supplied as a list</span>
+<span class="kw">tapply</span>(whale$number.whales, <span class="kw">list</span>(whale$water.noise, whale$month), median, <span class="dt">na.rm =</span><span class="ot">TRUE</span>)    </code></pre></div>
+<p> </p>
+<ol start="16" style="list-style-type: decimal">
+<li>Another useful function for summarising dataframes is <code>aggregate()</code>. Use R’s help facility (or Google) to look up how to use this function (especially the example code at the end of the help file). Use the <code>aggregate()</code> function to calculate the mean of time at station, number of whales, depth and gradient for each level of water noise (don’t forget about that sneaky NA value). Next calculate the mean of time at station, number of whales, depth and gradient for each level of water noise for each month. (Optional): For an extra bonus point see if you can figure out how to modify your previous code to display the mean values to 2 decimal places rather than the default of 3 decimal places.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale$water.noise), mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale$water.noise, <span class="dt">month =</span> whale$month), mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># optional question. Need to specify a function &#39;on the fly&#39; using function(x){}</span>
+<span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale$water.noise, <span class="dt">month =</span> whale$month), function(x){<span class="kw">round</span>(<span class="kw">median</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">digits =</span> <span class="dv">2</span>)})</code></pre></div>
+<p> </p>
+<ol start="17" style="list-style-type: decimal">
+<li>Knowing how many observations are present for each factor level (or combinations of factor levels) is useful to determine whether you have an adequate sample size (for subsequent modelling for example). Use the <code>table()</code> function to determine the number of observations for each level of water noise. Next use the same function to display the number of observations for each combination of water noise and month. (Optional): The <code>xtabs()</code> function is very flexible for creating tables of counts for factor combinations (aka contingency tables). Take a look at the help file (or Google) to figure out how to use the <code>xtabs()</code> function to replicate your use of the <code>table()</code> function.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(whale$water.noise)
+<span class="kw">table</span>(whale$water.noise, whale$month)
+
+<span class="co"># using xtabs</span>
+<span class="kw">xtabs</span>(~<span class="st"> </span>water.noise, <span class="dt">data =</span> whale)
+<span class="kw">xtabs</span>(~<span class="st"> </span>month +<span class="st"> </span>water.noise, <span class="dt">data =</span> whale)</code></pre></div>
+<p> </p>
+<ol start="18" style="list-style-type: decimal">
+<li>Ok, we have spent quite a bit of time (and energy) learning how to import and manipulate dataframes. The last thing we need to cover is how to export dataframes from R to an external file. Let’s say you want to export the dataframe <code>whale.num</code> you created previously (see Q8) to a file called ‘whale_num.txt’ in your <code>data</code> directory. To do this you will need to use the <code>write.table()</code> function. You want to include the the variable names in the first row of the file, but you don’t want to include the row names. Also, make sure the file is a tab delimited file. Once you have create your file, try to open it in Microsoft Excel (or open source equivalent).</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(whale.num, <span class="st">&quot;workshop/data/whale_num.txt&quot;</span>, <span class="dt">col.names =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</code></pre></div>
+<p> </p>
+<p>End of Exercise 3</p>
 </div>
 
 
