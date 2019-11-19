@@ -26,7 +26,7 @@ Have fun!
 
 [Exercise 5: Simple statistics in R](exercise_5.html)
 
-[Exercise 6: Basic programnming in R](exercise_6.html)
+[Exercise 6: Basic programming in R](exercise_6.html)
 
 \  
 
