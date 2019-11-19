@@ -127,7 +127,7 @@ whale.200 <- whale[whale$gradient > 200, ]
 
 whale.low <- whale[whale$water.noise == 'low', ]
 
-whale.high.may <- whale[whale$water.noise == 'high' & whale$month == 'May', ]
+whale.h.may <- whale[whale$water.noise == 'high' & whale$month == 'May', ]
 
 whale.subset <- whale[whale$month == 'October' & whale$water.noise == 'low' & whale$gradient > 132, ]
 
