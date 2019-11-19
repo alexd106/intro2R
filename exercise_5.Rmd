@@ -89,11 +89,11 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 18. As usual we will fit the model using the ```lm()``` function. You will need to fit the main effects of ```temp``` and ```Facclimatisation_temp``` and the interaction between ```temp``` and ```Facclimatisation_temp```. You can do this using either of the equivalent specifications: 
 
-```temp + Facclimatisation_temp + temp:Facclimatisation_temp```
+          +  ```temp + Facclimatisation_temp + temp:Facclimatisation_temp```
 
 or
 
-```temp * Facclimatisation_temp```
+          +  ```temp * Facclimatisation_temp```
 
 \  
 

@@ -481,7 +481,7 @@ temora.lm2 <- lm(SQRT_beatrate ~ temp * Facclimitisation_temp, data = temora)
 par(mfrow = c(2,2))
 plot(temora.lm2)
 
-# looks a bit better
+# Residuals look a bit better
 # now lets look at the ANOVA table for our new model
 
 anova(temora.lm2)

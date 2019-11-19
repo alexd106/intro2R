@@ -465,11 +465,11 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="18" style="list-style-type: decimal">
-<li>As usual we will fit the model using the <code>lm()</code> function. You will need to fit the main effects of <code>temp</code> and <code>Facclimatisation_temp</code> and the interaction between <code>temp</code> and <code>Facclimatisation_temp</code>. You can do this using either of the equivalent specifications:</li>
+<li><p>As usual we will fit the model using the <code>lm()</code> function. You will need to fit the main effects of <code>temp</code> and <code>Facclimatisation_temp</code> and the interaction between <code>temp</code> and <code>Facclimatisation_temp</code>. You can do this using either of the equivalent specifications:</p>
+<pre><code>  +  ```temp + Facclimatisation_temp + temp:Facclimatisation_temp```</code></pre></li>
 </ol>
-<p><code>temp + Facclimatisation_temp + temp:Facclimatisation_temp</code></p>
 <p>or</p>
-<p><code>temp * Facclimatisation_temp</code></p>
+<pre><code>      +  ```temp * Facclimatisation_temp```</code></pre>
 <p> </p>
 <ol start="19" style="list-style-type: decimal">
 <li>Produce the summary ANOVA table as usual. Is the interaction between <code>temp</code> and <code>Facclimatisation_temp</code> significant? What is the interpretation of the interaction term? Should we interpret the main effects of <code>temp</code> and <code>Facclimatisation_temp</code> as well?</li>
