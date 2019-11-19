@@ -22,7 +22,7 @@ output:
 - [The R Journal](https://journal.r-project.org/): Journal of the R project for statistical computing
 - [TryR](http://tryr.codeschool.com/): An interactive, browser-based R tutor
 - [Swirl](http://swirlstats.com/): An R package that teaches you R (_and statistics!_) from within R
-- [Jenny Bryan's Stat 545 "Data wrangling, exploration, and analysis with R" course material](https://stat545-ubc.github.io/): An excellent resource for learning R and 'tidyverse'
+- [Jenny Bryan's Stat 545 "Data wrangling, exploration, and analysis with R" course material](https://stat545.com/): An excellent resource for learning R and 'tidyverse'
 - [RStudio's printable cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 - [Rseek](http://rseek.org/): A custom Google search for R-related sites
 - Bioconductor [vignettes](https://www.bioconductor.org/help/package-vignettes/), [workflows](https://www.bioconductor.org/help/workflows/), and [course/conference materials](https://www.bioconductor.org/help/course-materials/)
