@@ -30,6 +30,6 @@ Have fun!
 
 \  
 
-[Pdf versions of exercises](exercise_pdf.html)
+[Pdf version of exercises](exercise_pdf.html)
 
 [Exercise solutions](exercise_solutions.html)
