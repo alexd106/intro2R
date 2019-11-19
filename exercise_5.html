@@ -11,7 +11,7 @@
 
 
 
-<title>Exercise 5</title>
+<title>Exercises</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -385,12 +385,110 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Exercise 5</h1>
+<h1 class="title toc-ignore">Exercises</h1>
 
 </div>
 
 
-<p><br> Content to follow</p>
+<p> </p>
+<div id="basic-statistics-in-r" class="section level2">
+<h2>Basic statistics in R</h2>
+<p> </p>
+<p>Although this short course is primarily focussed on introducing you to R, it wouldn’t be complete if we didn’t have a peek at some of R’s statistical roots. Having said that, this will be a very brief overview with very little in the way of theory so don’t worry if you get a little lost - this is just a taster, the main course is still to come!</p>
+<p> </p>
+<ol style="list-style-type: decimal">
+<li>Download the datafile <em>‘prawnGR.CSV’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import these data into R and assign to a variable with an appropriate name. These data were collected from an experiment to investigate the difference in growth rate of the <a href="https://en.wikipedia.org/wiki/Penaeus_monodon">giant tiger prawn</a> (<em>Penaeus monodon</em>) fed either an artificial or natural diet. Have a quick look at the structure of this dataset and plot the growth rate versus the diet using an appropriate plot. How many observations are there in each diet treatment?</li>
+</ol>
+<p> </p>
+<ol start="2" style="list-style-type: decimal">
+<li>You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function <code>shapiro.test()</code> to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet <code>GRate[diet=='Natural']</code> first). Use the function <code>var.test()</code> to test for equal variance (see <code>?var.test</code> for more information). Are your data normally distributed and have equal variances?</li>
+</ol>
+<p> </p>
+<ol start="3" style="list-style-type: decimal">
+<li>Conduct a two sample t-test using the <code>t.test()</code> function. Use the argument <code>var.equal=TRUE</code> to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?</li>
+</ol>
+<p> </p>
+<ol start="4" style="list-style-type: decimal">
+<li>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable. Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>).</li>
+</ol>
+<p> </p>
+<ol start="5" style="list-style-type: decimal">
+<li>Produce an ANOVA table for the fitted model using the <code>anova()</code> function i.e. <code>anova(growth.lm)</code>. Compare the ANOVA p value to the p value obtained using a t-test. What do you notice? What is the value of the F statistics and degrees of freedom? How would you summarise these results in a report?</li>
+</ol>
+<p> </p>
+<ol start="6" style="list-style-type: decimal">
+<li>Assess the normality and equal variance assumptions by plotting the residuals of the fitted model. Split the plotting device into 2 rows and 2 columns using <code>par(mfrow=c(2,2))</code> so you can fit four plots on a single device. Use the <code>plot()</code> function on your fitted model (<code>plot(growth.lm)</code>) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?</li>
+</ol>
+<p> </p>
+<ol start="7" style="list-style-type: decimal">
+<li>Download the datafile <em>‘Gigartina.csv’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in <code>diameter</code> of red algae <a href="https://en.wikipedia.org/wiki/Mastocarpus_stellatus"><em>Mastocarpus stellatus</em></a> spores grown in three different diatom cultures and a control group grown in artificial seawater (<code>diatom.treat</code> variable). Use the function <code>str()</code> to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.</li>
+</ol>
+<p> </p>
+<ol start="8" style="list-style-type: decimal">
+<li>You wish to compare the mean diameter of <em>Metacarpus</em> grown in the four treatment groups (<code>ASGM</code>, <code>Sdecl</code>, <code>Sexpo</code>, <code>Sstat</code>) using a one-way analysis of variance (ANOVA). What is your null hypothesis?</li>
+</ol>
+<p> </p>
+<ol start="9" style="list-style-type: decimal">
+<li>We will conduct the ANOVA using the linear model function <code>lm()</code> once again. Make sure you know which of the variables is your response variable and which is your explanatory variable (ask an instructor if in doubt). Fit the linear model and assign the model output to a variable with an appropriate name (i.e. <code>gigartina.lm</code>).</li>
+</ol>
+<p> </p>
+<ol start="10" style="list-style-type: decimal">
+<li>Produce an ANOVA table using the <code>anova()</code> function. What is the value of the p value? Do you reject or fail to reject the null hypothesis? What is the value of the <em>F</em> statistic and degrees of freedom? How would you report these summary statistics in a report?</li>
+</ol>
+<p> </p>
+<ol start="11" style="list-style-type: decimal">
+<li>Assess the assumptions of normality and equal variance of the residuals by producing the residual plots as before. Don’t forget to split the plotting device into 2 rows and 2 columns before plotting. Discuss with an instructor whether the residuals meet these assumptions. Do you accept this model as acceptable?</li>
+</ol>
+<p> </p>
+<ol start="12" style="list-style-type: decimal">
+<li>Let’s compare the treatment group means to determine which treatment group is different from other treatment groups. In general, you should be careful with these types of post-hoc comparisons, especially if you have a large number of groups (There are much better ways to do this, but that’s for another course!). In this case we only have 4 groups, and therefore we will use Tukey’s Honest significant difference to perform the comparisons and control for type 1 error rate (rejecting a true null hypothesis).</li>
+</ol>
+<p> </p>
+<ol start="13" style="list-style-type: decimal">
+<li>We will use the function <code>TukeyHSD()</code> to perform these comparisons. In order to use this function we have to refit the model using the <code>aov()</code> function on your model object (<code>gigartina.lm</code>) in the following way <code>TukeyHSD(aov(gigartina.lm))</code> to obtain a summary of the comparisons. Which groups are different from each other?</li>
+</ol>
+<p> </p>
+<ol start="14" style="list-style-type: decimal">
+<li>We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the <code>plot()</code> function with the <code>TukeyHSD(aov(gigartina.lm))</code>. Ask if you get stuck (or Google it!).</li>
+</ol>
+<p> </p>
+<ol start="15" style="list-style-type: decimal">
+<li>Download the <em>‘TemoraBR.csv’</em> file from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and as usual assign it to a variable. These data are from an experiment that was conducted to investigate the relationship between temperature (<code>temp</code>) and the beat rate (Hz) <code>beat_rate</code> of the copepod <a href="https://en.wikipedia.org/wiki/Temora_longicornis"><em>Temora longicornis</em></a> which had been acclimatised at three different temperature regimes (<code>acclimitisation_temp</code>). Examine the structure of the dataset. How many variables are there? What type of variables are they? Which is the response (dependent) variable, and which are the explanatory (independent) variables? Use an appropriate plot to visualise these data (perhaps a coplot or similar?).</li>
+</ol>
+<p> </p>
+<ol start="16" style="list-style-type: decimal">
+<li>What type of variable is <code>acclimitisation_temp</code>? Is it a factor? Convert <code>acclimitisation_temp</code> to a factor and store the result in a new column in your dataframe called <code>Facclimitisation_temp</code>. Hint: use the function <code>factor()</code>.</li>
+</ol>
+<p> </p>
+<ol start="17" style="list-style-type: decimal">
+<li>We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between <code>beat_rate</code> and <code>temp</code> for each level of <code>Facclimatisation_temp</code>. Take a look at the plot you produced in Q15, do you think the relationships are different?</li>
+</ol>
+<p> </p>
+<ol start="18" style="list-style-type: decimal">
+<li>As usual we will fit the model using the <code>lm()</code> function. You will need to fit the main effects of <code>temp</code> and <code>Facclimatisation_temp</code> and the interaction between <code>temp</code> and <code>Facclimatisation_temp</code>. You can do this using either of the equivalent specifications:</li>
+</ol>
+<p><code>temp + Facclimatisation_temp + temp:Facclimatisation_temp</code></p>
+<p>or</p>
+<p><code>temp * Facclimatisation_temp</code></p>
+<p> </p>
+<ol start="19" style="list-style-type: decimal">
+<li>Produce the summary ANOVA table as usual. Is the interaction between <code>temp</code> and <code>Facclimatisation_temp</code> significant? What is the interpretation of the interaction term? Should we interpret the main effects of <code>temp</code> and <code>Facclimatisation_temp</code> as well?</li>
+</ol>
+<p> </p>
+<ol start="20" style="list-style-type: decimal">
+<li>Assess the assumptions of normality and equal variance of the residuals in the usual way. Do the residuals meet these assumptions? Discuss with a instructor.</li>
+</ol>
+<p> </p>
+<ol start="21" style="list-style-type: decimal">
+<li>Write a short summary in you R script (don’t forget to comment this out with <code>#</code>) describing the interpretation of this model. Report the appropriate summary statistics such as <em>F</em> values, degrees of freedom and p values.</li>
+</ol>
+<p> </p>
+<ol start="22" style="list-style-type: decimal">
+<li>(Optional) refit the model using the square root transformed <code>beat_rate</code> as the response variable. Does the interpretation of the model change? Do the validation plots of the residuals look better?</li>
+</ol>
+<p> </p>
+<p>End of Exercise 5</p>
+</div>
 
 
 
