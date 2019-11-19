@@ -34,7 +34,9 @@ paste0("- [", link_name, "](", file_name, ")") %>%
 cat(sep="\n\n")
 ```
 
+\  
 
+[Offline R scripts](course_code.html)
 
 
 
