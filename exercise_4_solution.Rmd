@@ -314,7 +314,7 @@ legend(55, 8.2, labs,col = alpha(cols, 0.7), pch = 16, bty = "n")
 
 \  
 
-^1^ Smith JM et al (2005) Seasonal patterns of investment in reproductive and somatic tissues in the squid Loligo forbesi, Aquatic Living Resources. 18, 341–351.
+^1^ Smith JM et al (2005) Seasonal patterns of investment in reproductive and somatic tissues in the squid *Loligo forbesi*, Aquatic Living Resources. 18, 341–351.
 
 \  
 
