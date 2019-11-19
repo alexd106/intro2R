@@ -24,12 +24,12 @@ Have fun!
 
 [Exercise 4: Visualising data using base R and lattice graphics](exercise_4.html)
 
-[Exercise 5: Simple statistics in R](exercise_5.html)
+[Exercise 5: Basic statistics in R](exercise_5.html)
 
 [Exercise 6: Basic programming in R](exercise_6.html)
 
 \  
 
-[Pdf version of exercises](exercise_pdf.html)
+[pdf version of exercises](exercise_pdf.html)
 
 [Exercise solutions](exercise_solutions.html)
