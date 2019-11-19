@@ -22,7 +22,7 @@ Have fun!
 
 [Exercise 3: Importing and manipulating dataframes](exercise_3.html)
 
-[Exercise 4: Plotting data in R using base and lattice graphics](exercise_4.html)
+[Exercise 4: Visualising data using base R and lattice graphics](exercise_4.html)
 
 [Exercise 5: Simple statistics in R](exercise_5.html)
 
