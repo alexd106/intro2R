@@ -11,7 +11,7 @@
 
 
 
-<title>Exercise 4</title>
+<title>Exercises</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -385,12 +385,71 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Exercise 4</h1>
+<h1 class="title toc-ignore">Exercises</h1>
 
 </div>
 
 
-<p><br> Content to follow</p>
+<p> </p>
+<div id="exercise-4-visualising-data-using-base-r-and-lattice-graphics" class="section level2">
+<h2>Exercise 4: Visualising data using base R and lattice graphics</h2>
+<p> </p>
+<ol style="list-style-type: decimal">
+<li>As in previous exercises, either create a new R script or continue with your previous R script in RStudio. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+</ol>
+<p> </p>
+<ol start="2" style="list-style-type: decimal">
+<li>Download the data file <em>‘squid1.xlsx’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory you created during the last exercise. Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type. Name the file <em>‘squid1.txt’</em> and save it to the <code>data</code> directory.</li>
+</ol>
+<p> </p>
+<ol start="3" style="list-style-type: decimal">
+<li>These data were originally collected as part of a study published in Aquatic Living Resources<sup>1</sup> in 2005. The aim of the study was to investigate the seasonal patterns of investment in somatic and reproductive tissues in the long finned squid <em>Loligo forbesi</em> caught in Scottish waters. Squid were caught monthly from December 1989 - July 1991 (<code>month</code> and <code>year</code> variables). After capture, each squid was given a unique <code>specimen</code> code, weighed (<code>weight</code>) and the sex determined (<code>sex</code> - only female squid are included here). The size of individuals was also measured as the dorsal mantle length (<code>DML</code>) and the mantle weight measured without internal organs (<code>eviscerate.weight</code>). The gonads were weighed (<code>ovary.weight</code>) along with the accessory reproductive organ (the nidamental gland, <code>nid.weight</code>, <code>nid.length</code>). Each individual was also assigned a categorical measure of maturity (<code>maturity.stage</code>, ranging from 1 to 5 with 1 = immature, 5 = mature). The digestive gland weight (<code>dig.weight</code>) was also recorded to assess nutritional status of the individual. If you’re not familiar with squid morphology and are interested in finding out more see <a href="https://en.wikipedia.org/wiki/Cephalopod_size">here</a>.</li>
+</ol>
+<p> </p>
+<ol start="4" style="list-style-type: decimal">
+<li>Import the <em>‘squid1.txt’</em> file into R using the <code>read.table()</code> function and assign it to a variable named <code>squid</code>. Use the <code>str()</code> function to display the structure of the dataset and the <code>summary()</code> function to summarise the dataset. How many observations are in this dataset? How many variables? The <code>year</code>, <code>month</code> and <code>maturity.stage</code> variables were coded as integers in the original dataset. Here we would like to code them as factors. Create a new variable for each of these variables in the <code>squid</code> dataframe and recode them as factors. Use the <code>str()</code> function again to check the coding of these new variables.</li>
+</ol>
+<p> </p>
+<ol start="5" style="list-style-type: decimal">
+<li>How many observations are there per month and year combination (hint: remember the <code>table()</code> or <code>xtabs()</code> functions?)? Don’t forget to use the factor recoded versions of these variables. Do you have data for each month in each year? Which years have the most observations? (optional) Use a combination of the <code>xtabs()</code> and <code>ftable()</code> functions to create a flattened table of the number of observations for each year, maturity stage and month (aka a contingency table).</li>
+</ol>
+<p> </p>
+<ol start="6" style="list-style-type: decimal">
+<li>The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables. Create dotplots (using the <code>dotchart()</code> function) for the following variables; <code>DML</code>, <code>weight</code>, <code>nid.length</code> and <code>ovary.weight</code>. Do these variables contain any unusually large or small observations? Don’t forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns. Use the <code>pdf()</code> function to save a pdf version of your plot(s) (maybe create a <code>figures</code> directory in your <code>workshop</code> directory to save your figures). I have also included some alternative code in the <a href="exercise_4_solution.html">solutions for this exercise</a> using the <code>dotplot()</code> function from the <code>lattice</code> package.</li>
+</ol>
+<p> </p>
+<ol start="7" style="list-style-type: decimal">
+<li>It looks like the variable <code>nid.length</code> contains an unusually large value. Actually, this value is biologically implausible and clearly an error. The researchers were asked to go back and check their field notebooks and sure enough they discover a typo. It looks like a tired researcher accidentally inserted a zero by mistake when transcribing these data. We can clearly see this value is over 400 so we can use the <code>which()</code> function to identify which observation this is <code>which(squid$nid.length &gt; 400)</code>. It looks like this is the 11<sup>th</sup> observation of the <code>squid$nid.length</code> variable. Use your skill with the square brackets <code>[ ]</code> to first confirm the this is the correct value (you should get 430.2) and then change this value to 43.2. Now redo the dotchart to visualise your correction. Caution: You can only do this because you have confirmed that this is an transcribing error. You should <strong>not</strong> remove or change values in your data just because you feel like it or they look ‘unusual’. This is scientific fraud! Also, the advantage of making this change in your R script rather than in Excel is that you now have a permanent record of the change you made and can state a clear reason for the change.</li>
+</ol>
+<p> </p>
+<ol start="8" style="list-style-type: decimal">
+<li>When exploring your data it is often useful to visualise the distribution of continuous variables. Create histograms for the variables; <code>DML</code>, <code>weight</code>, <code>eviscerate.weight</code> and <code>ovary.weight</code>. Again, its up to you if you want to plot all 4 plots separately or in the same figure. Export your plot(s) as pdf file(s). One potential problem with histograms is that the distribution of data can look quite different depending on the number of ‘breaks’ used. The <code>hist()</code> function does it’s best to create appropriate ‘breaks’ for your plots (it uses the <a href="https://en.wikipedia.org/wiki/Histogram">Sturges algorithm</a> for those that want to know) but experiment with changing the number of breaks for the <code>DML</code> variable to see how the shape of the distribution changes (see the course manual for further details of how to change the breaks).</li>
+</ol>
+<p> </p>
+<ol start="9" style="list-style-type: decimal">
+<li>Scatterplots are great for visualising relationships between two continuous variables. Plot the relationship between <code>DML</code> on the x axis and <code>weight</code> on the y axis. How would you describe this relationship? Is it linear? One approach to linearising relationships is to apply a transformation on one or both variables. Try transforming the <code>weight</code> variable with either a natural log (<code>log()</code>) or square root (<code>sqrt()</code>) transformation. I suggest you create new variables in the <code>squid</code> dataframe for your transformed variables and use these variables to when creating your new plots (ask if you’re not sure how to do this). Which transformation best linearises this relationship? Again, save your plots as a pdf file (or try saving as jpeg or png format using the <code>jpeg()</code> or <code>png()</code> functions if you feel the need for a change!).</li>
+</ol>
+<p> </p>
+<ol start="10" style="list-style-type: decimal">
+<li>When visualising differences in a continuous variable between levels of a factor (categorical variable) then a boxplot is your friend (avoid using bar plots - Google ‘bar plots are evil’ for more info). Create a boxplot to visualise the differences in DML at each maturity stage (don’t forget to use the recoded version of this variable you created in Q4) . Include x and y axes labels in your plot. Make sure you understand the anatomy of a boxplot before moving on - please ask if you’re not sure. An alternative to the boxplot is the violin plot. A violin plot is a combination of a boxplot and a <a href="https://www.statmethods.net/graphs/density.html">kernel density plot</a> and is great at visualising the distribution of a variable. To create a violin plot you will first need to install the <code>vioplot</code> package and make it available <code>library(vioplot)</code>. You can now use the <code>vioplot()</code> function in pretty much the same way as you created your boxplot.</li>
+</ol>
+<p> </p>
+<ol start="11" style="list-style-type: decimal">
+<li>To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the <code>coplot()</code> function to plot the relationship between DML and square root transformed weight (you created this variable in Q8) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)? If you prefer, you can also create a similar plot using the <code>xyplot()</code> function from the <code>lattice</code> package (don’t forget to make the function available by using <code>library(lattice)</code> first).</li>
+</ol>
+<p> </p>
+<ol start="12" style="list-style-type: decimal">
+<li>To explore the relationships between multiple continuous variables it’s hard to beat a pairs plot. Create a pairs plot for the variables; <code>DML</code>, <code>weight</code>, <code>eviscerate.weight</code>, <code>ovary.weight</code>, <code>nid.length</code>, and <code>nid.weight</code>. If it looks a little cramped in RStudio then click on the ‘zoom’ button in the plot viewer to see a larger version. One of the great things about the <code>pairs()</code> function is that you can customise what goes into each panel. Modify your pairs plot to include a histogram of the variables on the diagonal panel and include a correlation coefficient for each relationship on the upper triangle panels. Also include a smoother (wiggly line) in the lower triangle panels to help visualise these relationships. Take a look at the course manual to see how to do all this (or <code>?pairs</code> or ask an instructor).</li>
+</ol>
+<p> </p>
+<ol start="13" style="list-style-type: decimal">
+<li>Almost every aspect of the figures you create in R is customisable. Learning how to get your plot looking just right is not only rewarding but also means that you will never have to include a plot in your paper/thesis that you’re not completely happy with. When you start learning how to use R it can sometimes seem to take a lot of work to customise your plots. Don’t worry, it gets easier with experience (most of the time anyway) and you will always have your code if you want to create a similar plot in the future. Use the <code>plot()</code> function to produce a scatterplot of DML on the x axis and ovary weight on the y axis. Use a different colour to highlight points for each level of maturity stage. Produce a legend explaining the different colours and place it in a suitable position on the plot. Format the graph further to make it suitable for inclusion into your paper/ (i.e. add axes labels, change the axes scales etc).</li>
+</ol>
+<p> </p>
+<p><sup>1</sup> Smith JM et al (2005) Seasonal patterns of investment in reproductive and somatic tissues in the squid Loligo forbesi, Aquatic Living Resources. 18, 341–351.</p>
+<p> </p>
+<p>End of Exercise 4</p>
+</div>
 
 
 
