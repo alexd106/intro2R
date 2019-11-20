@@ -1,0 +1,49 @@
+## ----setup, echo=FALSE---------------------------------------------------
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
+
+
+## ----Q4------------------------------------------------------------------
+help(mean)          # different methods of using help
+?mean
+help("mean")
+
+
+## ----Q5------------------------------------------------------------------
+plot(1:10)    #dont worry about what 1:10 does just yet
+
+
+## ----Q6------------------------------------------------------------------
+first.num <- 186282    # create variable first.num and assign the value 186282
+first.char <- "my first character"
+
+
+## ----Q7------------------------------------------------------------------
+rm(first.num)
+ls()    # list all variables in the workspace 
+
+
+## ----Q8------------------------------------------------------------------
+first.char <- "my second variable"
+first.char    # display the value 
+
+
+## ----Q11-----------------------------------------------------------------
+apropos("plot")
+help(plot.design)
+
+
+## ----Q12-----------------------------------------------------------------
+help.search("plot")
+??plot     # shortcut for help.search dunction
+
+help.search("plot", package = "nlme")
+
+
+## ----Q13-----------------------------------------------------------------
+getwd()    # displays the current working directory 
+
+
+## ----Q14-----------------------------------------------------------------
+setwd("/path/to/new/working/directory")    # sets the working directory 
+getwd()    # check to see if the working directory was changed
+
