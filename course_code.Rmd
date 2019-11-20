@@ -11,13 +11,13 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
 suppressPackageStartupMessages(library(dplyr))
 ```
 
-```{r zipdir, include=FALSE}
-if (!file.exists("exercise_solutions/all_code.zip")) system("rm exercise_solutions/all_code.zip ; zip -r exercise_solutions/all_code.zip exercises -x '*.html' -x '*.DS_Store'")
+```{r zipex, include = FALSE}
+if (!file.exists("exercise_solutions/all_Rcode.zip")) system("rm exercise_solutions/all_Rcode.zip ; zip -r exercise_solutions/all_Rcode.zip exercise_solutions -x '*.html' -x '*.DS_Store'")
 ```
 
 \  
 
-To download the solutions for each of the exercises as individual R scripts click the relevant links below. If the code opens in a browser window then right click on the link and select 'save link as' (or similar). If you prefer a single file containing all solutions you can download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](exercise_solutions/all_code.zip)**.
+To download the solutions for each of the exercises as individual R scripts click the relevant links below. If the code opens in a browser window then right click on the link and select 'save link as' (or similar). If you prefer a single file containing all solutions you can download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](exercise_solutions/all_Rcode.zip)**.
 
 \  
 
