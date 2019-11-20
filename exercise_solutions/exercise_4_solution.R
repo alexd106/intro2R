@@ -1,7 +1,3 @@
-## ----setup, echo=FALSE---------------------------------------------------
-knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
-
-
 ## ----Q4, results = 'asis'------------------------------------------------
 squid <- read.table('workshop/data/squid1.txt', header =TRUE)
 

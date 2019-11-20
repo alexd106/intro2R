@@ -1,7 +1,3 @@
-## ----setup, echo=FALSE---------------------------------------------------
-knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
-
-
 ## ----Q2, results = 'asis'------------------------------------------------
 log(12.43)              # natural log
 log10(12.43)            # log to base 10

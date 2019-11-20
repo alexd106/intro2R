@@ -1,7 +1,3 @@
-## ----setup, echo=FALSE---------------------------------------------------
-knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
-
-
 ## ----Q5------------------------------------------------------------------
 whale <- read.table('workshop/data/whaledata.txt', header = TRUE)
 

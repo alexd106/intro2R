@@ -7,7 +7,7 @@ output:
 ---
 
 
-```{r setup, echo=FALSE}
+```{r setup, echo=FALSE, purl = FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE, cache = FALSE)
 ```
 
