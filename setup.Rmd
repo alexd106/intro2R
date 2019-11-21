@@ -16,7 +16,7 @@ During the course we will be using both R and RStudio. If you're bringing your o
 
 **Install RStudio.** Download and install [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) (version 1.2.5019).
 
-You will need to download and install R and RStudio separately. **R** is the underlying statistical computing environment. **RStudio** is a graphical integrated development environment (IDE) that makes using R somewhat easier. You need to install R before you install RStudio.
+You will need to download and install R and RStudio separately. **R** is the underlying statistical computing environment. **RStudio** is a graphical integrated development environment (IDE) that makes using R a little easier. You need to install R before you install RStudio.
 
 \  
 
@@ -30,9 +30,9 @@ Installing R markdown is not required for this course. However, for those of you
 
 \  
 
-_A few notes_:
+*A few notes*:
 
-- During the course you must be connected to the internet via wifi (we will use eduroam which you should all have access to).
+- During the course you must be connected to the internet via wifi (we will use [eduroam](https://www.eduroam.org/) which you should all have access to).
 - If you're using Windows you might see errors about not having permission to modify the existing libraries -- disregard these. You can avoid this by running RStudio as an administrator (right click the RStudio icon, then click "Run as Administrator").
 - If you really dislike using RStudio (or just fancy a change) then feel free to use an alternative IDE or script editor (see [FAQ](index.html)).
 
