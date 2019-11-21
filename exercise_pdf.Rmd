@@ -22,6 +22,6 @@ dir <- "exercises"
 list.files(dir) %>%
   sort %>% 
   grep("\\.html$ | *.zip", ., value=TRUE, invert=TRUE) %>% 
-  paste0("- [", ., "](", paste0(dir, .), ")") %>% 
+  paste0("- [", ., "](", paste0(dir, "/", .), ")") %>% 
   cat(sep="\n")
 ```
