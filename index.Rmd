@@ -19,26 +19,42 @@ A few notes about this course. I have tried to simplify the content of this cour
 
 ### FAQ
 
+\  
+
 #### What are the pre-requisites for this course?
 This course assumes no previous experience or knowledge of using either R or RStudio. It also doesn't assume any knowledge of programming or using a command-line interface, but if you have some experience, the content won’t come as so much of a shock. But don’t panic. Command-line interfaces and programming languages like R are incredibly powerful and will be utterly transformative to your research. There’s a learning curve, and it’s pretty steep in the beginning, but it’s surmountable and the payoff is worth it!
 
+\  
+
 #### Do I need a laptop?
-No. We will provide desktop computers for those who do not wish to bring their own laptops to the course. All of the desktops will have both R and RStudio already installed but please bring along a USB flash drive to save your work. If you require a desktop computer then please make sure you have registered for a UoA visitor computing account prior to the start of the course (contact [Izzie Buchanan](People.html) for further details).
+No. We will provide desktop computers for those who do not wish to bring their own laptops to the course. All of the desktops will have both R and RStudio already installed but please bring along a USB flash drive to save your work. If you require a desktop computer then please make sure you have registered for a UoA visitor computing account prior to the start of the course (contact [Izzie Buchanan](People.html) for further details). Having said that, if you have a laptop (Mac or Windows) we encourage you to bring it to the course. Please take a look at the **[Setup<i class="fa fa-cog" aria-hidden="true"></i>](setup.html)** link on the navbar at the top for further instructions on how to set up your laptop prior to the course starting.
+
+\  
 
 #### What is the course timetable?
 See the course [syllabus](syllabus.html) for a general outline of the course content and timing. The course will start at 09:30 each morning and finish at 17:00. We will break for a one hour lunch break around 12:00. However, everyone learns R in their own way and at their own pace so this syllabus should be treated as indicative rather than absolute. There will also be plenty of opportunities to take short breaks during the course and we will also have a couple of 30 minute sessions on robust and reproducible research practices.  
 
+\  
+
 #### Where is the course held?
 All teaching will be held in room FN113 in the Fraser Noble building (building No. 7 on [this map](images/uoa_map.pdf) on the old Aberdeen campus).
+
+\  
 
 #### Why are you not teaching us 'tidyverse'?
 We have thought long and hard about whether to teach this course using the ['tidyverse'](https://www.tidyverse.org/) collection of packages and approaches (if you've never heard of 'tidyverse' before then don't worry about it!). In a perfect world we would have sufficient time to teach you both base R and 'tidyverse', however we only have 3 days together and this is not really enough time to cover both topics in sufficient detail. In the end we decided that it was more important that by the end of the course you have a good fundamental grasp of base R which will provide you with the foundation to go on and learn 'tidyverse' approaches in your own time (if you want to). Having said that, if you have previous experience using 'tidyverse' then feel free to complete the course exercises using this approach. 
 
+\  
+
 #### I don't like/want to use RStudio
 Not a problem. Feel free to use the IDE or script editor of your choice. One of the great things about R is that *YOU* decide how you want to use it. 
 
+\  
+
 #### Where do I get additional help?
 It's inevitable that you will get stuck at some point either during the course or beyond. Whilst attending the course please feel free to ask plenty of questions (remember, we've all been there!). After the course take a look at the [resources](resources.html) section of this website for further information on where to get help and how to help yourself.    
+
+\  
 
 #### What do I do once the course has finished?
 The only way to get more comfortable using R is to use R! I strongly suggest that having completed this course you start using R to summarise, manipulate, plot and analyse your own data as soon as possible. If you don't have any data yet, then ask your supervisor for some (I'm sure they will be delighted!) or follow one of the many excellent tutorials available online (see the [resources](resources.html) page for more information). My suggestion to you, is that whilst you are getting to grips with R, uninstall any other statistics software you have on your computer and only use R. This may seem a little extreme but will hopefully remove the temptation to ‘just do it quickly’ in a more familiar environment and consequently slow down your learning of R. Believe me, anything you can do in your existing statistics software package you can do in R (often better and more efficiently).
