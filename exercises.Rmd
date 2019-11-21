@@ -31,6 +31,7 @@ Have fun!
 \  
 
 ```{r, include = FALSE}
+# TODO: generate list automagically
 rmarkdown::render("exercise_1.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_1.pdf", quiet = TRUE)
 rmarkdown::render("exercise_2.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_2.pdf", quiet = TRUE)
 rmarkdown::render("exercise_3.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_3.pdf", quiet = TRUE)

@@ -498,37 +498,31 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li>Practice writing code in the script editor and sourcing this code into the R console by using the <code>help()</code> function to display the help file for the function <code>mean</code>. Notice that the help file is displayed in the bottom right window (if not then click on the ‘Help’ tab). Examine the different components of the help file (especially the examples section at the end of the help file).</li>
-</ol>
+<li><p>Practice writing code in the script editor and sourcing this code into the R console by using the <code>help()</code> function to display the help file for the function <code>mean</code>. Notice that the help file is displayed in the bottom right window (if not then click on the ‘Help’ tab). Examine the different components of the help file (especially the examples section at the end of the help file).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(mean)          <span class="co"># different methods of using help</span>
 ?mean
-<span class="kw">help</span>(<span class="st">&quot;mean&quot;</span>)</code></pre></div>
+<span class="kw">help</span>(<span class="st">&quot;mean&quot;</span>)</code></pre></div></li>
+</ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
-<li>The content displayed in the bottom right window is context dependent. For example if we write the code <code>plot(1:10)</code> and source it into the R console the bottom right window will display this plot (don’t worry about understanding the R code right now, hopefully this will become clear later on in the course!).</li>
+<li><p>The content displayed in the bottom right window is context dependent. For example if we write the code <code>plot(1:10)</code> and source it into the R console the bottom right window will display this plot (don’t worry about understanding the R code right now, hopefully this will become clear later on in the course!).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">10</span>)    <span class="co">#dont worry about what 1:10 does just yet</span></code></pre></div></li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">10</span>)    <span class="co">#dont worry about what 1:10 does just yet</span></code></pre></div>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li>Next, let’s practice creating a variable and assigning a value to this variable. Create a variable called <code>first.num</code> and assign it the value <code>186282</code>. Click on the ‘Environment’ tab in the top right window to display the variable and value. Now create another variable called <code>first.char</code> and assign it a value <code>&quot;my first character&quot;</code>. Notice this variable is now also displayed in the ‘Environment’ along with it’s value and class (<code>chr</code> - short for character class).</li>
-</ol>
+<li><p>Next, let’s practice creating a variable and assigning a value to this variable. Create a variable called <code>first.num</code> and assign it the value <code>186282</code>. Click on the ‘Environment’ tab in the top right window to display the variable and value. Now create another variable called <code>first.char</code> and assign it a value <code>&quot;my first character&quot;</code>. Notice this variable is now also displayed in the ‘Environment’ along with it’s value and class (<code>chr</code> - short for character class).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">first.num &lt;-<span class="st"> </span><span class="dv">186282</span>    <span class="co"># create variable first.num and assign the value 186282</span>
 first.char &lt;-<span class="st"> &quot;my first character&quot;</span></code></pre></div>
-<p> </p>
-<ol start="7" style="list-style-type: decimal">
-<li>Remove the variable <code>first.num</code> from your environment. Check out the ‘Environment’ to ensure the variable has been removed.</li>
-</ol>
+<p> </p></li>
+<li><p>Remove the variable <code>first.num</code> from your environment. Check out the ‘Environment’ to ensure the variable has been removed.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(first.num)
 <span class="kw">ls</span>()    <span class="co"># list all variables in the workspace </span></code></pre></div>
-<p> </p>
-<ol start="8" style="list-style-type: decimal">
-<li>Let’s see what happens if we assign another value to an existing variable. Assign the value <code>&quot;my second character&quot;</code> to the variable <code>first.char</code> you created in Q6. Notice the value has changed in the ‘Environment’. To display the value of <code>first.char</code> enter the name of the variable in the console.</li>
-</ol>
+<p> </p></li>
+<li><p>Let’s see what happens if we assign another value to an existing variable. Assign the value <code>&quot;my second character&quot;</code> to the variable <code>first.char</code> you created in Q6. Notice the value has changed in the ‘Environment’. To display the value of <code>first.char</code> enter the name of the variable in the console.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">first.char &lt;-<span class="st"> &quot;my second variable&quot;</span>
 first.char    <span class="co"># display the value </span></code></pre></div>
-<p> </p>
-<ol start="9" style="list-style-type: decimal">
-<li>Ok, let’s leave RStudio for a minute. Using your favourite web browser, navigate to the <a href="http://www.r-project.org">R-project website</a> and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).</li>
+<p> </p></li>
+<li><p>Ok, let’s leave RStudio for a minute. Using your favourite web browser, navigate to the <a href="http://www.r-project.org">R-project website</a> and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).</p></li>
 </ol>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
@@ -536,29 +530,23 @@ first.char    <span class="co"># display the value </span></code></pre></div>
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
-<li>Ok, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word ‘plot’ in it. Use the <code>apropos()</code> function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function.</li>
-</ol>
+<li><p>Ok, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word ‘plot’ in it. Use the <code>apropos()</code> function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apropos</span>(<span class="st">&quot;plot&quot;</span>)
 <span class="kw">help</span>(plot.design)</code></pre></div>
-<p> </p>
-<ol start="12" style="list-style-type: decimal">
-<li>Another strategy would be to use the <code>help.search()</code> function to search through R’s help files. Search the R help system for instances of the character string ‘plot’. Narrow your search by only searching for ‘plot’ in the <code>nlme</code> package.</li>
-</ol>
+<p> </p></li>
+<li><p>Another strategy would be to use the <code>help.search()</code> function to search through R’s help files. Search the R help system for instances of the character string ‘plot’. Narrow your search by only searching for ‘plot’ in the <code>nlme</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;plot&quot;</span>)
 ??plot     <span class="co"># shortcut for help.search dunction</span>
 
 <span class="kw">help.search</span>(<span class="st">&quot;plot&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;nlme&quot;</span>)</code></pre></div>
-<p> </p>
-<ol start="13" style="list-style-type: decimal">
-<li>R’s working directory is the default location of any files you read into R, or save out of R. Although you won’t be reading in or exporting files just yet (that’s tomorrows job) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.</li>
-</ol>
+<p> </p></li>
+<li><p>R’s working directory is the default location of any files you read into R, or save out of R. Although you won’t be reading in or exporting files just yet (that’s tomorrows job) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()    <span class="co"># displays the current working directory </span></code></pre></div>
-<p> </p>
-<ol start="14" style="list-style-type: decimal">
-<li>Now change your working directory to a more convenient location on your computer (or USB drive). Don’t forget to check whether your working directory has been successfully changed.</li>
-</ol>
+<p> </p></li>
+<li><p>Now change your working directory to a more convenient location on your computer (or USB drive). Don’t forget to check whether your working directory has been successfully changed.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;/path/to/new/working/directory&quot;</span>)    <span class="co"># sets the working directory </span>
-<span class="kw">getwd</span>()    <span class="co"># check to see if the working directory was changed</span></code></pre></div>
+<span class="kw">getwd</span>()    <span class="co"># check to see if the working directory was changed</span></code></pre></div></li>
+</ol>
 <p> </p>
 <p>End of Exercise 1</p>
 </div>

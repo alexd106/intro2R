@@ -39,6 +39,7 @@ cat(sep="\n\n")
 [Offline R scripts](course_code.html)
 
 ```{r, include = FALSE}
+# TODO: generate list automagically
 knitr::purl('./exercise_1_solution.Rmd', output = './exercise_solutions/exercise_1_solution.R', quiet = TRUE)
 knitr::purl('./exercise_2_solution.Rmd', output = './exercise_solutions/exercise_2_solution.R', quiet = TRUE)
 knitr::purl('./exercise_3_solution.Rmd', output = './exercise_solutions/exercise_3_solution.R', quiet = TRUE)

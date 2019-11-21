@@ -31,286 +31,286 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 4. Import the *'squid1.txt'* file into R using the ```read.table()``` function and assign it to a variable named ```squid```. Use the ```str()``` function to display the structure of the dataset and the ```summary()``` function to summarise the dataset. How many observations are in this dataset? How many variables? The ```year```, ```month``` and ```maturity.stage``` variables were coded as integers in the original dataset. Here we would like to code them as factors. Create a new variable for each of these variables in the ```squid``` dataframe and recode them as factors. Use the ```str()``` function again to check the coding of these new variables. 
 
-```{r Q4, results = 'asis'}
-squid <- read.table('workshop/data/squid1.txt', header =TRUE)
-
-str(squid)
-# 'data.frame':	519 obs. of  13 variables:
-#  $ sample.no        : int  105128901 105128901 105128901 105128901 ...
-#  $ specimen         : int  1002 1003 1005 1007 1008 1009 1011 1013 ...
-#  $ year             : int  1989 1989 1989 1989 1989 1989 1989 1989 ...
-#  $ month            : int  12 12 12 12 12 12 12 12 12 12 ...
-#  $ weight           : num  152 106 138 141 126 ...
-#  $ sex              : int  2 2 2 2 2 2 2 2 2 2 ...
-#  $ maturity.stage   : int  3 1 2 2 3 1 2 3 3 4 ...
-#  $ DML              : int  174 153 169 175 169 116 135 192 170 205 ...
-#  $ eviscerate.weight: num  87.5 62.6 79.4 83.1 72.2 ...
-#  $ dig.weight       : num  4.648 3.138 0.307 4.123 3.605 ...
-#  $ nid.length       : num  39.4 24.1 39 41.4 39.8 20 14 55 44 53 ...
-#  $ nid.weight       : num  2.46 0.319 1.169 1.631 2.03 ...
-#  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...
-
-summary(squid)
-
-# convert variables to factors
-squid$Fmaturity <- factor(squid$maturity.stage)
-squid$Fmonth <- factor(squid$month) 
-squid$Fyear <- factor(squid$year)
-
-str(squid)
-# 'data.frame':	519 obs. of  16 variables:
-#  $ sample.no        : int  105128901 105128901 105128901 ...
-#  $ specimen         : int  1002 1003 1005 1007 1008 1009 ...
-#  $ year             : int  1989 1989 1989 1989 1989 1989 ...
-#  $ month            : int  12 12 12 12 12 12 12 12 12 12 ...
-#  $ weight           : num  152 106 138 141 126 ...
-#  $ sex              : int  2 2 2 2 2 2 2 2 2 2 ...
-#  $ maturity.stage   : int  3 1 2 2 3 1 2 3 3 4 ...
-#  $ DML              : int  174 153 169 175 169 116 135 ...
-#  $ eviscerate.weight: num  87.5 62.6 79.4 83.1 72.2 ...
-#  $ dig.weight       : num  4.648 3.138 0.307 4.123 3.605 ...
-#  $ nid.length       : num  39.4 24.1 39 41.4 39.8 20 14 ...
-#  $ nid.weight       : num  2.46 0.319 1.169 1.631 2.03 ...
-#  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...
-#  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4" "5"...
-#  $ Fmonth           : Factor w/ 12 levels "1","2","3","4" ...
-#  $ Fyear            : Factor w/ 3 levels "1989","1990",..1 ...
- 
-```
+    ```{r Q4, results = 'asis'}
+    squid <- read.table('workshop/data/squid1.txt', header =TRUE)
+    
+    str(squid)
+    # 'data.frame':	519 obs. of  13 variables:
+    #  $ sample.no        : int  105128901 105128901 105128901 105128901 ...
+    #  $ specimen         : int  1002 1003 1005 1007 1008 1009 1011 1013 ...
+    #  $ year             : int  1989 1989 1989 1989 1989 1989 1989 1989 ...
+    #  $ month            : int  12 12 12 12 12 12 12 12 12 12 ...
+    #  $ weight           : num  152 106 138 141 126 ...
+    #  $ sex              : int  2 2 2 2 2 2 2 2 2 2 ...
+    #  $ maturity.stage   : int  3 1 2 2 3 1 2 3 3 4 ...
+    #  $ DML              : int  174 153 169 175 169 116 135 192 170 205 ...
+    #  $ eviscerate.weight: num  87.5 62.6 79.4 83.1 72.2 ...
+    #  $ dig.weight       : num  4.648 3.138 0.307 4.123 3.605 ...
+    #  $ nid.length       : num  39.4 24.1 39 41.4 39.8 20 14 55 44 53 ...
+    #  $ nid.weight       : num  2.46 0.319 1.169 1.631 2.03 ...
+    #  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...
+    
+    summary(squid)
+    
+    # convert variables to factors
+    squid$Fmaturity <- factor(squid$maturity.stage)
+    squid$Fmonth <- factor(squid$month) 
+    squid$Fyear <- factor(squid$year)
+    
+    str(squid)
+    # 'data.frame':	519 obs. of  16 variables:
+    #  $ sample.no        : int  105128901 105128901 105128901 ...
+    #  $ specimen         : int  1002 1003 1005 1007 1008 1009 ...
+    #  $ year             : int  1989 1989 1989 1989 1989 1989 ...
+    #  $ month            : int  12 12 12 12 12 12 12 12 12 12 ...
+    #  $ weight           : num  152 106 138 141 126 ...
+    #  $ sex              : int  2 2 2 2 2 2 2 2 2 2 ...
+    #  $ maturity.stage   : int  3 1 2 2 3 1 2 3 3 4 ...
+    #  $ DML              : int  174 153 169 175 169 116 135 ...
+    #  $ eviscerate.weight: num  87.5 62.6 79.4 83.1 72.2 ...
+    #  $ dig.weight       : num  4.648 3.138 0.307 4.123 3.605 ...
+    #  $ nid.length       : num  39.4 24.1 39 41.4 39.8 20 14 ...
+    #  $ nid.weight       : num  2.46 0.319 1.169 1.631 2.03 ...
+    #  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...
+    #  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4" "5"...
+    #  $ Fmonth           : Factor w/ 12 levels "1","2","3","4" ...
+    #  $ Fyear            : Factor w/ 3 levels "1989","1990",..1 ...
+     
+    ```
 
 \  
 
 5. How many observations are there per month and year combination (hint: remember the ```table()``` or ```xtabs()``` functions?)? Don't forget to use the factor recoded versions of these variables. Do you have data for each month in each year? Which years have the most observations? (optional) Use a combination of the ```xtabs()``` and ```ftable()``` functions to create a flattened table of the number of observations for each year, maturity stage and  month (aka a contingency table).  
 
-```{r Q5}
-table(squid$Fmonth, squid$Fyear)
-
-  #   1989 1990 1991
-  # 1     0    3   37
-  # 2     0    0   30
-  # 3     0   40   29
-  # 4     0   10   33
-  # 5     0    1   30
-  # 6     0    0   14
-  # 7     0   42    1
-  # 8     0   29    0
-  # 9     0   82    0
-  # 10    0   19    0
-  # 11    0   76    0
-  # 12   12   31    0
-  
-ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
-
-#                 Fmonth  1  2  3  4  5  6  7  8  9 10 11 12
-# Fyear Fmaturity                                           
-# 1989  1                 0  0  0  0  0  0  0  0  0  0  0  2
-#       2                 0  0  0  0  0  0  0  0  0  0  0  3
-#       3                 0  0  0  0  0  0  0  0  0  0  0  5
-#       4                 0  0  0  0  0  0  0  0  0  0  0  2
-#       5                 0  0  0  0  0  0  0  0  0  0  0  0
-# 1990  1                 0  0  0  0  0  0  8  0  1  1  1  2
-#       2                 0  0  0  0  0  0 22 21 76 17 31  4
-#       3                 0  0  0  0  0  0  0  5  5  1 31  6
-#       4                 2  0 15  7  0  0  4  3  0  0 10 13
-#       5                 1  0 25  3  1  0  8  0  0  0  3  6
-# 1991  1                 0  0  0  2  0  4  0  0  0  0  0  0
-#       2                 1  1  0  1  0  6  0  0  0  0  0  0
-#       3                 2  0  0  1  1  0  0  0  0  0  0  0
-#       4                16  8  6 13  6  1  1  0  0  0  0  0
-#       5                18 21 23 16 23  3  0  0  0  0  0  0
+    ```{r Q5}
+    table(squid$Fmonth, squid$Fyear)
+    
+      #   1989 1990 1991
+      # 1     0    3   37
+      # 2     0    0   30
+      # 3     0   40   29
+      # 4     0   10   33
+      # 5     0    1   30
+      # 6     0    0   14
+      # 7     0   42    1
+      # 8     0   29    0
+      # 9     0   82    0
+      # 10    0   19    0
+      # 11    0   76    0
+      # 12   12   31    0
       
-
-```
+    ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
+    
+    #                 Fmonth  1  2  3  4  5  6  7  8  9 10 11 12
+    # Fyear Fmaturity                                           
+    # 1989  1                 0  0  0  0  0  0  0  0  0  0  0  2
+    #       2                 0  0  0  0  0  0  0  0  0  0  0  3
+    #       3                 0  0  0  0  0  0  0  0  0  0  0  5
+    #       4                 0  0  0  0  0  0  0  0  0  0  0  2
+    #       5                 0  0  0  0  0  0  0  0  0  0  0  0
+    # 1990  1                 0  0  0  0  0  0  8  0  1  1  1  2
+    #       2                 0  0  0  0  0  0 22 21 76 17 31  4
+    #       3                 0  0  0  0  0  0  0  5  5  1 31  6
+    #       4                 2  0 15  7  0  0  4  3  0  0 10 13
+    #       5                 1  0 25  3  1  0  8  0  0  0  3  6
+    # 1991  1                 0  0  0  2  0  4  0  0  0  0  0  0
+    #       2                 1  1  0  1  0  6  0  0  0  0  0  0
+    #       3                 2  0  0  1  1  0  0  0  0  0  0  0
+    #       4                16  8  6 13  6  1  1  0  0  0  0  0
+    #       5                18 21 23 16 23  3  0  0  0  0  0  0
+          
+    
+    ```
 
 \  
 
 6. The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables. Create dotplots (using the ```dotchart()``` function) for the following variables; ```DML```, ```weight```, ```nid.length``` and ```ovary.weight```. Do these variables contain any unusually large or small observations? Don't forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns. Use the ```pdf()``` function to save a pdf version of your plot(s) (maybe create a `figures` directory in your `workshop` directory to save your figures). I have also included some alternative code in the [solutions for this exercise](exercise_4_solution.html) using the ```dotplot()``` function from the ```lattice``` package.
 
-```{r Q6}
-pdf('workshop/figures/ex4_dotplots.pdf')
-par(mfrow = c(2, 2))
-dotchart(squid$DML, main = "DML")
-dotchart(squid$weight, main = "weight")
-dotchart(squid$nid.length, main = "nid length")
-dotchart(squid$ovary.weight, main = "ovary weight")
-dev.off()
-
-# alternative code using dotplot function from lattice package
-library(lattice)
-dotplot(as.matrix(squid[,c("DML", "weight", "nid.length", "ovary.weight")]),
-      groups=FALSE,
-      strip = strip.custom(bg = 'white',
-            par.strip.text = list(cex = 0.8)),
-        scales = list(x = list(relation = "free"),
-                      y = list(relation = "free"),
-                      draw = FALSE),
-        col=1, cex  =0.5, pch = 16,
-        xlab = "Value of the variable",
-        ylab = "Order of the data from text file")
-```
+    ```{r Q6}
+    pdf('workshop/figures/ex4_dotplots.pdf')
+    par(mfrow = c(2, 2))
+    dotchart(squid$DML, main = "DML")
+    dotchart(squid$weight, main = "weight")
+    dotchart(squid$nid.length, main = "nid length")
+    dotchart(squid$ovary.weight, main = "ovary weight")
+    dev.off()
+    
+    # alternative code using dotplot function from lattice package
+    library(lattice)
+    dotplot(as.matrix(squid[,c("DML", "weight", "nid.length", "ovary.weight")]),
+          groups=FALSE,
+          strip = strip.custom(bg = 'white',
+                par.strip.text = list(cex = 0.8)),
+            scales = list(x = list(relation = "free"),
+                          y = list(relation = "free"),
+                          draw = FALSE),
+            col=1, cex  =0.5, pch = 16,
+            xlab = "Value of the variable",
+            ylab = "Order of the data from text file")
+    ```
 
 \  
 
 7. It looks like the variable ```nid.length``` contains an unusually large value. Actually, this value is biologically implausible and clearly an error. The researchers were asked to go back and check their field notebooks and sure enough they discover a typo. It looks like a tired researcher accidentally inserted a zero by mistake when transcribing these data. We can clearly see this value is over 400 so we can use the ```which()``` function to identify which observation this is ```which(squid$nid.length > 400)```. It looks like this is the 11^th^ observation of the ```squid$nid.length``` variable. Use your skill with the square brackets ```[ ]``` to first confirm the this is the correct value (you should get 430.2) and then change this value to 43.2. Now redo the dotchart to visualise your correction. Caution: You can only do this because you have confirmed that this is an transcribing error. You should **not** remove or change values in your data just because you feel like it or they look 'unusual'. This is scientific fraud! Also, the advantage of making this change in your R script rather than in Excel is that you now have a permanent record of the change you made and can state a clear reason for the change.    
 
-```{r Q7}
-which(squid$nid.length > 400)
-# [1] 11
+    ```{r Q7}
+    which(squid$nid.length > 400)
+    # [1] 11
 
-squid$nid.length[11]
-# [1] 430.2
+    squid$nid.length[11]
+    # [1] 430.2
 
-squid$nid.length[11] <- 43.2
-squid$nid.length[11]
-# [1] 43.2
+    squid$nid.length[11] <- 43.2
+    squid$nid.length[11]
+    # [1] 43.2
 
-dotchart(squid$nid.length, main = "nid length")
+    dotchart(squid$nid.length, main = "nid length")
 ```
 
 \  
  
 8. When exploring your data it is often useful to visualise the distribution of continuous variables. Create histograms for the variables; ```DML```, ```weight```, ```eviscerate.weight``` and ```ovary.weight```. Again, its up to you if you want to plot all 4 plots separately or in the same figure. Export your plot(s) as pdf file(s). One potential problem with histograms is that the distribution of data can look quite different depending on the number of 'breaks' used. The ```hist()``` function does it's best to create appropriate 'breaks' for your plots (it uses the [Sturges algorithm](https://en.wikipedia.org/wiki/Histogram) for those that want to know) but experiment with changing the number of breaks for the ```DML``` variable to see how the shape of the distribution changes (see the course manual for further details of how to change the breaks).     
 
-```{r Q8}
-pdf('workshop/figures/ex4_hist.pdf')
-par(mfrow = c(2,2))
-hist(squid$DML, main="", xlab = "DML")
-hist(squid$weight, main="", xlab = "weight")
-hist(squid$eviscerate.weight, main="", xlab = "eviscerate weight")
-hist(squid$ovary.weight, main="", xlab = "ovary weight")
-dev.off()
-
-# need to get the min and max values for DML
-# to work out the limits for the breaks
-
-summary(squid$DML)
-# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#   88     187     217     215     240     323 
- 
-# experimenting with different breaks
-par(mfrow = c(2,2))
-brk1 <- seq(from = 80, to = 340, by = 20)   
-hist(squid$DML, xlab = "DML", breaks = brk1, main = "brk: 20")
-
-brk2 <- seq(from = 80, to = 340, by = 10)   
-hist(squid$DML, xlab = "DML", breaks = brk2, main = "brk: 10")
-
-brk3 <- seq(from = 80, to = 340, by = 5)   
-hist(squid$DML, xlab = "DML", breaks = brk3, main = "brk: 5")
-
-brk4 <- seq(from = 80, to = 340, by = 2)   
-hist(squid$DML, xlab = "DML", breaks = brk4, main = "brk: 2")
-```
+    ```{r Q8}
+    pdf('workshop/figures/ex4_hist.pdf')
+    par(mfrow = c(2,2))
+    hist(squid$DML, main="", xlab = "DML")
+    hist(squid$weight, main="", xlab = "weight")
+    hist(squid$eviscerate.weight, main="", xlab = "eviscerate weight")
+    hist(squid$ovary.weight, main="", xlab = "ovary weight")
+    dev.off()
+    
+    # need to get the min and max values for DML
+    # to work out the limits for the breaks
+    
+    summary(squid$DML)
+    # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    #   88     187     217     215     240     323 
+     
+    # experimenting with different breaks
+    par(mfrow = c(2,2))
+    brk1 <- seq(from = 80, to = 340, by = 20)   
+    hist(squid$DML, xlab = "DML", breaks = brk1, main = "brk: 20")
+    
+    brk2 <- seq(from = 80, to = 340, by = 10)   
+    hist(squid$DML, xlab = "DML", breaks = brk2, main = "brk: 10")
+    
+    brk3 <- seq(from = 80, to = 340, by = 5)   
+    hist(squid$DML, xlab = "DML", breaks = brk3, main = "brk: 5")
+    
+    brk4 <- seq(from = 80, to = 340, by = 2)   
+    hist(squid$DML, xlab = "DML", breaks = brk4, main = "brk: 2")
+    ```
 
 \  
 
 9. Scatterplots are great for visualising relationships between two continuous variables. Plot the relationship between ```DML``` on the x axis and ```weight``` on the y axis. How would you describe this relationship? Is it linear? One approach to linearising relationships is to apply a transformation on one or both variables. Try transforming the ```weight``` variable with either a natural log (```log()```) or square root (```sqrt()```) transformation. I suggest you create new variables in the ```squid``` dataframe for your transformed variables and use these variables to when creating your new plots (ask if you're not sure how to do this). Which transformation best linearises this relationship? Again, save your plots as a pdf file (or try saving as jpeg or png format using the ```jpeg()``` or ```png()``` functions if you feel the need for a change!). 
 
-```{r Q9}
-# clearly not linear
-plot(squid$DML, squid$weight)
-
-# natural log and sqrt tranform weight
-squid$weight.sqrt <- sqrt(squid$weight)
-squid$weight.log <- log(squid$weight)
-
-par(mfrow = c(1,2))
-plot(squid$DML, squid$weight.sqrt)
-plot(squid$DML, squid$weight.log)
-
-# the square root transformation looks
-# most appropriate
-jpeg('workshop/figures/ex4_transf_plot.jpeg')
-plot(squid$DML, squid$weight.sqrt)
-dev.off()
-
-png('workshop/figures/ex4_transf_plot.png')
-plot(squid$DML, squid$weight.sqrt)
-dev.off()
-```
+    ```{r Q9}
+    # clearly not linear
+    plot(squid$DML, squid$weight)
+    
+    # natural log and sqrt tranform weight
+    squid$weight.sqrt <- sqrt(squid$weight)
+    squid$weight.log <- log(squid$weight)
+    
+    par(mfrow = c(1,2))
+    plot(squid$DML, squid$weight.sqrt)
+    plot(squid$DML, squid$weight.log)
+    
+    # the square root transformation looks
+    # most appropriate
+    jpeg('workshop/figures/ex4_transf_plot.jpeg')
+    plot(squid$DML, squid$weight.sqrt)
+    dev.off()
+    
+    png('workshop/figures/ex4_transf_plot.png')
+    plot(squid$DML, squid$weight.sqrt)
+    dev.off()
+    ```
 
 \  
 
 10. When visualising differences in a continuous variable between levels of a factor (categorical variable) then a boxplot is your friend (avoid using bar plots - Google 'bar plots are evil' for more info). Create a boxplot to visualise the differences in DML at each maturity stage (don't forget to use the recoded version of this variable you created in Q4) . Include x and y axes labels in your plot. Make sure you understand the anatomy of a boxplot before moving on - please ask if you're not sure. An alternative to the boxplot is the violin plot. A violin plot is a combination of a boxplot and a [kernel density plot](https://www.statmethods.net/graphs/density.html) and is great at visualising the distribution of a variable. To create a violin plot you will first need to install the ```vioplot``` package and make it available ```library(vioplot)```. You can now use the ```vioplot()``` function in pretty much the same way as you created your boxplot.
 
-```{r Q10, tidy = TRUE}
-# note: Fmaturity is the recoded maturity.stage variable cerated in Q4
-boxplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML")
-
-# violin plot
-library(vioplot)
-vioplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML" , col = "lightblue")
-```
+    ```{r Q10, tidy = TRUE}
+    # note: Fmaturity is the recoded maturity.stage variable cerated in Q4
+    boxplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML")
+    
+    # violin plot
+    library(vioplot)
+    vioplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML" , col = "lightblue")
+    ```
 
 \  
 
 11. To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the ```coplot()``` function to plot the relationship between DML and square root transformed weight (you created this variable in Q8) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)? If you prefer, you can also create a similar plot using the ```xyplot()``` function from the ```lattice``` package (don't forget to make the function available by using ```library(lattice)``` first). 
 
-```{r Q11}
-coplot(DML ~ weight.sqrt | Fmaturity, data = squid)
-
-# using xyplot from the lattice package
-xyplot(DML ~ weight.sqrt | Fmaturity, data = squid)
-
-```
+    ```{r Q11}
+    coplot(DML ~ weight.sqrt | Fmaturity, data = squid)
+    
+    # using xyplot from the lattice package
+    xyplot(DML ~ weight.sqrt | Fmaturity, data = squid)
+    
+    ```
 
 \  
 
 12. To explore the relationships between multiple continuous variables it's hard to beat a pairs plot. Create a pairs plot for the variables; ```DML```, ```weight```, ```eviscerate.weight```, ```ovary.weight```, ```nid.length```,  and ```nid.weight```. If it looks a little cramped in RStudio then click on the 'zoom' button in the plot viewer to see a larger version. One of the great things about the ```pairs()``` function is that you can customise what goes into each panel. Modify your pairs plot to include a histogram of the variables on the diagonal panel and include a correlation coefficient for each relationship on the upper triangle panels. Also include a smoother (wiggly line) in the lower triangle panels to help visualise these relationships. Take a look at the course manual to see how to do all this (or ```?pairs``` or ask an instructor). 
 
-```{r Q12, tidy = TRUE}
-# vanilla pairs plot
-pairs(squid[,c(5, 8, 9, 11, 12, 13)])
-
-# customise the plot. You will need to define the
-# panel.hist and panel.cor functions first. see the
-# course manual or ?pairs help file
-
-pairs(squid[,c(5, 8, 9, 11, 12, 13)], diag.panel = panel.hist, upper.panel = panel.cor,
-			lower.panel = panel.smooth)
-```
+    ```{r Q12, tidy = TRUE}
+    # vanilla pairs plot
+    pairs(squid[,c(5, 8, 9, 11, 12, 13)])
+    
+    # customise the plot. You will need to define the
+    # panel.hist and panel.cor functions first. see the
+    # course manual or ?pairs help file
+    
+    pairs(squid[,c(5, 8, 9, 11, 12, 13)], diag.panel = panel.hist, upper.panel = panel.cor,
+    			lower.panel = panel.smooth)
+    ```
 
 \  
 
 13. Almost every aspect of the figures you create in R is customisable. Learning how to get your plot looking just right is not only rewarding but also means that you will never have to include a plot in your paper/thesis that you're not completely happy with. When you start learning how to use R it can sometimes seem to take a lot of work to customise your plots. Don't worry, it gets easier with experience (most of the time anyway) and you will always have your code if you want to create a similar plot in the future. Use the ```plot()``` function to produce a scatterplot of DML on the x axis and ovary weight on the y axis (you might need to apply a transformation on the variable ```ovary.weight```). Use a different colour to highlight points for each level of maturity stage. Produce a legend explaining the different colours and place it in a suitable position on the plot. Format the graph further to make it suitable for inclusion into your paper/thesis (i.e. add axes labels, change the axes scales etc). 
 
-```{r Q13a, tidy = TRUE}
-# quick and dirty way
-# need to transform ovary.weight first
-squid$ovary.weight.sqrt <- sqrt(squid$ovary.weight)
+    ```{r Q13a, tidy = TRUE}
+    # quick and dirty way
+    # need to transform ovary.weight first
+    squid$ovary.weight.sqrt <- sqrt(squid$ovary.weight)
+    
+    # create the plot
+    with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)", col = as.numeric(Fmaturity), xlim =     c(60, 350), ylim = c(0, 8.5)))
+    
+    # create the legend
+    labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
+    cols <- as.numeric(levels(squid$Fmaturity))
+    legend("topleft", labs,col = cols, pch = 1)
+    ```
 
-# create the plot
-with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)", col = as.numeric(Fmaturity), xlim = c(60, 350), ylim = c(0, 8.5)))
-
-# create the legend
-labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
-cols <- as.numeric(levels(squid$Fmaturity))
-legend("topleft", labs,col = cols, pch = 1)
-```
-
-```{r Q13b, tidy = TRUE}
-# longer but more control
-
-# need to scales package to set transparency of points
-# will the alpha function
-library(scales)
-
-#setup the axes but dont plot the points
-with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)",
-					type = "n", xlim = c(60, 350), ylim = c(0, 8.5)))
-
-# plot the points with custom colours
-with(squid, points(DML[Fmaturity == "1"], ovary.weight.sqrt[Fmaturity == "1"], col = alpha("deepskyblue3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "2"], ovary.weight.sqrt[Fmaturity == "2"], col = alpha("darkolivegreen3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "3"], ovary.weight.sqrt[Fmaturity == "3"], col = alpha("coral3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "4"], ovary.weight.sqrt[Fmaturity == "4"], col = alpha("lemonchiffon3", 0.7), pch = 16))
-with(squid, points(DML[Fmaturity == "5"], ovary.weight.sqrt[Fmaturity == "5"], col = alpha("darkorchid3", 0.7), pch = 16))
-
-# include the legend
-labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
-cols <- c("deepskyblue3", "darkolivegreen3", "coral3", "lemonchiffon3", "darkorchid3")
-legend(55, 8.2, labs,col = alpha(cols, 0.7), pch = 16, bty = "n")
-```
+    ```{r Q13b, tidy = TRUE}
+    # longer but more control
+    
+    # need to scales package to set transparency of points
+    # will the alpha function
+    library(scales)
+    
+    #setup the axes but dont plot the points
+    with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)",
+    					type = "n", xlim = c(60, 350), ylim = c(0, 8.5)))
+    
+    # plot the points with custom colours
+    with(squid, points(DML[Fmaturity == "1"], ovary.weight.sqrt[Fmaturity == "1"], col = alpha("deepskyblue3", 0.7), pch = 16))
+    with(squid, points(DML[Fmaturity == "2"], ovary.weight.sqrt[Fmaturity == "2"], col = alpha("darkolivegreen3", 0.7), pch = 16))
+    with(squid, points(DML[Fmaturity == "3"], ovary.weight.sqrt[Fmaturity == "3"], col = alpha("coral3", 0.7), pch = 16))
+    with(squid, points(DML[Fmaturity == "4"], ovary.weight.sqrt[Fmaturity == "4"], col = alpha("lemonchiffon3", 0.7), pch = 16))
+    with(squid, points(DML[Fmaturity == "5"], ovary.weight.sqrt[Fmaturity == "5"], col = alpha("darkorchid3", 0.7), pch = 16))
+    
+    # include the legend
+    labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
+    cols <- c("deepskyblue3", "darkolivegreen3", "coral3", "lemonchiffon3", "darkorchid3")
+    legend(55, 8.2, labs,col = alpha(cols, 0.7), pch = 16, bty = "n")
+    ```
 
 \  
 

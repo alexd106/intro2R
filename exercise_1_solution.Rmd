@@ -30,44 +30,44 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 4. Practice writing code in the script editor and sourcing this code into the R console by using the ```help()``` function to display the help file for the function ```mean```. Notice that the help file is displayed in the bottom right window (if not then click on the 'Help' tab). Examine the different components of the help file (especially the examples section at the end of the help file).
 
-```{r Q4}
-help(mean)          # different methods of using help
-?mean
-help("mean")
-```
+    ```{r Q4}
+    help(mean)          # different methods of using help
+    ?mean
+    help("mean")
+    ```
 
 \  
 
 5. The content displayed in the bottom right window is context dependent. For example if we write the code ```plot(1:10)``` and source it into the R console the bottom right window will display this plot (don't worry about understanding the R code right now, hopefully this will become clear later on in the course!). 
 
-```{r Q5}
-plot(1:10)    #dont worry about what 1:10 does just yet
-```
+    ```{r Q5}
+    plot(1:10)    #dont worry about what 1:10 does just yet
+    ```
 
 \  
 
 6. Next, let's practice creating a variable and assigning a value to this variable. Create a variable called ```first.num``` and assign it the value ```186282```. Click on the 'Environment' tab in the top right window to display the variable and value. Now create another variable called ```first.char``` and assign it a value ```"my first character"```. Notice this variable is now also displayed in the 'Environment' along with it's value and class (```chr``` - short for character class). 
 
-```{r Q6}
-first.num <- 186282    # create variable first.num and assign the value 186282
-first.char <- "my first character"
-```
+    ```{r Q6}
+    first.num <- 186282    # create variable first.num and assign the value 186282
+    first.char <- "my first character"
+    ```
 \  
 
 7. Remove the variable ```first.num``` from your environment. Check out the 'Environment' to ensure the variable has been removed. 
 
-```{r Q7}
-rm(first.num)
-ls()    # list all variables in the workspace 
-```
+    ```{r Q7}
+    rm(first.num)
+    ls()    # list all variables in the workspace 
+    ```
 \  
 
 8. Let's see what happens if we assign another value to an existing variable. Assign the value ```"my second character"``` to the variable ```first.char``` you created in Q6. Notice the value has changed in the 'Environment'. To display the value of ```first.char``` enter the name of the variable in the console. 
 
-```{r Q8}
-first.char <- "my second variable"
-first.char    # display the value 
-```
+    ```{r Q8}
+    first.char <- "my second variable"
+    first.char    # display the value 
+    ```
 \  
 
 9. Ok, let's leave RStudio for a minute. Using your favourite web browser, navigate to the [R-project website](http://www.r-project.org) and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).
@@ -80,35 +80,35 @@ first.char    # display the value
 
 11.	Ok, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word 'plot' in it. Use the ```apropos()``` function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function. 
 
-```{r Q11}
-apropos("plot")
-help(plot.design)
-```
+    ```{r Q11}
+    apropos("plot")
+    help(plot.design)
+    ```
 \  
 
 12. Another strategy would be to use the ```help.search()``` function to search through R's help files. Search the R help system for instances of the character string ‘plot’. Narrow your search by only searching for ‘plot’ in the ```nlme``` package.
 
-```{r Q12}
-help.search("plot")
-??plot     # shortcut for help.search dunction
-
-help.search("plot", package = "nlme")
-```
+    ```{r Q12}
+    help.search("plot")
+    ??plot     # shortcut for help.search dunction
+    
+    help.search("plot", package = "nlme")
+    ```
 \  
 
 13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's tomorrows job) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.
 
-```{r Q13}
-getwd()    # displays the current working directory 
-```
+    ```{r Q13}
+    getwd()    # displays the current working directory 
+    ```
 \  
 
 14.	Now change your working directory to a more convenient location on your computer (or USB drive). Don't forget to check whether your working directory has been successfully changed. 
 
-```{r Q14}
-setwd("/path/to/new/working/directory")    # sets the working directory 
-getwd()    # check to see if the working directory was changed
-```
+    ```{r Q14}
+    setwd("/path/to/new/working/directory")    # sets the working directory 
+    getwd()    # check to see if the working directory was changed
+    ```
 
 \  
 
