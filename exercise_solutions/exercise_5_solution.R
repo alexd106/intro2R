@@ -291,9 +291,9 @@ coplot(beat_rate ~ temp | Facclimitisation_temp, data = temora)
 
 # scatter plot with different symbols and colours
 
-with(temora, plot(beat_rate ~ temp, xlab = "temperature", ylab = "beat rate", col = as.numeric(Facclimitisation_temp), pch = as.numeric(Facclimitisation_temp)))
+with(temora, plot(beat_rate ~ temp, xlab = "temperature", ylab = "beat rate", col = as.numeric(Facclimitisation_temp), pch =   as.numeric(Facclimitisation_temp)))
 
-legend("topleft", legend = c("5", "10", "20"), pch = unique(as.numeric(temora$Facclimitisation_temp)), col = unique(as.numeric(temora$Facclimitisation_temp)))
+legend("topleft", legend = c("5", "10", "20"), pch = unique(as.numeric(temora$Facclimitisation_temp)), col =   unique(as.numeric(temora$Facclimitisation_temp)))
 
 									
 # or more flexibly

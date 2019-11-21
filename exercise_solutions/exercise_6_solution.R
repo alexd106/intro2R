@@ -12,8 +12,8 @@ circle.area <- function(r){
 
 far.cent <- function(a){
 	val <- (a-32)*5/9
-	print(paste("Fahrenheit: ", round(a, digits = 3), "oF",sep = " "), quote = FALSE)	    # round to 3 dp
-	print(paste("Centigrade: ", round(val, digits = 3), "oC", sep = " "), quote = FALSE)  # round to 3 dp
+	print(paste("Fahrenheit: ", round(a, digits = 3), "oF",sep = " "), quote = FALSE)# round 3dp
+	print(paste("Centigrade: ", round(val, digits = 3), "oC", sep = " "), quote = FALSE)# round 3dp
 }
 
 # alternative Fahrenheit to centigrade using cat function
@@ -85,7 +85,7 @@ Ricker.model <- function(nzero, r, time, K=1){     # sets initial parameters
       N[i+1] <- N[i]*exp(r*(1 - N[i]/K))    
   }
   Time <- 0:time   					 # creates vector for x axis
-  plot(Time, N, type = "o", xlim = c(0, time), xlab = "Time", ylab = "Population size (N)", main = paste("r =", r, sep=" "))   # plots output
+  plot(Time, N, type = "o", xlim = c(0, time), xlab = "Time", ylab = "Population size (N)", main = paste("r =", r, sep=" "))   # plots     output
 }
 
 # To run

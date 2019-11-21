@@ -79,7 +79,7 @@ whale.nomed <- whale[whale$water.noise != 'medium', ]
 whale.subset <- whale[whale$month == 'October' & whale$water.noise == 'low' & whale$gradient > median(whale$gradient), ]
 
 
-## ----Q11, results = 'asis'-----------------------------------------------
+## ----Q11, tidy = TRUE----------------------------------------------------
 # results in a dataframe filled with NAs. 
 whale.new <- whale[whale$depth > 1500 & whale$number.whales > mean(whale$number.whales), ]
 
@@ -133,7 +133,7 @@ aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise), me
 aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), mean, na.rm = TRUE)
 
 # optional question. Need to specify a function 'on the fly' using function(x){}
-aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), function(x){round(median(x, na.rm = TRUE), digits = 2)})
+aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), function(x){round(median(x, na.rm =     TRUE), digits = 2)})
 
 
 ## ----Q17, results = 'asis'-----------------------------------------------
@@ -146,6 +146,6 @@ xtabs(~ water.noise, data = whale)
 xtabs(~ month + water.noise, data = whale)
 
 
-## ----Q18-----------------------------------------------------------------
+## ----Q18, tidy = TRUE----------------------------------------------------
 write.table(whale.num, "workshop/data/whale_num.txt", col.names = TRUE, row.names = FALSE, sep = "\t")
 

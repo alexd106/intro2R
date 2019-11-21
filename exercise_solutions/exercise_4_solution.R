@@ -211,7 +211,7 @@ pairs(squid[,c(5, 8, 9, 11, 12, 13)], diag.panel = panel.hist, upper.panel = pan
 squid$ovary.weight.sqrt <- sqrt(squid$ovary.weight)
 
 # create the plot
-with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)", col = as.numeric(Fmaturity), xlim = c(60, 350), ylim = c(0, 8.5)))
+with(squid, plot(DML, ovary.weight.sqrt, xlab = "DML (mm)", ylab = "square root ovary weight (g)", col = as.numeric(Fmaturity), xlim =     c(60, 350), ylim = c(0, 8.5)))
 
 # create the legend
 labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
