@@ -37,4 +37,4 @@ The course will start at 09:30 each morning and finish at 17:00. We will break f
 
   - Morning: Simple statistics in R
 
-  - Afternoon: Basic programnming in R (optional) or catchup
+  - Afternoon: Basic programming in R (optional) or catchup
