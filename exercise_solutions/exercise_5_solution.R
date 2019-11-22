@@ -98,7 +98,7 @@ var.test(prawns$GRate ~ prawns$diet)
 # Null hypothesis Ho: no difference in growth rate 
 # between prawns fed on artificial diet or Natural diet
 
-t.test(prawns$GRate ~ prawns$diet, var.equal = TRUE)
+t.test(GRate ~ diet, var.equal = TRUE, data = prawn)
 
 #         Two Sample t-test
 # 

@@ -590,7 +590,7 @@ prawns &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span clas
 <span class="co"># Null hypothesis Ho: no difference in growth rate </span>
 <span class="co"># between prawns fed on artificial diet or Natural diet</span>
 
-<span class="kw">t.test</span>(prawns$GRate ~<span class="st"> </span>prawns$diet, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)
+<span class="kw">t.test</span>(GRate ~<span class="st"> </span>diet, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>, <span class="dt">data =</span> prawn)
 
 <span class="co">#         Two Sample t-test</span>
 <span class="co"># </span>
@@ -814,7 +814,7 @@ temora &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span clas
 </ol>
 <p> </p>
 <ol start="17" style="list-style-type: decimal">
-<li><p>We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between <code>beat_rate</code> and <code>temp</code> for each level of <code>Facclimatisation_temp</code>. Take a look at the plot you produced in Q15, do you think the relationships are different?</p>
+<li><p>We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between <code>beat_rate</code> and <code>temp</code> for each level of <code>Facclimatisation_temp</code>. Take a look at the plot you produced in Q16, do you think the relationships are different?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the slope of the relationship between beat rate and temp</span>
 <span class="co"># look different for each acclimitisation temp</span></code></pre></div></li>
 </ol>
