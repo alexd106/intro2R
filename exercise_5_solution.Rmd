@@ -131,7 +131,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
     # Null hypothesis Ho: no difference in growth rate 
     # between prawns fed on artificial diet or Natural diet
     
-    t.test(prawns$GRate ~ prawns$diet, var.equal = TRUE)
+    t.test(GRate ~ diet, var.equal = TRUE, data = prawn)
     
     #         Two Sample t-test
     # 
@@ -394,7 +394,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-17. We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between ```beat_rate``` and ```temp``` for each level of ```Facclimatisation_temp```. Take a look at the plot you produced in Q15, do you think the relationships are different?
+17. We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between ```beat_rate``` and ```temp``` for each level of ```Facclimatisation_temp```. Take a look at the plot you produced in Q16, do you think the relationships are different?
 
     ```{r Q17}
     # the slope of the relationship between beat rate and temp

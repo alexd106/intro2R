@@ -83,7 +83,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-17. We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between ```beat_rate``` and ```temp``` for each level of ```Facclimatisation_temp```. Take a look at the plot you produced in Q15, do you think the relationships are different?
+17. We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between ```beat_rate``` and ```temp``` for each level of ```Facclimatisation_temp```. Take a look at the plot you produced in Q16, do you think the relationships are different?
 
 \  
 
