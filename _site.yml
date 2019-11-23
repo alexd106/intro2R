@@ -37,7 +37,7 @@ navbar:
           href: "resources.html"
         - text: "Feedback"
           icon: fa-commenting
-          href: "feedback.html"
+          href: https://docs.google.com/forms/d/e/1FAIpQLSfCbHly9uxs7IClhBd95y9JhfG-a5JUXCAal6sFyKKJiWR1Ng/viewform?usp=sf_link
         - text: "----"
         - text: "QUADRAT"
           icon: fa-chrome
