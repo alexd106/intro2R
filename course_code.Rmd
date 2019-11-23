@@ -7,6 +7,7 @@ output:
 
 ```{r, include=FALSE}
 library(knitr)
+library(stringr)
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
 suppressPackageStartupMessages(library(dplyr))
 ```
@@ -23,11 +24,17 @@ To download the solutions for each of the exercises as individual R scripts clic
 
 ```{r, results='asis'}
 dir <- "exercise_solutions/"
-list.files(dir) %>%
-  sort %>% 
-  grep("\\.html$ | *.zip", ., value=TRUE, invert=TRUE) %>% 
-  paste0("- [", ., "](", paste0(dir, .), ")") %>% 
-  cat(sep="\n")
+file_name <- list.files(dir) %>%
+             sort %>% 
+             grep("\\.html$ | *.zip", ., value=TRUE, invert=TRUE) %>% 
+             .[c(1,2,3,5,4,6,7)]
+
+link_name <- file_name %>%
+            gsub("\\.R", "", .) %>%
+            paste0(., "s") %>%
+            gsub("_", " ", .) %>%
+            str_to_sentence(.)
+
+paste0("- [", link_name, "](", "exercise_solutions/", file_name, ")") %>%
+cat(sep="\n\n")
 ```
-
-
