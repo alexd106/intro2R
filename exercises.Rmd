@@ -37,7 +37,7 @@ rmarkdown::render("exercise_2.Rmd", output_format = "pdf_document", output_file 
 rmarkdown::render("exercise_3.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_3.pdf", quiet = TRUE)
 rmarkdown::render("exercise_4.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_4.pdf", quiet = TRUE)
 rmarkdown::render("exercise_5.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_5.pdf", quiet = TRUE)
-rmarkdown::render("exercise_5.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_6.pdf", quiet = TRUE)
+rmarkdown::render("exercise_6.Rmd", output_format = "pdf_document", output_file = "./exercises/exercise_6.pdf", quiet = TRUE)
 
 ```
 

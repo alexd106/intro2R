@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-2. Write a function to convert Fahrenheit to Centigrade (°C = (°F − 32) x 5⁄9). Get your function to print out “Fahrenheit : value oF“ followed by “Centigrade: value oC“. 
+2. Write a function to convert farenheit to centegrade (oC = (oF - 32) x 5/9). Get your function to print out your result in the following format: "Farenheit : *value of oF* is equivalent to *value oC* centigrade."
 
     ```{r Q2, tidy = TRUE}
     
