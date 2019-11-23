@@ -11,15 +11,15 @@ library(stringr)
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
-show_text <- FALSE
+show_text <- TRUE
 ```
 
-```{r ziprelease, include = FALSE, eval = isTRUE(show_text)}
-if (!file.exists("exercise_solutions/all_Rcode.zip")) system("rm exercise_solutions/all_Rcode.zip ; zip -r exercise_solutions/all_Rcode.zip exercise_solutions -x '*.html' -x '*.DS_Store'")
+```{r, ziprelease, include = FALSE, eval = isTRUE(show_text)}
+if (file.exists("exercise_solutions/all_Rcode.zip")) system("rm exercise_solutions/all_Rcode.zip ; zip -r exercise_solutions/all_Rcode.zip exercise_solutions -x '*.DS_Store'")
 ```
 
-```{r zipnorelease, include = FALSE, eval = isFALSE(show_text)}
-if (!file.exists("exercise_solutions/all_Rcode.zip")) system("rm exercise_solutions/all_Rcode.zip ; zip -r exercise_solutions/all_Rcode.zip exercise_solutions -x '*.html' -x '*.DS_Store' -x '*.R'")
+```{r, zipnorelease, include = FALSE, eval = isFALSE(show_text)}
+if (file.exists("exercise_solutions/all_Rcode.zip")) system("rm exercise_solutions/all_Rcode.zip ; zip -r exercise_solutions/all_Rcode.zip exercise_solutions -x '*.DS_Store' -x '*.R'")
 ```
 
 \  
