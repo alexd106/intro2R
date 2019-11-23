@@ -1,7 +1,7 @@
 ## ----packages------------------------------------------------------------
 
 # make ggplot2 and gridExtra packages available
-# Note: you may need to install this package first
+# Note: you may need to install these packages first
 # Use : install.packages('ggplot2', dep = TRUE)
 # Use : install.packages('gridExtra', dep = TRUE)
 
