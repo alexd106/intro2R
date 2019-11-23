@@ -17,7 +17,12 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
+Alternative solutions to Exercise 4 for those who use (or are interested in using) the ```ggplot``` approach to plotting data. Courtesy of [Deon Roos](People.html).
+
+\  
+
 ```{r packages}
+
 # make ggplot2 and gridExtra packages available
 # Note: you may need to install this package first
 # Use : install.packages('ggplot2', dep = TRUE)
