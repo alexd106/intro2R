@@ -11,7 +11,7 @@ library(stringr)
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
-show_text <- TRUE
+source('reveal_solutions.R')
 ```
 
 ```{r, ziprelease, include = FALSE, eval = isTRUE(show_text)}
