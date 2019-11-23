@@ -22,7 +22,8 @@ Follow the links below for solutions to each of the exercises you have completed
 ```{r, results='asis'}
 file_name <- list.files('.') %>%
   sort %>% 
-  grep("exercise_[0-9]_solution.html", . , value=TRUE)
+  grep("(exercise_[0-9]_solution.html|exercise_[0-9]_alternative_solution.html)", . , value=TRUE) %>%
+  .[c(1,2,3,5,4,6,7)]
 
 link_name <- file_name %>%
   gsub("\\.html", "", .) %>%
@@ -44,6 +45,7 @@ knitr::purl('./exercise_1_solution.Rmd', output = './exercise_solutions/exercise
 knitr::purl('./exercise_2_solution.Rmd', output = './exercise_solutions/exercise_2_solution.R', quiet = TRUE)
 knitr::purl('./exercise_3_solution.Rmd', output = './exercise_solutions/exercise_3_solution.R', quiet = TRUE)
 knitr::purl('./exercise_4_solution.Rmd', output = './exercise_solutions/exercise_4_solution.R', quiet = TRUE)
+knitr::purl('./exercise_4_alternative_solution.Rmd', output = './exercise_solutions/exercise_4_alternative_solution.R', quiet = TRUE)
 knitr::purl('./exercise_5_solution.Rmd', output = './exercise_solutions/exercise_5_solution.R', quiet = TRUE)
 knitr::purl('./exercise_6_solution.Rmd', output = './exercise_solutions/exercise_6_solution.R', quiet = TRUE)
 ```
