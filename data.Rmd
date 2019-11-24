@@ -17,7 +17,11 @@ if (!file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r dat
 
 \  
 
-**Option 1: Download all the data**. Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** `r paste0("(", round(file.info("data/all_data.zip")$size/1e6, 2), " Mb)")` with all the data for the entire workshop. This may include additional datasets that we won't use here. You will need to uncompress this zip file using your favourite software (most operating systems now have at least one built-in (un)compression tool). 
+**Option 1: Download all the data at once.** 
+
+Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** `r paste0("(", round(file.info("data/all_data.zip")$size/1e6, 2), " Mb)")` with all the data for the entire workshop. This may include additional datasets that we won't use here. You will need to uncompress this zip file using your favourite software (most operating systems now have at least one built-in (un)compression tool). 
+
+\  
 
 **Option 2: Download individual datasets as needed.** 
 
@@ -31,7 +35,7 @@ dir <- "data/"
 list.files(dir) %>%
   sort %>% 
   grep("\\.html$ | *.zip", ., value=TRUE, invert=TRUE) %>% 
-  paste0("- [", ., "](", paste0(dir, .), ")") %>% 
+  paste0("    + [", ., "](", paste0(dir, .), ")") %>% 
   cat(sep="\n")
 ```
 
