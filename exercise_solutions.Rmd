@@ -36,7 +36,7 @@ link_name <- file_name %>%
   gsub("_", " ", .) %>%
   str_to_sentence(.)
 
-paste0("- [", link_name, "](", file_name, ")") %>%
+paste0("- [", link_name, "](", file_name, "){target='_blank'}") %>%
 cat(sep="\n\n")
 ```
 

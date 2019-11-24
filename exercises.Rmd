@@ -16,17 +16,17 @@ Have fun!
 
 \  
 
-[Exercise 1: Getting to know R and RStudio](exercise_1.html)
+[Exercise 1: Getting to know R and RStudio](exercise_1.html){target="_blank"}
 
-[Exercise 2: Basic R operations](exercise_2.html)
+[Exercise 2: Basic R operations](exercise_2.html){target="_blank"}
 
-[Exercise 3: Importing and manipulating dataframes](exercise_3.html)
+[Exercise 3: Importing and manipulating dataframes](exercise_3.html){target="_blank"}
 
-[Exercise 4: Visualising data using base R and lattice graphics](exercise_4.html)
+[Exercise 4: Visualising data using base R and lattice graphics](exercise_4.html){target="_blank"}
 
-[Exercise 5: Basic statistics in R](exercise_5.html)
+[Exercise 5: Basic statistics in R](exercise_5.html){target="_blank"}
 
-[Exercise 6: Basic programming in R](exercise_6.html)
+[Exercise 6: Basic programming in R](exercise_6.html){target="_blank"}
 
 \  
 
