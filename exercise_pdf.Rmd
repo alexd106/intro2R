@@ -7,8 +7,10 @@ output:
 
 ```{r, include=FALSE}
 library(knitr)
+library(stringr)
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
 suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(stringr))
 ```
 
 \  
@@ -18,10 +20,23 @@ Click on the links below to download pdf versions of the exercises.
 \  
 
 ```{r, results='asis'}
+ex_text <- c(": Getting to know R and RStudio", ": Basic R operations", 
+             ": Importing and manipulating dataframes", 
+             ": Visualising data using base R and lattice graphics",
+             ": Basic statistics in R", 
+             ": Basic programming in R")
+
 dir <- "exercises"
-list.files(dir) %>%
-  sort %>% 
-  grep("\\.html$ | *.zip", ., value=TRUE, invert=TRUE) %>% 
-  paste0("- [", ., "](", paste0(dir, "/", .), ")") %>% 
-  cat(sep="\n")
+file_name <- list.files(dir) %>%
+              sort %>% 
+              grep("[*.zip]", ., value=TRUE)
+
+link_name <- file_name %>%
+              gsub("\\.pdf", "", .) %>%
+              gsub("_", " ", .) %>%
+              str_to_sentence(.)
+
+paste0("- [", link_name, ex_text, "](", "exercises/", file_name, ")") %>%
+cat(sep="\n\n")
+              
 ```
