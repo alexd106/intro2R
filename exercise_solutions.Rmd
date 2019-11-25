@@ -11,7 +11,7 @@ library(stringr)
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
-source('reveal_solutions.R')
+source('reveal.R')
 ```
 
 \  
@@ -21,7 +21,7 @@ Follow the links below for solutions to each of the exercises you have completed
 \  
 
 ```{r, reveal, echo=FALSE, eval = isFALSE(show_text)}
-cat("solutions will be realeased as the course progresses")
+cat("solutions will be released as the course progresses")
 ```
 
 ```{r, results='asis', eval = isTRUE(show_text)}

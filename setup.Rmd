@@ -7,14 +7,14 @@ output:
 
 \  
 
-During the course we will be using both R and RStudio. If you're bringing your own laptop (see [FAQ](index.html)) please follow the instructions under **_Core Software_** and **_Get the Data_** headings before you arrive. No worries if you are having problems installing the software, we will run a drop-in session from 14:00 - 15:30 on Monday 2^nd^ December in room FN113 in the [Fraser Noble building](images/uoa_map.pdf) (building No. 7 on the map) to troubleshoot installation problems (bring your laptop!). Alternatively you can [email one of the instructors](People.html) prior to the course.      
+During the course we will be using both R and RStudio. If you're bringing your own laptop (see [FAQ](index.html)) please follow the instructions under **_Core Software_** and **_Get the Data_** headings before you arrive. No worries if you are having problems installing the software, we will run a drop-in session from 14:00 - 15:30 on Monday 2^nd^ December in room FN113 in the [Fraser Noble building](images/uoa_map.png){target="_blank"} (building No. 7 on the map) to troubleshoot installation problems (bring your laptop!). Alternatively you can [email one of the instructors](People.html) prior to the course.      
 
 \  
 
 ## Core Software
-**Install R.** You'll need R version **3.6.0** or higher. Download and install R for [Windows](http://cran.r-project.org/bin/windows/base/),  [Mac](http://cran.r-project.org/bin/macosx/) (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS) or [linux](https://cran.r-project.org/bin/linux) (choose your flavour of linux).
+**Install R.** You'll need R version **3.6.0** or higher. Download and install R for [Windows](http://cran.r-project.org/bin/windows/base/){target="_blank"},  [Mac](http://cran.r-project.org/bin/macosx/){target="_blank"} (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS) or [linux](https://cran.r-project.org/bin/linux){target="_blank"} (choose your flavour of linux).
 
-**Install RStudio.** Download and install [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) (version 1.2.5019).
+**Install RStudio.** Download and install [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/){target="_blank"} (version 1.2.5019).
 
 You will need to download and install R and RStudio separately. **R** is the underlying statistical computing environment. **RStudio** is a graphical integrated development environment (IDE) that makes using R a little easier. You need to install R before you install RStudio.
 
@@ -26,13 +26,13 @@ Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navba
 \  
 
 ## R markdown
-Installing R markdown is not required for this course. However, for those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html) to install R markdown on your laptop. Although we will only scratch the surface of R markdown during this course we plan to run a webinar on this subject in the near future.  
+Installing R markdown is not required for this course. However, for those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html){target="_blank"} to install R markdown on your laptop. Although we will only scratch the surface of R markdown during this course we plan to run a webinar on this subject in the near future.  
 
 \  
 
 *A few notes*:
 
-- During the course you must be connected to the internet via wifi (we will use [eduroam](https://www.eduroam.org/) which you should all have access to).
+- During the course you must be connected to the internet via wifi (we will use [eduroam](https://www.eduroam.org/){target="_blank"} which you should all have access to).
 - If you're using Windows you might see errors about not having permission to modify the existing libraries -- disregard these. You can avoid this by running RStudio as an administrator (right click the RStudio icon, then click "Run as Administrator").
 - If you really dislike using RStudio (or just fancy a change) then feel free to use an alternative IDE or script editor (see [FAQ](index.html)).
 

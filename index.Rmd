@@ -37,7 +37,7 @@ See the course [syllabus](syllabus.html) for a general outline of the course con
 \  
 
 #### Where is the course held?
-All teaching will be held in room FN113 in the Fraser Noble building (building No. 7 on [this map](images/uoa_map.pdf) on the old Aberdeen campus).
+All teaching will be held in room FN113 in the Fraser Noble building (building No. 7 on [this map](images/uoa_map.png) on the old Aberdeen campus).
 
 \  
 
