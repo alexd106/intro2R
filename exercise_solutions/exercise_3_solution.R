@@ -122,7 +122,7 @@ tapply(whale$number.whales, whale$water.noise, mean, na.rm = TRUE)
 # alternative method using the with() function. see ?with
 with(whale, tapply(number.whales, water.noise, mean, na.rm = TRUE))   
 
-# when using ultiple factors these need to be supplied as a list
+# when using multiple factors these need to be supplied as a list
 tapply(whale$number.whales, list(whale$water.noise, whale$month), median, na.rm = TRUE)    
 
 
@@ -133,7 +133,7 @@ aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise), me
 aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), mean, na.rm = TRUE)
 
 # optional question. Need to specify a function 'on the fly' using function(x){}
-aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), function(x){round(median(x, na.rm =     TRUE), digits = 2)})
+aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), function(x){round(mean(x, na.rm = TRUE), digits = 2)})
 
 
 ## ----Q17, results = 'asis'-----------------------------------------------

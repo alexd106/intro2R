@@ -507,7 +507,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Once you have imported your data file nothing much seems to happen (don’t worry, this is normal). To examine the contents of the dataframe one option would be to just type the variable name (<code>whale</code>) into the console. This is probably not a good idea and doesn’t really tell you anything about the dataframe other than there’s alot of data (try it)!. A slightly better option is to use the <code>head()</code> function to display the first 5 rows of your dataframe. Again, this is likely to just fill up your console. A better option would be to use the <code>names()</code> function which will return a vector of variable names from your dataset. However, all you get are the names of the variables but no other information. A much, much better option is to use the <code>str()</code> function to display the structure of the dataset and a neat summary of your variables. Another advantage is that you can copy this information from the console and paste it into your R script (making sure it’s commented) for later reference. How many observations does this dataset have? How many variables are in this dataset? What type of variables are <code>month</code> and <code>water.noise</code>?</p>
+<li><p>Once you have imported your data file nothing much seems to happen (don’t worry, this is normal). To examine the contents of the dataframe one option would be to just type the variable name (<code>whale</code>) into the console. This is probably not a good idea and doesn’t really tell you anything about the dataframe other than there’s alot of data (try it)! A slightly better option is to use the <code>head()</code> function to display the first 5 rows of your dataframe. Again, this is likely to just fill up your console. A better option would be to use the <code>names()</code> function which will return a vector of variable names from your dataset. However, all you get are the names of the variables but no other information. A much, much better option is to use the <code>str()</code> function to display the structure of the dataset and a neat summary of your variables. Another advantage is that you can copy this information from the console and paste it into your R script (making sure it’s commented) for later reference. How many observations does this dataset have? How many variables are in this dataset? What type of variables are <code>month</code> and <code>water.noise</code>?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(whale)         <span class="co"># display the first 5 rows </span>
 <span class="kw">names</span>(whale)        <span class="co"># display the variable names</span>
 <span class="kw">str</span>(whale)          <span class="co"># display the structure of the dataframe whale</span>
@@ -648,7 +648,7 @@ whale.rev.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</spa
 <span class="co"># alternative method using the with() function. see ?with</span>
 <span class="kw">with</span>(whale, <span class="kw">tapply</span>(number.whales, water.noise, mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))   
 
-<span class="co"># when using ultiple factors these need to be supplied as a list</span>
+<span class="co"># when using multiple factors these need to be supplied as a list</span>
 <span class="kw">tapply</span>(whale$number.whales, <span class="kw">list</span>(whale$water.noise, whale$month), median, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)    </code></pre></div></li>
 </ol>
 <p> </p>
@@ -664,7 +664,7 @@ whale.rev.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</spa
 <span class="co"># function(x){}</span>
 <span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale$water.noise, 
     <span class="dt">month =</span> whale$month), function(x) {
-    <span class="kw">round</span>(<span class="kw">median</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">digits =</span> <span class="dv">2</span>)
+    <span class="kw">round</span>(<span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">digits =</span> <span class="dv">2</span>)
 })</code></pre></div></li>
 </ol>
 <p> </p>

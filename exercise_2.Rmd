@@ -35,7 +35,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-6. You can now do stuff your ```weight``` vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your ```weights``` vector. Next, extract the weights for the first five children and store these weights in a new variable called ```first.five```. Remember, you will need to use the square brackets ```[ ]``` to extract (aka indexing, subsetting) elements from a variable.
+6. You can now do stuff to your ```weight``` vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your ```weights``` vector. Next, extract the weights for the first five children and store these weights in a new variable called ```first.five```. Remember, you will need to use the square brackets ```[ ]``` to extract (aka indexing, subsetting) elements from a variable.
 
 \  
 
