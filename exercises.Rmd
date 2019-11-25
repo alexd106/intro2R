@@ -5,6 +5,15 @@ output:
     toc: false
 ---
 
+```{r, include=FALSE}
+library(knitr)
+library(stringr)
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(stringr))
+source('reveal.R')
+```
+
 \  
 
 ### Exercises
@@ -17,19 +26,34 @@ Have fun!
 
 \  
 
-[Exercise 1: Getting to know R and RStudio](exercise_1.html){target="_blank"}
 
-[Exercise 2: Basic R operations](exercise_2.html){target="_blank"}
-
-[Exercise 3: Importing and manipulating dataframes](exercise_3.html){target="_blank"}
-
-[Exercise 4: Visualising data using base R and lattice graphics](exercise_4.html){target="_blank"}
-
-[Exercise 5: Basic statistics in R](exercise_5.html){target="_blank"}
-
-[Exercise 6: Basic programming in R](exercise_6.html){target="_blank"}
+```{r, reveal, echo=FALSE, eval = isFALSE(show_exercise)}
+cat("Exercises will be released as the course progresses")
+```
 
 \  
+
+```{r, results='asis', eval = isTRUE(show_exercise)}
+ex_text <- c(": Getting to know R and RStudio", ": Basic R operations", 
+             ": Importing and manipulating dataframes", 
+             ": Visualising data using base R and lattice graphics",
+             ": Basic statistics in R", 
+             ": Basic programming in R")
+
+file_name <- list.files('.') %>%
+  sort %>% 
+  grep("exercise_[0-9].html", . , value=TRUE)
+
+link_name <- file_name %>%
+  gsub("\\.html", "", .) %>%
+  gsub("_", " ", .) %>%
+  str_to_sentence(.)
+
+paste0("- [", link_name, ex_text, "](", file_name, "){target='_blank'}") %>%
+cat(sep="\n\n")
+```
+
+
 
 ```{r, include = FALSE}
 # TODO: generate list automagically

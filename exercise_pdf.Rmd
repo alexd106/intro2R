@@ -11,6 +11,7 @@ library(stringr)
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE)
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(stringr))
+source('reveal.R')
 ```
 
 \  
@@ -19,7 +20,13 @@ Click on the links below to download pdf versions of the exercises.
 
 \  
 
-```{r, results='asis'}
+```{r, reveal, echo=FALSE, eval = isFALSE(show_exercise)}
+cat("Exercises will be released as the course progresses")
+```
+
+\  
+
+```{r, results='asis', eval = isTRUE(show_exercise)}
 ex_text <- c(": Getting to know R and RStudio", ": Basic R operations", 
              ": Importing and manipulating dataframes", 
              ": Visualising data using base R and lattice graphics",
