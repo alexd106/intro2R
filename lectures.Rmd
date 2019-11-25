@@ -4,5 +4,36 @@ output:
   html_document:
     toc: false
 ---
+```{r, include=FALSE}
+library(htmltools)
+suppressPackageStartupMessages(library(htmltools))
+source('utils.R')
+source('reveal.R')
+```
 
-Content to follow
+\  
+
+Follow the links below for pdf versions of the lecture slides.
+
+\  
+
+```{r, reveal, echo=FALSE, eval = isFALSE(show_lecture)}
+cat("Lectures will be released as the course progresses")
+```
+
+
+```{r, echo=FALSE, eval = isTRUE(show_lecture)}
+thumbnail("Introduction to R", "images/r_lecture_thumb.png",
+          "lectures/introduction_to_r_2019.pdf")
+```
+
+```{r, echo=FALSE, eval = isTRUE(show_lecture)}
+thumbnail("Data in R", "images/data_in_r_thumb.png",
+          "lectures/getting_the_data_in_r.pdf")
+```
+
+```{r, echo=FALSE, eval = isTRUE(show_lecture)}
+thumbnail("Simple Statistics in R", "images/stats_r_thumb.png",
+          "lectures/statistics_in_r.pdf")
+```
+
