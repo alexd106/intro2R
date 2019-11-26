@@ -1,5 +1,5 @@
 ---
-title: ""
+title: 'People'
 output: 
   html_document:
     toc: yes
@@ -28,6 +28,8 @@ Alex is a Reader in Biostatistics at the University of Aberdeen and has been tea
 
 \  
 
+\  
+
 #### Deon Roos  
 <div style= "float:left;position: relative; top: 5px;">
 ```{r, out.width = "200px", out.extra='style="padding:30px;"', echo = FALSE}
@@ -41,6 +43,8 @@ Deon is a PhD student in applied ecology at the University of Aberdeen researchi
 - Web: https://www.abdn.ac.uk/people/deon.roos
 - Twitter: https://twitter.com/DeonRoos88
 - GitHub: https://github.com/Deon88
+
+\  
 
 \  
 
@@ -65,11 +69,13 @@ Ana is a PhD student in Ecology at the University of Aberdeen looking at the eco
 
 \  
 
+\  
+
 ## Administrative Contacts  
 
 \  
 
-####Izzie Buchanan (QUADRAT Partnership Co-ordinator)
+#### Izzie Buchanan (QUADRAT Partnership Co-ordinator)
 
 - Email: quadrat(at)abdn(dot)ac(dot)uk
 - Twitter: https://twitter.com/quadratdtp
