@@ -17,14 +17,14 @@ knitr::include_graphics("images/alex.png")
 ```
 </div>
 
+\ 
+
 Alex is a Reader in Biostatistics at the University of Aberdeen and has been teaching (and learning) R for the last 15 years. 
 
 - Email: a(dot)douglas(at)abdn(dot)ac(dot)uk
 - Web: https://www.abdn.ac.uk/people/a.douglas/
 - Twitter: https://twitter.com/Scedacity
 - GitHub: https://github.com/alexd106
-
-\  
 
 \  
 
@@ -37,14 +37,14 @@ knitr::include_graphics("images/deon.png")
 ```
 </div>
 
+\  
+
 Deon is a PhD student in applied ecology at the University of Aberdeen researching spatial variation of the temporal kind in population dynamics. He has been using and teaching R for 5 years. 
 
 - Email: deon(dot)roos(at)abdn(dot)ac(dot)uk
 - Web: https://www.abdn.ac.uk/people/deon.roos
 - Twitter: https://twitter.com/DeonRoos88
 - GitHub: https://github.com/Deon88
-
-\  
 
 \  
 
@@ -57,6 +57,7 @@ knitr::include_graphics("images/ana.png")
 ```
 </div>
 
+\  
 
 Ana is a PhD student in Ecology at the University of Aberdeen looking at the ecology and physics of tidal stream habitats. She has been using and teaching R for 7 years. 
 
@@ -69,13 +70,22 @@ Ana is a PhD student in Ecology at the University of Aberdeen looking at the eco
 
 \  
 
-\  
-
 ## Administrative Contacts  
 
 \  
 
-#### Izzie Buchanan (QUADRAT Partnership Co-ordinator)
+#### Izzie Buchanan
+<div style= "float:left;position: relative; top: 5px;">
+```{r, out.width = "200px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/izzie_c.png")
+```
+</div>
+
+\  
+
+Izzie is the QUADRAT Partnership Co-ordinator.
 
 - Email: quadrat(at)abdn(dot)ac(dot)uk
 - Twitter: https://twitter.com/quadratdtp
+
+
