@@ -30,9 +30,6 @@ output:
 ## R Markdown / Markdown resources
 
 - [Basic Markdown + R Markdown reference](http://bioconnector.github.io/markdown)
-- In-browser markdown editors: 
-    - Minimal: [bioconnector.github.io/markdown-editor](http://bioconnector.github.io/markdown-editor)
-    - Better: [stackedit.io](http://stackedit.io), [dillinger.io](http://dillinger.io)
 - [A good markdown reference](http://commonmark.org/help/)
 - [A good 10-minute markdown tutorial](http://commonmark.org/help/tutorial/)
 - [RStudio's R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) and [R Markdown Reference Sheet](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
