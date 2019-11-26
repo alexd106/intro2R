@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -68,7 +69,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -229,18 +229,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -391,7 +379,7 @@ $(document).ready(function () {
 
 
 <p> </p>
-<p>During the course we will be using both R and RStudio. If you’re bringing your own laptop (see <a href="index.html">FAQ</a>) please follow the instructions under <strong><em>Core Software</em></strong> and <strong><em>Get the Data</em></strong> headings before you arrive. No worries if you are having problems installing the software, we will run a drop-in session from 14:00 - 15:30 on Monday 2<sup>nd</sup> December in room FN113 in the <a href="images/uoa_map.png" target="_blank">Fraser Noble building</a> (building No. 7 on the map) to troubleshoot installation problems (bring your laptop!). Alternatively you can <a href="People.html">email one of the instructors</a> prior to the course.</p>
+<p>During the course we will be using both R and RStudio. If you’re bringing your own laptop (see <a href="index.html">FAQ</a>) please follow the instructions under <strong><em>Core Software</em></strong> and <strong><em>Get the Data</em></strong> headings before you arrive. No worries if you are having problems installing the software, we will run a drop-in session from 14:00 - 15:30 on Monday 2<sup>nd</sup> December in room FN113 in the <a href="images/uoa_map.png" target="_blank">Fraser Noble building</a> (building No. 7 on the map) to troubleshoot installation problems (bring your laptop!). Alternatively you can <a href="People.html">email one of the instructors</a> prior to the course.</p>
 <p> </p>
 <div id="core-software" class="section level2">
 <h2>Core Software</h2>
@@ -434,6 +422,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

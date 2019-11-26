@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -27,41 +28,66 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 
 .sourceCode .row {
   width: 100%;
@@ -86,7 +112,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -143,7 +169,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -304,27 +329,10 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 <style type="text/css">
 .code-folding-btn { margin-bottom: 4px; }
 </style>
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
 
 
 
@@ -487,76 +495,76 @@ $(document).ready(function () {
 <p> </p>
 <ol style="list-style-type: decimal">
 <li><p>Create a function to calculate the area of a circle. Test the function by finding the area of a circle with a diameter of 3.4 cm. Can you use it on a vector of data?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># area of a circle</span>
-
-circle.area &lt;-<span class="st"> </span>function(r){ 
-    pi *<span class="st"> </span>r^<span class="dv">2</span>
-}</code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># area of a circle</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">circle.area &lt;-<span class="st"> </span><span class="cf">function</span>(r){ </a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    pi <span class="op">*</span><span class="st"> </span>r<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">}</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Write a function to convert farenheit to centegrade (oC = (oF - 32) x 5/9). Get your function to print out your result in the following format: “Farenheit : <em>value of oF</em> is equivalent to <em>value oC</em> centigrade.”</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">far.cent &lt;-<span class="st"> </span>function(a) {
-    val &lt;-<span class="st"> </span>(a -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span><span class="dv">5</span>/<span class="dv">9</span>
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Fahrenheit: &quot;</span>, <span class="kw">round</span>(a, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oF&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)  <span class="co"># round 3dp</span>
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Centigrade: &quot;</span>, <span class="kw">round</span>(val, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oC&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)  <span class="co"># round 3dp</span>
-}
-
-<span class="co"># alternative Fahrenheit to centigrade using cat function</span>
-
-far.cent2 &lt;-<span class="st"> </span>function(a) {
-    val &lt;-<span class="st"> </span>(a -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span><span class="dv">5</span>/<span class="dv">9</span>  <span class="co">#calculation</span>
-    <span class="kw">cat</span>(<span class="st">&quot;Fahrenheit: &quot;</span>, <span class="kw">round</span>(a, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oF&quot;</span>, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)  <span class="co"># use cat function</span>
-    <span class="kw">cat</span>(<span class="st">&quot;Centigrade: &quot;</span>, <span class="kw">round</span>(val, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oC&quot;</span>, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
-}</code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">far.cent &lt;-<span class="st"> </span><span class="cf">function</span>(a){</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    val &lt;-<span class="st"> </span>(a<span class="dv">-32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Fahrenheit: &quot;</span>, <span class="kw">round</span>(a, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oF&quot;</span>,<span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)<span class="co"># round 3dp</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Centigrade: &quot;</span>, <span class="kw">round</span>(val, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oC&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)<span class="co"># round 3dp</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co"># alternative Fahrenheit to centigrade using cat function</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">far.cent2 &lt;-<span class="st"> </span><span class="cf">function</span>(a){</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">    val &lt;-<span class="st"> </span>(a <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span>   <span class="co">#calculation</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">    <span class="kw">cat</span>(<span class="st">&quot;Fahrenheit: &quot;</span>, <span class="kw">round</span>(a, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oF&quot;</span>, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)   <span class="co"># use cat function</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">    <span class="kw">cat</span>(<span class="st">&quot;Centigrade: &quot;</span>, <span class="kw">round</span>(val, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;oC&quot;</span>, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)   </a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">}</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Create a vector of normally distributed data, of length 100, mean 35 and standard deviation of 15. Write a function to calculate the mean, median, and range of the vector, print these values out with appropriate labels. Also get the function to plot a histogram (as a proportion) of the values and add a density curve.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a vector of normally distributed data</span>
-<span class="co"># length 100, mean 35 and standard deviation of 29</span>
-
-vals &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">35</span>, <span class="dv">15</span>)  <span class="co"># create some norm dist data mean 35, sd = 15</span>
-
-summary.fun &lt;-<span class="st"> </span>function(dat){
-    mymean &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">mean</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)          <span class="co"># calc mean</span>
-    mymedian &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">median</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)    <span class="co"># calc median</span>
-    mymin &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">min</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)          <span class="co"># calc min</span>
-    mymax &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">max</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)          <span class="co"># calc max</span>
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;mean:&quot;</span>, mymean, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)     <span class="co"># print mean</span>
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;median:&quot;</span>, mymedian, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)     <span class="co"># print median</span>
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;range:&quot;</span>, <span class="st">&quot;from:&quot;</span>, mymin, <span class="st">&quot;to&quot;</span>, mymax, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>) 
-    dens &lt;-<span class="st"> </span><span class="kw">density</span>(dat)                          <span class="co"># estimate density curve</span>
-    <span class="kw">hist</span>(dat, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">freq =</span> <span class="ot">FALSE</span>)  <span class="co"># plot histogram</span>
-    <span class="kw">lines</span>(dens, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)             <span class="co"># plot density curve</span>
-}
-
-<span class="co"># use the function</span>
-<span class="kw">summary.fun</span>(vals)</code></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Create a vector of normally distributed data</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># length 100, mean 35 and standard deviation of 29</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">vals &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">35</span>, <span class="dv">15</span>)  <span class="co"># create some norm dist data mean 35, sd = 15</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">summary.fun &lt;-<span class="st"> </span><span class="cf">function</span>(dat){</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">    mymean &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">mean</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)          <span class="co"># calc mean</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">    mymedian &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">median</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)    <span class="co"># calc median</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    mymin &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">min</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)          <span class="co"># calc min</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    mymax &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">max</span>(dat), <span class="dt">digits =</span> <span class="dv">4</span>)          <span class="co"># calc max</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;mean:&quot;</span>, mymean, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)     <span class="co"># print mean</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;median:&quot;</span>, mymedian, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>)     <span class="co"># print median</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;range:&quot;</span>, <span class="st">&quot;from:&quot;</span>, mymin, <span class="st">&quot;to&quot;</span>, mymax, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>), <span class="dt">quote =</span> <span class="ot">FALSE</span>) </a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">    dens &lt;-<span class="st"> </span><span class="kw">density</span>(dat)                          <span class="co"># estimate density curve</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">    <span class="kw">hist</span>(dat, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">freq =</span> <span class="ot">FALSE</span>)  <span class="co"># plot histogram</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    <span class="kw">lines</span>(dens, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)             <span class="co"># plot density curve</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">}</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co"># use the function</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="kw">summary.fun</span>(vals)</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Write a function to calculate the median value of a vector of numbers (yes I know there’s a <code>median()</code> function already but this is fun!). Be careful with vectors of an even sample size, as you will have to take the average of the two central numbers (hint: use modulo %%2 to determine whether the vector is an odd or an even size). Test your function on vectors with both odd and even sample sizes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate a median</span>
-
-ourmedian &lt;-<span class="st"> </span>function(x){
-    n &lt;-<span class="st"> </span><span class="kw">length</span>(x)
-    if (n %%<span class="st"> </span><span class="dv">2</span> ==<span class="st"> </span><span class="dv">1</span>)      <span class="co"># odd numbers</span>
-      <span class="kw">sort</span>(x)[(n +<span class="st"> </span><span class="dv">1</span>)/<span class="dv">2</span>]  <span class="co"># find the middle number by adding 1 to length and div 2</span>
-    else {                <span class="co"># even numbers</span>
-      middletwo &lt;-<span class="st"> </span><span class="kw">sort</span>(x)[(n/<span class="dv">2</span>) +<span class="st"> </span><span class="dv">0</span>:<span class="dv">1</span>]   <span class="co">#find the two middle numbers</span>
-      <span class="kw">mean</span>(middletwo)
-      }
-}
-
-<span class="co"># use the function</span>
-mydat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span> )
-
-<span class="co"># our function</span>
-<span class="kw">ourmedian</span>(mydat)
-
-<span class="co"># R median function</span>
-<span class="kw">median</span>(mydat)</code></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># calculate a median</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">ourmedian &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="cf">if</span> (n <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)      <span class="co"># odd numbers</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">      <span class="kw">sort</span>(x)[(n <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>]  <span class="co"># find the middle number by adding 1 to length and div 2</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="cf">else</span> {                <span class="co"># even numbers</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">      middletwo &lt;-<span class="st"> </span><span class="kw">sort</span>(x)[(n<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">1</span>]   <span class="co">#find the two middle numbers</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">      <span class="kw">mean</span>(middletwo)</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">      }</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">}</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co"># use the function</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">mydat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span> )</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co"># our function</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="kw">ourmedian</span>(mydat)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co"># R median function</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="kw">median</span>(mydat)</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
@@ -567,23 +575,21 @@ mydat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
 <li><p>(cont) Where <em>N<sub>t</sub></em> is the population size at time <em>t</em>, <em>r</em> is the population growth rate and <em>K</em> is the carrying capacity. Write a function to simulate this model so you can conveniently determine the effect of changing <em>r</em> and the initial population size N0. <em>K</em> is often set to 100 by default, but you want the option of being able to change this with your function. So, you will need a function with the following arguments; nzero which sets the initial population size, <em>r</em> which will determine the population growth rate, time which sets how long the simulation will run for and <em>K</em> which we will initially set to 100 by default.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># function to simulate Ricker model</span>
-
-Ricker.model &lt;-<span class="st"> </span>function(nzero, r, time, <span class="dt">K =</span> <span class="dv">1</span>) {
-    <span class="co"># sets initial parameters</span>
-    N &lt;-<span class="st"> </span><span class="kw">numeric</span>(time +<span class="st"> </span><span class="dv">1</span>)  <span class="co"># creates a real vector of length time+1 to store values of Nt+1</span>
-    N[<span class="dv">1</span>] &lt;-<span class="st"> </span>nzero  <span class="co"># sets initial population size in first element of N</span>
-    for (i in <span class="dv">1</span>:time) {
-        <span class="co"># loops over time</span>
-        N[i +<span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span>N[i] *<span class="st"> </span><span class="kw">exp</span>(r *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>N[i]/K))
-    }
-    Time &lt;-<span class="st"> </span><span class="dv">0</span>:time  <span class="co"># creates vector for x axis</span>
-    <span class="kw">plot</span>(Time, N, <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, time), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Population size (N)&quot;</span>, 
-        <span class="dt">main =</span> <span class="kw">paste</span>(<span class="st">&quot;r =&quot;</span>, r, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))  <span class="co"># plots     output</span>
-}
-
-<span class="co"># To run play around with the different parameters, especially r</span>
-<span class="kw">Ricker.model</span>(<span class="dt">nzero =</span> <span class="fl">0.1</span>, <span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">time =</span> <span class="dv">100</span>)</code></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># function to simulate Ricker model</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">Ricker.model &lt;-<span class="st"> </span><span class="cf">function</span>(nzero, r, time, <span class="dt">K=</span><span class="dv">1</span>){     <span class="co"># sets initial parameters</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  N &lt;-<span class="st"> </span><span class="kw">numeric</span>(time <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)    <span class="co"># creates a real vector of length time+1 to store values of Nt+1</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  N[<span class="dv">1</span>] &lt;-<span class="st"> </span>nzero             <span class="co"># sets initial population size in first element of N</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>time) {               <span class="co"># loops over time</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">      N[i<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>N[i]<span class="op">*</span><span class="kw">exp</span>(r<span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>N[i]<span class="op">/</span>K))    </a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  }</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  Time &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span>time                     <span class="co"># creates vector for x axis</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">  <span class="kw">plot</span>(Time, N, <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, time), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Population size (N)&quot;</span>, <span class="dt">main =</span> <span class="kw">paste</span>(<span class="st">&quot;r =&quot;</span>, r, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>))   <span class="co"># plots     output</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">}</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co"># To run</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co"># play around with the different parameters, especially r</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="kw">Ricker.model</span>(<span class="dt">nzero=</span><span class="fl">0.1</span>,<span class="dt">r=</span><span class="dv">1</span>,<span class="dt">time=</span><span class="dv">100</span>)</a></code></pre></div></li>
 </ol>
 <p> </p>
 <p>End of Exercise 6</p>
@@ -606,6 +612,28 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
