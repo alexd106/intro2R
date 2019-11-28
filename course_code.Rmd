@@ -14,32 +14,56 @@ suppressPackageStartupMessages(library(stringr))
 source('reveal.R')
 ```
 
-```{r, ziprelease, include = FALSE, eval = isTRUE(show_text)}
-if (file.exists("exercise_solutions/all_Rcode.zip")) system("rm exercise_solutions/all_Rcode.zip ; zip -r exercise_solutions/all_Rcode.zip exercise_solutions -x '*.DS_Store'")
-```
-
-```{r, zipnorelease, include = FALSE, eval = isFALSE(show_text)}
-if (file.exists("exercise_solutions/all_Rcode.zip")) system("rm exercise_solutions/all_Rcode.zip ; zip -r exercise_solutions/all_Rcode.zip exercise_solutions -x '*.DS_Store' -x '*.R'")
-```
-
 \  
 
-```{r, reveal, echo = FALSE, eval = isFALSE(show_text)}
+```{r, reveal, echo = FALSE, eval = isFALSE(show_text12)}
 cat("solutions will be released as the course progresses")
 ```
 
 \  
 
-To download the solutions for each of the exercises as individual R scripts click the relevant links below. If the code opens in a browser window then right click on the link and select 'save link as' (or similar). If you prefer a single file containing all solutions you can download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](exercise_solutions/all_Rcode.zip)**.
+To download the solutions for each of the exercises as individual R scripts click the relevant links below. If the code opens in a browser window then right click on the link and select 'save link as' (or similar). 
 
 \  
 
-```{r, results='asis', , eval = isTRUE(show_text)}
+```{r sol12, results='asis', , eval = isTRUE(show_text12)}
 dir <- "exercise_solutions/"
 file_name <- list.files(dir) %>%
              sort %>% 
-             grep("\\.html$ | *.zip", ., value=TRUE, invert=TRUE) %>% 
-             .[c(1,2,3,5,4,6,7)]
+             grep("(exercise_[12]_solution.R)", . , value=TRUE) 
+
+link_name <- file_name %>%
+            gsub("\\.R", "", .) %>%
+            paste0(., "s") %>%
+            gsub("_", " ", .) %>%
+            str_to_sentence(.)
+
+paste0("- [", link_name, "](", "exercise_solutions/", file_name, ")") %>%
+cat(sep="\n\n")
+```
+
+```{r sol34, results='asis', , eval = isTRUE(show_text34)}
+dir <- "exercise_solutions/"
+file_name <- list.files(dir) %>%
+             sort %>% 
+             grep("(exercise_[34]_solution.R|exercise_[34]_ggplot_solution.R)", . , value=TRUE) %>% 
+             .[c(1,3,2)]
+
+link_name <- file_name %>%
+            gsub("\\.R", "", .) %>%
+            paste0(., "s") %>%
+            gsub("_", " ", .) %>%
+            str_to_sentence(.)
+
+paste0("- [", link_name, "](", "exercise_solutions/", file_name, ")") %>%
+cat(sep="\n\n")
+```
+
+```{r sol56, results='asis', , eval = isTRUE(show_text56)}
+dir <- "exercise_solutions/"
+file_name <- list.files(dir) %>%
+             sort %>% 
+             grep("(exercise_[56]_solution.R)", . , value=TRUE) 
 
 link_name <- file_name %>%
             gsub("\\.R", "", .) %>%

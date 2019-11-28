@@ -20,15 +20,46 @@ Follow the links below for solutions to each of the exercises you have completed
 
 \  
 
-```{r, reveal, echo=FALSE, eval = isFALSE(show_text)}
+```{r, reveal, echo=FALSE, eval = isFALSE(show_text12)}
 cat("solutions will be released as the course progresses")
 ```
 
-```{r, results='asis', eval = isTRUE(show_text)}
+```{r sol12, results='asis', eval = isTRUE(show_text12)}
 file_name <- list.files('.') %>%
   sort %>% 
-  grep("(exercise_[0-9]_solution.html|exercise_[0-9]_ggplot_solution.html)", . , value=TRUE) %>%
-  .[c(1,2,3,5,4,6,7)]
+  grep("(exercise_[12]_solution.html)", . , value=TRUE)
+
+link_name <- file_name %>%
+  gsub("\\.html", "", .) %>%
+  paste0(., "s") %>%
+  gsub("_", " ", .) %>%
+  str_to_sentence(.)
+
+paste0("- [", link_name, "](", file_name, "){target='_blank'}") %>%
+cat(sep="\n\n")
+```
+
+
+```{r sol34, results='asis', eval = isTRUE(show_text34)}
+file_name <- list.files('.') %>%
+  sort %>% 
+  grep("(exercise_[34]_solution.html|exercise_[34]_ggplot_solution.html)", . , value=TRUE) %>%
+  .[c(1,3,2)]
+
+link_name <- file_name %>%
+  gsub("\\.html", "", .) %>%
+  paste0(., "s") %>%
+  gsub("_", " ", .) %>%
+  str_to_sentence(.)
+
+paste0("- [", link_name, "](", file_name, "){target='_blank'}") %>%
+cat(sep="\n\n")
+```
+
+```{r sol56, results='asis', eval = isTRUE(show_text56)}
+file_name <- list.files('.') %>%
+  sort %>% 
+  grep("(exercise_[56]_solution.html)", . , value=TRUE)
 
 link_name <- file_name %>%
   gsub("\\.html", "", .) %>%
