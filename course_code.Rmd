@@ -1,5 +1,5 @@
 ---
-title: "Exercise solutions R code"
+title: "Download exercise solutions"
 output: 
   html_document:
     toc: false
