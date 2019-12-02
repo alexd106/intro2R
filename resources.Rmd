@@ -20,7 +20,6 @@ output:
 
 - [R-Project](https://cran.r-project.org/other-docs.html): User contributed documentation
 - [The R Journal](https://journal.r-project.org/): Journal of the R project for statistical computing
-- [TryR](http://tryr.codeschool.com/): An interactive, browser-based R tutor
 - [Swirl](http://swirlstats.com/): An R package that teaches you R (_and statistics!_) from within R
 - [RStudio's printable cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 - [Rseek](http://rseek.org/): A custom Google search for R-related sites
