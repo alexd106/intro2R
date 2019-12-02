@@ -7,4 +7,4 @@ show_text56 <- FALSE    # ex 5 and 6
 show_lecture <- FALSE
 
 # Change to TRUE to show exercises
-show_exercise <- FALSE
+show_exercise <- TRUE
