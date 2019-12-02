@@ -53,7 +53,7 @@ paste0("- [", link_name, ex_text, "](", file_name, "){target='_blank'}") %>%
 cat(sep="\n\n")
 ```
 
-
+\  
 
 ```{r, include = FALSE}
 # TODO: generate list automagically
