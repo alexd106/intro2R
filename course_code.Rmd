@@ -1,5 +1,5 @@
 ---
-title: "Download exercise solutions"
+title: "Offline exercise solutions"
 output: 
   html_document:
     toc: false
