@@ -13,4 +13,4 @@
 .Trashes
 .DS_Store
 # R markdown stuff
-*.log
+.log

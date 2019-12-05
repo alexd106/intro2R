@@ -2,8 +2,8 @@
 
 # area of a circle
 
-circle.area <- function(r){ 
-	pi * r^2
+circle.area <- function(d){ 
+	pi * (d/2)^2
 }
 
 

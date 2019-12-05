@@ -22,8 +22,8 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
     
     # area of a circle
     
-    circle.area <- function(r){ 
-    	pi * r^2
+    circle.area <- function(d){ 
+    	pi * (d/2)^2
     }
     
     ```
