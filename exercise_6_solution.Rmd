@@ -21,11 +21,26 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
     ```{r Q1, results = 'asis'}
     
     # area of a circle
+    # the equation to calculate the area of a circle is pi * radius^2
     
     circle.area <- function(d){ 
     	pi * (d/2)^2
     }
     
+    # to use your new function
+    
+    circle.area(10)
+    # [1] 78.53982
+    
+    # to test on a vector of diameters
+    # first create a vector with diameters ranging from 0 to 50 in steps of 10
+    
+    cir.diam <- seq(from = 0, to = 50, by = 10)
+    
+    # test your function
+    
+    circle.area(cir.diam)
+    # [1]    0.00000   78.53982  314.15927  706.85835 1256.63706 1963.49541
     ```
 
 \  

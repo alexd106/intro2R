@@ -496,10 +496,26 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li><p>Create a function to calculate the area of a circle. Test the function by finding the area of a circle with a diameter of 3.4 cm. Can you use it on a vector of data?</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># area of a circle</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">circle.area &lt;-<span class="st"> </span><span class="cf">function</span>(d){ </a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">    pi <span class="op">*</span><span class="st"> </span>(d<span class="op">/</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">}</a></code></pre></div></li>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># the equation to calculate the area of a circle is pi * radius^2</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">circle.area &lt;-<span class="st"> </span><span class="cf">function</span>(d){ </a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    pi <span class="op">*</span><span class="st"> </span>(d<span class="op">/</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># to use your new function</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">circle.area</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co"># [1] 78.53982</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co"># to test on a vector of diameters</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co"># first create a vector with diameters ranging from 0 to 50 in steps of 10</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">cir.diam &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">50</span>, <span class="dt">by =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co"># test your function</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="kw">circle.area</span>(cir.diam)</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co"># [1]    0.00000   78.53982  314.15927  706.85835 1256.63706 1963.49541</span></a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
