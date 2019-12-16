@@ -15,6 +15,9 @@ navbar:
     - text: "Lectures"
       icon: fa-university
       href: lectures.html
+    - text: "R book"
+      icon: fa-book
+      href: https://alexd106.github.io/Rbook/
     - text: "Exercises"
       icon: fa-book
       href: exercises.html
