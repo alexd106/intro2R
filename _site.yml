@@ -1,9 +1,9 @@
 # See http://rmarkdown.rstudio.com/rmarkdown_websites.html
 
-name: "QUADstat an introduction to R"
+name: "An introduction to R"
 output_dir: "."
 navbar:
-  title: "QUADstat"
+  title: "Intro2R"
   icon: fa-home
   left:
     - text: "Home"
@@ -37,11 +37,8 @@ navbar:
           href: "resources.html"
         - text: "Feedback"
           icon: fa-commenting
-          href: https://docs.google.com/forms/d/e/1FAIpQLSfCbHly9uxs7IClhBd95y9JhfG-a5JUXCAal6sFyKKJiWR1Ng/viewform?usp=sf_link
+          href: 
         - text: "----"
-        - text: "QUADRAT"
-          icon: fa-chrome
-          href: https://www.quadrat.ac.uk/
         - text: "Contact"
           icon: fa-envelope fa-lg
           href: People.html
@@ -50,7 +47,7 @@ navbar:
           href: http://github.com/alexd106
         - text: "Twitter"
           icon: fa-twitter fa-lg
-          href: https://twitter.com/QUADRATdtp  
+          href: https://twitter.com/Scedacity
 
 output:
   html_document:

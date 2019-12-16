@@ -1,5 +1,5 @@
 ---
-title: "QUADstat - An introduction to R"
+title: "An introduction to R"
 output: 
   html_document:
     toc: no
@@ -9,7 +9,7 @@ output:
 
 ### Course Introduction
 
-Welcome to the [QUADRAT](https://www.quadrat.ac.uk/){target='_blank'} DTP _Introduction to R_ training course. Over the next 3 days we hope to introduce you to using R, an interactive environment for statistical computing. R in itself is not difficult to learn, but just like any new language the initial learning curve can be a little steep and you will need to use it frequently otherwise it’s easy to forget. 
+Welcome to the _Introduction to R_ training course. Over the next 3 days we hope to introduce you to using R, an interactive environment for statistical computing. R in itself is not difficult to learn, but just like any new language the initial learning curve can be a little steep and you will need to use it frequently otherwise it’s easy to forget. 
 
 A few notes about this course. I have tried to simplify the content of this course as much as possible and have based it on 15 years experience teaching (and learning!) R. It is not intended as an introductory statistics course, although I will be using some basic statistics to highlight some of R’s capabilities. My aim is to help you climb the initial learning curve and provide you with the basic skills to enable you to further your experience in using R. I have included a number of practical [exercises](exercises.html) for you to work through during the course and encourage you complete these in your own time - you certainly won’t learn how to use R by watching other people do it. 
 
@@ -27,7 +27,7 @@ This course assumes no previous experience or knowledge of using either R or RSt
 \  
 
 #### Do I need a laptop?
-No. We will provide desktop computers for those who do not wish to bring their own laptops to the course. All of the desktops will have both R and RStudio already installed but please bring along a USB flash drive to save your work. If you require a desktop computer then please make sure you have registered for a UoA visitor computing account prior to the start of the course (contact [Izzie Buchanan](People.html) for further details). Having said that, if you have a laptop (Mac or Windows) we encourage you to bring it to the course. Please take a look at the **[Setup<i class="fa fa-cog" aria-hidden="true"></i>](setup.html)** link on the navbar at the top for further instructions on how to set up your laptop prior to the course starting.
+No. We will provide desktop computers for those who do not wish to bring their own laptops to the course. All of the desktops will have both R and RStudio already installed but please bring along a USB flash drive to save your work. If you require a desktop computer then please make sure you have registered for a UoA visitor computing account prior to the start of the course. Having said that, if you have a laptop (Mac or Windows) we encourage you to bring it to the course. Please take a look at the **[Setup<i class="fa fa-cog" aria-hidden="true"></i>](setup.html)** link on the navbar at the top for further instructions on how to set up your laptop prior to the course starting.
 
 \  
 

@@ -74,18 +74,18 @@ Ana is a PhD student in Ecology at the University of Aberdeen looking at the eco
 
 \  
 
-#### Izzie Buchanan
+#### TBC
 <div style= "float:left;position: relative; top: 5px;">
 ```{r, out.width = "200px", out.extra='style="padding:30px;"', echo = FALSE}
-knitr::include_graphics("images/izzie_c.png")
+knitr::include_graphics("images/TBC.png")
 ```
 </div>
 
 \  
 
-Izzie is the QUADRAT Partnership Co-ordinator.
+TBC is the TBC Partnership Co-ordinator.
 
-- Email: quadrat(at)abdn(dot)ac(dot)uk
-- Twitter: https://twitter.com/quadratdtp
+- Email: TBC
+- Twitter: TBC
 
 
