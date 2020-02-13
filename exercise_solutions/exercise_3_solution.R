@@ -1,8 +1,8 @@
-## ----Q5-----------------------------------------------------------------------
+## ----Q5------------------------------------------------------------------------------------------------------------------------------------------
 whale <- read.table('workshop/data/whaledata.txt', header = TRUE)
 
 
-## ----Q6, results = 'asis'-----------------------------------------------------
+## ----Q6, results = 'asis'------------------------------------------------------------------------------------------------------------------------
 head(whale)         # display the first 5 rows 
 names(whale)        # display the variable names
 str(whale)          # display the structure of the dataframe whale
@@ -22,7 +22,7 @@ str(whale)          # display the structure of the dataframe whale
 # the variables month and water.noise are factors
 
 
-## ----Q7, results = 'asis'-----------------------------------------------------
+## ----Q7, results = 'asis'------------------------------------------------------------------------------------------------------------------------
 summary(whale)
 
 # NOTE: I have removed the last 3 column information to save space!
@@ -39,7 +39,7 @@ summary(whale)
 # the variable number.whales has one missing value (NA)
 
 
-## ----Q8, results = 'asis'-----------------------------------------------------
+## ----Q8, results = 'asis'------------------------------------------------------------------------------------------------------------------------
 # first 10 rows and first 4 columns
 whale.sub <- whale[1:10, 1:4]                                      
 
@@ -59,7 +59,7 @@ whale.last <- whale[-c(1:10), -c(ncol(whale))]
 whale.last <- whale[-c(1:10), -c("gradient")]   
 
 
-## ----Q9, tidy = TRUE----------------------------------------------------------
+## ----Q9, tidy = TRUE-----------------------------------------------------------------------------------------------------------------------------
 whale.1200 <- whale[whale$depth > 1200, ]
 
 whale.200 <- whale[whale$gradient > 200, ]
@@ -75,11 +75,11 @@ whale.lat.long <- whale[whale$latitude > 60 & whale$latitude < 61 & whale$longit
 whale.nomed <- whale[whale$water.noise != 'medium', ]
 
 
-## ----Q10, tidy = TRUE---------------------------------------------------------
+## ----Q10, tidy = TRUE----------------------------------------------------------------------------------------------------------------------------
 whale.subset <- whale[whale$month == 'October' & whale$water.noise == 'low' & whale$gradient > median(whale$gradient), ]
 
 
-## ----Q11, tidy = TRUE---------------------------------------------------------
+## ----Q11, tidy = TRUE----------------------------------------------------------------------------------------------------------------------------
 # results in a dataframe filled with NAs. 
 whale.new <- whale[whale$depth > 1500 & whale$number.whales > mean(whale$number.whales), ]
 
@@ -89,17 +89,17 @@ whale.new <- whale[whale$depth > 1500 & whale$number.whales > mean(whale$number.
 
 
 
-## ----Q12, tidy = TRUE---------------------------------------------------------
+## ----Q12, tidy = TRUE----------------------------------------------------------------------------------------------------------------------------
 subset(whale, month == 'May' & time.at.station < 1000 & depth > 1000)
 
 subset(whale, month == "October" & latitude > 61, select = c("month", "latitude", "longitude", "number.whales"))
 
 
-## ----Q13----------------------------------------------------------------------
+## ----Q13-----------------------------------------------------------------------------------------------------------------------------------------
 whale.depth.sort <- whale[order(whale$depth), ]
 
 
-## ----Q14, results = 'asis'----------------------------------------------------
+## ----Q14, results = 'asis'-----------------------------------------------------------------------------------------------------------------------
 # notice how the variable water.noise has been ordered - why?
 whale.sorted <- whale[order(whale$water.noise, whale$depth), ]        
 
@@ -107,13 +107,13 @@ whale.sorted <- whale[order(whale$water.noise, whale$depth), ]
 whale.rev.sorted <- whale[order(whale$water.noise, -whale$depth), ]   
 
 
-## ----Q15a---------------------------------------------------------------------
+## ----Q15a----------------------------------------------------------------------------------------------------------------------------------------
 mean(whale$time.at.station)     # mean time at station
 median(whale$depth)             # median depth
 length(whale$number.whales)     # number of observations
 
 
-## ----Q15b, results = 'asis'---------------------------------------------------
+## ----Q15b, results = 'asis'----------------------------------------------------------------------------------------------------------------------
 tapply(whale$number.whales, whale$water.noise, mean)      # notice the NA?
 
 # use the na.rm argument again
@@ -127,7 +127,7 @@ tapply(whale$number.whales, list(whale$water.noise, whale$month), median, na.rm 
 
 
 
-## ----Q16, tidy = TRUE---------------------------------------------------------
+## ----Q16, tidy = TRUE----------------------------------------------------------------------------------------------------------------------------
 aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise), mean, na.rm = TRUE)
 
 aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), mean, na.rm = TRUE)
@@ -136,7 +136,7 @@ aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, mon
 aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), function(x){round(mean(x, na.rm = TRUE), digits = 2)})
 
 
-## ----Q17, results = 'asis'----------------------------------------------------
+## ----Q17, results = 'asis'-----------------------------------------------------------------------------------------------------------------------
 # using table
 table(whale$water.noise)
 table(whale$water.noise, whale$month)
@@ -146,6 +146,6 @@ xtabs(~ water.noise, data = whale)
 xtabs(~ month + water.noise, data = whale)
 
 
-## ----Q18, tidy = TRUE---------------------------------------------------------
+## ----Q18, tidy = TRUE----------------------------------------------------------------------------------------------------------------------------
 write.table(whale.num, "workshop/data/whale_num.txt", col.names = TRUE, row.names = FALSE, sep = "\t")
 

@@ -74,18 +74,4 @@ Ana is a PhD student in Ecology at the University of Aberdeen looking at the eco
 
 \  
 
-#### TBC
-<div style= "float:left;position: relative; top: 5px;">
-```{r, out.width = "200px", out.extra='style="padding:30px;"', echo = FALSE}
-knitr::include_graphics("images/TBC.png")
-```
-</div>
-
-\  
-
-TBC is the TBC Partnership Co-ordinator.
-
-- Email: TBC
-- Twitter: TBC
-
 
