@@ -1,0 +1,27 @@
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+
+.infobox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid midnightblue;
+  border-radius: 10px;
+  background: #ffffff 5px center/3em no-repeat;
+}
+
+.caution {
+  background-image: url("images/lightbulb.png");
+}
+
+.toggle {
+  height: 1.55em;
+  overflow-y: hidden;
+}
+
+.toggle.open {
+  height: auto;
+}

@@ -17,13 +17,16 @@ navbar:
       href: lectures.html
     - text: "R book"
       icon: fa-book
-      href: https://alexd106.github.io/Rbook/
+      href: R_manual_2020.pdf
     - text: "Exercises"
       icon: fa-book
       href: exercises.html
     - text: "Data"
       icon: fa-download
       href: "data.html"
+    - text: "Tutorials"
+      icon: fa-desktop
+      href: Tutorials.html
     - text: "Info"
       icon: fa-question-circle
       menu:
@@ -47,7 +50,7 @@ navbar:
           href: People.html
         - text: "Source code"
           icon: fa-github fa-lg
-          href: http://github.com/alexd106
+          href: https://github.com/alexd106/intro2R
         - text: "Twitter"
           icon: fa-twitter fa-lg
           href: https://twitter.com/Scedacity

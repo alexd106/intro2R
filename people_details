@@ -1,0 +1,39 @@
+#### Deon Roos  
+<div style= "float:left;position: relative; top: 5px;">
+```{r, out.width = "200px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/deon.png")
+```
+</div>
+
+\  
+
+Deon is a PhD student in applied ecology at the University of Aberdeen researching spatial variation of the temporal kind in population dynamics. He has been using and teaching R for 5 years. 
+
+- Email: deon(dot)roos(at)abdn(dot)ac(dot)uk
+- Web: https://www.abdn.ac.uk/people/deon.roos
+- Twitter: https://twitter.com/DeonRoos88
+- GitHub: https://github.com/Deon88
+
+\  
+
+\  
+
+#### Ana Couto
+<div style= "float:left;position: relative; top: 5px;">
+```{r, out.width = "200px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/ana.png")
+```
+</div>
+
+\  
+
+Ana is a PhD student in Ecology at the University of Aberdeen looking at the ecology and physics of tidal stream habitats. She has been using and teaching R for 7 years. 
+
+- Email: a(dot)couto(dot)17(at)abdn(dot)ac(dot)uk
+- Web: https://www.abdn.ac.uk/people/r01ac17
+- Twitter: https://twitter.com/AnaSofiaCouto
+- GitHub:  https://github.com/Anofia
+
+\  
+
+\  

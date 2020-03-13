@@ -1,0 +1,46 @@
+---
+title: "Tutorials"
+output: 
+  html_document:
+    toc: false
+---
+
+\  
+
+\  
+
+\  
+
+<div style= "float:left;position: relative; top: -35px;">
+```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/rmarkdown.png")
+```
+</div>
+
+\ 
+
+[Introduction to reproducible reports using R markdown](Rmarkdown_intro.html)
+
+\  
+
+\  
+
+\  
+
+\  
+
+<div style= "float:left;position: relative; top: -15px;">
+```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/github.png")
+```
+</div>
+
+\  
+
+[Introduction to version control using Git and GitHub](Github_intro.html)
+
+\  
+
+\  
+
+

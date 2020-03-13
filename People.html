@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
@@ -236,75 +233,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-.tocify-subheader {
-  display: inline;
-}
-.tocify-subheader .tocify-item {
-  font-size: 0.95em;
-}
-
-</style>
-
-
 
 </head>
 
@@ -312,16 +240,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -360,7 +278,7 @@ div.tocify {
   </a>
 </li>
 <li>
-  <a href="https://alexd106.github.io/Rbook/">
+  <a href="R_manual_2020.pdf">
     <span class="fa fa-book"></span>
      
     R book
@@ -378,6 +296,13 @@ div.tocify {
     <span class="fa fa-download"></span>
      
     Data
+  </a>
+</li>
+<li>
+  <a href="Tutorials.html">
+    <span class="fa fa-desktop"></span>
+     
+    Tutorials
   </a>
 </li>
 <li class="dropdown">
@@ -422,7 +347,7 @@ div.tocify {
       </a>
     </li>
     <li>
-      <a href="http://github.com/alexd106">
+      <a href="https://github.com/alexd106/intro2R">
         <span class="fa fa-github fa-lg"></span>
          
         Source code
@@ -474,34 +399,18 @@ div.tocify {
 <p> </p>
 <p> </p>
 </div>
-<div id="deon-roos" class="section level4">
-<h4>Deon Roos</h4>
+<div id="thomas-cornulier" class="section level4">
+<h4>Thomas Cornulier</h4>
 <div style="float:left;position: relative; top: 5px;">
-<p><img src="images/Deon.png" width="200px" style="padding:30px;" /></p>
+<p><img src="images/thomas2.png" width="200px" style="padding:30px;" /></p>
 </div>
 <p> </p>
-<p>Deon is a PhD student in applied ecology at the University of Aberdeen researching spatial variation of the temporal kind in population dynamics. He has been using and teaching R for 5 years.</p>
+<p>Thomas is a statistician and applied ecologist at the University of Aberdeen.</p>
 <ul>
-<li>Email: deon(dot)roos(at)abdn(dot)ac(dot)uk</li>
-<li>Web: <a href="https://www.abdn.ac.uk/people/deon.roos" class="uri">https://www.abdn.ac.uk/people/deon.roos</a></li>
-<li>Twitter: <a href="https://twitter.com/DeonRoos88" class="uri">https://twitter.com/DeonRoos88</a></li>
-<li>GitHub: <a href="https://github.com/Deon88" class="uri">https://github.com/Deon88</a></li>
-</ul>
-<p> </p>
-<p> </p>
-</div>
-<div id="ana-couto" class="section level4">
-<h4>Ana Couto</h4>
-<div style="float:left;position: relative; top: 5px;">
-<p><img src="images/ana.png" width="200px" style="padding:30px;" /></p>
-</div>
-<p> </p>
-<p>Ana is a PhD student in Ecology at the University of Aberdeen looking at the ecology and physics of tidal stream habitats. She has been using and teaching R for 7 years.</p>
-<ul>
-<li>Email: a(dot)couto(dot)17(at)abdn(dot)ac(dot)uk</li>
-<li>Web: <a href="https://www.abdn.ac.uk/people/r01ac17" class="uri">https://www.abdn.ac.uk/people/r01ac17</a></li>
-<li>Twitter: <a href="https://twitter.com/AnaSofiaCouto" class="uri">https://twitter.com/AnaSofiaCouto</a></li>
-<li>GitHub: <a href="https://github.com/Anofia" class="uri">https://github.com/Anofia</a></li>
+<li>Email: cornulier(at)abdn(dot)ac(dot)uk</li>
+<li>Web: <a href="https://www.abdn.ac.uk/sbs/people/profiles/cornulier" class="uri">https://www.abdn.ac.uk/sbs/people/profiles/cornulier</a></li>
+<li>Twitter: <a href="https://twitter.com/TCornulier" class="uri">https://twitter.com/TCornulier</a></li>
+<li>GitHub:</li>
 </ul>
 <p> </p>
 <p> </p>
@@ -514,8 +423,6 @@ div.tocify {
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -548,32 +455,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
