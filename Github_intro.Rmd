@@ -1,0 +1,10 @@
+---
+title: "Version control with Git and GitHub"
+author: "Alex Douglas"
+date: "14/03/2020"
+output: html_document
+---
+
+\  
+
+Content to follow
