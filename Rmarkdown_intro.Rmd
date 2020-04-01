@@ -441,7 +441,7 @@ Another useful feature is the ability to embed images and links to web pages (or
 \  
 
 ```markdown
-![R class of 2019](images/class_of_2019.jpg)
+![Cute grey kitten](images/Cute_grey_kitten.jpg)
 ```
 
 \  
@@ -450,7 +450,7 @@ resulting in:
 
 \  
 
-![R class of 2019](images/class_of_2019.jpg)
+![Cute grey kitten](images/Cute_grey_kitten.jpg)
 
 \  
 
@@ -462,14 +462,14 @@ I think a more flexible way of including images in your document is to use the `
 
 <pre class="markdown"><code>&#96;&#96;&#96;{r, echo=FALSE, fig.align='center', out.width='50%'}
 library(knitr)
-include_graphics("images/class_of_2019.jpg")
+include_graphics("images/Cute_grey_kitten.jpg")
 &#96;&#96;&#96;
 </code></pre>
 
 \  
 
 ```{r, echo=FALSE, fig.align='center', out.width='50%'}
-include_graphics("images/class_of_2019.jpg")
+include_graphics("images/Cute_grey_kitten.jpg")
 ```
 
 \  
