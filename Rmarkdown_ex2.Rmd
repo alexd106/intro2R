@@ -1,0 +1,197 @@
+---
+title: "Code chunks in R markdown"
+output:
+  html_document:
+    toc: no
+    css: custom.css
+---
+
+\  
+
+During this exercise you will practice adding code chunks and inline R code to the R markdown document you created during the [previous exercise](Rmarkdown_ex1.html). The solutions to each section of the exercise can be revealed by clicking on the `Solution` button (don't be too quick to do this though!). Once you have finished you can find my version of the `.Rmd` file [here](squid_analysis.Rmd) and the rendered html document [here](squid_analysis.html). A pdf version of the document is [here](squid_analysis.pdf)
+\  
+
+So, the first thing you will need to do is open your `squid_analysis.Rmd` file in RStudio. You will already have a nicely marked up description of the data and the morphological variables measured during the study so we will continue with data import, exploration and some simple visualisations. You will need to download the `squid1.xlsx` file from **[<i class="fa fa-download"></i> Data](data.html)** link, open it in excel and save it as a tab delimited file called `squid1.txt` (as we did during the R course). 
+\  
+
+Create a code chunk named `data-import` and include some R code to import the `squid1.txt` file into R using the `read.table()` function and assign it to a variable called `squid`. Within the code chunk get R to print out the structure of the `squid` variable. Add some text below the code chunk to explain (to your future self) what you are doing. Also write some text with inline R code to state how many observations are present (hint: use the `nrow()` function) in the dataset and how many variables were measured (hint: use the `ncol()` function). 
+
+\  
+
+<div class="toggle"><button>Solution</button>
+````markdown
+`r ''````{r, data-import}
+squid <- read.table('./data/squid1.txt', header = TRUE)
+str(squid)
+```
+  
+In this dataset `r knitr::inline_expr("nrow(squid)")` squid were caught and `r knitr::inline_expr("ncol(squid)")` variables were measured  
+for each squid. Details are shown above.
+````
+</div>
+
+\  
+
+Perhaps you might remember from [Exercise 4](exercise_4_solution.html) that the `year`, `month` and `maturity.stage` variables were coded as integers in the original dataset (see the output from `str(squid)` above to confirm) but we want to recode them as factors. Create a new code chunk called `data-recode` and include R code to create a new variable for each of these variables in the `squid` dataframe and recode them as factors. Change the chunk option to hide this code in the rendered document. Write some text to describe that you have recoded the variables to let the reader know you've done this (even though you don't show the code in the final document).
+
+\  
+
+<div class="toggle"><button>Solution</button>
+````markdown
+`r ''````{r, data-recode, echo=FALSE}
+# convert variables to factors
+squid$Fmaturity <- factor(squid$maturity.stage)
+squid$Fmonth <- factor(squid$month) 
+squid$Fyear <- factor(squid$year)
+```
+
+The variables `maturity.stage`, `month` and `year` were converted from integers to factors in the dataframe  
+`squid`. These recoded variables were named `Fmaturity`, `Fmonth` and `Fyear`.
+````
+</div>
+
+\  
+
+
+Next create a code chunk (give it a suitable name) and write some code to create a table of the number of observations for each year and month combination (hint: remember the ```table()``` function?) Don't forget to use the factor recoded versions of these variables. Use the `kable()` function from the `knitr` package to nicely render the table (remember you will need to use `library(knitr)` to load the package first). You might want to also include the argument `row.names = TRUE` when you use the `kable()` function so the table contains the month numbers. Another argument that is often useful to include is `format = 'markdown` which will ensure the table renders nicely in HTML and pdf formats.  Write some text to highlight which year has the fewest number of observations and which year and month combinations have no observations. 
+
+\  
+
+<div class="toggle"><button>Solution</button>
+````markdown
+Next, let's take a look at the number of observations across years and months.
+
+`r ''````{r, data-obs}
+library(knitr)
+kable(table(squid$Fmonth, squid$Fyear), row.names = TRUE, format = 'markdown')
+```
+
+Or,If you want a fancy table with the variable names (month and year) then use the pander function from the  
+pander package. You will also have to provide the dimnames to the table and use the ftable function to  
+'flatten' the table.  
+
+`r ''````{r, data-obs2}
+library(pander)
+mytab <- table(squid$Fmonth, squid$Fyear)
+names(dimnames(mytab)) <- c("Month", "Year")
+pander(ftable(mytab))
+```
+
+In 1989 data were only collected during December and in 1991 data collection stopped in August.    
+During 1990, no data were collected in either February or June. There are also some months that   
+have very few observations (May 1990 and July 1991 for example) so care must be taken when   
+modelling these data.   
+
+````
+</div>
+
+\  
+
+We should also create a summary table of the number of observations for each level of maturity stage for each month. Create a code chunk and include code to do this but hide the code in the rendered document using the appropriate chunk option. If you feel like it, experiment with the `kableExtra` package to alter some of the formatting (text size etc). You may need to install the package before you can use it. Again, write some text to summarise your findings.
+
+\  
+
+<div class="toggle"><button>Solution</button>
+````markdown
+
+Number of observations each month for each of the squid maturity stages are given in the table below.
+
+`r ''````{r, maturity-obs, echo=FALSE}
+
+# using just kable
+
+kable(table(squid$Fmaturity, squid$Fmonth), row.names = TRUE)
+
+# using kableExtra (good for html output)
+
+library(kableExtra)
+kable(table(squid$Fmaturity, squid$Fmonth), row.names = TRUE) %>%
+    kable_styling(bootstrap_options = "striped", font_size = 14)
+```
+
+Not all maturity stages were observed in all months. Very few squid of maturity stage 1, 2 or 3
+were caught in the months February to May whereas maturity stages 4 and 5 were 
+predominantly caught during these months.
+
+````
+</div>
+
+\  
+
+Ok, lets produce some exploratory plots in our document. The first thing we would like to know is whether there are any unusual observations in the  variables; `DML`, `weight`, `nid.length` and `ovary.weight`. Create a code chunk containing code to plot cleveland dotplots of these variables. You can either plot one after the other or split the plotting device into 2 rows and 2 columns to plot them all together. This time we would like to show the code used to create these plots. Describe what you see and come up with a plausable explanation (refer back to Exercise 4 Question 7 for a hint.)
+
+\  
+
+<div class="toggle"><button>Solution</button>
+````markdown
+
+Now let's check for any unusual observations in the variables; `DML`, `weight`,  
+`nid.length` and `ovary.weight`. 
+
+
+`r ''````{r, dotplot}
+par(mfrow = c(2, 2))
+    dotchart(squid$DML, main = "DML")
+    dotchart(squid$weight, main = "weight")
+    dotchart(squid$nid.length, main = "nid length")
+    dotchart(squid$ovary.weight, main = "ovary weight")
+```
+
+It looks like the variable `nid.length` contains an **unusually large** value. Actually, this value  
+is biologically implausible and clearly an error. I went back and checked my field notebook and  
+sure enough it's a typo. I was knackered at the time and accidentally inserted a zero by mistake  
+when transcribing these data. **Doh!** This squid was identified as observation number  
+`r knitr::inline_expr("which(squid$nid.length > 400)")` with a sample number  
+`r knitr::inline_expr("squid$sample.no[which(squid$nid.length > 400)]")`. This observation was  
+subsequently removed from the data set.  
+
+````
+</div>
+
+\  
+
+Next, produce a boxplot of the `DML` variable against `Fmaturity` to examine whether the size of the squid changes with maturity stage. Change the chunk option to supress the R code in the final document and only display the plot. Write some text to summarise the main conclusions from the plot. Also include some inline R code to report the mean value of DML for each of the maturity stages. 
+
+\  
+
+<div class="toggle"><button>Solution</button>
+````markdown
+
+Let's take a look at whether DML changes with maturity stage. 
+
+`r ''````{r, maturity-dml, echo=FALSE}
+
+boxplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML")
+
+```
+DML was lowest for maturity stage 1 with a mean length of  
+`r knitr::inline_expr("round(mean(squid$DM[squid$Fmaturity == 1]), digits = 2)")` mm. DML  
+increased until maturity stage 3  
+(mean `r knitr::inline_expr("round(mean(squid$DM[squid$Fmaturity == 3]), digits = 2)")` mm)  
+after which it remained reasonably consistent for maturity stages 4  
+(mean `r knitr::inline_expr(" round(mean(squid$DM[squid$Fmaturity == 4]), digits = 2)")` mm)  
+and 5 (mean `r knitr::inline_expr("round(mean(squid$DM[squid$Fmaturity == 5]), digits = 2)")` mm).  
+
+````
+</div>
+ 
+\  
+
+It's always good practice to include a summary of the version of R you have been using as well as a list of packages loaded. An easy way to do this is include `sessionInfo()` in a code chunk at the end of your document.
+
+\  
+
+<div class="toggle"><button>Solution</button>
+````markdown
+`r ''````{r, session-info, echo=FALSE}
+sessionInfo()
+```
+````
+</div>
+
+
+<script>
+  $(".toggle").click(function() {
+    $(this).toggleClass("open");
+  });
+</script>

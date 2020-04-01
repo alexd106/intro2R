@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Alex Douglas" />
+
+
+<title>Squid Analysis</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Intro2R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="setup.html">
+    <span class="fa fa-cog"></span>
+     
+    Setup
+  </a>
+</li>
+<li>
+  <a href="lectures.html">
+    <span class="fa fa-university"></span>
+     
+    Lectures
+  </a>
+</li>
+<li>
+  <a href="R_manual_2020.pdf">
+    <span class="fa fa-book"></span>
+     
+    R book
+  </a>
+</li>
+<li>
+  <a href="exercises.html">
+    <span class="fa fa-book"></span>
+     
+    Exercises
+  </a>
+</li>
+<li>
+  <a href="data.html">
+    <span class="fa fa-download"></span>
+     
+    Data
+  </a>
+</li>
+<li>
+  <a href="Tutorials.html">
+    <span class="fa fa-desktop"></span>
+     
+    Tutorials
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-question-circle"></span>
+     
+    Info
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="syllabus.html">
+        <span class="fa fa-graduation-cap"></span>
+         
+        Syllabus
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="People.html">
+        <span class="fa fa-user-friends"></span>
+         
+        People
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="resources.html">
+        <span class="fa fa-book"></span>
+         
+        Resources
+      </a>
+    </li>
+    <li class="dropdown-header">Feedback</li>
+    <li class="divider"></li>
+    <li>
+      <a href="People.html">
+        <span class="fa fa-envelope fa-lg"></span>
+         
+        Contact
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/alexd106/intro2R">
+        <span class="fa fa-github fa-lg"></span>
+         
+        Source code
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/Scedacity">
+        <span class="fa fa-twitter fa-lg"></span>
+         
+        Twitter
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Squid Analysis</h1>
+<h4 class="author">Alex Douglas</h4>
+<h4 class="date">27/02/2020</h4>
+
+</div>
+
+
+<p> </p>
+<div id="sampling-and-data-description" class="section level3">
+<h3>Sampling and data description</h3>
+<p>These data were originally collected as part of a study published in Aquatic Living Resources (Smith <em>et al</em>., 2005). The aim of the study was to investigate the seasonal patterns of investment in somatic and reproductive tissues in the long finned squid <em>Loligo forbesi</em> caught in Scottish waters. Squid were caught monthly from December 1989 - July 1991 (<strong>month</strong> and <strong>year variables</strong>). After capture, each squid was given a unique specimen code (<strong>specimen variable</strong>) and the following variables measured:</p>
+<p> </p>
+<ul>
+<li><strong>weight variable</strong> - body weight (g)</li>
+<li><strong>sex variable</strong> - sex (only female squid are included here)</li>
+<li><strong>DML variable</strong> - individual dorsal mantle length (mm)</li>
+<li><strong>eviscerate.weight variable</strong> - mantle weight measured without internal organs (g)</li>
+<li><strong>ovary.weight variable</strong> - gonad weight (g)</li>
+<li><strong>nid.weight variable</strong> - nidamental gland weight (g)</li>
+<li><strong>nid.length variable</strong> - nidamental gland length (g)</li>
+<li><strong>dig.weight variable</strong> - digestive gland weight (g)</li>
+</ul>
+<p> </p>
+<p>Each individual was also assigned a categorical measure of maturity (<strong>maturity.stage variable</strong>) ranging from 1 to 5 with 1 = immature, 5 = mature.</p>
+<p>Some interesting background information on squid morphology can be found <a href="https://en.wikipedia.org/wiki/Loligo_forbesii">here</a> and the following image provides a useful summary of squid anatomy.</p>
+<div style="page-break-after: always;"></div>
+<div class="figure">
+<img src="images/squid_anatomy.jpg" alt="squid anatomy" style="width:70.0%" />
+<p class="caption">squid anatomy</p>
+</div>
+<p> </p>
+</div>
+<div id="data-import-and-exploration" class="section level3">
+<h3>Data import and exploration</h3>
+<p> </p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">squid &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./data/squid1.txt&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">str</span>(squid, <span class="dt">vec.len =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    519 obs. of  13 variables:
+##  $ sample.no        : int  105128901 105128901 105128901 105128901 105128901 ...
+##  $ specimen         : int  1002 1003 1005 1007 1008 ...
+##  $ year             : int  1989 1989 1989 1989 1989 ...
+##  $ month            : int  12 12 12 12 12 ...
+##  $ weight           : num  152 106 ...
+##  $ sex              : int  2 2 2 2 2 ...
+##  $ maturity.stage   : int  3 1 2 2 3 ...
+##  $ DML              : int  174 153 169 175 169 ...
+##  $ eviscerate.weight: num  87.5 62.6 79.4 83.1 72.2 ...
+##  $ dig.weight       : num  4.65 3.14 ...
+##  $ nid.length       : num  39.4 24.1 39 41.4 39.8 ...
+##  $ nid.weight       : num  2.46 0.319 ...
+##  $ ovary.weight     : num  1.68 0.103 0.289 0.252 0.86 ...</code></pre>
+<p>In this dataset 519 squid were caught and 13 variables were measured for each squid. Details are shown above.</p>
+<p> </p>
+<p>The variables <code>maturity.stage</code>, <code>month</code> and <code>year</code> were converted from integers to factors in the dataframe <code>squid</code>. These recoded variables were named <code>Fmaturity</code>, <code>Fmonth</code> and <code>Fyear</code>.</p>
+<p> </p>
+<p>Next, let’s take a look at the number of observations across years and months.</p>
+<p> </p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">kable</span>(<span class="kw">table</span>(squid<span class="op">$</span>Fmonth, squid<span class="op">$</span>Fyear), <span class="dt">row.names =</span> <span class="ot">TRUE</span>, <span class="dt">format =</span> <span class="st">&quot;markdown&quot;</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">1989</th>
+<th align="right">1990</th>
+<th align="right">1991</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">0</td>
+<td align="right">40</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">0</td>
+<td align="right">10</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="right">0</td>
+<td align="right">42</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="right">0</td>
+<td align="right">29</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="right">0</td>
+<td align="right">82</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="right">0</td>
+<td align="right">19</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="right">0</td>
+<td align="right">76</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="right">12</td>
+<td align="right">31</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p>In 1989 data were only collected during December and in 1991 data collection stopped in August. During 1990, no data were collected in either February or June. There are also some months that have very few observations (May 1990 and July 1991 for example) so care must be taken when modelling these data.</p>
+<p> </p>
+<!-- If you want a fancy table with the variable names (month and year) then use the pander function from the pander package. You will also have to provide the dimnames to the table and use the ftable function to 'flatten' the table. I have hidden this code and output in the final document but all you need to do is remove include=FALSE argument from the code chunk. -->
+<p> </p>
+<p>Number of observations in each month for each of the squid maturity stages are given in the table below.</p>
+<p> </p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+<th align="right">6</th>
+<th align="right">7</th>
+<th align="right">8</th>
+<th align="right">9</th>
+<th align="right">10</th>
+<th align="right">11</th>
+<th align="right">12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">22</td>
+<td align="right">21</td>
+<td align="right">76</td>
+<td align="right">17</td>
+<td align="right">31</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">31</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">18</td>
+<td align="right">8</td>
+<td align="right">21</td>
+<td align="right">20</td>
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">10</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="right">19</td>
+<td align="right">21</td>
+<td align="right">48</td>
+<td align="right">19</td>
+<td align="right">24</td>
+<td align="right">3</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p>Not all maturity stages were observed in all months. Very few squid of maturity stage 1, 2 or 3 were caught in the months January to May whereas maturity stages 4 and 5 were predominantly caught during these months.</p>
+<p> </p>
+<p>Now let’s check for any unusual observations in the variables; <code>DML</code>, <code>weight</code>, <code>nid.length</code> and <code>ovary.weight</code>.</p>
+<p> </p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">dotchart</span>(squid<span class="op">$</span>DML, <span class="dt">main =</span> <span class="st">&quot;DML&quot;</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">dotchart</span>(squid<span class="op">$</span>weight, <span class="dt">main =</span> <span class="st">&quot;weight&quot;</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">dotchart</span>(squid<span class="op">$</span>nid.length, <span class="dt">main =</span> <span class="st">&quot;nid length&quot;</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">dotchart</span>(squid<span class="op">$</span>ovary.weight, <span class="dt">main =</span> <span class="st">&quot;ovary weight&quot;</span>)</a></code></pre></div>
+<p><img src="squid_analysis_files/figure-html/dotplot-1.png" width="672" /></p>
+<p> </p>
+<p>It looks like the variable <code>nid.length</code> contains an <strong>unusually large</strong> value. Actually, this value is biologically implausible and clearly an error. I went back and checked my field notebook and sure enough it’s a typo. I was knackered at the time and accidentally inserted a zero by mistake when transcribing these data. <strong>Doh!</strong> This squid was identified as 11 with a sample number 105128901. This observation was subsequently removed from the data set.</p>
+<p> </p>
+<p>Let’s take a look at whether DML changes with maturity stage.</p>
+<p> </p>
+<p><img src="squid_analysis_files/figure-html/maturity-dml-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>DML was lowest for maturity stage 1 with a mean length of 139.14 mm. DML increased until maturity stage 3 (mean 222.35 mm) after which it remained reasonably consistent for maturity stages 4 (mean 238.6 mm) and 5 (mean 233.99 mm).</p>
+<p> </p>
+</div>
+<div id="session-information" class="section level3">
+<h3>Session Information</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<!-- But i prefere to use the pander package as it wraps long lines nicely when rendering to PDF. I have hidden this code and output in the final document but all you need to do is remove echo=FALSE argument from the code chunk. -->
+<p><strong>R version 3.6.2 (2019-12-12)</strong></p>
+<p><strong>Platform:</strong> x86_64-apple-darwin15.6.0 (64-bit)</p>
+<p><strong>locale:</strong> en_GB.UTF-8||en_GB.UTF-8||en_GB.UTF-8||C||en_GB.UTF-8||en_GB.UTF-8</p>
+<p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>utils</em>, <em>datasets</em>, <em>methods</em> and <em>base</em></p>
+<p><strong>other attached packages:</strong> <em>pander(v.0.6.3)</em>, <em>kableExtra(v.1.1.0)</em>, <em>ggplot2(v.3.2.1)</em>, <em>htmltools(v.0.4.0)</em>, <em>dplyr(v.0.8.4)</em>, <em>stringr(v.1.4.0)</em> and <em>knitr(v.1.28)</em></p>
+<p><strong>loaded via a namespace (and not attached):</strong> <em>Rcpp(v.1.0.3)</em>, <em>pillar(v.1.4.3)</em>, <em>compiler(v.3.6.2)</em>, <em>formatR(v.1.7)</em>, <em>highr(v.0.8)</em>, <em>tools(v.3.6.2)</em>, <em>digest(v.0.6.24)</em>, <em>packrat(v.0.5.0)</em>, <em>viridisLite(v.0.3.0)</em>, <em>evaluate(v.0.14)</em>, <em>tibble(v.2.1.3)</em>, <em>lifecycle(v.0.1.0)</em>, <em>gtable(v.0.3.0)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>rlang(v.0.4.4)</em>, <em>rstudioapi(v.0.11)</em>, <em>yaml(v.2.2.1)</em>, <em>xfun(v.0.12)</em>, <em>xml2(v.1.2.2)</em>, <em>httr(v.1.4.1)</em>, <em>withr(v.2.1.2)</em>, <em>vctrs(v.0.2.2)</em>, <em>hms(v.0.5.3)</em>, <em>webshot(v.0.5.2)</em>, <em>grid(v.3.6.2)</em>, <em>tidyselect(v.1.0.0)</em>, <em>glue(v.1.3.1)</em>, <em>R6(v.2.4.1)</em>, <em>rmarkdown(v.2.1)</em>, <em>purrr(v.0.3.3)</em>, <em>farver(v.2.0.3)</em>, <em>readr(v.1.3.1)</em>, <em>magrittr(v.1.5)</em>, <em>scales(v.1.1.0)</em>, <em>rvest(v.0.3.5)</em>, <em>assertthat(v.0.2.1)</em>, <em>colorspace(v.1.4-1)</em>, <em>labeling(v.0.3)</em>, <em>tinytex(v.0.19)</em>, <em>stringi(v.1.4.5)</em>, <em>lazyeval(v.0.2.2)</em>, <em>munsell(v.0.5.0)</em> and <em>crayon(v.1.3.4)</em></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
