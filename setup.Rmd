@@ -12,7 +12,7 @@ During the course we will be using both R and RStudio. To get your computer read
 \  
 
 ## Core Software
-**Install R.** You'll need R version **3.6.0** or higher. Download and install R for [Windows](http://cran.r-project.org/bin/windows/base/){target="_blank"},  [Mac](http://cran.r-project.org/bin/macosx/){target="_blank"} (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS) or [linux](https://cran.r-project.org/bin/linux){target="_blank"} (choose your flavour of linux).
+**Install R.** You'll need R version **`r paste(R.Version()$major, ".", R.Version()$minor, sep="")`** or higher. Download and install R for [Windows](http://cran.r-project.org/bin/windows/base/){target="_blank"},  [Mac](http://cran.r-project.org/bin/macosx/){target="_blank"} (download the latest R-3.x.x.pkg file for your appropriate version of Mac OS) or [linux](https://cran.r-project.org/bin/linux){target="_blank"} (choose your flavour of linux).
 
 **Install RStudio.** Download and install [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/){target="_blank"} (version 1.2.5019).
 
