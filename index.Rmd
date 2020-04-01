@@ -41,5 +41,5 @@ Not a problem. Feel free to use the IDE or script editor of your choice. One of 
 
 \  
 
-#### What do I do once the course has finished?
+#### What do I do once I finish the course?
 The only way to get more comfortable using R is to use R! We strongly suggest that having completed this course you start using R to summarise, manipulate, plot and analyse your own data as soon as possible. If you don't have any data yet, then ask your friends/supervisor/family for some (I'm sure they will be delighted!) or follow one of the many excellent tutorials available online (see the [resources](resources.html) page for more information). My suggestion to you, is that whilst you are getting to grips with R, uninstall any other statistics software you have on your computer and only use R. This may seem a little extreme but will hopefully remove the temptation to ‘just do it quickly’ in a more familiar environment and consequently slow down your learning of R. Believe me, anything you can do in your existing statistics software package you can do in R (often better and more efficiently).
