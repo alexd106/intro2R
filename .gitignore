@@ -8,7 +8,6 @@
 # OSX Stuff
 .gitconfig.local
 .DS_Store*
-._*
 .Trashes
 .DS_Store
 # R markdown stuff
