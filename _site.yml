@@ -15,7 +15,7 @@ navbar:
     - text: "Lectures"
       icon: fa-university
       href: lectures.html
-    - text: "R book"
+    - text: "R manual"
       icon: fa-book
       href: R_manual_2020.pdf
     - text: "Exercises"
