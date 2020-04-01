@@ -25,12 +25,14 @@ Click the **[<i class="fa fa-download"></i> Data](data.html)** link on the navba
 
 \  
 
-## R markdown
-Installing R markdown is not required for this course. However, for those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html){target="_blank"} to install R markdown on your computer. We also have a separate tutorial on using [R markdown](Rmarkdown_intro.html) which goes into way more detail.  
+## Optional setup
 
 \  
 
-## Git and GitHub
+### R markdown
+Installing R markdown is not required for this course. However, for those of you who are interested in using R markdown to create reproducible reports (or websites like this one!) follow these [instructions](install_rmarkdown.html){target="_blank"} to install R markdown on your computer. We also have a separate tutorial on using [R markdown](Rmarkdown_intro.html) which goes into way more detail.  
+
+### Git and GitHub
 For those of you interested in using version control to keep track of your projects please see our [Introduction to Git and GitHub tutorial](Github_intro.html) for information on how to install and configure Git and GitHub on your computer. Note, this is not required to complete this course.  
 
 \  
