@@ -5,13 +5,10 @@ output:
     toc: false
 ---
 
+We estimate that this course should take approximately three days to cover all the material in sufficient detail, but this will vary between individuals. How you complete the course is up to you. If you plan to ring fence a block of time to complete the course in one sitting then we suggest the following breakdown for the activities. For many people this may not be an option so we suggest that you try to complete either a morning or an afternoon in a single session. 
 \  
 
-The course will start at 09:30 each morning and finish at 17:00. We will break for a one hour lunch break around 12:00. However, everyone learns R in their own way and at their own pace so this syllabus should be treated as indicative rather than absolute. There will also be plenty of opportunities to take short breaks during the course and we will also have a couple of 30 minute sessions on robust and reproducible research practices. All teaching will be held in room FN112 in the Fraser Noble building (building No. 7 on [this map](images/uoa_map.png){target="_blank"} on the old Aberdeen campus).
-
-\  
-
-#### Monday 6^th^ April 2020 
+#### Day 1
 
   - Morning: Introduction to the course, getting to know R and RStudio
 
@@ -19,7 +16,7 @@ The course will start at 09:30 each morning and finish at 17:00. We will break f
 
 \  
 
-#### Tuesday 7^th^ April 2020
+#### Day 2
 
   - Morning: Importing and manipulating dataframes
 
@@ -27,8 +24,8 @@ The course will start at 09:30 each morning and finish at 17:00. We will break f
 
 \  
 
-#### Wednesday 8^th^ April 2020
+#### Day 3
 
   - Morning: Simple statistics in R
 
-  - Afternoon: Basic programming in R (optional) or catchup
+  - Afternoon: Basic programming in R 
