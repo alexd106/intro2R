@@ -793,7 +793,7 @@ ggplot(dataf, aes(x = x, y = y)) +
 
 \  
 
-Again, there are a large number of chunk options specific to producing plots and figures. See [here](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pd) for more details.
+Again, there are a large number of chunk options specific to producing plots and figures. See [here](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) for more details.
 
 \  
 
