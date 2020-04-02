@@ -920,7 +920,7 @@ Benthic Biodiversity experiment.
 <p class="caption">Cute grey kitten</p>
 </div>
 <p> </p>
-<p>The code above will only work if the image file (<code>class_of_2019.jpg</code>) is in the right place relative to where you saved your <code>.Rmd</code> file. In the example above the image file is in a sub directory (folder) called <code>images</code> in the directory where we saved our <code>my_first_rmarkdown.Rmd</code> file. You can embed images saved in many different file types but perhaps the most common are <code>.jpg</code> and <code>.png</code>.</p>
+<p>The code above will only work if the image file (<code>Cute_grey_kitten.jpg</code>) is in the right place relative to where you saved your <code>.Rmd</code> file. In the example above the image file is in a sub directory (folder) called <code>images</code> in the directory where we saved our <code>my_first_rmarkdown.Rmd</code> file. You can embed images saved in many different file types but perhaps the most common are <code>.jpg</code> and <code>.png</code>.</p>
 <p>I think a more flexible way of including images in your document is to use the <code>include_graphics()</code> function from the <code>knitr</code> package as this gives finer control over the alignment and image size (it’s also works more or less the same with both HTML and pdf output formats). However, to do this you will need to include this R code in a <a href="#code_chunks">‘code chunk’</a> which we haven’t covered yet. Despite this I’ll leave the code here for later reference. This code center aligns the image and scales it to 50% of it’s original size. See <code>?include_graphics</code> for more options.</p>
 <p> </p>
 <pre class="markdown"><code>&#96;&#96;&#96;{r, echo=FALSE, fig.align='center', out.width='50%'}
