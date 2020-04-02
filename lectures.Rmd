@@ -24,7 +24,7 @@ cat("Lectures will be released as the course progresses")
 
 ```{r, echo=FALSE, eval = isTRUE(show_lecture)}
 thumbnail("Introduction to R", "images/r_lecture_thumb.png",
-          "lectures/introduction_to_r_quadrat_2019.pdf")
+          "lectures/introduction_to_r_2020.pdf")
 ```
 
 ```{r, echo=FALSE, eval = isTRUE(show_lecture)}
