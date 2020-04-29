@@ -16,11 +16,11 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-1. Start RStudio on your computer. If you're using one of the University computers follow the instructions in Section 1.4 of the course manual.
+1. Start RStudio on your computer. Create a new RStudio Project (select File --> New Project on the main menu). Create the Project in a new directory by selecting 'New Directory' and then select 'New Project'. Give the Project a suitable name in the 'Directory name:' box and choose where you would like to create this Project directory by clicking on the 'Browse' button. Finally create the project by clicking on the 'Create Project' button. This will be your main RStudio Project file and directory which you will use throughout this course.
 
 \  
 
-2. Create a new R script (on the menu bar select File --> New File --> R Script). Save this Script as ‘Aberdeen_R_course’ (or something similar) in a convenient location on your computer (or on your USB drive if you're using a University computer). This will be your main R script file for the course to which you will add all your commands as you work through the manual and exercises. 
+2. Now create a new R script inside this Project by selecting File --> New File --> R Script from the main menu (or use the shortcut button). Before you start writing any code save this script by selecting File --> Save from the main menu. Call this script 'exercise_1' or something similar. Click on the 'Files' tab in the bottom right RStudio pane to see whether your file has been saved in the correct location.  
 
 \  
 
@@ -28,47 +28,49 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-4. Practice writing code in the script editor and sourcing this code into the R console by using the ```help()``` function to display the help file for the function ```mean```. Notice that the help file is displayed in the bottom right window (if not then click on the 'Help' tab). Examine the different components of the help file (especially the examples section at the end of the help file).
+4. Now to practice writing code in the script editor and sourcing this code into the R console. Let's display the help file for the function `mean`. In your script type `help('mean')` and source this code into the console. Notice that the help file is displayed in the bottom right window (if not then click on the 'Help' tab). Examine the different components of the help file (especially the examples section at the end of the help file).
 
 \  
 
-5. The content displayed in the bottom right window is context dependent. For example if we write the code ```plot(1:10)``` and source it into the R console the bottom right window will display this plot (don't worry about understanding the R code right now, hopefully this will become clear later on in the course!). 
+5. The content displayed in the bottom right window is context dependent. For example if we write the code `plot(1:10)` and source it into the R console the bottom right window will display this plot (don't worry about understanding the R code right now, hopefully this will become clear later on in the course!). 
 
 \  
 
-6. Next, let's practice creating a variable and assigning a value to this variable. Create a variable called ```first.num``` and assign it the value ```186282```. Click on the 'Environment' tab in the top right window to display the variable and value. Now create another variable called ```first.char``` and assign it a value ```"my first character"```. Notice this variable is now also displayed in the 'Environment' along with it's value and class (```chr``` - short for character class). 
+6. Next, let's practice creating a variable and assigning a value to this variable. Create a variable called ```first_num``` and assign it the value `42`. Click on the 'Environment' tab in the top right window to display the variable and value. Now create another variable called `first_char` and assign it a value `"my first character"`. Notice this variable is now also displayed in the 'Environment' along with it's value and class (`chr` - short for character class). 
 
 \  
 
-7. Remove the variable ```first.num``` from your environment. Check out the 'Environment' to ensure the variable has been removed. 
+7. Remove the variable `first_num` from your environment using the `rm()` function. Check out the 'Environment' tab to ensure the variable has been removed. Alternatively, use the `ls()` function to list all objects in your environment. 
 
 \  
 
-8. Let's see what happens if we assign another value to an existing variable. Assign the value ```"my second character"``` to the variable ```first.char``` you created in Q6. Notice the value has changed in the 'Environment'. To display the value of ```first.char``` enter the name of the variable in the console. 
+8. Let's see what happens if we assign another value to an existing variable. Assign the value `"my second character"` to the variable `first_char` you created in Q6. Notice the value has changed in the 'Environment'. To display the value of `first.char` enter the name of the variable in the console. Don't to forget to save your R script periodically!
 
 \  
 
-9. Ok, let's leave RStudio for a minute. Using your favourite web browser, navigate to the [R-project website](http://www.r-project.org) and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).
+9. OK, let's leave RStudio for a minute. Using your favourite web browser, navigate to the [R-project website](http://www.r-project.org) and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).
 
 \  
 
-10. Click on the 'Search' link on the R-Project website. Use 'Rseek' to search for the term 'mixed model p values' (this is a controversial subject!) and explore anything that looks interesting. Also experiment with the 'R site search' and 'Nabble R Forum' links. Learning how to search for help when you run into a problem when using R is an acquired skill and something you get better at over time. One note of caution, often you will find many different solutions to solving a problem in R, some written by experienced R users and others by people with less experience. Whichever solution you choose make sure you understand what the code is doing and thoroughly test it to make sure it's doing what you want.
+10. Click on the 'Search' link on the R-Project website. Use 'Rseek' to search for the term 'mixed model p values' (this is a controversial subject!) and explore anything that looks interesting. Also experiment with the 'R site search' and 'Nabble R Forum' links. Learning how to search for help when you run into a problem when using R is an acquired skill and something you get better at over time. One note of caution, often you'll find many different solutions to solving a problem in R, some written by experienced R users and others by people with less experience. Whichever solution you choose make sure you understand what the code is doing and thoroughly test it to make sure it's doing what you want.
 
 \  
 
-11.	Ok, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word 'plot' in it. Use the ```apropos()``` function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function. 
+11.	OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word 'plot' in it. Use the `apropos()` function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function. 
 
 \  
 
-12. Another strategy would be to use the ```help.search()``` function to search through R's help files. Search the R help system for instances of the character string ‘plot’. Narrow your search by only searching for ‘plot’ in the ```nlme``` package.
+12. Another strategy would be to use the `help.search()` function to search through R's help files. Search the R help system for instances of the character string ‘plot’. See if you can figure out how to narrow your search by only searching for ‘plot’ in the `nlme` package (hint: see the help page for `help.search()`.
 
 \  
 
-13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's tomorrows job) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.
+13.	R's working directory is the default location of any files you read into R, or save out of R. Although you won't be reading in or exporting files just yet (that's tomorrows job) it's useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.
 
 \  
 
-14.	Now change your working directory to a more convenient location on your computer (or USB drive). Don't forget to check whether your working directory has been successfully changed. 
+14.	Let's finish up by creating some useful directories in your Project directory. First use the `dir.create()` function to create a directory called 'data'. This is where you will save all the data files used throughout this course. Now create another directory called 'output' where you will save data files and plots you generate later on during the course. Use the `list.files()` function to list the files in your directory. Can you figure out how to list the directories as well? (hint: see `?listfiles` or Chapter 1.8 of the course book).
+
+15. Don't to forget to save your R script. Close your Project by selecting File --> Close Project on the main menu.
 
 \  
 

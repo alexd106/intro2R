@@ -39,7 +39,6 @@ For those of you interested in using version control to keep track of your proje
 
 *A few notes*:
 
-- If you're using Windows you might see errors about not having permission to modify the existing libraries -- disregard these. You can avoid this by running RStudio as an administrator (right click the RStudio icon, then click "Run as Administrator").
 - If you really dislike using RStudio (or just fancy a change) then feel free to use an alternative IDE or script editor (see [FAQ](index.html)).
 
 

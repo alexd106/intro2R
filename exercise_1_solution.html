@@ -531,11 +531,11 @@ $(document).ready(function () {
 <h2>Exercise 1: Getting to know R and RStudio</h2>
 <p> </p>
 <ol style="list-style-type: decimal">
-<li>Start RStudio on your computer. If you’re using one of the University computers follow the instructions in Section 1.4 of the course manual.</li>
+<li>Start RStudio on your computer. Create a new RStudio Project (select File –&gt; New Project on the main menu). Create the Project in a new directory by selecting ‘New Directory’ and then select ‘New Project’. Give the Project a suitable name in the ‘Directory name:’ box and choose where you would like to create this Project directory by clicking on the ‘Browse’ button. Finally create the project by clicking on the ‘Create Project’ button. This will be your main RStudio Project file and directory which you will use throughout this course.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>Create a new R script (on the menu bar select File –&gt; New File –&gt; R Script). Save this Script as ‘Aberdeen_R_course’ (or something similar) in a convenient location on your computer (or on your USB drive if you’re using a University computer). This will be your main R script file for the course to which you will add all your commands as you work through the manual and exercises.</li>
+<li>Now create a new R script inside this Project by selecting File –&gt; New File –&gt; R Script from the main menu (or use the shortcut button). Before you start writing any code save this script by selecting File –&gt; Save from the main menu. Call this script ‘exercise_1’ or something similar. Click on the ‘Files’ tab in the bottom right RStudio pane to see whether your file has been saved in the correct location.</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
@@ -543,7 +543,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Practice writing code in the script editor and sourcing this code into the R console by using the <code>help()</code> function to display the help file for the function <code>mean</code>. Notice that the help file is displayed in the bottom right window (if not then click on the ‘Help’ tab). Examine the different components of the help file (especially the examples section at the end of the help file).</p>
+<li><p>Now to practice writing code in the script editor and sourcing this code into the R console. Let’s display the help file for the function <code>mean</code>. In your script type <code>help('mean')</code> and source this code into the console. Notice that the help file is displayed in the bottom right window (if not then click on the ‘Help’ tab). Examine the different components of the help file (especially the examples section at the end of the help file).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">help</span>(mean)          <span class="co"># different methods of using help</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">?mean</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">help</span>(<span class="st">&quot;mean&quot;</span>)</a></code></pre></div></li>
@@ -555,19 +555,19 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Next, let’s practice creating a variable and assigning a value to this variable. Create a variable called <code>first.num</code> and assign it the value <code>186282</code>. Click on the ‘Environment’ tab in the top right window to display the variable and value. Now create another variable called <code>first.char</code> and assign it a value <code>&quot;my first character&quot;</code>. Notice this variable is now also displayed in the ‘Environment’ along with it’s value and class (<code>chr</code> - short for character class).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">first.num &lt;-<span class="st"> </span><span class="dv">186282</span>    <span class="co"># create variable first.num and assign the value 186282</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">first.char &lt;-<span class="st"> &quot;my first character&quot;</span></a></code></pre></div>
+<li><p>Next, let’s practice creating a variable and assigning a value to this variable. Create a variable called <code>first_num</code> and assign it the value <code>42</code>. Click on the ‘Environment’ tab in the top right window to display the variable and value. Now create another variable called <code>first_char</code> and assign it a value <code>&quot;my first character&quot;</code>. Notice this variable is now also displayed in the ‘Environment’ along with it’s value and class (<code>chr</code> - short for character class).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">first_num &lt;-<span class="st"> </span><span class="dv">42</span>    <span class="co"># create variable first_num and assign the value 42</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">first_char &lt;-<span class="st"> &quot;my first character&quot;</span></a></code></pre></div>
 <p> </p></li>
-<li><p>Remove the variable <code>first.num</code> from your environment. Check out the ‘Environment’ to ensure the variable has been removed.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">rm</span>(first.num)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">ls</span>()    <span class="co"># list all variables in the workspace </span></a></code></pre></div>
+<li><p>Remove the variable <code>first_num</code> from your environment using the <code>rm()</code> function. Check out the ‘Environment’ tab to ensure the variable has been removed. Alternatively, use the <code>ls()</code> function to list all objects in your environment.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">rm</span>(first_num)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">ls</span>()          <span class="co"># list all variables in the workspace </span></a></code></pre></div>
 <p> </p></li>
-<li><p>Let’s see what happens if we assign another value to an existing variable. Assign the value <code>&quot;my second character&quot;</code> to the variable <code>first.char</code> you created in Q6. Notice the value has changed in the ‘Environment’. To display the value of <code>first.char</code> enter the name of the variable in the console.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">first.char &lt;-<span class="st"> &quot;my second variable&quot;</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">first.char    <span class="co"># display the value </span></a></code></pre></div>
+<li><p>Let’s see what happens if we assign another value to an existing variable. Assign the value <code>&quot;my second character&quot;</code> to the variable <code>first_char</code> you created in Q6. Notice the value has changed in the ‘Environment’. To display the value of <code>first.char</code> enter the name of the variable in the console. Don’t to forget to save your R script periodically!</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">first_char &lt;-<span class="st"> &quot;my second variable&quot;</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">first_char    <span class="co"># display the value </span></a></code></pre></div>
 <p> </p></li>
-<li><p>Ok, let’s leave RStudio for a minute. Using your favourite web browser, navigate to the <a href="http://www.r-project.org">R-project website</a> and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).</p></li>
+<li><p>OK, let’s leave RStudio for a minute. Using your favourite web browser, navigate to the <a href="http://www.r-project.org">R-project website</a> and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).</p></li>
 </ol>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
@@ -575,11 +575,11 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
-<li><p>Ok, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word ‘plot’ in it. Use the <code>apropos()</code> function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function.</p>
+<li><p>OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word ‘plot’ in it. Use the <code>apropos()</code> function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">apropos</span>(<span class="st">&quot;plot&quot;</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">help</span>(plot.design)</a></code></pre></div>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">help</span>(<span class="st">&#39;plot.design&#39;</span>)</a></code></pre></div>
 <p> </p></li>
-<li><p>Another strategy would be to use the <code>help.search()</code> function to search through R’s help files. Search the R help system for instances of the character string ‘plot’. Narrow your search by only searching for ‘plot’ in the <code>nlme</code> package.</p>
+<li><p>Another strategy would be to use the <code>help.search()</code> function to search through R’s help files. Search the R help system for instances of the character string ‘plot’. See if you can figure out how to narrow your search by only searching for ‘plot’ in the <code>nlme</code> package (hint: see the help page for <code>help.search()</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">help.search</span>(<span class="st">&quot;plot&quot;</span>)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">??plot     <span class="co"># shortcut for help.search dunction</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"></a>
@@ -588,9 +588,14 @@ $(document).ready(function () {
 <li><p>R’s working directory is the default location of any files you read into R, or save out of R. Although you won’t be reading in or exporting files just yet (that’s tomorrows job) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">getwd</span>()    <span class="co"># displays the current working directory </span></a></code></pre></div>
 <p> </p></li>
-<li><p>Now change your working directory to a more convenient location on your computer (or USB drive). Don’t forget to check whether your working directory has been successfully changed.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">setwd</span>(<span class="st">&quot;/path/to/new/working/directory&quot;</span>)    <span class="co"># sets the working directory </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">getwd</span>()    <span class="co"># check to see if the working directory was changed</span></a></code></pre></div></li>
+<li><p>Let’s finish up by creating some useful directories in your Project directory. First use the <code>dir.create()</code> function to create a directory called ‘data’. This is where you will save all the data files used throughout this course. Now create another directory called ‘output’ where you will save data files and plots you generate later on during the course. Use the <code>list.files()</code> function to list the files in your directory. Can you figure out how to list the directories as well? (hint: see <code>?listfiles</code> or Chapter 1.8 of the course book).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">dir.create</span>(<span class="dt">path =</span> <span class="st">&#39;data&#39;</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">dir.create</span>(<span class="dt">path =</span> <span class="st">&#39;data&#39;</span>)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">list.files</span>(<span class="dt">include.dirs =</span> <span class="ot">TRUE</span>)</a></code></pre></div></li>
+</ol>
+<p> </p>
+<ol start="15" style="list-style-type: decimal">
+<li>Don’t to forget to save your R script. Close your Project by selecting File –&gt; Close Project on the main menu.</li>
 </ol>
 <p> </p>
 <p>End of Exercise 1</p>

@@ -420,11 +420,11 @@ $(document).ready(function () {
 <h2>Exercise 1 : Getting to know R and RStudio</h2>
 <p> </p>
 <ol style="list-style-type: decimal">
-<li>Start RStudio on your computer. If you’re using one of the University computers follow the instructions in Section 1.4 of the course manual.</li>
+<li>Start RStudio on your computer. Create a new RStudio Project (select File –&gt; New Project on the main menu). Create the Project in a new directory by selecting ‘New Directory’ and then select ‘New Project’. Give the Project a suitable name in the ‘Directory name:’ box and choose where you would like to create this Project directory by clicking on the ‘Browse’ button. Finally create the project by clicking on the ‘Create Project’ button. This will be your main RStudio Project file and directory which you will use throughout this course.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>Create a new R script (on the menu bar select File –&gt; New File –&gt; R Script). Save this Script as ‘Aberdeen_R_course’ (or something similar) in a convenient location on your computer (or on your USB drive if you’re using a University computer). This will be your main R script file for the course to which you will add all your commands as you work through the manual and exercises.</li>
+<li>Now create a new R script inside this Project by selecting File –&gt; New File –&gt; R Script from the main menu (or use the shortcut button). Before you start writing any code save this script by selecting File –&gt; Save from the main menu. Call this script ‘exercise_1’ or something similar. Click on the ‘Files’ tab in the bottom right RStudio pane to see whether your file has been saved in the correct location.</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
@@ -432,7 +432,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li>Practice writing code in the script editor and sourcing this code into the R console by using the <code>help()</code> function to display the help file for the function <code>mean</code>. Notice that the help file is displayed in the bottom right window (if not then click on the ‘Help’ tab). Examine the different components of the help file (especially the examples section at the end of the help file).</li>
+<li>Now to practice writing code in the script editor and sourcing this code into the R console. Let’s display the help file for the function <code>mean</code>. In your script type <code>help('mean')</code> and source this code into the console. Notice that the help file is displayed in the bottom right window (if not then click on the ‘Help’ tab). Examine the different components of the help file (especially the examples section at the end of the help file).</li>
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
@@ -440,39 +440,40 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li>Next, let’s practice creating a variable and assigning a value to this variable. Create a variable called <code>first.num</code> and assign it the value <code>186282</code>. Click on the ‘Environment’ tab in the top right window to display the variable and value. Now create another variable called <code>first.char</code> and assign it a value <code>&quot;my first character&quot;</code>. Notice this variable is now also displayed in the ‘Environment’ along with it’s value and class (<code>chr</code> - short for character class).</li>
+<li>Next, let’s practice creating a variable and assigning a value to this variable. Create a variable called <code>first_num</code> and assign it the value <code>42</code>. Click on the ‘Environment’ tab in the top right window to display the variable and value. Now create another variable called <code>first_char</code> and assign it a value <code>&quot;my first character&quot;</code>. Notice this variable is now also displayed in the ‘Environment’ along with it’s value and class (<code>chr</code> - short for character class).</li>
 </ol>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
-<li>Remove the variable <code>first.num</code> from your environment. Check out the ‘Environment’ to ensure the variable has been removed.</li>
+<li>Remove the variable <code>first_num</code> from your environment using the <code>rm()</code> function. Check out the ‘Environment’ tab to ensure the variable has been removed. Alternatively, use the <code>ls()</code> function to list all objects in your environment.</li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
-<li>Let’s see what happens if we assign another value to an existing variable. Assign the value <code>&quot;my second character&quot;</code> to the variable <code>first.char</code> you created in Q6. Notice the value has changed in the ‘Environment’. To display the value of <code>first.char</code> enter the name of the variable in the console.</li>
+<li>Let’s see what happens if we assign another value to an existing variable. Assign the value <code>&quot;my second character&quot;</code> to the variable <code>first_char</code> you created in Q6. Notice the value has changed in the ‘Environment’. To display the value of <code>first.char</code> enter the name of the variable in the console. Don’t to forget to save your R script periodically!</li>
 </ol>
 <p> </p>
 <ol start="9" style="list-style-type: decimal">
-<li>Ok, let’s leave RStudio for a minute. Using your favourite web browser, navigate to the <a href="http://www.r-project.org">R-project website</a> and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).</li>
+<li>OK, let’s leave RStudio for a minute. Using your favourite web browser, navigate to the <a href="http://www.r-project.org">R-project website</a> and explore links that catch your eye. Make sure you find the R manuals page and the user contributed documents section. Download any manuals that you think you might find useful (some are listed in the course manual) and save them on your computer (or USB drive).</li>
 </ol>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
-<li>Click on the ‘Search’ link on the R-Project website. Use ‘Rseek’ to search for the term ‘mixed model p values’ (this is a controversial subject!) and explore anything that looks interesting. Also experiment with the ‘R site search’ and ‘Nabble R Forum’ links. Learning how to search for help when you run into a problem when using R is an acquired skill and something you get better at over time. One note of caution, often you will find many different solutions to solving a problem in R, some written by experienced R users and others by people with less experience. Whichever solution you choose make sure you understand what the code is doing and thoroughly test it to make sure it’s doing what you want.</li>
+<li>Click on the ‘Search’ link on the R-Project website. Use ‘Rseek’ to search for the term ‘mixed model p values’ (this is a controversial subject!) and explore anything that looks interesting. Also experiment with the ‘R site search’ and ‘Nabble R Forum’ links. Learning how to search for help when you run into a problem when using R is an acquired skill and something you get better at over time. One note of caution, often you’ll find many different solutions to solving a problem in R, some written by experienced R users and others by people with less experience. Whichever solution you choose make sure you understand what the code is doing and thoroughly test it to make sure it’s doing what you want.</li>
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
-<li>Ok, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word ‘plot’ in it. Use the <code>apropos()</code> function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function.</li>
+<li>OK, back to RStudio. Sometimes you may forget the exact name of a function you want to use so it would be useful to be able to search through all the function names. For example, you want to create a design plot but can only remember that the name of the function has the word ‘plot’ in it. Use the <code>apropos()</code> function to list all the functions with the word plot in their name. Look through the list and once you have figured what the correct function is then bring up the help file for this function.</li>
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
-<li>Another strategy would be to use the <code>help.search()</code> function to search through R’s help files. Search the R help system for instances of the character string ‘plot’. Narrow your search by only searching for ‘plot’ in the <code>nlme</code> package.</li>
+<li>Another strategy would be to use the <code>help.search()</code> function to search through R’s help files. Search the R help system for instances of the character string ‘plot’. See if you can figure out how to narrow your search by only searching for ‘plot’ in the <code>nlme</code> package (hint: see the help page for <code>help.search()</code>.</li>
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
-<li>R’s working directory is the default location of any files you read into R, or save out of R. Although you won’t be reading in or exporting files just yet (that’s tomorrows job) it is useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.</li>
+<li>R’s working directory is the default location of any files you read into R, or save out of R. Although you won’t be reading in or exporting files just yet (that’s tomorrows job) it’s useful to be able to determine what your current working directory is. So, figure out how to display your current working directory.</li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">
-<li>Now change your working directory to a more convenient location on your computer (or USB drive). Don’t forget to check whether your working directory has been successfully changed.</li>
+<li><p>Let’s finish up by creating some useful directories in your Project directory. First use the <code>dir.create()</code> function to create a directory called ‘data’. This is where you will save all the data files used throughout this course. Now create another directory called ‘output’ where you will save data files and plots you generate later on during the course. Use the <code>list.files()</code> function to list the files in your directory. Can you figure out how to list the directories as well? (hint: see <code>?listfiles</code> or Chapter 1.8 of the course book).</p></li>
+<li><p>Don’t to forget to save your R script. Close your Project by selecting File –&gt; Close Project on the main menu.</p></li>
 </ol>
 <p> </p>
 <p>End of Exercise 1</p>
