@@ -116,7 +116,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
       + gradient steeper than 200 degrees
       + water noise level of ‘low’
       + water.noise level of 'high' in the month of 'May'
-      + month of 'October', water noise level of ‘low’ and gradient greater than the median value of gradient, 132 degrees
+      + month of 'October', water noise level of ‘low’ and gradient greater than the median value of gradient (132)
       + all observations from between latitudes 60.0 and 61.0 and longitudes -6.0 and -4.0
       + all rows that do not have a water noise level of medium
 
