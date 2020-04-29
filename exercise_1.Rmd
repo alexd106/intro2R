@@ -70,6 +70,8 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 14.	Let's finish up by creating some useful directories in your Project directory. First use the `dir.create()` function to create a directory called 'data'. This is where you will save all the data files used throughout this course. Now create another directory called 'output' where you will save data files and plots you generate later on during the course. Use the `list.files()` function to list the files in your directory. Can you figure out how to list the directories as well? (hint: see `?listfiles` or Chapter 1.8 of the course book).
 
+\  
+
 15. Don't to forget to save your R script. Close your Project by selecting File --> Close Project on the main menu.
 
 \  
