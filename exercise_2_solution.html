@@ -531,7 +531,7 @@ $(document).ready(function () {
 <h2>Exercise 2 : Basic R operations</h2>
 <p> </p>
 <ol style="list-style-type: decimal">
-<li>Either create a new R script or continue with your previous R script in RStudio. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+<li>Open up your RStudio Project from Exercise 1 and either create a new R script or continue with your previous R script. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
@@ -545,8 +545,8 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to a variable called <code>area.circle</code>. Google is your friend if you can’t remember the formula! Also, remember that R already knows about <code>pi</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">area.circle &lt;-<span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>(<span class="dv">20</span><span class="op">/</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></a></code></pre></div></li>
+<li><p>Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to a variable called <code>area_circle</code>. Google is your friend if you can’t remember the formula! Also, remember that R already knows about <code>pi</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">area_circle &lt;-<span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>(<span class="dv">20</span><span class="op">/</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
@@ -560,26 +560,26 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li><p>You can now do stuff to your <code>weight</code> vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your <code>weights</code> vector. Next, extract the weights for the first five children and store these weights in a new variable called <code>first.five</code>. Remember, you will need to use the square brackets <code>[ ]</code> to extract (aka indexing, subsetting) elements from a variable.</p>
+<li><p>You can now do stuff to your <code>weight</code> vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your <code>weights</code> vector. Next, extract the weights for the first five children and store these weights in a new variable called <code>first_five</code>. Remember, you will need to use the square brackets <code>[ ]</code> to extract (aka indexing, subsetting) elements from a variable.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">mean</span>(weight)                                <span class="co"># calculate mean </span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">var</span>(weight)                                 <span class="co"># calculate variance</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">sd</span>(weight)                                  <span class="co"># calculate standard deviation</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">range</span>(weight)                               <span class="co"># range of weight values</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">length</span>(weight)                              <span class="co"># number of observations</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">first.five &lt;-<span class="st"> </span>weights[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]                  <span class="co"># extract first 5 weight values</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">first.five &lt;-<span class="st"> </span>weights[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)]     <span class="co"># alternative method</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb5-7" data-line-number="7">first_five &lt;-<span class="st"> </span>weights[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]                  <span class="co"># extract first 5 weight values</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">first_five &lt;-<span class="st"> </span>weights[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)]     <span class="co"># alternative method</span></a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
-<li><p>We’re now going to use the the <code>c()</code> function again to create a vector called <code>height</code> containing the height (in cm) of the same 10 children: <code>112, 102, 83, 84, 99, 90, 77, 112, 133, 112</code>. Use the <code>summary()</code> function to summarise these data. Extract the height of the 2nd, 3rd, 9th and 10th child and assign these heights to a variable called <code>some.child</code>. Also extract all the heights of children less than or equal to 99 cm and assign to a variable called <code>shorter.child</code>.</p>
+<li><p>We’re now going to use the the <code>c()</code> function again to create a vector called <code>height</code> containing the height (in cm) of the same 10 children: <code>112, 102, 83, 84, 99, 90, 77, 112, 133, 112</code>. Use the <code>summary()</code> function to summarise these data. Extract the height of the 2nd, 3rd, 9th and 10th child and assign these heights to a variable called <code>some_child</code>. Also extract all the heights of children less than or equal to 99 cm and assign to a variable called <code>shorter_child</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">112</span>, <span class="dv">102</span>, <span class="dv">83</span>, <span class="dv">84</span>, <span class="dv">99</span>, <span class="dv">90</span>, <span class="dv">77</span>, <span class="dv">112</span>, <span class="dv">133</span>, <span class="dv">112</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">summary</span>(height)   <span class="co"># summary statistics of height variable</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">some.child &lt;-<span class="st"> </span>height[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">10</span>)]      <span class="co"># extract the 2nd, 3rd, 9th, 10th height</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">some_child &lt;-<span class="st"> </span>height[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">10</span>)]      <span class="co"># extract the 2nd, 3rd, 9th, 10th height</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">shorter.child &lt;-<span class="st"> </span>height[height <span class="op">&lt;=</span><span class="st"> </span><span class="dv">99</span>]     <span class="co"># extract all heights less than or equal to 99</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb6-7" data-line-number="7">shorter_child &lt;-<span class="st"> </span>height[height <span class="op">&lt;=</span><span class="st"> </span><span class="dv">99</span>]     <span class="co"># extract all heights less than or equal to 99</span></a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
@@ -616,27 +616,27 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
-<li><p>Ok, back to the variable <code>height</code> you created in Q7. Sort the values of <code>height</code> into ascending order (shortest to tallest) and assign the sorted vector to a new variable called <code>height.sorted</code>. Now sort all heights into descending order and assign the new vector a name of your choice.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">height.sorted &lt;-<span class="st"> </span><span class="kw">sort</span>(height)</a>
+<li><p>Ok, back to the variable <code>height</code> you created in Q7. Sort the values of <code>height</code> into ascending order (shortest to tallest) and assign the sorted vector to a new variable called <code>height_sorted</code>. Now sort all heights into descending order and assign the new vector a name of your choice.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">height_sorted &lt;-<span class="st"> </span><span class="kw">sort</span>(height)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">height.rev &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">sort</span>(height))</a></code></pre></div></li>
+<a class="sourceLine" id="cb11-3" data-line-number="3">height_rev &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">sort</span>(height))</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
-<li><p>Let’s give the children some names. Create a new vector called <code>child.names</code> with the following names of the 10 children: <code>&quot;Alfred&quot;, &quot;Barbara&quot;, &quot;James&quot;, &quot;Jane&quot;, &quot;John&quot;, &quot;Judy&quot;, &quot;Louise&quot;, &quot;Mary&quot;, &quot;Ronald&quot;, &quot;William&quot;</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">child.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Alfred&quot;</span>, <span class="st">&quot;Barbara&quot;</span>, <span class="st">&quot;James&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;John&quot;</span>, <span class="st">&quot;Judy&quot;</span>, <span class="st">&quot;Louise&quot;</span>, <span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Ronald&quot;</span>, <span class="st">&quot;William&quot;</span>)</a></code></pre></div></li>
+<li><p>Let’s give the children some names. Create a new vector called <code>child_names</code> with the following names of the 10 children: <code>&quot;Alfred&quot;, &quot;Barbara&quot;, &quot;James&quot;, &quot;Jane&quot;, &quot;John&quot;, &quot;Judy&quot;, &quot;Louise&quot;, &quot;Mary&quot;, &quot;Ronald&quot;, &quot;William&quot;</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">child_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Alfred&quot;</span>, <span class="st">&quot;Barbara&quot;</span>, <span class="st">&quot;James&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;John&quot;</span>, <span class="st">&quot;Judy&quot;</span>, <span class="st">&quot;Louise&quot;</span>, <span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Ronald&quot;</span>, <span class="st">&quot;William&quot;</span>)</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">
-<li><p>A really useful (and common) task is to sort the values of one variable by the order of another variable. To do this you will need to use the <code>order()</code> function in combination with the square bracket notation <code>[ ]</code>. Create a new variable called <code>names.sort</code> to store the names of the children sorted by child height (from shortest to tallest). Who is the shortest? who is the tallest child? If you’re not sure how to do this, please ask one of the instructors.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">height.ord &lt;-<span class="st"> </span><span class="kw">order</span>(height)   <span class="co"># get the indexes of the heights, smallest to tallest</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">names.sort &lt;-<span class="st"> </span>child.names[height.ord]     <span class="co"># Louise is shortest, Ronald is tallest</span></a></code></pre></div></li>
+<li><p>A really useful (and common) task is to sort the values of one variable by the order of another variable. To do this you will need to use the <code>order()</code> function in combination with the square bracket notation <code>[ ]</code>. Create a new variable called <code>names_sort</code> to store the names of the children sorted by child height (from shortest to tallest). Who is the shortest? who is the tallest child? If you’re not sure how to do this, please ask one of the instructors.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">height_ord &lt;-<span class="st"> </span><span class="kw">order</span>(height)   <span class="co"># get the indexes of the heights, smallest to tallest</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">names_sort &lt;-<span class="st"> </span>child.names[height_ord]     <span class="co"># Louise is shortest, Ronald is tallest</span></a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="15" style="list-style-type: decimal">
-<li><p>Now order the names of the children by descending values of weight and assign the result to a variable called <code>weight.rev</code>. Who is the heaviest? Who is the lightest?</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">weight.ord &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">order</span>(weight))</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">weight.rev &lt;-<span class="st"> </span>child.names[weight.ord]     <span class="co"># Alfred is heaviest, Louise is lightest</span></a></code></pre></div></li>
+<li><p>Now order the names of the children by descending values of weight and assign the result to a variable called <code>weight_rev</code>. Who is the heaviest? Who is the lightest?</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">weight_ord &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">order</span>(weight))</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">weight_rev &lt;-<span class="st"> </span>child_names[weight_ord]     <span class="co"># Alfred is heaviest, Louise is lightest</span></a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">

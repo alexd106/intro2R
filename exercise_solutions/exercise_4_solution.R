@@ -86,7 +86,7 @@ ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
 
 
 ## ----Q6------------------------------------------------------------------------------------------------------------------------
-pdf('workshop/figures/ex4_dotplots.pdf')
+pdf('figures/ex4_dotplots.pdf')
 par(mfrow = c(2, 2))
 dotchart(squid$DML, main = "DML")
 dotchart(squid$weight, main = "weight")
@@ -167,11 +167,11 @@ plot(squid$DML, squid$weight.log)
 
 # the square root transformation looks
 # most appropriate
-jpeg('workshop/figures/ex4_transf_plot.jpeg')
+jpeg('output/ex4_transf_plot.jpeg')
 plot(squid$DML, squid$weight.sqrt)
 dev.off()
 
-png('workshop/figures/ex4_transf_plot.png')
+png('output/ex4_transf_plot.png')
 plot(squid$DML, squid$weight.sqrt)
 dev.off()
 

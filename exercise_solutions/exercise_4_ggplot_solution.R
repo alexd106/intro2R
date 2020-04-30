@@ -203,10 +203,10 @@ ggplot(data = squid) +
 # most appropriate
 
 # save plot as jpeg
-ggsave('workshop/figures/gg_xy_weight.jpeg', device = 'jpeg')
+ggsave('output/gg_xy_weight.jpeg', device = 'jpeg')
 
 # save plot as png
-ggsave('workshop/figures/gg_xy_weight.png', device = 'png')
+ggsave('output/gg_xy_weight.png', device = 'png')
 
 
 ## ----Q10, tidy = TRUE----------------------------------------------------------------------------------------------------------

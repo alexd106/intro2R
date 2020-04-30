@@ -530,7 +530,7 @@ $(document).ready(function () {
 <div id="exercise-4-visualising-data-using-ggplot" class="section level2">
 <h2>Exercise 4: Visualising data using ggplot</h2>
 <p> </p>
-<p>Alternative solutions to Exercise 4 for those who use (or are interested in using) the <code>ggplot</code> approach to plotting data. Courtesy of <a href="People.html">Deon Roos</a>.</p>
+<p>Alternative solutions to Exercise 4 for those who use (or are interested in using) the <code>ggplot</code> approach to plotting data.</p>
 <p> </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># make ggplot2 and gridExtra packages available</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># Note: you may need to install these packages first</span></a>
@@ -541,11 +541,11 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="kw">library</span>(gridExtra)</a></code></pre></div>
 <p> </p>
 <ol style="list-style-type: decimal">
-<li>As in previous exercises, either create a new R script or continue with your previous R script in RStudio. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+<li>As in previous exercises, either create a new R script or continue with your previous R script in your RStudio Project. Again, make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc) and don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>Download the data file <em>‘squid1.xlsx’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory you created during the last exercise. Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type. Name the file <em>‘squid1.txt’</em> and save it to the <code>data</code> directory.</li>
+<li>Download the data file <em>‘squid1.xlsx’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory you created during exercise 1. Open this file in Microsoft Excel (or even better use an open source equivalent - <a href="https://www.libreoffice.org/download/download/">LibreOffice</a> is a good free alternative) and save it as a tab delimited file type. Name the file <em>‘squid1.txt’</em> and save it to the <code>data</code> directory.</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
@@ -639,7 +639,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li><p>The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables. Create dotplots (using the <code>dotchart()</code> function) for the following variables; <code>DML</code>, <code>weight</code>, <code>nid.length</code> and <code>ovary.weight</code>. Do these variables contain any unusually large or small observations? Don’t forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns. Use the <code>ggsave()</code> function to save a pdf version of your plot(s) (maybe create a <code>figures</code> directory in your <code>workshop</code> directory to save your figures).</p>
+<li><p>The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables. Create dotplots (using the <code>dotchart()</code> function) for the following variables; <code>DML</code>, <code>weight</code>, <code>nid.length</code> and <code>ovary.weight</code>. Do these variables contain any unusually large or small observations? Don’t forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns. Use the <code>pdf()</code> function to save a pdf version of your plot(s) in your <code>output</code> directory you created in Exercise 1. I have also included some alternative code in the <a href="exercise_4_solution.html">solutions for this exercise</a> using the <code>dotplot()</code> function from the <code>lattice</code> package.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> squid) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> DML, <span class="dt">y =</span> <span class="kw">as.numeric</span>(<span class="kw">rownames</span>(squid)))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)</a>
@@ -725,7 +725,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="9" style="list-style-type: decimal">
-<li><p>Scatterplots are great for visualising relationships between two continuous variables. Plot the relationship between <code>DML</code> on the x axis and <code>weight</code> on the y axis. How would you describe this relationship? Is it linear? One approach to linearising relationships is to apply a transformation on one or both variables. Try transforming the <code>weight</code> variable with either a natural log (<code>log()</code>) or square root (<code>sqrt()</code>) transformation. I suggest you create new variables in the <code>squid</code> dataframe for your transformed variables and use these variables when creating your new plots (ask if you’re not sure how to do this). Which transformation best linearises this relationship? Again, save your plots as a pdf file (or try saving as jpeg or png format using the <code>jpeg()</code> or <code>png()</code> functions if you feel the need for a change!).</p>
+<li><p>Scatterplots are great for visualising relationships between two continuous variables. Plot the relationship between <code>DML</code> on the x axis and <code>weight</code> on the y axis. How would you describe this relationship? Is it linear? One approach to linearising relationships is to apply a transformation on one or both variables. Try transforming the <code>weight</code> variable with either a natural log (<code>log()</code>) or square root (<code>sqrt()</code>) transformation. I suggest you create new variables in the <code>squid</code> dataframe for your transformed variables and use these variables when creating your new plots (ask if you’re not sure how to do this). Which transformation best linearises this relationship? Again, save your plots as a pdf file (or try saving in your <code>output</code> directory as jpeg or png format using the <code>jpeg()</code> or <code>png()</code> functions if you feel the need for a change!).</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># clearly not linear</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># also note use of the classic theme</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> squid) <span class="op">+</span></a>
@@ -748,10 +748,10 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co"># most appropriate</span></a>
 <a class="sourceLine" id="cb7-21" data-line-number="21"></a>
 <a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co"># save plot as jpeg</span></a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="kw">ggsave</span>(<span class="st">&#39;workshop/figures/gg_xy_weight.jpeg&#39;</span>, <span class="dt">device =</span> <span class="st">&#39;jpeg&#39;</span>)</a>
+<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="kw">ggsave</span>(<span class="st">&#39;output/gg_xy_weight.jpeg&#39;</span>, <span class="dt">device =</span> <span class="st">&#39;jpeg&#39;</span>)</a>
 <a class="sourceLine" id="cb7-24" data-line-number="24"></a>
 <a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co"># save plot as png</span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="kw">ggsave</span>(<span class="st">&#39;workshop/figures/gg_xy_weight.png&#39;</span>, <span class="dt">device =</span> <span class="st">&#39;png&#39;</span>)</a></code></pre></div></li>
+<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="kw">ggsave</span>(<span class="st">&#39;output/gg_xy_weight.png&#39;</span>, <span class="dt">device =</span> <span class="st">&#39;png&#39;</span>)</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
@@ -764,7 +764,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
-<li><p>To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the <code>coplot()</code> function to plot the relationship between DML and square root transformed weight (you created this variable in Q8) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)? If you prefer, you can also create a similar plot using the <code>xyplot()</code> function from the <code>lattice</code> package (don’t forget to make the function available by using <code>library(lattice)</code> first).</p>
+<li><p>To visualise the relationship between two continuous variables but for different levels of a factor variable you can create a conditional scatterplot. Use the <code>ggplot()</code> function to plot the relationship between DML and square root transformed weight (you created this variable in Q8) for each level of maturity stage. Does the relationship between DML and weight look different for each maturity stage (suggesting an interaction)?</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># use facet_wrap to produce a </span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co"># panel plot</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> squid) <span class="op">+</span></a>
@@ -773,7 +773,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
-<li><p>To explore the relationships between multiple continuous variables it’s hard to beat a pairs plot. Create a pairs plot for the variables; <code>DML</code>, <code>weight</code>, <code>eviscerate.weight</code>, <code>ovary.weight</code>, <code>nid.length</code>, and <code>nid.weight</code>. If it looks a little cramped in RStudio then click on the ‘zoom’ button in the plot viewer to see a larger version. If you want to produce a pairs plot using ggplot then you will need to install the package <code>GGally</code> using the usual code: <code>install.packages(&quot;GGally&quot;)</code> and use the <code>ggpairs()</code> function. Don’t forget to make the package available with the <code>library()</code> function.</p>
+<li><p>To explore the relationships between multiple continuous variables it’s hard to beat a pairs plot. Create a pairs plot for the variables; <code>DML</code>, <code>weight</code>, <code>eviscerate.weight</code>, <code>ovary.weight</code>, <code>nid.length</code>, and <code>nid.weight</code>. If it looks a little cramped in RStudio then click on the ‘zoom’ button in the plot viewer to see a larger version. If you want to produce a pairs plot using <code>ggplot</code> then you will need to install the package <code>GGally</code> using the usual code: <code>install.packages(&quot;GGally&quot;)</code> and use the <code>ggpairs()</code> function. Don’t forget to make the package available with the <code>library()</code> function.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(GGally)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw">ggpairs</span>(squid[, <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>)])</a></code></pre></div></li>

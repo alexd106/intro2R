@@ -146,6 +146,6 @@ xtabs(~ water.noise, data = whale)
 xtabs(~ month + water.noise, data = whale)
 
 
-## ----Q18, tidy = TRUE----------------------------------------------------------------------------------------------------------
-write.table(whale.num, "workshop/data/whale_num.txt", col.names = TRUE, row.names = FALSE, sep = "\t")
+## ----Q18, eval=FALSE, tidy = TRUE----------------------------------------------------------------------------------------------
+## write.table(whale.num, "output/whale_num.txt", col.names = TRUE, row.names = FALSE, sep = "\t")
 

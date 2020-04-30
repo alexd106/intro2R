@@ -420,7 +420,7 @@ $(document).ready(function () {
 <h2>Exercise 2 : Basic R operations</h2>
 <p> </p>
 <ol style="list-style-type: decimal">
-<li>Either create a new R script or continue with your previous R script in RStudio. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
+<li>Open up your RStudio Project from Exercise 1 and either create a new R script or continue with your previous R script. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
@@ -428,7 +428,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li>Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to a variable called <code>area.circle</code>. Google is your friend if you can’t remember the formula! Also, remember that R already knows about <code>pi</code>.</li>
+<li>Next, use R to determine the area of a circle with a diameter of 20 cm and assign the result to a variable called <code>area_circle</code>. Google is your friend if you can’t remember the formula! Also, remember that R already knows about <code>pi</code>.</li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
@@ -440,11 +440,11 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li>You can now do stuff to your <code>weight</code> vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your <code>weights</code> vector. Next, extract the weights for the first five children and store these weights in a new variable called <code>first.five</code>. Remember, you will need to use the square brackets <code>[ ]</code> to extract (aka indexing, subsetting) elements from a variable.</li>
+<li>You can now do stuff to your <code>weight</code> vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your <code>weights</code> vector. Next, extract the weights for the first five children and store these weights in a new variable called <code>first_five</code>. Remember, you will need to use the square brackets <code>[ ]</code> to extract (aka indexing, subsetting) elements from a variable.</li>
 </ol>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
-<li>We’re now going to use the the <code>c()</code> function again to create a vector called <code>height</code> containing the height (in cm) of the same 10 children: <code>112, 102, 83, 84, 99, 90, 77, 112, 133, 112</code>. Use the <code>summary()</code> function to summarise these data. Extract the height of the 2nd, 3rd, 9th and 10th child and assign these heights to a variable called <code>some.child</code>. Also extract all the heights of children less than or equal to 99 cm and assign to a variable called <code>shorter.child</code>.</li>
+<li>We’re now going to use the the <code>c()</code> function again to create a vector called <code>height</code> containing the height (in cm) of the same 10 children: <code>112, 102, 83, 84, 99, 90, 77, 112, 133, 112</code>. Use the <code>summary()</code> function to summarise these data. Extract the height of the 2nd, 3rd, 9th and 10th child and assign these heights to a variable called <code>some_child</code>. Also extract all the heights of children less than or equal to 99 cm and assign to a variable called <code>shorter_child</code>.</li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
@@ -472,19 +472,19 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
-<li>Ok, back to the variable <code>height</code> you created in Q7. Sort the values of <code>height</code> into ascending order (shortest to tallest) and assign the sorted vector to a new variable called <code>height.sorted</code>. Now sort all heights into descending order and assign the new vector a name of your choice.</li>
+<li>Ok, back to the variable <code>height</code> you created in Q7. Sort the values of <code>height</code> into ascending order (shortest to tallest) and assign the sorted vector to a new variable called <code>height_sorted</code>. Now sort all heights into descending order and assign the new vector a name of your choice.</li>
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
-<li>Let’s give the children some names. Create a new vector called <code>child.names</code> with the following names of the 10 children: <code>&quot;Alfred&quot;, &quot;Barbara&quot;, &quot;James&quot;, &quot;Jane&quot;, &quot;John&quot;, &quot;Judy&quot;, &quot;Louise&quot;, &quot;Mary&quot;, &quot;Ronald&quot;, &quot;William&quot;</code>.</li>
+<li>Let’s give the children some names. Create a new vector called <code>child_names</code> with the following names of the 10 children: <code>&quot;Alfred&quot;, &quot;Barbara&quot;, &quot;James&quot;, &quot;Jane&quot;, &quot;John&quot;, &quot;Judy&quot;, &quot;Louise&quot;, &quot;Mary&quot;, &quot;Ronald&quot;, &quot;William&quot;</code>. .</li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">
-<li>A really useful (and common) task is to sort the values of one variable by the order of another variable. To do this you will need to use the <code>order()</code> function in combination with the square bracket notation <code>[ ]</code>. Create a new variable called <code>names.sort</code> to store the names of the children sorted by child height (from shortest to tallest). Who is the shortest? who is the tallest child? If you’re not sure how to do this, please ask one of the instructors.</li>
+<li>A really useful (and common) task is to sort the values of one variable by the order of another variable. To do this you will need to use the <code>order()</code> function in combination with the square bracket notation <code>[ ]</code>. Create a new variable called <code>names_sort</code> to store the names of the children sorted by child height (from shortest to tallest). Who is the shortest? who is the tallest child? If you’re not sure how to do this, please ask one of the instructors.</li>
 </ol>
 <p> </p>
 <ol start="15" style="list-style-type: decimal">
-<li>Now order the names of the children by descending values of weight and assign the result to a variable called <code>weight.rev</code>. Who is the heaviest? Who is the lightest?</li>
+<li>Now order the names of the children by descending values of weight and assign the result to a variable called <code>weight_rev</code>. Who is the heaviest? Who is the lightest?</li>
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">

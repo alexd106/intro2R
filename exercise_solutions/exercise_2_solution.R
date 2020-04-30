@@ -8,7 +8,7 @@ exp(12.43)              # exponent
 
 
 ## ----Q3, , results = 'asis'----------------------------------------------------------------------------------------------------
-area.circle <- pi * (20/2)^2
+area_circle <- pi * (20/2)^2
 
 
 ## ----Q4------------------------------------------------------------------------------------------------------------------------
@@ -26,8 +26,8 @@ sd(weight)                                  # calculate standard deviation
 range(weight)                               # range of weight values
 length(weight)                              # number of observations
 
-first.five <- weights[1:5]                  # extract first 5 weight values
-first.five <- weights[c(1, 2, 3, 4, 5)]     # alternative method
+first_five <- weights[1:5]                  # extract first 5 weight values
+first_five <- weights[c(1, 2, 3, 4, 5)]     # alternative method
 
 
 ## ----Q7, results = 'asis'------------------------------------------------------------------------------------------------------
@@ -35,9 +35,9 @@ height <- c(112, 102, 83, 84, 99, 90, 77, 112, 133, 112)
 
 summary(height)   # summary statistics of height variable
 
-some.child <- height[c(2, 3, 9, 10)]      # extract the 2nd, 3rd, 9th, 10th height
+some_child <- height[c(2, 3, 9, 10)]      # extract the 2nd, 3rd, 9th, 10th height
 
-shorter.child <- height[height <= 99]     # extract all heights less than or equal to 99
+shorter_child <- height[height <= 99]     # extract all heights less than or equal to 99
 
 
 ## ----Q8------------------------------------------------------------------------------------------------------------------------
@@ -62,24 +62,24 @@ rep(c(7, 2, 8, 1), times = c(4, 3, 1, 5))
 
 
 ## ----Q12-----------------------------------------------------------------------------------------------------------------------
-height.sorted <- sort(height)
+height_sorted <- sort(height)
 
-height.rev <- rev(sort(height))
+height_rev <- rev(sort(height))
 
 
 
 ## ----Q13-----------------------------------------------------------------------------------------------------------------------
-child.names <- c("Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William")
+child_names <- c("Alfred", "Barbara", "James", "Jane", "John", "Judy", "Louise", "Mary", "Ronald", "William")
 
 
 ## ----Q14-----------------------------------------------------------------------------------------------------------------------
-height.ord <- order(height)   # get the indexes of the heights, smallest to tallest
-names.sort <- child.names[height.ord]     # Louise is shortest, Ronald is tallest
+height_ord <- order(height)   # get the indexes of the heights, smallest to tallest
+names_sort <- child.names[height_ord]     # Louise is shortest, Ronald is tallest
 
 
 ## ----Q15-----------------------------------------------------------------------------------------------------------------------
-weight.ord <- rev(order(weight))
-weight.rev <- child.names[weight.ord]     # Alfred is heaviest, Louise is lightest
+weight_ord <- rev(order(weight))
+weight_rev <- child_names[weight_ord]     # Alfred is heaviest, Louise is lightest
 
 
 ## ----Q16-----------------------------------------------------------------------------------------------------------------------
