@@ -65,7 +65,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-2. You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function ```shapiro.test()``` to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet ```GRate[diet=='Natural']``` first). Use the function ```var.test()``` to test for equal variance (see ```?var.test``` for more information). Are your data normally distributed and have equal variances?
+2. You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function `shapiro.test()` to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet `GRate[diet=='Natural']` first). Use the function `var.test()` to test for equal variance (see `?var.test` for more information). Are your data normally distributed and have equal variances?
 
     ```{r Q2, results = 'asis'}
     # test normality assumption
@@ -124,7 +124,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-3. Conduct a two sample t-test using the ```t.test()``` function. Use the argument ```var.equal=TRUE``` to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?
+3. Conduct a two sample t-test using the `t.test()` function. Use the argument `var.equal=TRUE` to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?
 
     ```{r Q3 , results = 'asis'}
     # conduct t-test assuming equal variances
@@ -152,7 +152,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-4. An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the ```lm()``` function to fit a linear model with `GRate` as the response variable and `diet` as an explanatory variable. Assign (`<-`) the results of the linear model to a variable with an appropriate name (i.e. ```growth.lm```).
+4. An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the `lm()` function to fit a linear model with `GRate` as the response variable and `diet` as an explanatory variable. Assign (`<-`) the results of the linear model to a variable with an appropriate name (i.e. `growth.lm`).
 
     ```{r Q4, results = 'asis'}
     # fit the model
@@ -162,7 +162,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-5. Produce an ANOVA table for the fitted model using the ```anova()``` function i.e. ```anova(growth.lm)```. Compare the ANOVA p value to the p value obtained using a t-test. What do you notice? What is the value of the F statistics and degrees of freedom? How would you summarise these results in a report?
+5. Produce an ANOVA table for the fitted model using the `anova()` function i.e. `anova(growth.lm)`. Compare the ANOVA p value to the p value obtained using a t-test. What do you notice? What is the value of the F statistics and degrees of freedom? How would you summarise these results in a report?
 
     ```{r Q5, results = 'asis'}
     # produce the ANOVA table
@@ -184,7 +184,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-6. Assess the normality and equal variance assumptions by plotting the residuals of the fitted model. Split the plotting device into 2 rows and 2 columns using ```par(mfrow=c(2,2))``` so you can fit four plots on a single device. Use the ```plot()``` function on your fitted model (```plot(growth.lm)```) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?
+6. Assess the normality and equal variance assumptions by plotting the residuals of the fitted model. Split the plotting device into 2 rows and 2 columns using `par(mfrow=c(2,2))` so you can fit four plots on a single device. Use the `plot()` function on your fitted model (`plot(growth.lm)`) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?
 
     ```{r Q6, results = 'asis'}
     # plot the residuals to assess normality and equal variance
@@ -198,7 +198,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-7. Download the datafile *'Gigartina.csv'* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in ```diameter``` of red algae [*Mastocarpus stellatus*](https://en.wikipedia.org/wiki/Mastocarpus_stellatus) spores grown in three different diatom cultures and a control group grown in artificial seawater (```diatom.treat``` variable). Use the function ```str()``` to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.
+7. Download the datafile *'Gigartina.csv'* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in `diameter` of red algae [*Mastocarpus stellatus*](https://en.wikipedia.org/wiki/Mastocarpus_stellatus) spores grown in three different diatom cultures and a control group grown in artificial seawater (`diatom.treat` variable). Use the function `str()` to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.
 
     ```{r Q7, tidy = TRUE}
     gigartina <- read.table('workshop/data/Gigartina.CSV', header = TRUE, sep = ",")
@@ -237,7 +237,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-8. You wish to compare the mean diameter of *Metacarpus* grown in the four treatment groups (```ASGM```, ```Sdecl```, ```Sexpo```, ```Sstat```) using a one-way analysis of variance (ANOVA). What is your null hypothesis?
+8. You wish to compare the mean diameter of *Metacarpus* grown in the four treatment groups (`ASGM`, `Sdecl`, `Sexpo`, `Sstat`) using a one-way analysis of variance (ANOVA). What is your null hypothesis?
 
     ```{r, Q8, results = 'asis'}
     # The null hypothesis Ho: there is no difference in mean diameter 
@@ -247,7 +247,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-9. We will conduct the ANOVA using the linear model function ```lm()``` once again. Make sure you know which of the variables is your response variable and which is your explanatory variable (ask an instructor if in doubt). Fit the linear model and assign the model output to a variable with an appropriate name (i.e. ```gigartina.lm```).
+9. We will conduct the ANOVA using the linear model function `lm()` once again. Make sure you know which of the variables is your response variable and which is your explanatory variable (ask an instructor if in doubt). Fit the linear model and assign the model output to a variable with an appropriate name (i.e. `gigartina.lm`).
 
     ```{r Q9, results = 'asis'}
     
@@ -257,7 +257,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-10. Produce an ANOVA table using the ```anova()``` function. What is the value of the p value? Do you reject or fail to reject the null hypothesis? What is the value of the *F* statistic and degrees of freedom? How would you report these summary statistics in a report?
+10. Produce an ANOVA table using the `anova()` function. What is the value of the p value? Do you reject or fail to reject the null hypothesis? What is the value of the *F* statistic and degrees of freedom? How would you report these summary statistics in a report?
 
     ```{r Q10}
     anova(gigartina.lm)
@@ -293,7 +293,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-13. We will use the function ```TukeyHSD()``` to perform these comparisons. In order to use this function we have to refit the model using the ```aov()``` function on your model object (```gigartina.lm```) in the following way ```TukeyHSD(aov(gigartina.lm))``` to obtain a summary of the comparisons. Which groups are different from each other?
+13. We will use the function `TukeyHSD()` to perform these comparisons. In order to use this function we have to refit the model using the `aov()` function on your model object (`gigartina.lm`) in the following way `TukeyHSD(aov(gigartina.lm))` to obtain a summary of the comparisons. Which groups are different from each other?
 
     ```{r Q13, results = 'asis'}
     # what group mean is different from what? Post-hoc comparisons.
@@ -330,7 +330,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-14. We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the ```plot()``` function with the ```TukeyHSD(aov(gigartina.lm))```. Ask if you get stuck (or Google it!).
+14. We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the `plot()` function with the `TukeyHSD(aov(gigartina.lm))`. Ask if you get stuck (or Google it!).
 
     ```{r Q14}
     plot(TukeyHSD(gigartina.av), cex.axis = 0.5, las = 2)
@@ -338,7 +338,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-15. Download the *'TemoraBR.csv'* file from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory. Import the dataset into R and as usual assign it to a variable. These data are from an experiment that was conducted to investigate the relationship between temperature (```temp```) and the beat rate (Hz) ```beat_rate``` of the copepod [*Temora longicornis*](https://en.wikipedia.org/wiki/Temora_longicornis) which had been acclimatised at three different temperature regimes (```acclimitisation_temp```). Examine the structure of the dataset. How many variables are there? What type of variables are they? Which is the response (dependent) variable, and which are the explanatory (independent) variables? 
+15. Download the *'TemoraBR.csv'* file from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory. Import the dataset into R and as usual assign it to a variable. These data are from an experiment that was conducted to investigate the relationship between temperature (`temp`) and the beat rate (Hz) `beat_rate` of the copepod [*Temora longicornis*](https://en.wikipedia.org/wiki/Temora_longicornis) which had been acclimatised at three different temperature regimes (`acclimitisation_temp`). Examine the structure of the dataset. How many variables are there? What type of variables are they? Which is the response (dependent) variable, and which are the explanatory (independent) variables? 
 
     ```{r Q15, tidy = TRUE}
     temora <- read.table('workshop/data/TemoraBR.CSV', header = TRUE, sep = ",")
@@ -357,7 +357,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-16. What type of variable is ```acclimitisation_temp```? Is it a factor? Convert ```acclimitisation_temp``` to a factor and store the result in a new column in your dataframe called ```Facclimitisation_temp```. Hint: use the function ```factor()```. Use an appropriate plot to visualise these data (perhaps a coplot or similar?).
+16. What type of variable is `acclimitisation_temp`? Is it a factor? Convert `acclimitisation_temp` to a factor and store the result in a new column in your dataframe called `Facclimitisation_temp`. Hint: use the function `factor()`. Use an appropriate plot to visualise these data (perhaps a coplot or similar?).
 
     ```{r Q16, tidy = TRUE}
     temora$Facclimitisation_temp <- factor(temora$acclimitisation_temp)
@@ -394,7 +394,7 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-17. We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between ```beat_rate``` and ```temp``` for each level of ```Facclimatisation_temp```. Take a look at the plot you produced in Q16, do you think the relationships are different?
+17. We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between `beat_rate` and `temp` for each level of `Facclimatisation_temp`. Take a look at the plot you produced in Q16, do you think the relationships are different?
 
     ```{r Q17}
     # the slope of the relationship between beat rate and temp
@@ -403,11 +403,11 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-18. As usual we will fit the model using the ```lm()``` function. You will need to fit the main effects of ```temp``` and ```Facclimatisation_temp``` and the interaction between ```temp``` and ```Facclimatisation_temp```. You can do this using either of the equivalent specifications: 
+18. As usual we will fit the model using the `lm()` function. You will need to fit the main effects of `temp` and `Facclimatisation_temp` and the interaction between `temp` and `Facclimatisation_temp`. You can do this using either of the equivalent specifications: 
 
-    ```temp + Facclimatisation_temp + temp:Facclimatisation_temp``` or
+    `temp + Facclimatisation_temp + temp:Facclimatisation_temp` or
 
-    ```temp * Facclimatisation_temp```
+    `temp * Facclimatisation_temp`
   
   
 ```{r Q18, tidy = TRUE}
@@ -420,7 +420,7 @@ temora.lm <- lm(beat_rate ~ temp * Facclimitisation_temp, data = temora)
 
 \  
 
-19. Produce the summary ANOVA table as usual. Is the interaction between ```temp``` and ```Facclimatisation_temp``` significant? What is the interpretation of the interaction term? Should we interpret the main effects of ```temp``` and ```Facclimatisation_temp``` as well?
+19. Produce the summary ANOVA table as usual. Is the interaction between `temp` and `Facclimatisation_temp` significant? What is the interpretation of the interaction term? Should we interpret the main effects of ```temp``` and `Facclimatisation_temp` as well?
 
     ```{r Q19, results = 'asis'}
     anova(temora.lm)
@@ -459,11 +459,11 @@ temora.lm <- lm(beat_rate ~ temp * Facclimitisation_temp, data = temora)
 
 \  
 
-21. Write a short summary in you R script (don’t forget to comment this out with ```#```) describing the interpretation of this model. Report the appropriate summary statistics such as *F* values, degrees of freedom and p values.
+21. Write a short summary in you R script (don’t forget to comment this out with `#`) describing the interpretation of this model. Report the appropriate summary statistics such as *F* values, degrees of freedom and p values.
 
 \  
 
-22. (Optional) refit the model using the square root transformed ```beat_rate``` as the response variable. Does the interpretation of the model change? Do the validation plots of the residuals look better?
+22. (Optional) refit the model using the square root transformed `beat_rate` as the response variable. Does the interpretation of the model change? Do the validation plots of the residuals look better?
 
     ```{r Q22, results = 'asis'}
     # we could try square root transforming the variable 

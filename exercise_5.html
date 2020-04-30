@@ -434,7 +434,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable. Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>).</li>
+<li>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable. Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>)</li>
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
@@ -491,8 +491,8 @@ $(document).ready(function () {
 <p> </p>
 <ol start="18" style="list-style-type: decimal">
 <li><p>As usual we will fit the model using the <code>lm()</code> function. You will need to fit the main effects of <code>temp</code> and <code>Facclimatisation_temp</code> and the interaction between <code>temp</code> and <code>Facclimatisation_temp</code>. You can do this using either of the equivalent specifications:</p>
-<pre><code>   temp + Facclimatisation_temp + temp:Facclimatisation_temp
-   temp * Facclimatisation_temp</code></pre></li>
+<p><code>temp + Facclimatisation_temp + temp:Facclimatisation_temp</code> or</p>
+<p><code>temp * Facclimatisation_temp</code></p></li>
 </ol>
 <p> </p>
 <ol start="19" style="list-style-type: decimal">
