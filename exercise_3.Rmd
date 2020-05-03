@@ -81,11 +81,11 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 15. Often, we would like to summarise variables by, for example, calculating a mean, median or counting the number of observations. To do this for a single variable it's fairly straight forward : 
 
-```{r Q15}
-mean(whale$time.at.station)     # mean time at station
-median(whale$depth)             # median depth
-length(whale$number.whales)     # number of observations
-```
+    ```{r Q15}
+    mean(whale$time.at.station)     # mean time at station
+    median(whale$depth)             # median depth
+    length(whale$number.whales)     # number of observations
+    ```
 
 15. (cont) Perhaps more interestingly, you might want summarise one variable conditional on the level of another factor variable. For example, write some R code to calculate the mean number of whales sighted at each of the three levels of water noise. Next, calculate the median number of whales sighted at each level of water noise and for each month.
 

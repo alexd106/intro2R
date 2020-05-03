@@ -106,8 +106,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
     whale.last <- whale[-c(1:10), -c(ncol(whale))] 
     # NOTE: this doesn't work for named columns
     whale.last <- whale[-c(1:10), -c("gradient")]   
-    ```
-
+    ```    
 \  
 
 9. In addition to extracting rows and columns from your dataframe by position you can also use conditional statements to select particular rows based on some logical criteria. This is very useful but takes a bit of practice to get used to. Extract rows from your dataframe (all columns by default) based on the following criteria (note: you will need to assign the results of these statements to appropriately named variables, I'll leave it up to you to use informative names!) : 
@@ -118,8 +117,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
       + water.noise level of 'high' in the month of 'May'
       + month of 'October', water noise level of ‘low’ and gradient greater than the median value of gradient (132)
       + all observations from between latitudes 60.0 and 61.0 and longitudes -6.0 and -4.0
-      + all rows that do not have a water noise level of medium
-
+      + all rows that do not have a water noise level of medium    
     ```{r Q9, tidy = TRUE}
     whale.1200 <- whale[whale$depth > 1200, ]
     
@@ -134,12 +132,10 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
     whale.lat.long <- whale[whale$latitude > 60 & whale$latitude < 61 & whale$longitude > -6 & whale$longitude < -4, ]
     
     whale.nomed <- whale[whale$water.noise != 'medium', ]
-    ```
-
+    ```    
 \  
 
-10. A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the `median()` function rather than hard coding the value 132. 
-
+10. A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the `median()` function rather than hard coding the value 132.     
     ```{r Q10, tidy = TRUE}
     whale.subset <- whale[whale$month == 'October' & whale$water.noise == 'low' & whale$gradient > median(whale$gradient), ]
     ```
@@ -186,8 +182,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
     
     # use '-' to reverse the order of depth
     whale.rev.sorted <- whale[order(whale$water.noise, -whale$depth), ]   
-    ```
-
+    ```    
 \    
 
 15. Often, we would like to summarise variables by, for example, calculating a mean, median or counting the number of observations. To do this for a single variable it's fairly straight forward : 
@@ -224,9 +219,8 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
     aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), mean, na.rm = TRUE)
     
     # optional question. Need to specify a function 'on the fly' using function(x){}
-    aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month), function(x){round(mean(x, na.rm = TRUE), digits = 2)})
-    ```
-
+    aggregate(whale[, c(2, 4, 7, 8)], by = list(water.noise = whale$water.noise, month = whale$month),     function(x){round(mean(x, na.rm = TRUE), digits = 2)})
+    ```    
 \  
 
 17. Knowing how many observations are present for each factor level (or combinations of factor levels) is useful to determine whether you have an adequate sample size (for subsequent modelling for example). Use the `table()` function to determine the number of observations for each level of water noise. Next use the same function to display the number of observations for each combination of water noise and month. (Optional): The `xtabs()` function is very flexible for creating tables of counts for factor combinations (aka contingency tables). Take a look at the help file (or Google) to figure out how to use the `xtabs()` function to replicate your use of the `table()` function.        

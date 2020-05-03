@@ -608,10 +608,8 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co"># more general way if you have lots of columns</span></a>
 <a class="sourceLine" id="cb4-15" data-line-number="15">whale.last &lt;-<span class="st"> </span>whale[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="op">-</span><span class="kw">c</span>(<span class="kw">ncol</span>(whale))] </a>
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co"># </span><span class="al">NOTE</span><span class="co">: this doesn&#39;t work for named columns</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17">whale.last &lt;-<span class="st"> </span>whale[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;gradient&quot;</span>)]   </a></code></pre></div></li>
-</ol>
-<p> </p>
-<ol start="9" style="list-style-type: decimal">
+<a class="sourceLine" id="cb4-17" data-line-number="17">whale.last &lt;-<span class="st"> </span>whale[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;gradient&quot;</span>)]   </a></code></pre></div>
+<p> </p></li>
 <li><p>In addition to extracting rows and columns from your dataframe by position you can also use conditional statements to select particular rows based on some logical criteria. This is very useful but takes a bit of practice to get used to. Extract rows from your dataframe (all columns by default) based on the following criteria (note: you will need to assign the results of these statements to appropriately named variables, I’ll leave it up to you to use informative names!) :</p>
 <ul>
 <li>at depths greater than 1200 m</li>
@@ -634,10 +632,8 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb5-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11">whale.lat.long &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>latitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>latitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">61</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">-6</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">-4</span>, ]</a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">whale.nomed &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>water.noise <span class="op">!=</span><span class="st"> &quot;medium&quot;</span>, ]</a></code></pre></div></li>
-</ol>
-<p> </p>
-<ol start="10" style="list-style-type: decimal">
+<a class="sourceLine" id="cb5-13" data-line-number="13">whale.nomed &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>water.noise <span class="op">!=</span><span class="st"> &quot;medium&quot;</span>, ]</a></code></pre></div>
+<p> </p></li>
 <li><p>A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the <code>median()</code> function rather than hard coding the value 132.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(whale<span class="op">$</span>gradient), ]</a></code></pre></div></li>
 </ol>
@@ -670,10 +666,8 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb10-2" data-line-number="2">whale.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</span>(whale<span class="op">$</span>water.noise, whale<span class="op">$</span>depth), ]        </a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co"># use &#39;-&#39; to reverse the order of depth</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">whale.rev.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</span>(whale<span class="op">$</span>water.noise, <span class="op">-</span>whale<span class="op">$</span>depth), ]   </a></code></pre></div></li>
-</ol>
-<p> </p>
-<ol start="15" style="list-style-type: decimal">
+<a class="sourceLine" id="cb10-5" data-line-number="5">whale.rev.sorted &lt;-<span class="st"> </span>whale[<span class="kw">order</span>(whale<span class="op">$</span>water.noise, <span class="op">-</span>whale<span class="op">$</span>depth), ]   </a></code></pre></div>
+<p> </p></li>
 <li><p>Often, we would like to summarise variables by, for example, calculating a mean, median or counting the number of observations. To do this for a single variable it’s fairly straight forward :</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">mean</span>(whale<span class="op">$</span>time.at.station)     <span class="co"># mean time at station</span></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">median</span>(whale<span class="op">$</span>depth)             <span class="co"># median depth</span></a>
@@ -700,10 +694,8 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co"># optional question. Need to specify a function &#39;on the fly&#39; using function(x){}</span></a>
 <a class="sourceLine" id="cb13-6" data-line-number="6"><span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale<span class="op">$</span>water.noise, <span class="dt">month =</span> whale<span class="op">$</span>month), <span class="cf">function</span>(x) {</a>
 <a class="sourceLine" id="cb13-7" data-line-number="7">    <span class="kw">round</span>(<span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">digits =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb13-8" data-line-number="8">})</a></code></pre></div></li>
-</ol>
-<p> </p>
-<ol start="17" style="list-style-type: decimal">
+<a class="sourceLine" id="cb13-8" data-line-number="8">})</a></code></pre></div>
+<p> </p></li>
 <li><p>Knowing how many observations are present for each factor level (or combinations of factor levels) is useful to determine whether you have an adequate sample size (for subsequent modelling for example). Use the <code>table()</code> function to determine the number of observations for each level of water noise. Next use the same function to display the number of observations for each combination of water noise and month. (Optional): The <code>xtabs()</code> function is very flexible for creating tables of counts for factor combinations (aka contingency tables). Take a look at the help file (or Google) to figure out how to use the <code>xtabs()</code> function to replicate your use of the <code>table()</code> function.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># using table</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">table</span>(whale<span class="op">$</span>water.noise)</a>
