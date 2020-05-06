@@ -18,6 +18,12 @@ During the course we will be using both R and RStudio. To get your computer read
 
 You will need to download and install R and RStudio separately. **R** is the underlying statistical computing environment. **RStudio** is a graphical integrated development environment (IDE) that makes using R a little easier. You need to install R before you install RStudio.
 
+See the following video for step by step instructions.
+
+\  
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rU_lI4wj_lg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 \  
 
 ## Get the Data
