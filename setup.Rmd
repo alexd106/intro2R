@@ -50,14 +50,3 @@ Installing R markdown is not required for this course. However, for those of you
 
 ### Git and GitHub
 For those of you interested in using version control to keep track of your projects please see our [Introduction to Git and GitHub tutorial](Github_intro.html) for information on how to install and configure Git and GitHub on your computer. Note, this is not required to complete this course.  
-
-\  
-
-*A few notes*:
-
-- If you really dislike using RStudio (or just fancy a change) then feel free to use an alternative IDE or script editor (see [FAQ](index.html)).
-
-
-
-
-
