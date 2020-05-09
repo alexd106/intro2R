@@ -1,8 +1,9 @@
 ---
-title: 'Lectures'
+title: 'Resources'
 output: 
   html_document:
-    toc: false
+    css: custom.css
+    toc: no
 ---
 ```{r, include=FALSE}
 library(htmltools)
@@ -13,7 +14,15 @@ source('reveal.R')
 
 \  
 
-Follow the links below for pdf versions of the lecture slides.
+This page contains lecture slides, short how-to videos and tutorials to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R book](https://alexd106.github.io/Rbook). 
+
+\  
+
+## Lecture slides
+
+Follow the links below for PDF versions of lecture slides we deliver during our in-person courses.
+
+\  
 
 \  
 
@@ -36,4 +45,81 @@ thumbnail("Data in R", "images/data_in_r_thumb.png",
 thumbnail("Simple Statistics in R", "images/stats_r_thumb.png",
           "lectures/statistics_in_r.pdf")
 ```
+
+\  
+
+\  
+
+## How-to
+
+Short how-to videos to get you started with some important topics. 
+
+\  
+
+<iframe src="https://player.vimeo.com/video/415501284" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+\  
+
+<iframe src="https://player.vimeo.com/video/416391353" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+\  
+
+\  
+
+## Tutorials
+
+Self-contained tutorials on some more advanced topics. Most of this material has now been incorporated into our [Introduction to R book](https://alexd106.github.io/Rbook).  
+
+\  
+
+\  
+
+<div style= "float:left;position: relative; top: -15px;">
+```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/rstudio_2.png")
+```
+</div>
+
+\  
+
+[Setting up an RStudio project](project_setup.html)  
+
+\  
+
+\  
+
+\  
+
+\  
+
+<div style= "float:left;position: relative; top: -35px;">
+```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/rmarkdown.png")
+```
+</div>
+
+\ 
+
+[Introduction to reproducible reports using R markdown](Rmarkdown_intro.html)
+
+\  
+
+\  
+
+\  
+
+\  
+
+<div style= "float:left;position: relative; top: -15px;">
+```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
+knitr::include_graphics("images/github.png")
+```
+</div>
+
+\  
+
+[Introduction to version control using Git and GitHub](Github_intro.html)
+
+\  
+
 

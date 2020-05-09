@@ -384,9 +384,9 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="lectures.html">
-    <span class="fa fa-university"></span>
+    <span class="fa fa-desktop"></span>
      
-    Lectures
+    Resources
   </a>
 </li>
 <li class="dropdown">
@@ -435,13 +435,6 @@ $(document).ready(function () {
     <span class="fa fa-download"></span>
      
     Data
-  </a>
-</li>
-<li>
-  <a href="Tutorials.html">
-    <span class="fa fa-desktop"></span>
-     
-    Tutorials
   </a>
 </li>
 <li class="dropdown">
@@ -628,17 +621,14 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb5-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7">whale.h.may &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;high&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;May&quot;</span>, ]</a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">    </span><span class="dv">132</span>, ]</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">whale.lat.long &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>latitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>latitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">61</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">-6</span> <span class="op">&amp;</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="st">    </span>whale<span class="op">$</span>longitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">-4</span>, ]</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">whale.nomed &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>water.noise <span class="op">!=</span><span class="st"> &quot;medium&quot;</span>, ]</a></code></pre></div>
+<a class="sourceLine" id="cb5-9" data-line-number="9">whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span><span class="dv">132</span>, ]</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">whale.lat.long &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>latitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>latitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">61</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">-6</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>longitude <span class="op">&lt;</span><span class="st"> </span><span class="dv">-4</span>, ]</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">whale.nomed &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>water.noise <span class="op">!=</span><span class="st"> &quot;medium&quot;</span>, ]</a></code></pre></div>
 <p> </p></li>
 <li><p>A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the <code>median()</code> function rather than hard coding the value 132.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">    </span><span class="kw">median</span>(whale<span class="op">$</span>gradient), ]</a></code></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">whale.subset &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>water.noise <span class="op">==</span><span class="st"> &quot;low&quot;</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>gradient <span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(whale<span class="op">$</span>gradient), ]</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
@@ -646,18 +636,16 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># results in a dataframe filled with NAs.</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales), ]</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co"># an NA.  use the na.rm argument to ignore NAs</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">    ]</a></code></pre></div></li>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.  use the na.rm argument</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co"># to ignore NAs</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), ]</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
 <li><p>Although you have concentrated on using the square bracket <code>[ ]</code> notation to extract rows and columns from your dataframe, there are of course many other approaches. One such approach is to use the <code>subset()</code> function (see <code>?subset</code> or the manual for more details). Use the <code>subset()</code> function to extract all rows in ‘May’ with a time at station less than 1000 minutes and a depth greater than 1000 m. Also use <code>subset()</code> to extract data collected in ‘October’ from latitudes greater than 61 degrees but only include the columns <code>month</code>, <code>latitude</code>, <code>longitude</code> and <code>number.whales</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">subset</span>(whale, month <span class="op">==</span><span class="st"> &quot;May&quot;</span> <span class="op">&amp;</span><span class="st"> </span>time.at.station <span class="op">&lt;</span><span class="st"> </span><span class="dv">1000</span> <span class="op">&amp;</span><span class="st"> </span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">subset</span>(whale, month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>latitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">61</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span>, </a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">    <span class="st">&quot;number.whales&quot;</span>))</a></code></pre></div></li>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">subset</span>(whale, month <span class="op">==</span><span class="st"> &quot;October&quot;</span> <span class="op">&amp;</span><span class="st"> </span>latitude <span class="op">&gt;</span><span class="st"> </span><span class="dv">61</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;number.whales&quot;</span>))</a></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
@@ -694,14 +682,12 @@ $(document).ready(function () {
 <li><p>Another useful function for summarising dataframes is <code>aggregate()</code>. Refer back to the book to look up how to use this function (or see <code>?aggregate</code>). Use the <code>aggregate()</code> function to calculate the mean of time at station, number of whales, depth and gradient for each level of water noise (don’t forget about that sneaky NA value). Next calculate the mean of time at station, number of whales, depth and gradient for each level of water noise for each month. (Optional): For an extra bonus point see if you can figure out how to modify your previous code to display the mean values to 2 decimal places rather than the default of 3 decimal places.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale<span class="op">$</span>water.noise), mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale<span class="op">$</span>water.noise, <span class="dt">month =</span> whale<span class="op">$</span>month), </a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">    mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co"># optional question. Need to specify a function &#39;on the fly&#39; using function(x){}</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale<span class="op">$</span>water.noise, <span class="dt">month =</span> whale<span class="op">$</span>month), </a>
-<a class="sourceLine" id="cb13-8" data-line-number="8">    <span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb13-9" data-line-number="9">        <span class="kw">round</span>(<span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">digits =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb13-10" data-line-number="10">    })</a></code></pre></div>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale<span class="op">$</span>water.noise, <span class="dt">month =</span> whale<span class="op">$</span>month), mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co"># optional question. Need to specify a function &#39;on the fly&#39; using function(x){}</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="kw">aggregate</span>(whale[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">water.noise =</span> whale<span class="op">$</span>water.noise, <span class="dt">month =</span> whale<span class="op">$</span>month), <span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">    <span class="kw">round</span>(<span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), <span class="dt">digits =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">})</a></code></pre></div>
 <p> </p></li>
 <li><p>Knowing how many observations are present for each factor level (or combinations of factor levels) is useful to determine whether you have an adequate sample size (for subsequent modelling for example). Use the <code>table()</code> function to determine the number of observations for each level of water noise. Next use the same function to display the number of observations for each combination of water noise and month. (Optional): The <code>xtabs()</code> function is very flexible for creating tables of counts for factor combinations (aka contingency tables). Take a look at the help file (or Google) to figure out how to use the <code>xtabs()</code> function to replicate your use of the <code>table()</code> function.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># using table</span></a>
