@@ -2,7 +2,9 @@
 title: 'Setup Instructions'
 output: 
   html_document:
-    toc: false
+    css: custom.css
+    toc: yes
+    toc_depth: 3
 ---
 
 \  
