@@ -35,9 +35,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -47,14 +47,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -63,9 +65,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -508,13 +510,13 @@ $(document).ready(function () {
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="bn">```{r, data-import}</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="bn">squid &lt;- read.table(&#39;./data/squid1.txt&#39;, header = TRUE)</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="bn">str(squid)</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">In this dataset <span class="bn">`r nrow(squid)`</span> squid were caught and <span class="bn">`r ncol(squid)`</span> variables were measured  </a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">for each squid. Details are shown above.</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="bn">```{r, data-import}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="bn">squid &lt;- read.table(&#39;./data/squid1.txt&#39;, header = TRUE)</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="bn">str(squid)</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="bn">```</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6"></a>In this dataset <span class="bn">`r nrow(squid)`</span> squid were caught and <span class="bn">`r ncol(squid)`</span> variables were measured  </span>
+<span id="cb1-7"><a href="#cb1-7"></a>for each squid. Details are shown above.</span></code></pre></div>
 </div>
 <p> </p>
 <p>Perhaps you might remember from <a href="exercise_4_solution.html">Exercise 4</a> that the <code>year</code>, <code>month</code> and <code>maturity.stage</code> variables were coded as integers in the original dataset (see the output from <code>str(squid)</code> above to confirm) but we want to recode them as factors. Create a new code chunk called <code>data-recode</code> and include R code to create a new variable for each of these variables in the <code>squid</code> dataframe and recode them as factors. Change the chunk option to hide this code in the rendered document. Write some text to describe that you have recoded the variables to let the reader know you’ve done this (even though you don’t show the code in the final document).</p>
@@ -523,15 +525,15 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">```{r, data-recode, echo=FALSE}</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="bn"># convert variables to factors</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="bn">squid$Fmaturity &lt;- factor(squid$maturity.stage)</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="bn">squid$Fmonth &lt;- factor(squid$month) </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="bn">squid$Fyear &lt;- factor(squid$year)</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">The variables <span class="bn">`maturity.stage`</span>, <span class="bn">`month`</span> and <span class="bn">`year`</span> were converted from integers to factors in the dataframe  </a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="bn">`squid`</span>. These recoded variables were named <span class="bn">`Fmaturity`</span>, <span class="bn">`Fmonth`</span> and <span class="bn">`Fyear`</span>.</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="bn">```{r, data-recode, echo=FALSE}</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="bn"># convert variables to factors</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="bn">squid$Fmaturity &lt;- factor(squid$maturity.stage)</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="bn">squid$Fmonth &lt;- factor(squid$month) </span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="bn">squid$Fyear &lt;- factor(squid$year)</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="bn">```</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>The variables <span class="bn">`maturity.stage`</span>, <span class="bn">`month`</span> and <span class="bn">`year`</span> were converted from integers to factors in the dataframe  </span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="bn">`squid`</span>. These recoded variables were named <span class="bn">`Fmaturity`</span>, <span class="bn">`Fmonth`</span> and <span class="bn">`Fyear`</span>.</span></code></pre></div>
 </div>
 <p> </p>
 <p>Next create a code chunk (give it a suitable name) and write some code to create a table of the number of observations for each year and month combination (hint: remember the <code>table()</code> function?) Don’t forget to use the factor recoded versions of these variables. Use the <code>kable()</code> function from the <code>knitr</code> package to nicely render the table (remember you will need to use <code>library(knitr)</code> to load the package first). You might want to also include the argument <code>row.names = TRUE</code> when you use the <code>kable()</code> function so the table contains the month numbers. Another argument that is often useful to include is <code>format = 'markdown</code> which will ensure the table renders nicely in HTML and pdf formats. Write some text to highlight which year has the fewest number of observations and which year and month combinations have no observations.</p>
@@ -540,28 +542,28 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb3-1" data-line-number="1">Next, let&#39;s take a look at the number of observations across years and months.</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="bn">```{r, data-obs}</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="bn">library(knitr)</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="bn">kable(table(squid$Fmonth, squid$Fyear), row.names = TRUE, format = &#39;markdown&#39;)</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">Or,If you want a fancy table with the variable names (month and year) then use the pander function from the  </a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">pander package. You will also have to provide the dimnames to the table and use the ftable function to  </a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">&#39;flatten&#39; the table.  </a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="bn">```{r, data-obs2}</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="bn">library(pander)</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="bn">mytab &lt;- table(squid$Fmonth, squid$Fyear)</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="bn">names(dimnames(mytab)) &lt;- c(&quot;Month&quot;, &quot;Year&quot;)</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="bn">pander(ftable(mytab))</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">In 1989 data were only collected during December and in 1991 data collection stopped in August.    </a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">During 1990, no data were collected in either February or June. There are also some months that   </a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">have very few observations (May 1990 and July 1991 for example) so care must be taken when   </a>
-<a class="sourceLine" id="cb3-22" data-line-number="22">modelling these data.   </a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a>Next, let&#39;s take a look at the number of observations across years and months.</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="bn">```{r, data-obs}</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="bn">library(knitr)</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="bn">kable(table(squid$Fmonth, squid$Fyear), row.names = TRUE, format = &#39;markdown&#39;)</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="bn">```</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>Or,If you want a fancy table with the variable names (month and year) then use the pander function from the  </span>
+<span id="cb3-9"><a href="#cb3-9"></a>pander package. You will also have to provide the dimnames to the table and use the ftable function to  </span>
+<span id="cb3-10"><a href="#cb3-10"></a>&#39;flatten&#39; the table.  </span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="bn">```{r, data-obs2}</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="bn">library(pander)</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="bn">mytab &lt;- table(squid$Fmonth, squid$Fyear)</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="bn">names(dimnames(mytab)) &lt;- c(&quot;Month&quot;, &quot;Year&quot;)</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="bn">pander(ftable(mytab))</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="bn">```</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a>In 1989 data were only collected during December and in 1991 data collection stopped in August.    </span>
+<span id="cb3-20"><a href="#cb3-20"></a>During 1990, no data were collected in either February or June. There are also some months that   </span>
+<span id="cb3-21"><a href="#cb3-21"></a>have very few observations (May 1990 and July 1991 for example) so care must be taken when   </span>
+<span id="cb3-22"><a href="#cb3-22"></a>modelling these data.   </span></code></pre></div>
 </div>
 <p> </p>
 <p>We should also create a summary table of the number of observations for each level of maturity stage for each month. Create a code chunk and include code to do this but hide the code in the rendered document using the appropriate chunk option. If you feel like it, experiment with the <code>kableExtra</code> package to alter some of the formatting (text size etc). You may need to install the package before you can use it. Again, write some text to summarise your findings.</p>
@@ -570,25 +572,25 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">Number of observations each month for each of the squid maturity stages are given in the table below.</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="bn">```{r, maturity-obs, echo=FALSE}</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="bn"># using just kable</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="bn">kable(table(squid$Fmaturity, squid$Fmonth), row.names = TRUE)</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="bn"># using kableExtra (good for html output)</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="bn">library(kableExtra)</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="bn">kable(table(squid$Fmaturity, squid$Fmonth), row.names = TRUE) %&gt;%</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="bn">    kable_styling(bootstrap_options = &quot;striped&quot;, font_size = 14)</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17">Not all maturity stages were observed in all months. Very few squid of maturity stage 1, 2 or 3</a>
-<a class="sourceLine" id="cb4-18" data-line-number="18">were caught in the months February to May whereas maturity stages 4 and 5 were </a>
-<a class="sourceLine" id="cb4-19" data-line-number="19">predominantly caught during these months.</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2"></a>Number of observations each month for each of the squid maturity stages are given in the table below.</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="bn">```{r, maturity-obs, echo=FALSE}</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="bn"># using just kable</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="bn">kable(table(squid$Fmaturity, squid$Fmonth), row.names = TRUE)</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="bn"># using kableExtra (good for html output)</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="bn">library(kableExtra)</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="bn">kable(table(squid$Fmaturity, squid$Fmonth), row.names = TRUE) %&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="bn">    kable_styling(bootstrap_options = &quot;striped&quot;, font_size = 14)</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="bn">```</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a>Not all maturity stages were observed in all months. Very few squid of maturity stage 1, 2 or 3</span>
+<span id="cb4-18"><a href="#cb4-18"></a>were caught in the months February to May whereas maturity stages 4 and 5 were </span>
+<span id="cb4-19"><a href="#cb4-19"></a>predominantly caught during these months.</span></code></pre></div>
 </div>
 <p> </p>
 <p>Ok, lets produce some exploratory plots in our document. The first thing we would like to know is whether there are any unusual observations in the variables; <code>DML</code>, <code>weight</code>, <code>nid.length</code> and <code>ovary.weight</code>. Create a code chunk containing code to plot cleveland dotplots of these variables. You can either plot one after the other or split the plotting device into 2 rows and 2 columns to plot them all together. This time we would like to show the code used to create these plots. Describe what you see and come up with a plausable explanation (refer back to Exercise 4 Question 7 for a hint.)</p>
@@ -597,26 +599,26 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">Now let&#39;s check for any unusual observations in the variables; <span class="bn">`DML`</span>, <span class="bn">`weight`</span>,  </a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="bn">`nid.length`</span> and <span class="bn">`ovary.weight`</span>. </a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="bn">```{r, dotplot}</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="bn">par(mfrow = c(2, 2))</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="bn">    dotchart(squid$DML, main = &quot;DML&quot;)</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="bn">    dotchart(squid$weight, main = &quot;weight&quot;)</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="bn">    dotchart(squid$nid.length, main = &quot;nid length&quot;)</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="bn">    dotchart(squid$ovary.weight, main = &quot;ovary weight&quot;)</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14">It looks like the variable <span class="bn">`nid.length`</span> contains an **unusually large** value. Actually, this value  </a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">is biologically implausible and clearly an error. I went back and checked my field notebook and  </a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">sure enough it&#39;s a typo. I was knackered at the time and accidentally inserted a zero by mistake  </a>
-<a class="sourceLine" id="cb5-17" data-line-number="17">when transcribing these data. **Doh!** This squid was identified as observation number  </a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="bn">`r which(squid$nid.length &gt; 400)`</span> with a sample number  </a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="bn">`r squid$sample.no[which(squid$nid.length &gt; 400)]`</span>. This observation was  </a>
-<a class="sourceLine" id="cb5-20" data-line-number="20">subsequently removed from the data set.  </a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2"></a>Now let&#39;s check for any unusual observations in the variables; <span class="bn">`DML`</span>, <span class="bn">`weight`</span>,  </span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bn">`nid.length`</span> and <span class="bn">`ovary.weight`</span>. </span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bn">```{r, dotplot}</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="bn">par(mfrow = c(2, 2))</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bn">    dotchart(squid$DML, main = &quot;DML&quot;)</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="bn">    dotchart(squid$weight, main = &quot;weight&quot;)</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="bn">    dotchart(squid$nid.length, main = &quot;nid length&quot;)</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="bn">    dotchart(squid$ovary.weight, main = &quot;ovary weight&quot;)</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="bn">```</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a>It looks like the variable <span class="bn">`nid.length`</span> contains an **unusually large** value. Actually, this value  </span>
+<span id="cb5-15"><a href="#cb5-15"></a>is biologically implausible and clearly an error. I went back and checked my field notebook and  </span>
+<span id="cb5-16"><a href="#cb5-16"></a>sure enough it&#39;s a typo. I was knackered at the time and accidentally inserted a zero by mistake  </span>
+<span id="cb5-17"><a href="#cb5-17"></a>when transcribing these data. **Doh!** This squid was identified as observation number  </span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="bn">`r which(squid$nid.length &gt; 400)`</span> with a sample number  </span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="bn">`r squid$sample.no[which(squid$nid.length &gt; 400)]`</span>. This observation was  </span>
+<span id="cb5-20"><a href="#cb5-20"></a>subsequently removed from the data set.  </span></code></pre></div>
 </div>
 <p> </p>
 <p>Next, produce a boxplot of the <code>DML</code> variable against <code>Fmaturity</code> to examine whether the size of the squid changes with maturity stage. Change the chunk option to supress the R code in the final document and only display the plot. Write some text to summarise the main conclusions from the plot. Also include some inline R code to report the mean value of DML for each of the maturity stages.</p>
@@ -625,21 +627,21 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">Let&#39;s take a look at whether DML changes with maturity stage. </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="bn">```{r, maturity-dml, echo=FALSE}</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="bn">boxplot(DML ~ Fmaturity, data = squid, xlab = &quot;maturity stage&quot;, ylab = &quot;DML&quot;)</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="bn">```</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">DML was lowest for maturity stage 1 with a mean length of  </a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="bn">`r round(mean(squid$DM[squid$Fmaturity == 1]), digits = 2)`</span> mm. DML  </a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">increased until maturity stage 3  </a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">(mean <span class="bn">`r round(mean(squid$DM[squid$Fmaturity == 3]), digits = 2)`</span> mm)  </a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">after which it remained reasonably consistent for maturity stages 4  </a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">(mean <span class="bn">`r  round(mean(squid$DM[squid$Fmaturity == 4]), digits = 2)`</span> mm)  </a>
-<a class="sourceLine" id="cb6-15" data-line-number="15">and 5 (mean <span class="bn">`r round(mean(squid$DM[squid$Fmaturity == 5]), digits = 2)`</span> mm).  </a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2"></a>Let&#39;s take a look at whether DML changes with maturity stage. </span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bn">```{r, maturity-dml, echo=FALSE}</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="bn">boxplot(DML ~ Fmaturity, data = squid, xlab = &quot;maturity stage&quot;, ylab = &quot;DML&quot;)</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="bn">```</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>DML was lowest for maturity stage 1 with a mean length of  </span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="bn">`r round(mean(squid$DM[squid$Fmaturity == 1]), digits = 2)`</span> mm. DML  </span>
+<span id="cb6-11"><a href="#cb6-11"></a>increased until maturity stage 3  </span>
+<span id="cb6-12"><a href="#cb6-12"></a>(mean <span class="bn">`r round(mean(squid$DM[squid$Fmaturity == 3]), digits = 2)`</span> mm)  </span>
+<span id="cb6-13"><a href="#cb6-13"></a>after which it remained reasonably consistent for maturity stages 4  </span>
+<span id="cb6-14"><a href="#cb6-14"></a>(mean <span class="bn">`r  round(mean(squid$DM[squid$Fmaturity == 4]), digits = 2)`</span> mm)  </span>
+<span id="cb6-15"><a href="#cb6-15"></a>and 5 (mean <span class="bn">`r round(mean(squid$DM[squid$Fmaturity == 5]), digits = 2)`</span> mm).  </span></code></pre></div>
 </div>
 <p> </p>
 <p>It’s always good practice to include a summary of the version of R you have been using as well as a list of packages loaded. An easy way to do this is include <code>sessionInfo()</code> in a code chunk at the end of your document.</p>
@@ -648,9 +650,9 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="bn">```{r, session-info, echo=FALSE}</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="bn">sessionInfo()</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="bn">```{r, session-info, echo=FALSE}</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bn">sessionInfo()</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bn">```</span></span></code></pre></div>
 </div>
 <script>
   $(".toggle").click(function() {

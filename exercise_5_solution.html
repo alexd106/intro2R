@@ -36,9 +36,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,14 +48,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -64,9 +66,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -527,228 +529,227 @@ $(document).ready(function () {
 <p> </p>
 <ol style="list-style-type: decimal">
 <li><p>Download the datafile <em>‘prawnGR.CSV’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import these data into R and assign to a variable with an appropriate name. These data were collected from an experiment to investigate the difference in growth rate of the <a href="https://en.wikipedia.org/wiki/Penaeus_monodon">giant tiger prawn</a> (<em>Penaeus monodon</em>) fed either an artificial or natural diet. Have a quick look at the structure of this dataset and plot the growth rate versus the diet using an appropriate plot. How many observations are there in each diet treatment?</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">prawns &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;workshop/data/prawnGR.CSV&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># or</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">prawns &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/prawnGR.CSV&quot;</span>)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># take a look at the data</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">str</span>(prawns)</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co"># &#39;data.frame&#39;:   60 obs. of  2 variables:</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#  $ GRate: num  9.77 10.29 10.05 10.08 9.31 ...</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#  $ diet : Factor w/ 2 levels &quot;Artificial&quot;,&quot;Natural&quot;:...</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="kw">summary</span>(prawns)</a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#      GRate                diet   </span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#  Min.   : 7.395   Artificial:30  </span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#  1st Qu.: 9.550   Natural   :30  </span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#  Median : 9.943                  </span></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#  Mean   : 9.920                  </span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#  3rd Qu.:10.344                  </span></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#  Max.   :11.632         </span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="co"># how many replicates for each level of diet</span></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="kw">table</span>(prawns<span class="op">$</span>diet)</a>
-<a class="sourceLine" id="cb1-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co"># Artificial    Natural </span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">#         30         30 </span></a>
-<a class="sourceLine" id="cb1-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co"># or use xtabs</span></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32"></a>
-<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns)</a>
-<a class="sourceLine" id="cb1-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb1-35" data-line-number="35"><span class="co"># produce a boxplot</span></a>
-<a class="sourceLine" id="cb1-36" data-line-number="36"></a>
-<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="kw">boxplot</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns, <span class="dt">xlab =</span> <span class="st">&quot;Diet&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Growth Rate&quot;</span>)</a></code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>prawns &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;workshop/data/prawnGR.CSV&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># or</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>prawns &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/prawnGR.CSV&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># take a look at the data</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">str</span>(prawns)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># &#39;data.frame&#39;:   60 obs. of  2 variables:</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#  $ GRate: num  9.77 10.29 10.05 10.08 9.31 ...</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#  $ diet : Factor w/ 2 levels &quot;Artificial&quot;,&quot;Natural&quot;:...</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="kw">summary</span>(prawns)</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#      GRate                diet   </span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#  Min.   : 7.395   Artificial:30  </span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#  1st Qu.: 9.550   Natural   :30  </span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#  Median : 9.943                  </span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#  Mean   : 9.920                  </span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#  3rd Qu.:10.344                  </span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#  Max.   :11.632         </span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># how many replicates for each level of diet</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="kw">table</span>(prawns<span class="op">$</span>diet)</span>
+<span id="cb1-27"><a href="#cb1-27"></a></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># Artificial    Natural </span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#         30         30 </span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co"># or use xtabs</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns)</span>
+<span id="cb1-34"><a href="#cb1-34"></a></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># produce a boxplot</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="kw">boxplot</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns, <span class="dt">xlab =</span> <span class="st">&quot;Diet&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Growth Rate&quot;</span>)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function <code>shapiro.test()</code> to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet <code>GRate[diet=='Natural']</code> first). Use the function <code>var.test()</code> to test for equal variance (see <code>?var.test</code> for more information). Are your data normally distributed and have equal variances?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># test normality assumption</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># Do not perform test on all data together, i.e.</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">shapiro.test</span>(prawns<span class="op">$</span>GRate) <span class="co"># this is wrong!!</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co"># Need to test for departures from normality for each group </span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># separately. Remember your indexing [ ]</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="kw">shapiro.test</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Artificial&quot;</span>])</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#         Shapiro-Wilk normality test</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co"># </span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co"># data:  prawns$GRate[prawns$diet == &quot;Artificial&quot;] </span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co"># W = 0.9486, p-value = 0.1553</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="kw">shapiro.test</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Natural&quot;</span>])</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#         Shapiro-Wilk normality test</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co"># </span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co"># data:  prawns$GRate[prawns$diet == &quot;Natural&quot;] </span></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co"># W = 0.9598, p-value = 0.307</span></a>
-<a class="sourceLine" id="cb2-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co"># Therefore no evidence to reject the Null hypothesis and data are normally distributed</span></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co"># However much better assessment of normality is to use a quantile - quantile plot</span></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co"># looking for points to lie along the line for normality</span></a>
-<a class="sourceLine" id="cb2-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="kw">qqnorm</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Artificial&quot;</span>])</a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="kw">qqline</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Artificial&quot;</span>])</a>
-<a class="sourceLine" id="cb2-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="kw">qqnorm</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Natural&quot;</span>])</a>
-<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="kw">qqline</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Natural&quot;</span>])</a>
-<a class="sourceLine" id="cb2-34" data-line-number="34"></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co"># test for equal variance</span></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co"># if normal</span></a>
-<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co"># Null hypothesis Ho: variances are equal</span></a>
-<a class="sourceLine" id="cb2-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="kw">var.test</span>(prawns<span class="op">$</span>GRate <span class="op">~</span><span class="st"> </span>prawns<span class="op">$</span>diet)</a>
-<a class="sourceLine" id="cb2-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#         F test to compare two variances</span></a>
-<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co"># data:  prawns$GRate by prawns$diet </span></a>
-<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co"># F = 1.9629, num df = 29, denom df = 29, p-value = 0.07445</span></a>
-<a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co"># alternative hypothesis: true ratio of variances is not equal to 1 </span></a>
-<a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co"># 95 percent confidence interval:</span></a>
-<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#  0.9342621 4.1240043 </span></a>
-<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co"># sample estimates:</span></a>
-<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co"># ratio of variances </span></a>
-<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#           1.962881 </span></a>
-<a class="sourceLine" id="cb2-50" data-line-number="50"></a>
-<a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co"># No evidence to reject null hypothesis (P=0.07) therefore no </span></a>
-<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co"># difference in variance</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># test normality assumption</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Do not perform test on all data together, i.e.</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">shapiro.test</span>(prawns<span class="op">$</span>GRate) <span class="co"># this is wrong!!</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Need to test for departures from normality for each group </span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># separately. Remember your indexing [ ]</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">shapiro.test</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Artificial&quot;</span>])</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#         Shapiro-Wilk normality test</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># </span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># data:  prawns$GRate[prawns$diet == &quot;Artificial&quot;] </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># W = 0.9486, p-value = 0.1553</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="kw">shapiro.test</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Natural&quot;</span>])</span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#         Shapiro-Wilk normality test</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># </span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co"># data:  prawns$GRate[prawns$diet == &quot;Natural&quot;] </span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co"># W = 0.9598, p-value = 0.307</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co"># Therefore no evidence to reject the Null hypothesis and data are normally distributed</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="co"># However much better assessment of normality is to use a quantile - quantile plot</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># looking for points to lie along the line for normality</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="kw">qqnorm</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Artificial&quot;</span>])</span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="kw">qqline</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Artificial&quot;</span>])</span>
+<span id="cb2-31"><a href="#cb2-31"></a></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="kw">qqnorm</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Natural&quot;</span>])</span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="kw">qqline</span>(prawns<span class="op">$</span>GRate[prawns<span class="op">$</span>diet <span class="op">==</span><span class="st"> &quot;Natural&quot;</span>])</span>
+<span id="cb2-34"><a href="#cb2-34"></a></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="co"># test for equal variance</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="co"># if normal</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="co"># Null hypothesis Ho: variances are equal</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a></span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="kw">var.test</span>(prawns<span class="op">$</span>GRate <span class="op">~</span><span class="st"> </span>prawns<span class="op">$</span>diet)</span>
+<span id="cb2-40"><a href="#cb2-40"></a></span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="co">#         F test to compare two variances</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="co"># data:  prawns$GRate by prawns$diet </span></span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="co"># F = 1.9629, num df = 29, denom df = 29, p-value = 0.07445</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a><span class="co"># alternative hypothesis: true ratio of variances is not equal to 1 </span></span>
+<span id="cb2-45"><a href="#cb2-45"></a><span class="co"># 95 percent confidence interval:</span></span>
+<span id="cb2-46"><a href="#cb2-46"></a><span class="co">#  0.9342621 4.1240043 </span></span>
+<span id="cb2-47"><a href="#cb2-47"></a><span class="co"># sample estimates:</span></span>
+<span id="cb2-48"><a href="#cb2-48"></a><span class="co"># ratio of variances </span></span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="co">#           1.962881 </span></span>
+<span id="cb2-50"><a href="#cb2-50"></a></span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="co"># No evidence to reject null hypothesis (P=0.07) therefore no </span></span>
+<span id="cb2-52"><a href="#cb2-52"></a><span class="co"># difference in variance</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Conduct a two sample t-test using the <code>t.test()</code> function. Use the argument <code>var.equal=TRUE</code> to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># conduct t-test assuming equal variances</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># Null hypothesis Ho: no difference in growth rate </span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># between prawns fed on artificial diet or Natural diet</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">t.test</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>, <span class="dt">data =</span> prawn)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#         Two Sample t-test</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co"># </span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co"># data:  prawns$GRate by prawns$diet </span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co"># t = -1.3259, df = 58, p-value = 0.1901</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co"># alternative hypothesis: true difference in means is not equal to 0 </span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co"># 95 percent confidence interval:</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#  -0.6319362  0.1283495 </span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co"># sample estimates:</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co"># mean in group Artificial    mean in group Natural </span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#                 9.794133                10.045927 </span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co"># </span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co"># No evidence to reject the Null hypothesis, therefore no </span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co"># difference in growth rate of prawns fed on either artificial </span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co"># or natural diet (t = -1.33, df = 58, p = 0.19).</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># conduct t-test assuming equal variances</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Null hypothesis Ho: no difference in growth rate </span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># between prawns fed on artificial diet or Natural diet</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">t.test</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>, <span class="dt">data =</span> prawn)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#         Two Sample t-test</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># </span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># data:  prawns$GRate by prawns$diet </span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># t = -1.3259, df = 58, p-value = 0.1901</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co"># alternative hypothesis: true difference in means is not equal to 0 </span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># 95 percent confidence interval:</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#  -0.6319362  0.1283495 </span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># sample estimates:</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co"># mean in group Artificial    mean in group Natural </span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#                 9.794133                10.045927 </span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co"># </span></span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co"># No evidence to reject the Null hypothesis, therefore no </span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="co"># difference in growth rate of prawns fed on either artificial </span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="co"># or natural diet (t = -1.33, df = 58, p = 0.19).</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable. Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># fit the model</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">growth.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns)</a></code></pre></div></li>
+<li><p>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable. Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># fit the model</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>growth.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Produce an ANOVA table for the fitted model using the <code>anova()</code> function i.e. <code>anova(growth.lm)</code>. Compare the ANOVA p value to the p value obtained using a t-test. What do you notice? What is the value of the F statistics and degrees of freedom? How would you summarise these results in a report?</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># produce the ANOVA table</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">anova</span>(growth.lm)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co"># Analysis of Variance Table</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co"># </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co"># Response: GRate</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#           Df Sum Sq Mean Sq F value Pr(&gt;F)</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co"># diet       1  0.951 0.95100  1.7579 0.1901</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co"># Residuals 58 31.377 0.54098  </span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co"># notice the p value is the same as for the t-test</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co"># also if you square the t statistic from the t-test</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co"># you get the F statistic from the linear model.</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co"># They&#39;re the same test</span></a></code></pre></div></li>
+<li><p>Produce an ANOVA table for the fitted model using the <code>anova()</code> function i.e. <code>anova(growth.lm)</code>. Compare the ANOVA p value to the p value obtained using a t-test. What do you notice? What is the value of the F statistics and degrees of freedom? How would you summarise these results in a report?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># produce the ANOVA table</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">anova</span>(growth.lm)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># Analysis of Variance Table</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># </span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># Response: GRate</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#           Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># diet       1  0.951 0.95100  1.7579 0.1901</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Residuals 58 31.377 0.54098  </span></span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co"># notice the p value is the same as for the t-test</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co"># also if you square the t statistic from the t-test</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co"># you get the F statistic from the linear model.</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># They&#39;re the same test</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
 <li><p>Assess the normality and equal variance assumptions by plotting the residuals of the fitted model. Split the plotting device into 2 rows and 2 columns using <code>par(mfrow=c(2,2))</code> so you can fit four plots on a single device. Use the <code>plot()</code> function on your fitted model (<code>plot(growth.lm)</code>) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># plot the residuals to assess normality and equal variance</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># divide the plotting device into 2 rows and 2 columns to get all</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co"># the graphs on one device</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw">plot</span>(growth.lm)  </a></code></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># plot the residuals to assess normality and equal variance</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># divide the plotting device into 2 rows and 2 columns to get all</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># the graphs on one device</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">plot</span>(growth.lm)  </span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
 <li><p>Download the datafile <em>‘Gigartina.csv’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in <code>diameter</code> of red algae <a href="https://en.wikipedia.org/wiki/Mastocarpus_stellatus"><em>Mastocarpus stellatus</em></a> spores grown in three different diatom cultures and a control group grown in artificial seawater (<code>diatom.treat</code> variable). Use the function <code>str()</code> to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">gigartina &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co"># or</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">gigartina &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>)</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw">str</span>(gigartina)</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $ diatom.treat: Factor w/</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co"># 4 levels &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw">table</span>(gigartina<span class="op">$</span>diatom.treat)</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co"># ASGM Sdecl Sexpo Sstat 10 10 10 10</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co"># or use xtabs</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="kw">xtabs</span>(<span class="op">~</span>diatom.treat, <span class="dt">data =</span> gigartina)</a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co"># diatom.treat ASGM Sdecl Sexpo Sstat 10 10 10 10</span></a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="co"># plot these data</span></a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;diameter (um)&quot;</span>)</a>
-<a class="sourceLine" id="cb7-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co"># or if you want to do the fancy um symbol correctly</span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, <span class="st">&quot; (&quot;</span>, mu, </a>
-<a class="sourceLine" id="cb7-28" data-line-number="28">    <span class="st">&quot;m)&quot;</span>)))</a></code></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># or</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">str</span>(gigartina)</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $ diatom.treat: Factor w/ 4 levels</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="kw">table</span>(gigartina<span class="op">$</span>diatom.treat)</span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co"># ASGM Sdecl Sexpo Sstat 10 10 10 10</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co"># or use xtabs</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="kw">xtabs</span>(<span class="op">~</span>diatom.treat, <span class="dt">data =</span> gigartina)</span>
+<span id="cb7-18"><a href="#cb7-18"></a></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co"># diatom.treat ASGM Sdecl Sexpo Sstat 10 10 10 10</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="co"># plot these data</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;diameter (um)&quot;</span>)</span>
+<span id="cb7-24"><a href="#cb7-24"></a></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="co"># or if you want to do the fancy um symbol correctly</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, <span class="st">&quot; (&quot;</span>, mu, <span class="st">&quot;m)&quot;</span>)))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
 <li><p>You wish to compare the mean diameter of <em>Metacarpus</em> grown in the four treatment groups (<code>ASGM</code>, <code>Sdecl</code>, <code>Sexpo</code>, <code>Sstat</code>) using a one-way analysis of variance (ANOVA). What is your null hypothesis?</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># The null hypothesis Ho: there is no difference in mean diameter </span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co"># of the spores between the different treatment groups</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># The null hypothesis Ho: there is no difference in mean diameter </span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># of the spores between the different treatment groups</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="9" style="list-style-type: decimal">
-<li><p>We will conduct the ANOVA using the linear model function <code>lm()</code> once again. Make sure you know which of the variables is your response variable and which is your explanatory variable (ask an instructor if in doubt). Fit the linear model and assign the model output to a variable with an appropriate name (i.e. <code>gigartina.lm</code>).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">gigartina.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina)</a></code></pre></div></li>
+<li><p>We will conduct the ANOVA using the linear model function <code>lm()</code> once again. Make sure you know which of the variables is your response variable and which is your explanatory variable (ask an instructor if in doubt). Fit the linear model and assign the model output to a variable with an appropriate name (i.e. <code>gigartina.lm</code>).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>gigartina.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="10" style="list-style-type: decimal">
 <li><p>Produce an ANOVA table using the <code>anova()</code> function. What is the value of the p value? Do you reject or fail to reject the null hypothesis? What is the value of the <em>F</em> statistic and degrees of freedom? How would you report these summary statistics in a report?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">anova</span>(gigartina.lm)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co"># Analysis of Variance Table</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co"># Response: diameter</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#              Df Sum Sq Mean Sq F value    Pr(&gt;F)    </span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co"># diatom.treat  3 1880.3  626.76  22.775 1.929e-08 ***</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co"># Residuals    36  990.7   27.52                      </span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co"># ---</span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co"># reject the null hypothesis, therefore there is a significant </span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co"># difference in the diameter between the treatment groups</span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co"># (F_3,36 = 22.78, p &lt; 0.001)</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">anova</span>(gigartina.lm)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Analysis of Variance Table</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># </span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># Response: diameter</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co">#              Df Sum Sq Mean Sq F value    Pr(&gt;F)    </span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># diatom.treat  3 1880.3  626.76  22.775 1.929e-08 ***</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># Residuals    36  990.7   27.52                      </span></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co"># ---</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="co"># reject the null hypothesis, therefore there is a significant </span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="co"># difference in the diameter between the treatment groups</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="co"># (F_3,36 = 22.78, p &lt; 0.001)</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
 <li><p>Assess the assumptions of normality and equal variance of the residuals by producing the residual plots as before. Don’t forget to split the plotting device into 2 rows and 2 columns before plotting. Discuss with an instructor whether the residuals meet these assumptions. Do you accept this model as acceptable?</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">plot</span>(gigartina.lm)</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co"># residual plots look ok to me!</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">plot</span>(gigartina.lm)</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># residual plots look ok to me!</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
@@ -757,93 +758,93 @@ $(document).ready(function () {
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
 <li><p>We will use the function <code>TukeyHSD()</code> to perform these comparisons. In order to use this function we have to refit the model using the <code>aov()</code> function on your model object (<code>gigartina.lm</code>) in the following way <code>TukeyHSD(aov(gigartina.lm))</code> to obtain a summary of the comparisons. Which groups are different from each other?</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># what group mean is different from what? Post-hoc comparisons.</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co"># we will use Tukey&#39;s Honest significant difference method </span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co"># to compare group means.</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">gigartina.av &lt;-<span class="st"> </span><span class="kw">aov</span>(gigartina.lm)</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co"># compare the group means using TukeysHSD method</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="kw">TukeyHSD</span>(gigartina.av)</a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#   Tukey multiple comparisons of means</span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#     95% family-wise confidence level</span></a>
-<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co"># </span></a>
-<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co"># Fit: aov(formula = diameter ~ diatom.treat, data = gigartina)</span></a>
-<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co"># </span></a>
-<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co"># $diatom.treat</span></a>
-<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#              diff         lwr       upr     p adj</span></a>
-<a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co"># Sdecl-ASGM  -14.3 -20.6184102  -7.98159 0.0000030</span></a>
-<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co"># Sexpo-ASGM   -8.9 -15.2184102  -2.58159 0.0029489</span></a>
-<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co"># Sstat-ASGM  -18.3 -24.6184102 -11.98159 0.0000000</span></a>
-<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co"># Sexpo-Sdecl   5.4  -0.9184102  11.71841 0.1165421</span></a>
-<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co"># Sstat-Sdecl  -4.0 -10.3184102   2.31841 0.3360087</span></a>
-<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co"># Sstat-Sexpo  -9.4 -15.7184102  -3.08159 0.0016145</span></a>
-<a class="sourceLine" id="cb12-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co"># the null hypothesis for each comparison is</span></a>
-<a class="sourceLine" id="cb12-26" data-line-number="26"><span class="co"># drp1 - grp2 = 0 (i.e. no difference)</span></a>
-<a class="sourceLine" id="cb12-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb12-28" data-line-number="28"><span class="co"># Sdecl-ASGM, Sexpo-ASGM, Sstat-ASGM and Sstat-Sexpo</span></a>
-<a class="sourceLine" id="cb12-29" data-line-number="29"><span class="co"># are significantly different</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># what group mean is different from what? Post-hoc comparisons.</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># we will use Tukey&#39;s Honest significant difference method </span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># to compare group means.</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a>gigartina.av &lt;-<span class="st"> </span><span class="kw">aov</span>(gigartina.lm)</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="co"># compare the group means using TukeysHSD method</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="kw">TukeyHSD</span>(gigartina.av)</span>
+<span id="cb12-10"><a href="#cb12-10"></a></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="co">#   Tukey multiple comparisons of means</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#     95% family-wise confidence level</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="co"># </span></span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="co"># Fit: aov(formula = diameter ~ diatom.treat, data = gigartina)</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="co"># </span></span>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="co"># $diatom.treat</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="co">#              diff         lwr       upr     p adj</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="co"># Sdecl-ASGM  -14.3 -20.6184102  -7.98159 0.0000030</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="co"># Sexpo-ASGM   -8.9 -15.2184102  -2.58159 0.0029489</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="co"># Sstat-ASGM  -18.3 -24.6184102 -11.98159 0.0000000</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="co"># Sexpo-Sdecl   5.4  -0.9184102  11.71841 0.1165421</span></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="co"># Sstat-Sdecl  -4.0 -10.3184102   2.31841 0.3360087</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="co"># Sstat-Sexpo  -9.4 -15.7184102  -3.08159 0.0016145</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a></span>
+<span id="cb12-25"><a href="#cb12-25"></a><span class="co"># the null hypothesis for each comparison is</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a><span class="co"># drp1 - grp2 = 0 (i.e. no difference)</span></span>
+<span id="cb12-27"><a href="#cb12-27"></a></span>
+<span id="cb12-28"><a href="#cb12-28"></a><span class="co"># Sdecl-ASGM, Sexpo-ASGM, Sstat-ASGM and Sstat-Sexpo</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a><span class="co"># are significantly different</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">
 <li><p>We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the <code>plot()</code> function with the <code>TukeyHSD(aov(gigartina.lm))</code>. Ask if you get stuck (or Google it!).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(gigartina.av), <span class="dt">cex.axis =</span> <span class="fl">0.5</span>, <span class="dt">las =</span> <span class="dv">2</span>)</a></code></pre></div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(gigartina.av), <span class="dt">cex.axis =</span> <span class="fl">0.5</span>, <span class="dt">las =</span> <span class="dv">2</span>)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="15" style="list-style-type: decimal">
 <li><p>Download the <em>‘TemoraBR.csv’</em> file from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and as usual assign it to a variable. These data are from an experiment that was conducted to investigate the relationship between temperature (<code>temp</code>) and the beat rate (Hz) <code>beat_rate</code> of the copepod <a href="https://en.wikipedia.org/wiki/Temora_longicornis"><em>Temora longicornis</em></a> which had been acclimatised at three different temperature regimes (<code>acclimitisation_temp</code>). Examine the structure of the dataset. How many variables are there? What type of variables are they? Which is the response (dependent) variable, and which are the explanatory (independent) variables?</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">temora &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># or</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">temora &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>)</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="kw">str</span>(temora)</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num 3.76 5.4 8 9.4 16.6</span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co"># 18.5 19...  $ acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>temora &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># or</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a>temora &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="kw">str</span>(temora)</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num 3.76 5.4 8 9.4 16.6 18.5 19...  $</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">
 <li><p>What type of variable is <code>acclimitisation_temp</code>? Is it a factor? Convert <code>acclimitisation_temp</code> to a factor and store the result in a new column in your dataframe called <code>Facclimitisation_temp</code>. Hint: use the function <code>factor()</code>. Use an appropriate plot to visualise these data (perhaps a coplot or similar?).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">temora<span class="op">$</span>Facclimitisation_temp &lt;-<span class="st"> </span><span class="kw">factor</span>(temora<span class="op">$</span>acclimitisation_temp)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co"># boxplot of beat rate and acclimitisation temp</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="kw">boxplot</span>(beat_rate <span class="op">~</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora, <span class="dt">xlab =</span> <span class="st">&quot;acclimitisation temp&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>)</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co"># scatter plot using the with function</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>))</a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co"># using a coplot</span></a>
-<a class="sourceLine" id="cb15-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="kw">coplot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp <span class="op">|</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora)</a>
-<a class="sourceLine" id="cb15-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="co"># scatter plot with different symbols and colours</span></a>
-<a class="sourceLine" id="cb15-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb15-17" data-line-number="17"><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">col =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp), <span class="dt">pch =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp)))</a>
-<a class="sourceLine" id="cb15-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb15-19" data-line-number="19"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">pch =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)), <span class="dt">col =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)))</a>
-<a class="sourceLine" id="cb15-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb15-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb15-22" data-line-number="22"><span class="co"># or more flexibly</span></a>
-<a class="sourceLine" id="cb15-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb15-24" data-line-number="24"><span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">data =</span> temora)</a>
-<a class="sourceLine" id="cb15-25" data-line-number="25"><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>], <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>))</a>
-<a class="sourceLine" id="cb15-26" data-line-number="26"><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>], <span class="dt">pch =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>))</a>
-<a class="sourceLine" id="cb15-27" data-line-number="27"><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>], <span class="dt">pch =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>))</a>
-<a class="sourceLine" id="cb15-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb15-29" data-line-number="29"><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</a></code></pre></div></li>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>temora<span class="op">$</span>Facclimitisation_temp &lt;-<span class="st"> </span><span class="kw">factor</span>(temora<span class="op">$</span>acclimitisation_temp)</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># boxplot of beat rate and acclimitisation temp</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="kw">boxplot</span>(beat_rate <span class="op">~</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora, <span class="dt">xlab =</span> <span class="st">&quot;acclimitisation temp&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>)</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># scatter plot using the with function</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>))</span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co"># using a coplot</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="kw">coplot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp <span class="op">|</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora)</span>
+<span id="cb15-14"><a href="#cb15-14"></a></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co"># scatter plot with different symbols and colours</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">col =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp), <span class="dt">pch =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp)))</span>
+<span id="cb15-18"><a href="#cb15-18"></a></span>
+<span id="cb15-19"><a href="#cb15-19"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">pch =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)), <span class="dt">col =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)))</span>
+<span id="cb15-20"><a href="#cb15-20"></a></span>
+<span id="cb15-21"><a href="#cb15-21"></a></span>
+<span id="cb15-22"><a href="#cb15-22"></a><span class="co"># or more flexibly</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a></span>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">data =</span> temora)</span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>], <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>))</span>
+<span id="cb15-26"><a href="#cb15-26"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>], <span class="dt">pch =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>))</span>
+<span id="cb15-27"><a href="#cb15-27"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>], <span class="dt">pch =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb15-28"><a href="#cb15-28"></a></span>
+<span id="cb15-29"><a href="#cb15-29"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="17" style="list-style-type: decimal">
 <li><p>We will analyse these data using an Analysis of Covariance (ANCOVA) to compare the slopes and the intercepts of the relationship between <code>beat_rate</code> and <code>temp</code> for each level of <code>Facclimatisation_temp</code>. Take a look at the plot you produced in Q16, do you think the relationships are different?</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># the slope of the relationship between beat rate and temp</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># look different for each acclimitisation temp</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># the slope of the relationship between beat rate and temp</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># look different for each acclimitisation temp</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="18" style="list-style-type: decimal">
@@ -851,41 +852,41 @@ $(document).ready(function () {
 <p><code>temp + Facclimatisation_temp + temp:Facclimatisation_temp</code> or</p>
 <p><code>temp * Facclimatisation_temp</code></p></li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">temora.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp <span class="op">+</span><span class="st"> </span>Facclimitisation_temp <span class="op">+</span><span class="st"> </span>temp<span class="op">:</span>Facclimitisation_temp, <span class="dt">data =</span> temora)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># or equivalently</span></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">temora.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp <span class="op">*</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>temora.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp <span class="op">+</span><span class="st"> </span>Facclimitisation_temp <span class="op">+</span><span class="st"> </span>temp<span class="op">:</span>Facclimitisation_temp, <span class="dt">data =</span> temora)</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># or equivalently</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a>temora.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp <span class="op">*</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora)</span></code></pre></div>
 <p> </p>
 <ol start="19" style="list-style-type: decimal">
 <li><p>Produce the summary ANOVA table as usual. Is the interaction between <code>temp</code> and <code>Facclimatisation_temp</code> significant? What is the interpretation of the interaction term? Should we interpret the main effects of <code>temp</code> and <code>Facclimatisation_temp</code> as well?</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">anova</span>(temora.lm)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co"># Analysis of Variance Table</span></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co"># Response: beat_rate</span></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="co">#                            Df Sum Sq Mean Sq F value    Pr(&gt;F)    </span></a>
-<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="co"># temp                        1 4293.7  4293.7 835.866 &lt; 2.2e-16 ***</span></a>
-<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="co"># Facclimitisation_temp       2 1197.7   598.8 116.576 &lt; 2.2e-16 ***</span></a>
-<a class="sourceLine" id="cb18-9" data-line-number="9"><span class="co"># temp:Facclimitisation_temp  2  284.1   142.0  27.651 3.331e-08 ***</span></a>
-<a class="sourceLine" id="cb18-10" data-line-number="10"><span class="co"># Residuals                  39  200.3     5.1   </span></a>
-<a class="sourceLine" id="cb18-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb18-12" data-line-number="12"><span class="co"># there is a significant interaction between temp and </span></a>
-<a class="sourceLine" id="cb18-13" data-line-number="13"><span class="co"># Facclimitisation_temp therefore there is a significant </span></a>
-<a class="sourceLine" id="cb18-14" data-line-number="14"><span class="co"># relationship between beat_rate and temp, and this relationship </span></a>
-<a class="sourceLine" id="cb18-15" data-line-number="15"><span class="co"># is different depending on the level of Facclimitisation_temp.</span></a>
-<a class="sourceLine" id="cb18-16" data-line-number="16"><span class="co"># Therefore we should not interpret the main effect of temp</span></a>
-<a class="sourceLine" id="cb18-17" data-line-number="17"><span class="co"># or Facclimitisation_temp</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">anova</span>(temora.lm)</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co"># Analysis of Variance Table</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="co"># Response: beat_rate</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="co">#                            Df Sum Sq Mean Sq F value    Pr(&gt;F)    </span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># temp                        1 4293.7  4293.7 835.866 &lt; 2.2e-16 ***</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="co"># Facclimitisation_temp       2 1197.7   598.8 116.576 &lt; 2.2e-16 ***</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="co"># temp:Facclimitisation_temp  2  284.1   142.0  27.651 3.331e-08 ***</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="co"># Residuals                  39  200.3     5.1   </span></span>
+<span id="cb18-11"><a href="#cb18-11"></a></span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="co"># there is a significant interaction between temp and </span></span>
+<span id="cb18-13"><a href="#cb18-13"></a><span class="co"># Facclimitisation_temp therefore there is a significant </span></span>
+<span id="cb18-14"><a href="#cb18-14"></a><span class="co"># relationship between beat_rate and temp, and this relationship </span></span>
+<span id="cb18-15"><a href="#cb18-15"></a><span class="co"># is different depending on the level of Facclimitisation_temp.</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a><span class="co"># Therefore we should not interpret the main effect of temp</span></span>
+<span id="cb18-17"><a href="#cb18-17"></a><span class="co"># or Facclimitisation_temp</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="20" style="list-style-type: decimal">
 <li><p>Assess the assumptions of normality and equal variance of the residuals in the usual way. Do the residuals meet these assumptions? Discuss with a instructor.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">plot</span>(temora.lm)</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co"># there is a hint of heterogeneity of variance (non equal variance)</span></a>
-<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="co"># as the variance increases with the fitted values. This is typical </span></a>
-<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="co"># of count data.</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="kw">plot</span>(temora.lm)</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># there is a hint of heterogeneity of variance (non equal variance)</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># as the variance increases with the fitted values. This is typical </span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="co"># of count data.</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="21" style="list-style-type: decimal">
@@ -894,36 +895,36 @@ $(document).ready(function () {
 <p> </p>
 <ol start="22" style="list-style-type: decimal">
 <li><p>(Optional) refit the model using the square root transformed <code>beat_rate</code> as the response variable. Does the interpretation of the model change? Do the validation plots of the residuals look better?</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co"># we could try square root transforming the variable </span></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="co"># beat_rate to stabilise the variance</span></a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co"># square root transform beat_rate and store in the dataframe</span></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb20-6" data-line-number="6">temora<span class="op">$</span>SQRT_beatrate &lt;-<span class="st"> </span><span class="kw">sqrt</span>(temora<span class="op">$</span>beat_rate)</a>
-<a class="sourceLine" id="cb20-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="co"># refit the model using the square root transformed data</span></a>
-<a class="sourceLine" id="cb20-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb20-10" data-line-number="10">temora.lm2 &lt;-<span class="st"> </span><span class="kw">lm</span>(SQRT_beatrate <span class="op">~</span><span class="st"> </span>temp <span class="op">*</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora)</a>
-<a class="sourceLine" id="cb20-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb20-12" data-line-number="12"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb20-13" data-line-number="13"><span class="kw">plot</span>(temora.lm2)</a>
-<a class="sourceLine" id="cb20-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb20-15" data-line-number="15"><span class="co"># Residuals look a bit better</span></a>
-<a class="sourceLine" id="cb20-16" data-line-number="16"><span class="co"># now lets look at the ANOVA table for our new model</span></a>
-<a class="sourceLine" id="cb20-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb20-18" data-line-number="18"><span class="kw">anova</span>(temora.lm2)</a>
-<a class="sourceLine" id="cb20-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb20-20" data-line-number="20"><span class="co"># Analysis of Variance Table</span></a>
-<a class="sourceLine" id="cb20-21" data-line-number="21"><span class="co"># </span></a>
-<a class="sourceLine" id="cb20-22" data-line-number="22"><span class="co"># Response: SQRT_beatrate</span></a>
-<a class="sourceLine" id="cb20-23" data-line-number="23"><span class="co">#                            Df Sum Sq Mean Sq  F value    Pr(&gt;F)    </span></a>
-<a class="sourceLine" id="cb20-24" data-line-number="24"><span class="co"># temp                        1 67.916  67.916 712.1746 &lt; 2.2e-16 ***</span></a>
-<a class="sourceLine" id="cb20-25" data-line-number="25"><span class="co"># Facclimitisation_temp       2 17.600   8.800  92.2782 1.632e-15 ***</span></a>
-<a class="sourceLine" id="cb20-26" data-line-number="26"><span class="co"># temp:Facclimitisation_temp  2  1.151   0.576   6.0353  0.005205 ** </span></a>
-<a class="sourceLine" id="cb20-27" data-line-number="27"><span class="co"># Residuals                  39  3.719   0.095                       </span></a>
-<a class="sourceLine" id="cb20-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb20-29" data-line-number="29"><span class="co"># model has the same interpretation but the p value for the </span></a>
-<a class="sourceLine" id="cb20-30" data-line-number="30"><span class="co"># interaction term is a bit larger.</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># we could try square root transforming the variable </span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co"># beat_rate to stabilise the variance</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co"># square root transform beat_rate and store in the dataframe</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a>temora<span class="op">$</span>SQRT_beatrate &lt;-<span class="st"> </span><span class="kw">sqrt</span>(temora<span class="op">$</span>beat_rate)</span>
+<span id="cb20-7"><a href="#cb20-7"></a></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="co"># refit the model using the square root transformed data</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a></span>
+<span id="cb20-10"><a href="#cb20-10"></a>temora.lm2 &lt;-<span class="st"> </span><span class="kw">lm</span>(SQRT_beatrate <span class="op">~</span><span class="st"> </span>temp <span class="op">*</span><span class="st"> </span>Facclimitisation_temp, <span class="dt">data =</span> temora)</span>
+<span id="cb20-11"><a href="#cb20-11"></a></span>
+<span id="cb20-12"><a href="#cb20-12"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb20-13"><a href="#cb20-13"></a><span class="kw">plot</span>(temora.lm2)</span>
+<span id="cb20-14"><a href="#cb20-14"></a></span>
+<span id="cb20-15"><a href="#cb20-15"></a><span class="co"># Residuals look a bit better</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a><span class="co"># now lets look at the ANOVA table for our new model</span></span>
+<span id="cb20-17"><a href="#cb20-17"></a></span>
+<span id="cb20-18"><a href="#cb20-18"></a><span class="kw">anova</span>(temora.lm2)</span>
+<span id="cb20-19"><a href="#cb20-19"></a></span>
+<span id="cb20-20"><a href="#cb20-20"></a><span class="co"># Analysis of Variance Table</span></span>
+<span id="cb20-21"><a href="#cb20-21"></a><span class="co"># </span></span>
+<span id="cb20-22"><a href="#cb20-22"></a><span class="co"># Response: SQRT_beatrate</span></span>
+<span id="cb20-23"><a href="#cb20-23"></a><span class="co">#                            Df Sum Sq Mean Sq  F value    Pr(&gt;F)    </span></span>
+<span id="cb20-24"><a href="#cb20-24"></a><span class="co"># temp                        1 67.916  67.916 712.1746 &lt; 2.2e-16 ***</span></span>
+<span id="cb20-25"><a href="#cb20-25"></a><span class="co"># Facclimitisation_temp       2 17.600   8.800  92.2782 1.632e-15 ***</span></span>
+<span id="cb20-26"><a href="#cb20-26"></a><span class="co"># temp:Facclimitisation_temp  2  1.151   0.576   6.0353  0.005205 ** </span></span>
+<span id="cb20-27"><a href="#cb20-27"></a><span class="co"># Residuals                  39  3.719   0.095                       </span></span>
+<span id="cb20-28"><a href="#cb20-28"></a></span>
+<span id="cb20-29"><a href="#cb20-29"></a><span class="co"># model has the same interpretation but the p value for the </span></span>
+<span id="cb20-30"><a href="#cb20-30"></a><span class="co"># interaction term is a bit larger.</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <p>End of Exercise 5</p>

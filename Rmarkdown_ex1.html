@@ -36,9 +36,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,14 +48,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -64,9 +66,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -524,33 +526,33 @@ $(document).ready(function () {
 <p>OK, before we go on to the next section let’s practice marking up some plain text using R markdown syntax.</p>
 <p>Create a new R markdown document in RStudio and save it with an appropriate file name on your computer (perhaps <code>squid_analysis.Rmd</code>). Make sure you fill out the ‘Title’ and ‘Author’ information and set the output option to HTML when you create your document. Next, copy and paste the text below into your R markdown document.</p>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">Sampling and data description</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">These data were originally collected as part of a study published in  </a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">Aquatic Living Resources (Smith et al. 2005). The aim of the study was  </a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">to investigate the seasonal patterns of investment in somatic and  </a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">reproductive tissues in the long finned squid Loligo forbesi caught  </a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">in Scottish waters. Squid were caught monthly from December   </a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">1989 - July 1991 (month and year variables). After capture, each  </a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">squid was given a unique specimen code (specimen variable) and  </a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">the following variables measured: </a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">body weight - weight variable </a>
-<a class="sourceLine" id="cb1-14" data-line-number="14">sex - sex variable (only female squid are included here)</a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">individual dorsal mantle length -DML variable </a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">mantle weight measured without internal organs - eviscerate.weight variable</a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">gonads weight - ovary.weight variable </a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">nidamental gland weight - nid.weight variable.names</a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">nidamental gland length - nid.length variable </a>
-<a class="sourceLine" id="cb1-20" data-line-number="20">digestive gland weight - dig.weight variable</a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">Each individual was also assigned a categorical measure of maturity  </a>
-<a class="sourceLine" id="cb1-23" data-line-number="23">(maturity.stage variable) ranging from 1 to 5 with 1 = immature, 5 = mature. </a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25">Some interesting background information on squid morphology can be  </a>
-<a class="sourceLine" id="cb1-26" data-line-number="26">found here (https://en.wikipedia.org/wiki/Loligo_forbesii) and the  </a>
-<a class="sourceLine" id="cb1-27" data-line-number="27">following image provides a useful summary of squid anatomy </a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2"></a>Sampling and data description</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>These data were originally collected as part of a study published in  </span>
+<span id="cb1-5"><a href="#cb1-5"></a>Aquatic Living Resources (Smith et al. 2005). The aim of the study was  </span>
+<span id="cb1-6"><a href="#cb1-6"></a>to investigate the seasonal patterns of investment in somatic and  </span>
+<span id="cb1-7"><a href="#cb1-7"></a>reproductive tissues in the long finned squid Loligo forbesi caught  </span>
+<span id="cb1-8"><a href="#cb1-8"></a>in Scottish waters. Squid were caught monthly from December   </span>
+<span id="cb1-9"><a href="#cb1-9"></a>1989 - July 1991 (month and year variables). After capture, each  </span>
+<span id="cb1-10"><a href="#cb1-10"></a>squid was given a unique specimen code (specimen variable) and  </span>
+<span id="cb1-11"><a href="#cb1-11"></a>the following variables measured: </span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a>body weight - weight variable </span>
+<span id="cb1-14"><a href="#cb1-14"></a>sex - sex variable (only female squid are included here)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>individual dorsal mantle length -DML variable </span>
+<span id="cb1-16"><a href="#cb1-16"></a>mantle weight measured without internal organs - eviscerate.weight variable</span>
+<span id="cb1-17"><a href="#cb1-17"></a>gonads weight - ovary.weight variable </span>
+<span id="cb1-18"><a href="#cb1-18"></a>nidamental gland weight - nid.weight variable.names</span>
+<span id="cb1-19"><a href="#cb1-19"></a>nidamental gland length - nid.length variable </span>
+<span id="cb1-20"><a href="#cb1-20"></a>digestive gland weight - dig.weight variable</span>
+<span id="cb1-21"><a href="#cb1-21"></a></span>
+<span id="cb1-22"><a href="#cb1-22"></a>Each individual was also assigned a categorical measure of maturity  </span>
+<span id="cb1-23"><a href="#cb1-23"></a>(maturity.stage variable) ranging from 1 to 5 with 1 = immature, 5 = mature. </span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>Some interesting background information on squid morphology can be  </span>
+<span id="cb1-26"><a href="#cb1-26"></a>found here (https://en.wikipedia.org/wiki/Loligo_forbesii) and the  </span>
+<span id="cb1-27"><a href="#cb1-27"></a>following image provides a useful summary of squid anatomy </span></code></pre></div>
 <p>You will also need to download <a href="images/squid_anatomy.jpg">this image</a>. Create a subdirectory called <code>images</code> in the same directory as your R markdown document and save the image file there (right click and then choose <code>save image as...</code> or similar). You will embed this image after your text in your R markdown document.</p>
 <p> </p>
 <p>Now mark it up using R markdown syntax so your rendered output document looks like this.</p>
@@ -584,22 +586,22 @@ Some interesting background information on squid morphology can be found <a href
 <p> </p>
 <p>You can find the solution below (click on the ‘code’ button on the right)</p>
 <p> </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">## Sampling and data description</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">These data were originally collected as part of a study published <span class="cf">in</span> Aquatic Living <span class="kw">Resources</span> (Smith <span class="op">*</span>et al<span class="op">*</span>., <span class="dv">2005</span>). The aim of the study was to investigate the seasonal patterns of investment <span class="cf">in</span> somatic and reproductive tissues <span class="cf">in</span> the long finned squid <span class="op">*</span>Loligo forbesi<span class="op">*</span><span class="st"> </span>caught <span class="cf">in</span> Scottish waters. Squid were caught monthly from December <span class="dv">1989</span> <span class="op">-</span><span class="st"> </span>July <span class="dv">1991</span> (<span class="op">**</span>month<span class="op">**</span><span class="st"> </span>and <span class="op">**</span>year variables<span class="op">**</span>). After capture, each squid was given a unique specimen <span class="kw">code</span> (<span class="op">**</span>specimen variable<span class="op">**</span>) and the following variables measured<span class="op">:</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="op">-</span><span class="st"> </span><span class="er">**</span>weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>body <span class="kw">weight</span> (g)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="op">-</span><span class="st"> </span><span class="er">**</span>sex variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="kw">sex</span> (only female squid are included here)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="op">-</span><span class="st"> </span><span class="er">**</span>DML variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>individual dorsal mantle <span class="kw">length</span> (mm)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="op">-</span><span class="st"> </span><span class="er">**</span>eviscerate.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>mantle weight measured without internal <span class="kw">organs</span> (g)</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="op">-</span><span class="st"> </span><span class="er">**</span>ovary.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>gonad <span class="kw">weight</span> (g) </a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="op">-</span><span class="st"> </span><span class="er">**</span>nid.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>nidamental gland <span class="kw">weight</span> (g)</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="op">-</span><span class="st"> </span><span class="er">**</span>nid.length variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>nidamental gland <span class="kw">length</span> (g)  </a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="op">-</span><span class="st"> </span><span class="er">**</span>dig.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st">  </span>digestive gland <span class="kw">weight</span> (g)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">Each individual was also assigned a categorical measure of <span class="kw">maturity</span> (<span class="op">**</span>maturity.stage variable<span class="op">**</span>) ranging from <span class="dv">1</span> to <span class="dv">5</span> with <span class="dv">1</span> =<span class="st"> </span>immature, <span class="dv">5</span> =<span class="st"> </span>mature.  </a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">Some interesting background information on squid morphology can be found [here](https<span class="op">:</span><span class="er">//</span>en.wikipedia.org<span class="op">/</span>wiki<span class="op">/</span>Loligo_forbesii) and the following image provides a useful summary of squid anatomy.  </a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="op">!</span>[squid anatomy](images<span class="op">/</span>squid_anatomy.jpg) </a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## Sampling and data description</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>These data were originally collected as part of a study published <span class="cf">in</span> Aquatic Living <span class="kw">Resources</span> (Smith <span class="op">*</span>et al<span class="op">*</span>., <span class="dv">2005</span>). The aim of the study was to investigate the seasonal patterns of investment <span class="cf">in</span> somatic and reproductive tissues <span class="cf">in</span> the long finned squid <span class="op">*</span>Loligo forbesi<span class="op">*</span><span class="st"> </span>caught <span class="cf">in</span> Scottish waters. Squid were caught monthly from December <span class="dv">1989</span> <span class="op">-</span><span class="st"> </span>July <span class="dv">1991</span> (<span class="op">**</span>month<span class="op">**</span><span class="st"> </span>and <span class="op">**</span>year variables<span class="op">**</span>). After capture, each squid was given a unique specimen <span class="kw">code</span> (<span class="op">**</span>specimen variable<span class="op">**</span>) and the following variables measured<span class="op">:</span><span class="st"> </span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>body <span class="kw">weight</span> (g)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>sex variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="kw">sex</span> (only female squid are included here)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>DML variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>individual dorsal mantle <span class="kw">length</span> (mm)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>eviscerate.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>mantle weight measured without internal <span class="kw">organs</span> (g)</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>ovary.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>gonad <span class="kw">weight</span> (g) </span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>nid.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>nidamental gland <span class="kw">weight</span> (g)</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>nid.length variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st"> </span>nidamental gland <span class="kw">length</span> (g)  </span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="op">-</span><span class="st"> </span><span class="er">**</span>dig.weight variable<span class="op">**</span><span class="st"> </span><span class="op">-</span><span class="st">  </span>digestive gland <span class="kw">weight</span> (g)</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>Each individual was also assigned a categorical measure of <span class="kw">maturity</span> (<span class="op">**</span>maturity.stage variable<span class="op">**</span>) ranging from <span class="dv">1</span> to <span class="dv">5</span> with <span class="dv">1</span> =<span class="st"> </span>immature, <span class="dv">5</span> =<span class="st"> </span>mature.  </span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>Some interesting background information on squid morphology can be found [here](https<span class="op">:</span><span class="er">//</span>en.wikipedia.org<span class="op">/</span>wiki<span class="op">/</span>Loligo_forbesii) and the following image provides a useful summary of squid anatomy.  </span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="op">!</span>[squid anatomy](images<span class="op">/</span>squid_anatomy.jpg) </span></code></pre></div>
 
 
 

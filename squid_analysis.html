@@ -36,9 +36,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,14 +48,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -64,9 +66,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -521,7 +523,7 @@ $(document).ready(function () {
 <p>Some interesting background information on squid morphology can be found <a href="https://en.wikipedia.org/wiki/Loligo_forbesii">here</a> and the following image provides a useful summary of squid anatomy.</p>
 <div style="page-break-after: always;"></div>
 <div class="figure">
-<img src="images/squid_anatomy.jpg" alt="squid anatomy" style="width:70.0%" />
+<img src="images/squid_anatomy.jpg" style="width:70.0%" alt="" />
 <p class="caption">squid anatomy</p>
 </div>
 <p> </p>
@@ -529,8 +531,8 @@ $(document).ready(function () {
 <div id="data-import-and-exploration" class="section level3">
 <h3>Data import and exploration</h3>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">squid &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./data/squid1.txt&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">str</span>(squid, <span class="dt">vec.len =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>squid &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./data/squid1.txt&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">str</span>(squid, <span class="dt">vec.len =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    519 obs. of  13 variables:
 ##  $ sample.no        : int  105128901 105128901 105128901 105128901 105128901 ...
 ##  $ specimen         : int  1002 1003 1005 1007 1008 ...
@@ -551,8 +553,8 @@ $(document).ready(function () {
 <p> </p>
 <p>Next, let’s take a look at the number of observations across years and months.</p>
 <p> </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">kable</span>(<span class="kw">table</span>(squid<span class="op">$</span>Fmonth, squid<span class="op">$</span>Fyear), <span class="dt">row.names =</span> <span class="ot">TRUE</span>, <span class="dt">format =</span> <span class="st">&quot;markdown&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(knitr)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">kable</span>(<span class="kw">table</span>(squid<span class="op">$</span>Fmonth, squid<span class="op">$</span>Fyear), <span class="dt">row.names =</span> <span class="ot">TRUE</span>, <span class="dt">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -745,11 +747,11 @@ $(document).ready(function () {
 <p> </p>
 <p>Now let’s check for any unusual observations in the variables; <code>DML</code>, <code>weight</code>, <code>nid.length</code> and <code>ovary.weight</code>.</p>
 <p> </p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">dotchart</span>(squid<span class="op">$</span>DML, <span class="dt">main =</span> <span class="st">&quot;DML&quot;</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">dotchart</span>(squid<span class="op">$</span>weight, <span class="dt">main =</span> <span class="st">&quot;weight&quot;</span>)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">dotchart</span>(squid<span class="op">$</span>nid.length, <span class="dt">main =</span> <span class="st">&quot;nid length&quot;</span>)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">dotchart</span>(squid<span class="op">$</span>ovary.weight, <span class="dt">main =</span> <span class="st">&quot;ovary weight&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">dotchart</span>(squid<span class="op">$</span>DML, <span class="dt">main =</span> <span class="st">&quot;DML&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">dotchart</span>(squid<span class="op">$</span>weight, <span class="dt">main =</span> <span class="st">&quot;weight&quot;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">dotchart</span>(squid<span class="op">$</span>nid.length, <span class="dt">main =</span> <span class="st">&quot;nid length&quot;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">dotchart</span>(squid<span class="op">$</span>ovary.weight, <span class="dt">main =</span> <span class="st">&quot;ovary weight&quot;</span>)</span></code></pre></div>
 <p><img src="squid_analysis_files/figure-html/dotplot-1.png" width="672" /></p>
 <p> </p>
 <p>It looks like the variable <code>nid.length</code> contains an <strong>unusually large</strong> value. Actually, this value is biologically implausible and clearly an error. I went back and checked my field notebook and sure enough it’s a typo. I was knackered at the time and accidentally inserted a zero by mistake when transcribing these data. <strong>Doh!</strong> This squid was identified as 11 with a sample number 105128901. This observation was subsequently removed from the data set.</p>
@@ -762,7 +764,7 @@ $(document).ready(function () {
 </div>
 <div id="session-information" class="section level3">
 <h3>Session Information</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <!-- But i prefere to use the pander package as it wraps long lines nicely when rendering to PDF. I have hidden this code and output in the final document but all you need to do is remove echo=FALSE argument from the code chunk. -->
 <p><strong>R version 3.6.3 (2020-02-29)</strong></p>
 <p><strong>Platform:</strong> x86_64-apple-darwin15.6.0 (64-bit)</p>

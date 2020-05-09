@@ -38,9 +38,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -50,14 +50,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -66,9 +68,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -635,35 +637,35 @@ div.tocify {
 <p> </p>
 <p><img src="images/dir_struct2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>In the example above, my working directory is a folder called ‘first_project’ which is a subfolder of &quot;Teaching’ in my ‘Alex’ folder which in turn is in a ‘Documents’ folder located in the ‘nhy163’ folder which itself is in the ‘Users’ folder. On a Windows based computer my working directory would also include a drive letter (i.e. <code>C:/Users/nhy163/Documents/Alex/Teaching/first_project</code>).</p>
+<p>In the example above, my working directory is a folder called ‘first_project’ which is a subfolder of "Teaching’ in my ‘Alex’ folder which in turn is in a ‘Documents’ folder located in the ‘nhy163’ folder which itself is in the ‘Users’ folder. On a Windows based computer my working directory would also include a drive letter (i.e. <code>C:/Users/nhy163/Documents/Alex/Teaching/first_project</code>).</p>
 <p>If you weren’t using an RStudio Project then you would have to set your working directory using the <code>setwd()</code> function at the start of every R script (something I did for many years).</p>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">setwd</span>(<span class="st">&#39;/Users/nhy163/Documents/Alex/Teaching/first_project&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">setwd</span>(<span class="st">&#39;/Users/nhy163/Documents/Alex/Teaching/first_project&#39;</span>)</span></code></pre></div>
 <p> </p>
 <p>However, the problem with <code>setwd()</code> is that it uses an <em>absolute</em> file path which is specific to the computer you are working on. If you want to send your script to someone else (or if you’re working on a different computer) this absolute file path is not going to work on your friend/colleagues computer as their directory configuration will be different (you are unlikely to have a directory structure <code>/Users/nhy163/Documents/Alex/Teaching/</code> on your computer). This results in a project that is not self-contained and not easily portable. RStudio solves this problem by allowing you to use <em>relative</em> file paths which are relative to the <em>Root</em> project directory. The Root project directory is just the directory that contains the <code>.Rproj</code> file (<code>first_project.Rproj</code> in our case). If you want to share your analysis with someone else, all you need to do is save the entire project directory and send to your to your collaborator. They would then just need to open the project file and any R scripts that contain references to relative file paths will just work. For example, let’s say that you’ve created a subdirectory called <code>raw_data</code> in your Root project directory that contains a tab delimited datafile called <code>mydata.txt</code> (we will cover directory structures below). To import this datafile in an RStudio project all you need to include in your R script is</p>
 <p> </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;raw_data/mydata.txt&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;raw_data/mydata.txt&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</span></code></pre></div>
 <p> </p>
 <p>Because the file path <code>raw_data/mydata.txt</code> is relative to the project directory it doesn’t matter where you collaborator saves the project directory on their computer it will still work.</p>
 <p>If you weren’t using an RStudio project then you would have to use either of the options below neither of which would work on a different computer.</p>
 <p> </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">setwd</span>(<span class="st">&quot;/Users/nhy163/Documents/Alex/Teaching/first_project/&quot;</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;raw_data/mydata.txt&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># or</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;/Users/nhy163/Documents/Alex/Teaching/first_project/raw_data/mydata.txt&quot;</span>, </a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">setwd</span>(<span class="st">&quot;/Users/nhy163/Documents/Alex/Teaching/first_project/&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;raw_data/mydata.txt&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># or</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;/Users/nhy163/Documents/Alex/Teaching/first_project/raw_data/mydata.txt&quot;</span>, </span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
 <p> </p>
 <p>For those of you who want to take the notion of relative file paths a step further, take a look at the <code>here()</code> function in the <code>here</code> <a href="https://github.com/r-lib/here">package</a>. The <code>here()</code> function allows you to automagically build file paths for any file relative to the project root directory that are also operating system agnostic (works on a Mac or Windows machine). For example, to import our <code>mydata.txt</code> file from the <code>raw_data</code> directory just use</p>
 <p> </p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(here)  <span class="co"># you may need to install the here package first</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="kw">here</span>(<span class="st">&quot;raw_data&quot;</span>, <span class="st">&quot;mydata.txt&quot;</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># or without loading the here package</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;raw_data&quot;</span>, <span class="st">&quot;mydata.txt&quot;</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">library</span>(here)  <span class="co"># you may need to install the here package first</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="kw">here</span>(<span class="st">&quot;raw_data&quot;</span>, <span class="st">&quot;mydata.txt&quot;</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># or without loading the here package</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>dataf &lt;-<span class="st"> </span><span class="kw">read.table</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;raw_data&quot;</span>, <span class="st">&quot;mydata.txt&quot;</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)</span></code></pre></div>
 <p> </p>
 </div>
 <div id="directory-structure" class="section level2">
@@ -706,16 +708,16 @@ div.tocify {
 <p> </p>
 <p>An alternative approach is to use the <code>dir.create()</code> function in the R Console</p>
 <p> </p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># create directory called &#39;data&#39;</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">dir.create</span>(<span class="st">&#39;data&#39;</span>)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co"># create subdirectory raw_data in the data directory</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">dir.create</span>(<span class="st">&#39;data/raw_data&#39;</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co"># list the files and directories</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">list.files</span>(<span class="dt">recursive =</span> <span class="ot">TRUE</span>, <span class="dt">include.dirs =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co"># [1] &quot;data&quot;                &quot;data/raw_data&quot;       &quot;first_project.Rproj&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># create directory called &#39;data&#39;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">dir.create</span>(<span class="st">&#39;data&#39;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># create subdirectory raw_data in the data directory</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">dir.create</span>(<span class="st">&#39;data/raw_data&#39;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># list the files and directories</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="kw">list.files</span>(<span class="dt">recursive =</span> <span class="ot">TRUE</span>, <span class="dt">include.dirs =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># [1] &quot;data&quot;                &quot;data/raw_data&quot;       &quot;first_project.Rproj&quot;</span></span></code></pre></div>
 <p> </p>
 </div>
 <div id="file-names" class="section level2">
@@ -734,7 +736,7 @@ source:<a href="https://xkcd.com/1459/" class="uri">https://xkcd.com/1459/</a>
 <p> </p>
 <ul>
 <li><p>First, avoid using spaces in file names by replacing them with underscores or even hyphens. Why does this matter? One reason is that some command line software (especially many bioinformatic tools) won’t recognise a file name with a space and you’ll have to go through all sorts of shenanigans using escape characters to make sure spaces are handled correctly. Even if you don’t think you will ever use command line software you may be doing so indirectly. Take R markdown for example, if you want to render an R markdown document to pdf using the <code>rmarkdown</code> package you will actually be using a command line LaTeX engine under the hood. Another good reason not to use spaces in file names is that it makes searching for file names (or parts of file names) using <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> in R (or any other language) much more difficult.</p></li>
-<li><p>For the reasons given above, avoid using special characters (i.e. @£$%^&amp;*():;&lt;&gt;?{}/) in your file names.</p></li>
+<li><p>For the reasons given above, avoid using special characters (i.e. @£$%^&amp;*():;&lt;&gt;?{}/) in your file names.</p></li>
 <li><p>If you are versioning your files with sequential numbers (i.e. file1, file2, file3 …) and you have more than 9 files you should use 01, 02, 03 .. 10 as this will ensure the files are printed in the correct order (see what happens if you don’t). If you have more than 99 files then use 001, 002, 003 …etc.</p></li>
 <li><p>If your file names include dates, use the ISO 8601 format YYYY-MM-DD (or YYYYMMDD) to ensure your files are sorted in proper chronological order.</p></li>
 <li><p>Never use the word <em>final</em> in any file name - it never is!</p></li>
@@ -749,33 +751,33 @@ source:<a href="https://xkcd.com/1459/" class="uri">https://xkcd.com/1459/</a>
 <p>A quick note or two about writing R code and creating R scripts. Unless you’re doing something really quick and dirty I suggest that you always write your R code as an R script. R scripts are what make R so useful. Not only do you have a complete record of your analysis, from data manipulation, visualisation and statistical analysis, you can also share this code (and data) with friends, colleagues and importantly when you submit and publish your research to a journal. With this in mind, make sure you include in your R script all the information required to make your work reproducible (author names, dates, sampling design etc). This information could be included as a series of comments <code>#</code> or, even better, by mixing executable code with narrative into an <a href="#Rmarkdown_intro.html">R markdown</a> document. It’s also good practice to include the output of the <code>sessionInfo()</code> function at the end of any script which prints the R version, details of the operating system and also loaded packages.</p>
 <p>Here is an example of including meta-information at the start of an R script</p>
 <p> </p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Title: Time series analysis of snouters</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co"># Purpose : This script performs a time series analyses on snouter count data.</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#           Data consists of counts of snouter species collected from 18 islands </span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#           in the Hy-yi-yi archipelago between 1950 and 1957. </span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#           For details of snouter biology see:</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#               https://en.wikipedia.org/wiki/Rhinogradentia</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co"># Project number: #007</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co"># Data file: &#39;/Users/Another/snouter_analysis/snouter_pop.txt&#39;</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co"># Author: A. Nother</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co"># Contact details: a.nother@uir.ac.uk</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co"># Date script created: Mon Dec 2 16:06:44 2019 ------------------------------</span></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co"># Date script last modified: Thu Dec 12 16:07:12 2019 ----------------------</span></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co"># package dependencies</span></a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="kw">library</span>(PopSnouter)</a>
-<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="kw">print</span>(<span class="st">&#39;put your lovely R code here&#39;</span>)</a>
-<a class="sourceLine" id="cb7-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co"># good practice to include sessionInfo</span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Title: Time series analysis of snouters</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># Purpose : This script performs a time series analyses on snouter count data.</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#           Data consists of counts of snouter species collected from 18 islands </span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#           in the Hy-yi-yi archipelago between 1950 and 1957. </span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#           For details of snouter biology see:</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#               https://en.wikipedia.org/wiki/Rhinogradentia</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># Project number: #007</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co"># Data file: &#39;/Users/Another/snouter_analysis/snouter_pop.txt&#39;</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co"># Author: A. Nother</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co"># Contact details: a.nother@uir.ac.uk</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co"># Date script created: Mon Dec 2 16:06:44 2019 ------------------------------</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co"># Date script last modified: Thu Dec 12 16:07:12 2019 ----------------------</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co"># package dependencies</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="kw">library</span>(PopSnouter)</span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="kw">print</span>(<span class="st">&#39;put your lovely R code here&#39;</span>)</span>
+<span id="cb7-24"><a href="#cb7-24"></a></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="co"># good practice to include sessionInfo</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <p> </p>
 <p>This is just one example and there are no hard and fast rules so feel free to develop a system that works for you. A really useful shortcut in RStudio is to automatically include a time and date stamp in your R script. To do this, write <code>ts</code> where you want to insert your time stamp in your R script and then press the ‘shift + tab’ keys. RStudio will magically convert <code>ts</code> into the current date and time and also automatically comment out this line with a <code>#</code>. Another really useful RStudio shortcut is to comment out multiple lines in your script with a <code>#</code> symbol. To do this, highlight the lines of text you want to comment and then press ‘ctrl + shift + c’. To uncomment the lines just use ‘ctrl + shift + c’ again.</p>
 <p>In addition to including metadata in your R scripts it’s also common practice to create a separate text file to record important information. By convention these text files are named <code>README</code>. I often include a <code>README</code> file in the directory where I keep my raw data. In this file I include details about when data were collected (or downloaded), how data were collected, information about specialised equipment, preservation methods, type and version of any machines used (i.e. sequencing equipment) etc. You can create a README file for your project in RStudio by clicking on the <code>File</code> -&gt; <code>New File</code> -&gt; <code>Text File</code> menu.</p>
