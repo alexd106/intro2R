@@ -7,6 +7,10 @@ output:
 
 \  
 
+Self-contained tutorials on some more advanced topics. Most of this material has now been incorporated into our [Introduction to R book](https://alexd106.github.io/Rbook).
+
+\  
+
 \  
 
 \  

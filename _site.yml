@@ -12,9 +12,9 @@ navbar:
     - text: "Setup"
       icon: fa-cog
       href: setup.html
-    - text: "Resources"
+    - text: "How-to"
       icon: fa-desktop
-      href: lectures.html
+      href: howto.html
     - text: "R Book"
       icon: fa-book
       menu:
@@ -36,6 +36,9 @@ navbar:
     - text: "Data"
       icon: fa-download
       href: "data.html"
+    - text: "Tutorials"
+      icon: fa-desktop
+      href: "Tutorials.html"
     - text: "Info"
       icon: fa-question-circle
       menu:

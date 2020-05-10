@@ -1,5 +1,5 @@
 ---
-title: 'Resources'
+title: 'Learning material'
 output: 
   html_document:
     css: custom.css
@@ -14,7 +14,7 @@ source('reveal.R')
 
 \  
 
-This page contains lecture slides, short how-to videos and tutorials to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R book](https://alexd106.github.io/Rbook). 
+This page contains lecture slides that we deliver during our in-person courses and short how-to videos to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R book](https://alexd106.github.io/Rbook). 
 
 \  
 
@@ -65,64 +65,6 @@ Short how-to videos to get you started with some important topics.
 \  
 
 <iframe src="https://player.vimeo.com/video/416743698" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-
-\  
-
-\  
-
-## Tutorials
-
-Self-contained tutorials on some more advanced topics. Most of this material has now been incorporated into our [Introduction to R book](https://alexd106.github.io/Rbook).  
-
-\  
-
-\  
-
-<div style= "float:left;position: relative; top: -15px;">
-```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
-knitr::include_graphics("images/rstudio_2.png")
-```
-</div>
-
-\  
-
-[Setting up an RStudio project](project_setup.html)  
-
-\  
-
-\  
-
-\  
-
-\  
-
-<div style= "float:left;position: relative; top: -35px;">
-```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
-knitr::include_graphics("images/rmarkdown.png")
-```
-</div>
-
-\ 
-
-[Introduction to reproducible reports using R markdown](Rmarkdown_intro.html)
-
-\  
-
-\  
-
-\  
-
-\  
-
-<div style= "float:left;position: relative; top: -15px;">
-```{r, out.width = "150px", out.extra='style="padding:30px;"', echo = FALSE}
-knitr::include_graphics("images/github.png")
-```
-</div>
-
-\  
-
-[Introduction to version control using Git and GitHub](Github_intro.html)
 
 \  
 
