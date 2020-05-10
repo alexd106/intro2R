@@ -645,9 +645,8 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># results in a dataframe filled with NAs.</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales), ]</span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.  use the na.rm argument to</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># ignore NAs</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), ]</span></code></pre></div></li>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.  use the na.rm argument to ignore NAs</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>whale.new &lt;-<span class="st"> </span>whale[whale<span class="op">$</span>depth <span class="op">&gt;</span><span class="st"> </span><span class="dv">1500</span> <span class="op">&amp;</span><span class="st"> </span>whale<span class="op">$</span>number.whales <span class="op">&gt;</span><span class="st"> </span><span class="kw">mean</span>(whale<span class="op">$</span>number.whales, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), ]</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="12" style="list-style-type: decimal">
