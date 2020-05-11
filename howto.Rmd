@@ -77,6 +77,10 @@ Short how-to videos to get you started with some important topics.
 
 \  
 
+<iframe src="https://player.vimeo.com/video/417383457" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+\  
+
 <iframe src="https://player.vimeo.com/video/416743698" width="640" height="381" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 \  
