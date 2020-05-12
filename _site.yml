@@ -12,15 +12,15 @@ navbar:
     - text: "Setup"
       icon: fa-cog
       href: setup.html
-    - text: "Material"
+    - text: "Learn"
       icon: fa-desktop
       menu:
         - text: "Lectures"
-          icon: fa-keynote
+          icon: fa-chalkboard
           href: lectures.html
         - text: "----"
         - text: "How-to"
-          icon: fa-presentation
+          icon: fa-tv
           href: howto.html
     - text: "R Book"
       icon: fa-book
