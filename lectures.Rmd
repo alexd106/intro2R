@@ -5,11 +5,13 @@ output:
     toc: false
 ---
 
-This page contains lecture slides that we deliver during our in-person courses and short how-to videos to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R book](https://alexd106.github.io/Rbook). 
+\  
+
+Lecture slides that we deliver during our in-person courses to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R book](https://alexd106.github.io/Rbook). 
 
 \  
 
-Follow the links below for PDF versions of lecture slides we deliver during our in-person courses.
+Follow the links below for PDF versions of lecture slides.
 
 \  
 
