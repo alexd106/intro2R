@@ -1,0 +1,40 @@
+---
+title: "Lectures"
+output: 
+  html_document:
+    toc: false
+---
+
+This page contains lecture slides that we deliver during our in-person courses and short how-to videos to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R book](https://alexd106.github.io/Rbook). 
+
+\  
+
+Follow the links below for PDF versions of lecture slides we deliver during our in-person courses.
+
+\  
+
+\  
+
+```{r, reveal, echo=FALSE, eval = isFALSE(show_lecture)}
+cat("Lectures will be released as the course progresses")
+```
+
+
+```{r, echo=FALSE, eval = isTRUE(show_lecture)}
+thumbnail("Introduction to R", "images/r_lecture_thumb.png",
+          "lectures/introduction_to_r_2020.pdf")
+```
+
+```{r, echo=FALSE, eval = isTRUE(show_lecture)}
+thumbnail("Data in R", "images/data_in_r_thumb.png",
+          "lectures/getting_the_data_in_r.pdf")
+```
+
+```{r, echo=FALSE, eval = isTRUE(show_lecture)}
+thumbnail("Simple Statistics in R", "images/stats_r_thumb.png",
+          "lectures/statistics_in_r.pdf")
+```
+
+\  
+
+\  

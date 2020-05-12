@@ -12,9 +12,16 @@ navbar:
     - text: "Setup"
       icon: fa-cog
       href: setup.html
-    - text: "How-to"
+    - text: "Material"
       icon: fa-desktop
-      href: howto.html
+      menu:
+        - text: "Lectures"
+          icon: fa-keynote
+          href: lectures.html
+        - text: "----"
+        - text: "How-to"
+          icon: fa-presentation
+          href: howto.html
     - text: "R Book"
       icon: fa-book
       menu:
@@ -29,7 +36,6 @@ navbar:
         - text: "Old manual"
           icon: fa-book
           href: R_manual_2020.pdf
-      href: R_manual_2020.pdf
     - text: "Exercises"
       icon: fa-book
       href: exercises.html
