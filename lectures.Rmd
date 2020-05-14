@@ -15,18 +15,19 @@ Follow the links below for PDF versions of lecture slides.
 
 \  
 
-\  
-
 ```{r, reveal, echo=FALSE, eval = isFALSE(show_lecture)}
 cat("Lectures will be released as the course progresses")
 ```
 
 \  
 
+```{r intro-lec, echo=FALSE}
 knitr::include_url('https://alexd106.github.io/Rintro_lec/Rintro_lecture#1')
+```
 
 \  
 
+\  
 
 ```{r, echo=FALSE, eval = isTRUE(show_lecture)}
 thumbnail("Introduction to R", "images/r_lecture_thumb.png",
