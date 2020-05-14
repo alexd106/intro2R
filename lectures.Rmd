@@ -21,6 +21,12 @@ Follow the links below for PDF versions of lecture slides.
 cat("Lectures will be released as the course progresses")
 ```
 
+\  
+
+knitr::include_url('https://alexd106.github.io/Rintro_lec/Rintro_lecture#1')
+
+\  
+
 
 ```{r, echo=FALSE, eval = isTRUE(show_lecture)}
 thumbnail("Introduction to R", "images/r_lecture_thumb.png",
