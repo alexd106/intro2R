@@ -11,10 +11,6 @@ Lecture slides that we deliver during our in-person courses to help support you 
 
 \  
 
-Follow the links below for PDF versions of lecture slides.
-
-\  
-
 ```{r, reveal, echo=FALSE, eval = isFALSE(show_lecture)}
 cat("Lectures will be released as the course progresses")
 ```
@@ -24,6 +20,10 @@ cat("Lectures will be released as the course progresses")
 ```{r intro-lec, echo=FALSE}
 knitr::include_url('https://alexd106.github.io/Rintro_lec/Rintro_lecture#1')
 ```
+
+\  
+
+Follow the links below for PDF versions of old lecture slides.
 
 \  
 
