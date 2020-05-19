@@ -31,6 +31,12 @@ knitr::include_url('https://alexd106.github.io/Rdata_lec/Rdata_lecture#1')
 
 \  
 
+```{r stat-lec, echo=FALSE}
+knitr::include_url('https://alexd106.github.io/Rstats_lec/Rstats_lecture#1')
+```
+
+\  
+
 Follow the links below for PDF versions of old lecture slides.
 
 \  
