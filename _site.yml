@@ -27,7 +27,7 @@ navbar:
       menu:
         - text: "Web book"
           icon: fa-firefox
-          href: https://alexd106.github.io/Rbook
+          href: https://intro2r.com
         - text: "----"
         - text: "PDF book"
           icon: fa-file-pdf
