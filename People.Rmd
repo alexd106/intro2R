@@ -30,7 +30,7 @@ Alex is a Reader in Biostatistics at the University of Aberdeen and has been tea
 
 \  
 
-#### Thomas Cornulier 
+<!--#### Thomas Cornulier 
 <div style= "float:left;position: relative; top: 5px;">
 ```{r, out.width = "200px", out.extra='style="padding:30px;"', echo = FALSE}
 knitr::include_graphics("images/thomas2.png")
@@ -47,5 +47,5 @@ Thomas is a statistician and applied ecologist at the University of Aberdeen.
 - GitHub:
 
 \  
-
+-->
 
