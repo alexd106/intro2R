@@ -18,6 +18,8 @@ Short how-to videos to get you started with some important topics.
 
 \  
 
+## Installing R and RStudio {#install}
+
 <iframe src="https://player.vimeo.com/video/415501284" width="640" height="436" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 \  
@@ -25,7 +27,6 @@ Short how-to videos to get you started with some important topics.
 <iframe src="https://player.vimeo.com/video/416391353" width="640" height="381" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 \  
-
 
 <iframe src="https://player.vimeo.com/video/416877495" width="640" height="381" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
