@@ -18,11 +18,13 @@ Short how-to videos to get you started with some important topics.
 
 \  
 
-## Installing R and RStudio {#install}
+## Installing R and RStudio {#install-vid}
 
 <iframe src="https://player.vimeo.com/video/415501284" width="640" height="436" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 \  
+
+## RStudio orientation {#rstudio-vid}
 
 <iframe src="https://player.vimeo.com/video/416391353" width="640" height="381" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
@@ -55,6 +57,8 @@ Short how-to videos to get you started with some important topics.
 <iframe src="https://player.vimeo.com/video/417783856" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 \  
+
+## Data wrangling using R {#dataw-vid}
 
 <iframe src="https://player.vimeo.com/video/418087983" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
