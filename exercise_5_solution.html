@@ -21,6 +21,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -720,8 +721,8 @@ $(document).ready(function () {
 <span id="cb7-5"><a href="#cb7-5"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>)</span>
 <span id="cb7-6"><a href="#cb7-6"></a></span>
 <span id="cb7-7"><a href="#cb7-7"></a><span class="kw">str</span>(gigartina)</span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $ diatom.treat: Factor w/</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># 4 levels &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $ diatom.treat: Factor w/ 4 levels</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></span>
 <span id="cb7-10"><a href="#cb7-10"></a></span>
 <span id="cb7-11"><a href="#cb7-11"></a><span class="kw">table</span>(gigartina<span class="op">$</span>diatom.treat)</span>
 <span id="cb7-12"><a href="#cb7-12"></a></span>
@@ -739,8 +740,7 @@ $(document).ready(function () {
 <span id="cb7-24"><a href="#cb7-24"></a></span>
 <span id="cb7-25"><a href="#cb7-25"></a><span class="co"># or if you want to do the fancy um symbol correctly</span></span>
 <span id="cb7-26"><a href="#cb7-26"></a></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, <span class="st">&quot; (&quot;</span>, mu, </span>
-<span id="cb7-28"><a href="#cb7-28"></a>    <span class="st">&quot;m)&quot;</span>)))</span></code></pre></div></li>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, <span class="st">&quot; (&quot;</span>, mu, <span class="st">&quot;m)&quot;</span>)))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
@@ -831,8 +831,8 @@ $(document).ready(function () {
 <span id="cb14-6"><a href="#cb14-6"></a></span>
 <span id="cb14-7"><a href="#cb14-7"></a><span class="kw">str</span>(temora)</span>
 <span id="cb14-8"><a href="#cb14-8"></a></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num 3.76 5.4 8 9.4 16.6</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># 18.5 19...  $ acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></span></code></pre></div></li>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num 3.76 5.4 8 9.4 16.6 18.5 19...  $</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">
