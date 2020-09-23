@@ -30,6 +30,12 @@ Short how-to videos to get you started with some important topics.
 
 \  
 
+## RStudio Projects {#rstudio_proj-vid}
+
+<iframe src="https://player.vimeo.com/video/460932720" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+\  
+
 ## Using functions {#func-vid}
 
 <iframe src="https://player.vimeo.com/video/429606516" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
