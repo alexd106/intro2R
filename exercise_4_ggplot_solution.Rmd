@@ -50,7 +50,8 @@ library(gridExtra)
 4. Import the *'squid1.txt'* file into R using the `read.table()` function and assign it to a variable named `squid`. Use the `str()` function to display the structure of the dataset and the `summary()` function to summarise the dataset. How many observations are in this dataset? How many variables? The `year`, `month` and `maturity.stage` variables were coded as integers in the original dataset. Here we would like to code them as factors. Create a new variable for each of these variables in the `squid` dataframe and recode them as factors. Use the `str()` function again to check the coding of these new variables.
 
     ```{r Q4, results = 'asis'}
-    squid <- read.table('workshop/data/squid1.txt', header =TRUE)
+    squid <- read.table('workshop/data/squid1.txt', header = TRUE, 
+                        stringsAsFactors = TRUE)
     
     str(squid)
     # 'data.frame':	519 obs. of  13 variables:

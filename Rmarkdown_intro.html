@@ -13,6 +13,7 @@
 
 <title>Introduction to R markdown</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -25,7 +26,10 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -39,21 +43,30 @@
 </script>
 
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -73,7 +86,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -903,7 +916,7 @@ Benthic Biodiversity experiment.
 <h4>Comments</h4>
 <p>As you can see above the meaning of the <code>#</code> symbol is different when formatting text in an R markdown document compared to a standard R script (which is used to included a comment - remember?!). You can, however, use a <code>#</code> symbol to comment code inside a <a href="#code_chunks">code chunk</a> as usual (more about this in a bit). If you want to include a comment in your R markdown document outside a code chunk which won’t be included in the final rendered document then enclose your comment between <code>&lt;!--</code> and <code>--&gt;</code>.</p>
 <p> </p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a>&lt;!--</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">&lt;!--</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co">this is an example of how to format a comment using R markdown.</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co">--&gt;</span></span></code></pre></div>
 <p> </p>
@@ -912,12 +925,12 @@ Benthic Biodiversity experiment.
 <h4>Lists</h4>
 <p>If you want to create a bullet point list of text you can format an unordered list with sub items. Notice that the sub-items need to be indented.</p>
 <p> </p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a>- <span class="st">item 1</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="st">- item 2</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="st">   + sub-item 2</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="st">   + sub-item 3</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="st">- item 3</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="st">- item 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="ss">- </span>item 1</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="ss">- </span>item 2</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="ss">   + </span>sub-item 2</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="ss">   + </span>sub-item 3</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="ss">- </span>item 3</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="ss">- </span>item 4</span></code></pre></div>
 <p> </p>
 <blockquote>
 <ul>
@@ -935,12 +948,12 @@ Benthic Biodiversity experiment.
 <p>If you need an ordered list</p>
 <p> </p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2"></a>1. <span class="st">item 1</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="st">2. item 2</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="st">     + sub-item 2</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="st">     + sub-item 3</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="st">3. item 3</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="st">4. item 4</span></span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="ss">1. </span>item 1</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="ss">2. </span>item 2</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ss">     + </span>sub-item 2</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="ss">     + </span>sub-item 3</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="ss">3. </span>item 3</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="ss">4. </span>item 4</span></code></pre></div>
 <p> </p>
 <blockquote>
 <ol style="list-style-type: decimal">
@@ -986,7 +999,7 @@ include_graphics("images/Cute_grey_kitten.jpg")
 <p>In addition to images you can also include links to webpages or other links in your document. Use the following syntax to create a clickable link to an existing webpage. The link text goes between the square brackets and the URL for the webpage between the round brackets immediately after.</p>
 <p> </p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2"></a>You can include a text for your clickable <span class="ot">[link](https://www.worldwildlife.org)</span></span></code></pre></div>
+<span id="cb12-2"><a href="#cb12-2"></a>You can include a text for your clickable <span class="co">[</span><span class="ot">link</span><span class="co">](https://www.worldwildlife.org)</span></span></code></pre></div>
 <p> </p>
 <p>which gives you:</p>
 <p> </p>
@@ -1823,7 +1836,7 @@ knitr::opts_chunk$set(message=FALSE, tidy.opts=list(width.cutoff=60), tidy=TRUE)
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

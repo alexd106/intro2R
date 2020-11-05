@@ -14,6 +14,7 @@
 
 <title>Squid Analysis</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -22,6 +23,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -35,21 +38,30 @@
 </script>
 
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -69,7 +81,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -793,12 +805,12 @@ $(document).ready(function () {
 <h3>Session Information</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <!-- But i prefere to use the pander package as it wraps long lines nicely when rendering to PDF. I have hidden this code and output in the final document but all you need to do is remove echo=FALSE argument from the code chunk. -->
-<p><strong>R version 3.6.3 (2020-02-29)</strong></p>
-<p><strong>Platform:</strong> x86_64-apple-darwin15.6.0 (64-bit)</p>
+<p><strong>R version 4.0.3 (2020-10-10)</strong></p>
+<p><strong>Platform:</strong> x86_64-apple-darwin17.0 (64-bit)</p>
 <p><strong>locale:</strong> en_GB.UTF-8||en_GB.UTF-8||en_GB.UTF-8||C||en_GB.UTF-8||en_GB.UTF-8</p>
 <p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>utils</em>, <em>datasets</em>, <em>methods</em> and <em>base</em></p>
-<p><strong>other attached packages:</strong> <em>pander(v.0.6.3)</em>, <em>kableExtra(v.1.1.0)</em>, <em>ggplot2(v.3.3.2)</em>, <em>htmltools(v.0.5.0)</em>, <em>dplyr(v.1.0.1)</em>, <em>stringr(v.1.4.0)</em> and <em>knitr(v.1.29)</em></p>
-<p><strong>loaded via a namespace (and not attached):</strong> <em>Rcpp(v.1.0.5)</em>, <em>pillar(v.1.4.6)</em>, <em>compiler(v.3.6.3)</em>, <em>formatR(v.1.7)</em>, <em>highr(v.0.8)</em>, <em>tools(v.3.6.3)</em>, <em>digest(v.0.6.25)</em>, <em>packrat(v.0.5.0)</em>, <em>viridisLite(v.0.3.0)</em>, <em>evaluate(v.0.14)</em>, <em>lifecycle(v.0.2.0)</em>, <em>tibble(v.3.0.3)</em>, <em>gtable(v.0.3.0)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>rlang(v.0.4.7)</em>, <em>rstudioapi(v.0.11)</em>, <em>yaml(v.2.2.1)</em>, <em>xfun(v.0.16)</em>, <em>xml2(v.1.3.2)</em>, <em>httr(v.1.4.2)</em>, <em>withr(v.2.2.0)</em>, <em>generics(v.0.0.2)</em>, <em>vctrs(v.0.3.2)</em>, <em>hms(v.0.5.3)</em>, <em>webshot(v.0.5.2)</em>, <em>grid(v.3.6.3)</em>, <em>tidyselect(v.1.1.0)</em>, <em>glue(v.1.4.1)</em>, <em>R6(v.2.4.1)</em>, <em>rmarkdown(v.2.3)</em>, <em>purrr(v.0.3.4)</em>, <em>farver(v.2.0.3)</em>, <em>readr(v.1.3.1)</em>, <em>magrittr(v.1.5)</em>, <em>scales(v.1.1.1)</em>, <em>ellipsis(v.0.3.1)</em>, <em>rvest(v.0.3.6)</em>, <em>colorspace(v.1.4-1)</em>, <em>labeling(v.0.3)</em>, <em>tinytex(v.0.25)</em>, <em>stringi(v.1.4.6)</em>, <em>munsell(v.0.5.0)</em> and <em>crayon(v.1.3.4)</em></p>
+<p><strong>other attached packages:</strong> <em>pander(v.0.6.3)</em>, <em>kableExtra(v.1.3.1)</em>, <em>ggplot2(v.3.3.2)</em>, <em>htmltools(v.0.5.0)</em>, <em>dplyr(v.1.0.2)</em>, <em>stringr(v.1.4.0)</em> and <em>knitr(v.1.30)</em></p>
+<p><strong>loaded via a namespace (and not attached):</strong> <em>Rcpp(v.1.0.5)</em>, <em>pillar(v.1.4.6)</em>, <em>compiler(v.4.0.3)</em>, <em>formatR(v.1.7)</em>, <em>highr(v.0.8)</em>, <em>tools(v.4.0.3)</em>, <em>digest(v.0.6.27)</em>, <em>evaluate(v.0.14)</em>, <em>lifecycle(v.0.2.0)</em>, <em>tibble(v.3.0.4)</em>, <em>gtable(v.0.3.0)</em>, <em>viridisLite(v.0.3.0)</em>, <em>pkgconfig(v.2.0.3)</em>, <em>rlang(v.0.4.8)</em>, <em>rstudioapi(v.0.11)</em>, <em>yaml(v.2.2.1)</em>, <em>xfun(v.0.19)</em>, <em>withr(v.2.3.0)</em>, <em>httr(v.1.4.2)</em>, <em>xml2(v.1.3.2)</em>, <em>generics(v.0.1.0)</em>, <em>vctrs(v.0.3.4)</em>, <em>webshot(v.0.5.2)</em>, <em>grid(v.4.0.3)</em>, <em>tidyselect(v.1.1.0)</em>, <em>glue(v.1.4.2)</em>, <em>R6(v.2.5.0)</em>, <em>rmarkdown(v.2.5)</em>, <em>purrr(v.0.3.4)</em>, <em>farver(v.2.0.3)</em>, <em>magrittr(v.1.5)</em>, <em>scales(v.1.1.1)</em>, <em>ellipsis(v.0.3.1)</em>, <em>rvest(v.0.3.6)</em>, <em>colorspace(v.1.4-1)</em>, <em>labeling(v.0.4.2)</em>, <em>tinytex(v.0.27)</em>, <em>stringi(v.1.5.3)</em>, <em>munsell(v.0.5.0)</em> and <em>crayon(v.1.3.4)</em></p>
 </div>
 
 
@@ -810,7 +822,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
