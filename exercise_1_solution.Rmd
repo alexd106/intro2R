@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-1. Start RStudio on your computer. If you haven't already done so, create a new RStudio Project (select File --> New Project on the main menu). Create the Project in a new directory by selecting 'New Directory' and then select 'New Project'. Give the Project a suitable name (quadstatR maybe) in the 'Directory name:' box and choose where you would like to create this Project directory by clicking on the 'Browse' button. Finally create the project by clicking on the 'Create Project' button. This will be your main RStudio Project file and directory which you will use throughout this course. See [Section 1.6](https://intro2r.com/rsprojs.html#rsprojs) of the Introduction to R book for more information about RStudio Projects.
+1. Start RStudio on your computer. If you haven't already done so, create a new RStudio Project (select File --> New Project on the main menu). Create the Project in a new directory by selecting 'New Directory' and then select 'New Project'. Give the Project a suitable name (Rworkshop maybe) in the 'Directory name:' box and choose where you would like to create this Project directory by clicking on the 'Browse' button. Finally create the project by clicking on the 'Create Project' button. This will be your main RStudio Project file and directory which you will use throughout this course. See [Section 1.6](https://intro2r.com/rsprojs.html#rsprojs) of the Introduction to R book for more information about RStudio Projects.
 
 \  
 

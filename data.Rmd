@@ -25,9 +25,9 @@ Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidde
 
 **Option 2: Download individual datasets as needed.** 
 
-- Create a new folder somewhere on your computer that's easy to get to (e.g., your Desktop). Name it ` workshop`. Inside that folder, make another folder called `data`, all lowercase. 
+- Create a new folder somewhere on your computer that's easy to get to. Name it `Rworkshop` or whatever makes sense to you. Inside that folder, make another folder called `data`, all lowercase. 
 
-- Download individual data files as needed, saving them to the new `workshop/data` folder you just made. Click to download. If data displays in your browser, right-click and select _Save link as..._ (or similar) to save to the desired location.
+- Download individual data files as needed, saving them to the new `Rworkshop/data` folder you just made. Click to download. If data displays in your browser, right-click and select _Save link as..._ (or similar) to save to the desired location.
   
   
 ```{r, results='asis'}
