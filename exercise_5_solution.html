@@ -568,47 +568,48 @@ $(document).ready(function () {
 <p> </p>
 <ol style="list-style-type: decimal">
 <li><p>Download the datafile <em>‘prawnGR.CSV’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import these data into R and assign to a variable with an appropriate name. These data were collected from an experiment to investigate the difference in growth rate of the <a href="https://en.wikipedia.org/wiki/Penaeus_monodon">giant tiger prawn</a> (<em>Penaeus monodon</em>) fed either an artificial or natural diet. Have a quick look at the structure of this dataset and plot the growth rate versus the diet using an appropriate plot. How many observations are there in each diet treatment?</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>prawns &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;workshop/data/prawnGR.CSV&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># or</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>prawns &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/prawnGR.CSV&quot;</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># take a look at the data</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">str</span>(prawns)</span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># &#39;data.frame&#39;:   60 obs. of  2 variables:</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#  $ GRate: num  9.77 10.29 10.05 10.08 9.31 ...</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#  $ diet : Factor w/ 2 levels &quot;Artificial&quot;,&quot;Natural&quot;:...</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="kw">summary</span>(prawns)</span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#      GRate                diet   </span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#  Min.   : 7.395   Artificial:30  </span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#  1st Qu.: 9.550   Natural   :30  </span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#  Median : 9.943                  </span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#  Mean   : 9.920                  </span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#  3rd Qu.:10.344                  </span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#  Max.   :11.632         </span></span>
-<span id="cb1-23"><a href="#cb1-23"></a></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># how many replicates for each level of diet</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="kw">table</span>(prawns<span class="op">$</span>diet)</span>
-<span id="cb1-27"><a href="#cb1-27"></a></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># Artificial    Natural </span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#         30         30 </span></span>
-<span id="cb1-30"><a href="#cb1-30"></a></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co"># or use xtabs</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns)</span>
-<span id="cb1-34"><a href="#cb1-34"></a></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># produce a boxplot</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="kw">boxplot</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns, <span class="dt">xlab =</span> <span class="st">&quot;Diet&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Growth Rate&quot;</span>)</span></code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>prawns &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;workshop/data/prawnGR.CSV&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2"></a>                     <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># or</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>prawns &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/prawnGR.CSV&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># take a look at the data</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">str</span>(prawns)</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># &#39;data.frame&#39;:   60 obs. of  2 variables:</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#  $ GRate: num  9.77 10.29 10.05 10.08 9.31 ...</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#  $ diet : Factor w/ 2 levels &quot;Artificial&quot;,&quot;Natural&quot;:...</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="kw">summary</span>(prawns)</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#      GRate                diet   </span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#  Min.   : 7.395   Artificial:30  </span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#  1st Qu.: 9.550   Natural   :30  </span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#  Median : 9.943                  </span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#  Mean   : 9.920                  </span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#  3rd Qu.:10.344                  </span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">#  Max.   :11.632         </span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># how many replicates for each level of diet</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="kw">table</span>(prawns<span class="op">$</span>diet)</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># Artificial    Natural </span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="co">#         30         30 </span></span>
+<span id="cb1-31"><a href="#cb1-31"></a></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># or use xtabs</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns)</span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co"># produce a boxplot</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="kw">boxplot</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns, <span class="dt">xlab =</span> <span class="st">&quot;Diet&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Growth Rate&quot;</span>)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function <code>shapiro.test()</code> to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet <code>GRate[diet=='Natural']</code> first). Use the function <code>var.test()</code> to test for equal variance (see <code>?var.test</code> for more information). Are your data normally distributed and have equal variances?</p>
+<li><p>You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function <code>shapiro.test()</code> to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet <code>GRate[diet=='Natural']</code> first). Use the function <code>var.test()</code> to test for equal variance (see <code>?var.test</code> for more information or <a href="https://intro2r.com/one-and-two-sample-tests.html#one-and-two-sample-tests">Section 6.1</a> of the book for more details). Are your data normally distributed and have equal variances?</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># test normality assumption</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Do not perform test on all data together, i.e.</span></span>
@@ -664,7 +665,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Conduct a two sample t-test using the <code>t.test()</code> function. Use the argument <code>var.equal=TRUE</code> to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?</p>
+<li><p>Conduct a two sample t-test using the <code>t.test()</code> function (<a href="https://intro2r.com/one-and-two-sample-tests.html#one-and-two-sample-tests">Section 6.1</a>of the book). Use the argument <code>var.equal = TRUE</code> to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># conduct t-test assuming equal variances</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Null hypothesis Ho: no difference in growth rate </span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># between prawns fed on artificial diet or Natural diet</span></span>
@@ -689,7 +690,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable. Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>).</p>
+<li><p>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable (see <a href="https://intro2r.com/simple-lm.html#simple_lm">Section 6.3</a> for a very brief introduction to linear modelling). Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># fit the model</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>growth.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(GRate <span class="op">~</span><span class="st"> </span>diet, <span class="dt">data =</span> prawns)</span></code></pre></div></li>
@@ -715,7 +716,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Assess the normality and equal variance assumptions by plotting the residuals of the fitted model. Split the plotting device into 2 rows and 2 columns using <code>par(mfrow=c(2,2))</code> so you can fit four plots on a single device. Use the <code>plot()</code> function on your fitted model (<code>plot(growth.lm)</code>) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?</p>
+<li><p>Assess the normality and equal variance assumptions by plotting the residuals of the fitted model (see <a href="https://intro2r.com/simple-lm.html#simple_lm">Section 6.3</a> for more details). Split the plotting device into 2 rows and 2 columns using <code>par(mfrow=c(2,2))</code> so you can fit four plots on a single device. Use the <code>plot()</code> function on your fitted model (<code>plot(growth.lm)</code>) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># plot the residuals to assess normality and equal variance</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co"># divide the plotting device into 2 rows and 2 columns to get all</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co"># the graphs on one device</span></span>
@@ -725,16 +726,16 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
-<li><p>Download the datafile <em>‘Gigartina.csv’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in <code>diameter</code> of red algae <a href="https://en.wikipedia.org/wiki/Mastocarpus_stellatus"><em>Mastocarpus stellatus</em></a> spores grown in three different diatom cultures and a control group grown in artificial seawater (<code>diatom.treat</code> variable). Use the function <code>str()</code> to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<li><p>Download the datafile <em>‘Gigartina.CSV’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in <code>diameter</code> of red algae <a href="https://en.wikipedia.org/wiki/Mastocarpus_stellatus"><em>Mastocarpus stellatus</em></a> spores grown in three different diatom cultures and a control group grown in artificial seawater (<code>diatom.treat</code> variable). Use the function <code>str()</code> to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co"># or</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb7-6"><a href="#cb7-6"></a></span>
 <span id="cb7-7"><a href="#cb7-7"></a><span class="kw">str</span>(gigartina)</span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># diatom.treat: Factor w/ 4 levels &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $ diatom.treat: Factor w/ 4 levels</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></span>
 <span id="cb7-10"><a href="#cb7-10"></a></span>
 <span id="cb7-11"><a href="#cb7-11"></a><span class="kw">table</span>(gigartina<span class="op">$</span>diatom.treat)</span>
 <span id="cb7-12"><a href="#cb7-12"></a></span>
@@ -752,8 +753,7 @@ $(document).ready(function () {
 <span id="cb7-24"><a href="#cb7-24"></a></span>
 <span id="cb7-25"><a href="#cb7-25"></a><span class="co"># or if you want to do the fancy um symbol correctly</span></span>
 <span id="cb7-26"><a href="#cb7-26"></a></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, </span>
-<span id="cb7-28"><a href="#cb7-28"></a>    <span class="st">&quot; (&quot;</span>, mu, <span class="st">&quot;m)&quot;</span>)))</span></code></pre></div></li>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, <span class="st">&quot; (&quot;</span>, mu, <span class="st">&quot;m)&quot;</span>)))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
@@ -836,16 +836,16 @@ $(document).ready(function () {
 <p> </p>
 <ol start="15" style="list-style-type: decimal">
 <li><p>Download the <em>‘TemoraBR.csv’</em> file from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and as usual assign it to a variable. These data are from an experiment that was conducted to investigate the relationship between temperature (<code>temp</code>) and the beat rate (Hz) <code>beat_rate</code> of the copepod <a href="https://en.wikipedia.org/wiki/Temora_longicornis"><em>Temora longicornis</em></a> which had been acclimatised at three different temperature regimes (<code>acclimitisation_temp</code>). Examine the structure of the dataset. How many variables are there? What type of variables are they? Which is the response (dependent) variable, and which are the explanatory (independent) variables?</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>temora &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>temora &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="co"># or</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a>temora &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>)</span>
+<span id="cb14-5"><a href="#cb14-5"></a>temora &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/TemoraBR.CSV&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb14-6"><a href="#cb14-6"></a></span>
 <span id="cb14-7"><a href="#cb14-7"></a><span class="kw">str</span>(temora)</span>
 <span id="cb14-8"><a href="#cb14-8"></a></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num 3.76</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># 5.4 8 9.4 16.6 18.5 19...  $ acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></span></code></pre></div></li>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num 3.76 5.4 8 9.4 16.6 18.5 19...  $</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">
@@ -866,23 +866,19 @@ $(document).ready(function () {
 <span id="cb15-14"><a href="#cb15-14"></a></span>
 <span id="cb15-15"><a href="#cb15-15"></a><span class="co"># scatter plot with different symbols and colours</span></span>
 <span id="cb15-16"><a href="#cb15-16"></a></span>
-<span id="cb15-17"><a href="#cb15-17"></a><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">col =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp), </span>
-<span id="cb15-18"><a href="#cb15-18"></a>    <span class="dt">pch =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp)))</span>
-<span id="cb15-19"><a href="#cb15-19"></a></span>
-<span id="cb15-20"><a href="#cb15-20"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">pch =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)), <span class="dt">col =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)))</span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">col =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp), <span class="dt">pch =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp)))</span>
+<span id="cb15-18"><a href="#cb15-18"></a></span>
+<span id="cb15-19"><a href="#cb15-19"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">pch =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)), <span class="dt">col =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)))</span>
+<span id="cb15-20"><a href="#cb15-20"></a></span>
 <span id="cb15-21"><a href="#cb15-21"></a></span>
-<span id="cb15-22"><a href="#cb15-22"></a></span>
-<span id="cb15-23"><a href="#cb15-23"></a><span class="co"># or more flexibly</span></span>
-<span id="cb15-24"><a href="#cb15-24"></a></span>
-<span id="cb15-25"><a href="#cb15-25"></a><span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">data =</span> temora)</span>
-<span id="cb15-26"><a href="#cb15-26"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>], <span class="dt">pch =</span> <span class="dv">1</span>, </span>
-<span id="cb15-27"><a href="#cb15-27"></a>    <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>))</span>
-<span id="cb15-28"><a href="#cb15-28"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>], <span class="dt">pch =</span> <span class="dv">2</span>, </span>
-<span id="cb15-29"><a href="#cb15-29"></a>    <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>))</span>
-<span id="cb15-30"><a href="#cb15-30"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>], <span class="dt">pch =</span> <span class="dv">3</span>, </span>
-<span id="cb15-31"><a href="#cb15-31"></a>    <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>))</span>
-<span id="cb15-32"><a href="#cb15-32"></a></span>
-<span id="cb15-33"><a href="#cb15-33"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div></li>
+<span id="cb15-22"><a href="#cb15-22"></a><span class="co"># or more flexibly</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a></span>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">data =</span> temora)</span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>], <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>))</span>
+<span id="cb15-26"><a href="#cb15-26"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>], <span class="dt">pch =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>))</span>
+<span id="cb15-27"><a href="#cb15-27"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>], <span class="dt">pch =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb15-28"><a href="#cb15-28"></a></span>
+<span id="cb15-29"><a href="#cb15-29"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="17" style="list-style-type: decimal">

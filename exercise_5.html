@@ -459,15 +459,15 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function <code>shapiro.test()</code> to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet <code>GRate[diet=='Natural']</code> first). Use the function <code>var.test()</code> to test for equal variance (see <code>?var.test</code> for more information). Are your data normally distributed and have equal variances?</li>
+<li>You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function <code>shapiro.test()</code> to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet <code>GRate[diet=='Natural']</code> first). Use the function <code>var.test()</code> to test for equal variance (see <code>?var.test</code> for more information or <a href="https://intro2r.com/one-and-two-sample-tests.html#one-and-two-sample-tests">Section 6.1</a> of the book for more details). Are your data normally distributed and have equal variances?</li>
 </ol>
 <p> </p>
 <ol start="3" style="list-style-type: decimal">
-<li>Conduct a two sample t-test using the <code>t.test()</code> function. Use the argument <code>var.equal=TRUE</code> to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?</li>
+<li>Conduct a two sample t-test using the <code>t.test()</code> function (<a href="https://intro2r.com/one-and-two-sample-tests.html#one-and-two-sample-tests">Section 6.1</a>of the book). Use the argument <code>var.equal = TRUE</code> to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?</li>
 </ol>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
-<li>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable. Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>)</li>
+<li>An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the <code>lm()</code> function to fit a linear model with <code>GRate</code> as the response variable and <code>diet</code> as an explanatory variable (see <a href="https://intro2r.com/simple-lm.html#simple_lm">Section 6.3</a> for a very brief introduction to linear modelling). Assign (<code>&lt;-</code>) the results of the linear model to a variable with an appropriate name (i.e. <code>growth.lm</code>).</li>
 </ol>
 <p> </p>
 <ol start="5" style="list-style-type: decimal">
@@ -475,11 +475,11 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="6" style="list-style-type: decimal">
-<li>Assess the normality and equal variance assumptions by plotting the residuals of the fitted model. Split the plotting device into 2 rows and 2 columns using <code>par(mfrow=c(2,2))</code> so you can fit four plots on a single device. Use the <code>plot()</code> function on your fitted model (<code>plot(growth.lm)</code>) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?</li>
+<li>Assess the normality and equal variance assumptions by plotting the residuals of the fitted model (see <a href="https://intro2r.com/simple-lm.html#simple_lm">Section 6.3</a> for more details). Split the plotting device into 2 rows and 2 columns using <code>par(mfrow=c(2,2))</code> so you can fit four plots on a single device. Use the <code>plot()</code> function on your fitted model (<code>plot(growth.lm)</code>) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?</li>
 </ol>
 <p> </p>
 <ol start="7" style="list-style-type: decimal">
-<li>Download the datafile <em>‘Gigartina.csv’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in <code>diameter</code> of red algae <a href="https://en.wikipedia.org/wiki/Mastocarpus_stellatus"><em>Mastocarpus stellatus</em></a> spores grown in three different diatom cultures and a control group grown in artificial seawater (<code>diatom.treat</code> variable). Use the function <code>str()</code> to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.</li>
+<li>Download the datafile <em>‘Gigartina.CSV’</em> from the <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link and save it to the <code>data</code> directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in <code>diameter</code> of red algae <a href="https://en.wikipedia.org/wiki/Mastocarpus_stellatus"><em>Mastocarpus stellatus</em></a> spores grown in three different diatom cultures and a control group grown in artificial seawater (<code>diatom.treat</code> variable). Use the function <code>str()</code> to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.</li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">

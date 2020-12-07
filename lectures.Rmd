@@ -7,7 +7,7 @@ output:
 
 \  
 
-Lecture slides that we deliver during our in-person courses to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R book](https://alexd106.github.io/Rbook). 
+Lecture slides that we deliver during our in-person courses to help support you whilst learning R. This material should be used in conjunction with the [Introduction to R](https://alexd106.github.io/Rbook) book. 
 
 Either tap on the slides or use your keyboard arrow keys (&#8592; &#8594;) to scroll through the slides. Press 'h' for other slide options.
 

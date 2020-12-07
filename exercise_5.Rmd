@@ -23,15 +23,15 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-2. You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function `shapiro.test()` to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet `GRate[diet=='Natural']` first). Use the function `var.test()` to test for equal variance (see `?var.test` for more information). Are your data normally distributed and have equal variances?
+2. You want to compare the difference in growth rate between the two diets using a two sample t-test. Before you conduct the test, you need to assess the normality and equal variance assumptions. Use the function `shapiro.test()` to assess normality of growth rate for each diet separately (Hint: use your indexing skills to extract the growth rate for each diet `GRate[diet=='Natural']` first). Use the function `var.test()` to test for equal variance (see `?var.test` for more information or [Section 6.1](https://intro2r.com/one-and-two-sample-tests.html#one-and-two-sample-tests) of the book for more details). Are your data normally distributed and have equal variances?
 
 \  
 
-3. Conduct a two sample t-test using the `t.test()` function. Use the argument `var.equal=TRUE` to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?
+3. Conduct a two sample t-test using the `t.test()` function ([Section 6.1](https://intro2r.com/one-and-two-sample-tests.html#one-and-two-sample-tests)of the book). Use the argument `var.equal = TRUE` to perform the t-test assuming equal variances. What is the null hypothesis you want to test? Do you reject or fail to reject the null hypothesis? What is the value of the t statistic, degrees of freedom and p value? How would you summarise these summary statistics in a report?
 
 \  
 
-4. An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the `lm()` function to fit a linear model with `GRate` as the response variable and `diet` as an explanatory variable. Assign (`<-`) the results of the linear model to a variable with an appropriate name (i.e. `growth.lm`)
+4. An alternative (but equivalent) way to compare the mean growth rate between diets is to use a linear model. Use the `lm()` function to fit a linear model with `GRate` as the response variable and `diet` as an explanatory variable (see [Section 6.3](https://intro2r.com/simple-lm.html#simple_lm) for a very brief introduction to linear modelling). Assign (`<-`) the results of the linear model to a variable with an appropriate name (i.e. `growth.lm`).
 
 \  
 
@@ -39,11 +39,11 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-6. Assess the normality and equal variance assumptions by plotting the residuals of the fitted model. Split the plotting device into 2 rows and 2 columns using `par(mfrow=c(2,2))` so you can fit four plots on a single device. Use the `plot()` function on your fitted model (`plot(growth.lm)`) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?
+6. Assess the normality and equal variance assumptions by plotting the residuals of the fitted model (see [Section 6.3](https://intro2r.com/simple-lm.html#simple_lm) for more details). Split the plotting device into 2 rows and 2 columns using `par(mfrow=c(2,2))` so you can fit four plots on a single device. Use the `plot()` function on your fitted model (`plot(growth.lm)`) to plot the graphs. Discuss with an instructor how to interpret these plots. What are your conclusions?
 
 \  
 
-7. Download the datafile *'Gigartina.csv'* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in `diameter` of red algae [*Mastocarpus stellatus*](https://en.wikipedia.org/wiki/Mastocarpus_stellatus) spores grown in three different diatom cultures and a control group grown in artificial seawater (`diatom.treat` variable). Use the function `str()` to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.
+7. Download the datafile *'Gigartina.CSV'* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory. Import the dataset into R and assign the dataframe an appropriate name. These data were collected from a study to examine the change in `diameter` of red algae [*Mastocarpus stellatus*](https://en.wikipedia.org/wiki/Mastocarpus_stellatus) spores grown in three different diatom cultures and a control group grown in artificial seawater (`diatom.treat` variable). Use the function `str()` to examine the dataframe. How many replicates are there per diatom treatment? Use an appropriate plot to examine whether there are any obvious differences in diameter between the treatments.
 
 \  
 

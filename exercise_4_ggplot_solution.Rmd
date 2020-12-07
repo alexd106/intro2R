@@ -17,19 +17,21 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-Alternative solutions to Exercise 4 for those who use (or are interested in using) the ```ggplot``` approach to plotting data.
+Alternative (optional) solutions to Exercise 4 for those who use (or are interested in using) the `ggplot` approach to plotting data. See [Chapter 5](https://intro2r.com/graphics-r.html) of the Introduction to R book for more information about how to use `ggplot`.  
 
 \  
 
 ```{r packages}
 
-# make ggplot2 and gridExtra packages available
+# make ggplot2, gridExtra and GGally packages available
 # Note: you may need to install these packages first
 # Use : install.packages('ggplot2', dep = TRUE)
 # Use : install.packages('gridExtra', dep = TRUE)
+# Use : install.packages('GGally', dep = TRUE)
 
 library(ggplot2)
 library(gridExtra)
+library(GGally)
 ```
 
 
@@ -47,11 +49,11 @@ library(gridExtra)
 
 \  
 
-4. Import the *'squid1.txt'* file into R using the `read.table()` function and assign it to a variable named `squid`. Use the `str()` function to display the structure of the dataset and the `summary()` function to summarise the dataset. How many observations are in this dataset? How many variables? The `year`, `month` and `maturity.stage` variables were coded as integers in the original dataset. Here we would like to code them as factors. Create a new variable for each of these variables in the `squid` dataframe and recode them as factors. Use the `str()` function again to check the coding of these new variables.
+4. Import the *'squid1.txt'* file into R using the `read.table()` function and assign it to a variable named `squid`. Use the `str()` function to display the structure of the dataset and the `summary()` function to summarise the dataset. How many observations are in this dataset? How many variables? The `year`, `month` and `maturity.stage` variables were coded as integers in the original dataset. Here we would like to code them as factors. Create a new variable for each of these variables in the `squid` dataframe and recode them as factors. Use the `str()` function again to check the coding of these new variables.  
 
     ```{r Q4, results = 'asis'}
-    squid <- read.table('workshop/data/squid1.txt', header = TRUE, 
-                        stringsAsFactors = TRUE)
+    squid <- read.table('workshop/data/squid1.txt', header =TRUE, 
+                         stringsAsFactors = TRUE)
     
     str(squid)
     # 'data.frame':	519 obs. of  13 variables:
@@ -143,7 +145,7 @@ library(gridExtra)
 
 \  
 
-6. The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables. Create dotplots (using the `dotchart()` function) for the following variables; `DML`, `weight`, `nid.length` and `ovary.weight`. Do these variables contain any unusually large or small observations? Don't forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns. Use the `pdf()` function to save a pdf version of your plot(s) in your `output` directory you created in Exercise 1. I have also included some alternative code in the [solutions for this exercise](exercise_4_solution.html) using the `dotplot()` function from the `lattice` package.
+6. The humble cleveland dotplot is a great way of identifying if you have potential outliers in continuous variables. Create dotplots (using the `dotchart()` function) for the following variables; `DML`, `weight`, `nid.length` and `ovary.weight`. Do these variables contain any unusually large or small observations? Don't forget, if you prefer to create a single figure with all 4 plots you can always split your plotting device into 2 rows and 2 columns. Use the `pdf()` function to save a pdf version of your plot(s) in your `output` directory you created in Exercise 1. 
 
     ```{r Q6}
     p1 <- ggplot(data = squid) + 
