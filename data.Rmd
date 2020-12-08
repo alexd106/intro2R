@@ -19,13 +19,19 @@ if (!file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r dat
 
 **Option 1: Download all the data at once.** 
 
-Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** `r paste0("(", round(file.info("data/all_data.zip")$size/1e6, 2), " Mb)")` with all the data for the entire workshop. This may include additional datasets that we won't use here. You will need to uncompress this zip file using your favourite software (most operating systems now have at least one built-in (un)compression tool). 
+- Create a new RStudio project for this course (call it Rworkshop if your imagination fails you!). If you're not sure how to create a new Project then see [Section 1.6](https://intro2r.com/rsprojs.html) of our Introduction to R book or watch [this short video](https://alexd106.github.io/QUADstatR/howto.html#rstudio_proj-vid).
+
+- Once you're working in your RStudio project create a new directory in your Project directory called `data` (all lowercase). You can easily create this new directory by clicking on the 'New Folder' button in the 'Files' tab in RStudio (see [Section 1.8](https://intro2r.com/dir-struct.html) of our Introduction to R book for a set-by-step guide how to do this).  
+
+- Download and extract **[this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i>](data/all_data.zip)** `r paste0("(", round(file.info("data/all_data.zip")$size/1e6, 2), " Mb)")` with all the data for the entire workshop. This may include additional datasets that we won't use here. You will need to uncompress this zip file using your favourite software (most operating systems now have at least one built-in (un)compression tool). 
 
 \  
 
 **Option 2: Download individual datasets as needed.** 
 
-- Create a new folder somewhere on your computer that's easy to get to. Name it `Rworkshop` or whatever makes sense to you. Inside that folder, make another folder called `data`, all lowercase. 
+- Create a new RStudio project for this course (call it Rworkshop if your imagination fails you!). If you're not sure how to create a new Project then see [Section 1.6](https://intro2r.com/rsprojs.html) of our Introduction to R book or watch [this short video](https://alexd106.github.io/QUADstatR/howto.html#rstudio_proj-vid).
+
+- Once you're working in your RStudio project create a new directory in your Project directory called `data` (all lowercase). You can easily create this new directory by clicking on the 'New Folder' button in the 'Files' tab in RStudio (see [Section 1.8](https://intro2r.com/dir-struct.html) of our Introduction to R book for a set-by-step guide how to do this).  
 
 - Download individual data files as needed, saving them to the new `Rworkshop/data` folder you just made. Click to download. If data displays in your browser, right-click and select _Save link as..._ (or similar) to save to the desired location.
   
