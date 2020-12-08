@@ -82,7 +82,7 @@ navbar:
 
 output:
   html_document:
-    theme: yeti
+    theme: flatly
     highlight: tango
     toc: true
     toc_depth: 2
