@@ -21,7 +21,7 @@ navbar:
           icon: fa-file-pdf
           href: https://github.com/alexd106/Rbook/raw/master/docs/Rbook.pdf
     - text: "Learn R"
-      icon: fa-desktop
+      icon: fa-university
       menu:
         - text: "How-to"
           icon: fa-tv
