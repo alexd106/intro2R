@@ -7,22 +7,9 @@ navbar:
   #type: inverse
   icon: fa-home
   left:
-    - text: "Home"
-      icon: fa-home
-      href: index.html
     - text: "Setup"
       icon: fa-cog
       href: setup.html
-    - text: "Learn"
-      icon: fa-desktop
-      menu:
-        - text: "Lectures"
-          icon: fa-chalkboard
-          href: lectures.html
-        - text: "----"
-        - text: "How-to"
-          icon: fa-tv
-          href: howto.html
     - text: "R Book"
       icon: fa-book
       menu:
@@ -33,19 +20,25 @@ navbar:
         - text: "PDF book"
           icon: fa-file-pdf
           href: https://github.com/alexd106/Rbook/raw/master/docs/Rbook.pdf
+    - text: "Learn R"
+      icon: fa-desktop
+      menu:
+        - text: "How-to"
+          icon: fa-tv
+          href: howto.html
         - text: "----"
-        - text: "Old manual"
-          icon: fa-book
-          href: R_manual_2020.pdf
+        - text: "Lectures"
+          icon: fa-chalkboard
+          href: lectures.html
     - text: "Exercises"
-      icon: fa-book
+      icon: fa-file-contract
       menu:
         - text: "Excercises"
-          icon: fa-book
+          icon: fa-folder
           href: exercises.html
         - text: "----"
         - text: "Exercise solutions"
-          icon: fa-book
+          icon: fa-folder
           href: exercise_solutions.html
     - text: "Data"
       icon: fa-download
