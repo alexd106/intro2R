@@ -7,28 +7,28 @@ output:
 
 \  
 
-We estimate that this course will take approximately three days to cover all the material, but this will vary between individuals. Naturally, how you choose to cover the material in the course is up to you. If you plan to ring fence a block of time to complete the course then we suggest the timetable for the different components below. However, this may not be an option (or optimal) for everyone, in which case we suggest that you try to complete the material for either a morning or an afternoon in a single session. 
+We estimate that this course will take approximately three days to cover the core material contained in Chapters 1 - 4 and Chapter 6 of our [Introduction to R book](https://intro2r.com/), but this will naturally vary between individuals. Of course, how you choose to cover the material in these Chapters is up to you. If you plan on ring fencing a block of time to complete the whole course then we suggest the timetable below. However, this may not be an option (or optimal) for everyone, in which case we suggest that you try to complete the material for each Chapter in a single session (perhaps in either a morning or an afternoon). 
 
 \  
 
 #### Day 1
 
-  - Morning: Introduction to the course, getting to know R and RStudio
+  - Morning: Getting to know R and RStudio ([Chapter 1](https://intro2r.com/chap1.html))
 
-  - Afternoon: Basic R operations
+  - Afternoon: Basic R operations ([Chapter 2](https://intro2r.com/basics-r.html))
 
 \  
 
 #### Day 2
 
-  - Morning: Importing and manipulating dataframes
+  - Morning: Importing and manipulating dataframes ([Chapter 3](https://intro2r.com/data-r.html))
 
-  - Afternoon: Plotting data in R using base and lattice graphics
+  - Afternoon: Plotting data in R using base and lattice graphics ([Chapter 4](https://intro2r.com/graphics-base-r.html))
 
 \  
 
 #### Day 3
 
-  - Morning: Simple statistics in R
+  - Morning: Simple statistics in R ([Chapter 6](https://intro2r.com/stats-r.html))
 
-  - Afternoon: Basic programming in R 
+  - Afternoon: Optional - Basic programming in R ([Chapter 7](https://intro2r.com/prog-r.html))
