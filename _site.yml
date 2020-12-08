@@ -38,7 +38,14 @@ navbar:
           href: R_manual_2020.pdf
     - text: "Exercises"
       icon: fa-book
-      href: exercises.html
+      menu:
+        - text: "Excercises"
+          icon: fa-book
+          href: exercises.html
+        - text: "----"
+        - text: "Exercise solutions"
+          icon: fa-book
+          href: exercise_solutions.html
     - text: "Data"
       icon: fa-download
       href: "data.html"
