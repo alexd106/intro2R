@@ -4,6 +4,7 @@ name: "An introduction to R"
 output_dir: "."
 navbar:
   title: "Intro2R"
+  #type: inverse
   icon: fa-home
   left:
     - text: "Home"
