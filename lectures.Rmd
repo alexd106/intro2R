@@ -37,27 +37,4 @@ knitr::include_url('https://alexd106.github.io/Rstats_lec/Rstats_lecture#1')
 
 \  
 
-Follow the links below for PDF versions of old lecture slides.
 
-\  
-
-\  
-
-```{r, echo=FALSE, eval = isTRUE(show_lecture)}
-thumbnail("Introduction to R", "images/r_lecture_thumb.png",
-          "lectures/introduction_to_r_2020.pdf")
-```
-
-```{r, echo=FALSE, eval = isTRUE(show_lecture)}
-thumbnail("Data in R", "images/data_in_r_thumb.png",
-          "lectures/getting_the_data_in_r.pdf")
-```
-
-```{r, echo=FALSE, eval = isTRUE(show_lecture)}
-thumbnail("Simple Statistics in R", "images/stats_r_thumb.png",
-          "lectures/statistics_in_r.pdf")
-```
-
-\  
-
-\  
