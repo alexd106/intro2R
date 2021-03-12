@@ -16,6 +16,10 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
+Read [Chapter 7](https://intro2r.com/prog-r.html) to help you complete the questions in this exercise.
+
+\  
+
 1. Create a function to calculate the area of a circle. Test the function by finding the area of a circle with a diameter of 3.4 cm. Can you use it on a vector of data?
 
     ```{r Q1, results = 'asis'}

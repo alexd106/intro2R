@@ -574,6 +574,8 @@ $(document).ready(function () {
 <div id="exercise-5-basic-statistics-in-r" class="section level2">
 <h2>Exercise 5: Basic statistics in R</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/stats-r.html">Chapter 6</a> to help you complete the questions in this exercise.</p>
+<p> </p>
 <p>Although this short course is primarily focussed on introducing you to R, it wouldn’t be complete if we didn’t have a peek at some of R’s statistical roots. Having said that, this will be a very brief overview with very little in the way of theory so don’t worry if you get a little lost - this is just a taster, the main course is still to come!</p>
 <p> </p>
 <ol style="list-style-type: decimal">
@@ -744,8 +746,8 @@ $(document).ready(function () {
 <span id="cb7-5"><a href="#cb7-5"></a>gigartina &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;workshop/data/Gigartina.CSV&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb7-6"><a href="#cb7-6"></a></span>
 <span id="cb7-7"><a href="#cb7-7"></a><span class="kw">str</span>(gigartina)</span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $ diatom.treat: Factor w/ 4 levels</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># &#39;data.frame&#39;: 40 obs. of 2 variables: $ diameter : int 110 115 110 108 109 101 101 98 120 ...  $</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># diatom.treat: Factor w/ 4 levels &#39;ASGM&#39;,&#39;Sdecl&#39;,..: 1 1...</span></span>
 <span id="cb7-10"><a href="#cb7-10"></a></span>
 <span id="cb7-11"><a href="#cb7-11"></a><span class="kw">table</span>(gigartina<span class="op">$</span>diatom.treat)</span>
 <span id="cb7-12"><a href="#cb7-12"></a></span>
@@ -763,7 +765,8 @@ $(document).ready(function () {
 <span id="cb7-24"><a href="#cb7-24"></a></span>
 <span id="cb7-25"><a href="#cb7-25"></a><span class="co"># or if you want to do the fancy um symbol correctly</span></span>
 <span id="cb7-26"><a href="#cb7-26"></a></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, <span class="st">&quot; (&quot;</span>, mu, <span class="st">&quot;m)&quot;</span>)))</span></code></pre></div></li>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="kw">boxplot</span>(diameter <span class="op">~</span><span class="st"> </span>diatom.treat, <span class="dt">data =</span> gigartina, <span class="dt">xlab =</span> <span class="st">&quot;diatom treatment&quot;</span>, <span class="dt">ylab =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;diameter&quot;</span>, </span>
+<span id="cb7-28"><a href="#cb7-28"></a>    <span class="st">&quot; (&quot;</span>, mu, <span class="st">&quot;m)&quot;</span>)))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
@@ -807,41 +810,42 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
-<li><p>We will use the function <code>TukeyHSD()</code> to perform these comparisons. In order to use this function we have to refit the model using the <code>aov()</code> function on your model object (<code>gigartina.lm</code>) in the following way <code>TukeyHSD(aov(gigartina.lm))</code> to obtain a summary of the comparisons. Which groups are different from each other?</p>
+<li><p>We will use the function <code>TukeyHSD.lm()</code> from the <code>mosaic</code> package to perform these comparisons (you will need to install this package first and then use <code>library(mosaic)</code> to make the function available). Which groups are different from each other if we use the p-value cutoff (alpha) of p &lt; 0.05?</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># what group mean is different from what? Post-hoc comparisons.</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="co"># we will use Tukey&#39;s Honest significant difference method </span></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="co"># to compare group means.</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a></span>
-<span id="cb12-5"><a href="#cb12-5"></a>gigartina.av &lt;-<span class="st"> </span><span class="kw">aov</span>(gigartina.lm)</span>
-<span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="co"># compare the group means using TukeysHSD method</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a></span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="kw">TukeyHSD</span>(gigartina.av)</span>
-<span id="cb12-10"><a href="#cb12-10"></a></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="co">#   Tukey multiple comparisons of means</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#     95% family-wise confidence level</span></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="co"># </span></span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="co"># Fit: aov(formula = diameter ~ diatom.treat, data = gigartina)</span></span>
-<span id="cb12-15"><a href="#cb12-15"></a><span class="co"># </span></span>
-<span id="cb12-16"><a href="#cb12-16"></a><span class="co"># $diatom.treat</span></span>
-<span id="cb12-17"><a href="#cb12-17"></a><span class="co">#              diff         lwr       upr     p adj</span></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="co"># Sdecl-ASGM  -14.3 -20.6184102  -7.98159 0.0000030</span></span>
-<span id="cb12-19"><a href="#cb12-19"></a><span class="co"># Sexpo-ASGM   -8.9 -15.2184102  -2.58159 0.0029489</span></span>
-<span id="cb12-20"><a href="#cb12-20"></a><span class="co"># Sstat-ASGM  -18.3 -24.6184102 -11.98159 0.0000000</span></span>
-<span id="cb12-21"><a href="#cb12-21"></a><span class="co"># Sexpo-Sdecl   5.4  -0.9184102  11.71841 0.1165421</span></span>
-<span id="cb12-22"><a href="#cb12-22"></a><span class="co"># Sstat-Sdecl  -4.0 -10.3184102   2.31841 0.3360087</span></span>
-<span id="cb12-23"><a href="#cb12-23"></a><span class="co"># Sstat-Sexpo  -9.4 -15.7184102  -3.08159 0.0016145</span></span>
-<span id="cb12-24"><a href="#cb12-24"></a></span>
-<span id="cb12-25"><a href="#cb12-25"></a><span class="co"># the null hypothesis for each comparison is</span></span>
-<span id="cb12-26"><a href="#cb12-26"></a><span class="co"># drp1 - grp2 = 0 (i.e. no difference)</span></span>
-<span id="cb12-27"><a href="#cb12-27"></a></span>
-<span id="cb12-28"><a href="#cb12-28"></a><span class="co"># Sdecl-ASGM, Sexpo-ASGM, Sstat-ASGM and Sstat-Sexpo</span></span>
-<span id="cb12-29"><a href="#cb12-29"></a><span class="co"># are significantly different</span></span></code></pre></div></li>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># install.packages(&#39;mosaic&#39;)</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="kw">library</span>(mosaic)</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co"># compare the group means using TukeysHSD method</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="kw">TukeyHSD.lm</span>(gigartina.lm)</span>
+<span id="cb12-11"><a href="#cb12-11"></a></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#   Tukey multiple comparisons of means</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="co">#     95% family-wise confidence level</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="co"># </span></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="co"># Fit: aov(formula = diameter ~ diatom.treat, data = gigartina)</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="co"># </span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="co"># $diatom.treat</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="co">#              diff         lwr       upr     p adj</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="co"># Sdecl-ASGM  -14.3 -20.6184102  -7.98159 0.0000030</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="co"># Sexpo-ASGM   -8.9 -15.2184102  -2.58159 0.0029489</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="co"># Sstat-ASGM  -18.3 -24.6184102 -11.98159 0.0000000</span></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="co"># Sexpo-Sdecl   5.4  -0.9184102  11.71841 0.1165421</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="co"># Sstat-Sdecl  -4.0 -10.3184102   2.31841 0.3360087</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a><span class="co"># Sstat-Sexpo  -9.4 -15.7184102  -3.08159 0.0016145</span></span>
+<span id="cb12-25"><a href="#cb12-25"></a></span>
+<span id="cb12-26"><a href="#cb12-26"></a><span class="co"># the null hypothesis for each comparison is</span></span>
+<span id="cb12-27"><a href="#cb12-27"></a><span class="co"># grp1 - grp2 = 0 (i.e. no difference)</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a></span>
+<span id="cb12-29"><a href="#cb12-29"></a><span class="co"># Sdecl-ASGM, Sexpo-ASGM, Sstat-ASGM and Sstat-Sexpo</span></span>
+<span id="cb12-30"><a href="#cb12-30"></a><span class="co"># are significantly different</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">
-<li><p>We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the <code>plot()</code> function with the <code>TukeyHSD(aov(gigartina.lm))</code>. Ask if you get stuck (or Google it!).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(gigartina.av), <span class="dt">cex.axis =</span> <span class="fl">0.5</span>, <span class="dt">las =</span> <span class="dv">2</span>)</span></code></pre></div></li>
+<li><p>We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the <code>plot()</code> function with the <code>TukeyHSD.lm(gigartina.lm)</code>. Ask if you get stuck (or Google it!).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">plot</span>(<span class="kw">TukeyHSD.lm</span>(gigartina.lm), <span class="dt">cex.axis =</span> <span class="fl">0.5</span>, <span class="dt">las =</span> <span class="dv">2</span>)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="15" style="list-style-type: decimal">
@@ -854,8 +858,8 @@ $(document).ready(function () {
 <span id="cb14-6"><a href="#cb14-6"></a></span>
 <span id="cb14-7"><a href="#cb14-7"></a><span class="kw">str</span>(temora)</span>
 <span id="cb14-8"><a href="#cb14-8"></a></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num 3.76 5.4 8 9.4 16.6 18.5 19...  $</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></span></code></pre></div></li>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># &#39;data.frame&#39;: 45 obs. of 3 variables: $ temp : num 5 6 7 10 11 12 13 15 16 17 ...  $ beat_rate : num</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># 3.76 5.4 8 9.4 16.6 18.5 19...  $ acclimitisation_temp: int 5 5 5 5 5 5 5 5 5 5 ...</span></span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">
@@ -876,19 +880,23 @@ $(document).ready(function () {
 <span id="cb15-14"><a href="#cb15-14"></a></span>
 <span id="cb15-15"><a href="#cb15-15"></a><span class="co"># scatter plot with different symbols and colours</span></span>
 <span id="cb15-16"><a href="#cb15-16"></a></span>
-<span id="cb15-17"><a href="#cb15-17"></a><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">col =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp), <span class="dt">pch =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp)))</span>
-<span id="cb15-18"><a href="#cb15-18"></a></span>
-<span id="cb15-19"><a href="#cb15-19"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">pch =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)), <span class="dt">col =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)))</span>
-<span id="cb15-20"><a href="#cb15-20"></a></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="kw">with</span>(temora, <span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">col =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp), </span>
+<span id="cb15-18"><a href="#cb15-18"></a>    <span class="dt">pch =</span> <span class="kw">as.numeric</span>(Facclimitisation_temp)))</span>
+<span id="cb15-19"><a href="#cb15-19"></a></span>
+<span id="cb15-20"><a href="#cb15-20"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">pch =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)), <span class="dt">col =</span> <span class="kw">unique</span>(<span class="kw">as.numeric</span>(temora<span class="op">$</span>Facclimitisation_temp)))</span>
 <span id="cb15-21"><a href="#cb15-21"></a></span>
-<span id="cb15-22"><a href="#cb15-22"></a><span class="co"># or more flexibly</span></span>
-<span id="cb15-23"><a href="#cb15-23"></a></span>
-<span id="cb15-24"><a href="#cb15-24"></a><span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">data =</span> temora)</span>
-<span id="cb15-25"><a href="#cb15-25"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>], <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>))</span>
-<span id="cb15-26"><a href="#cb15-26"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>], <span class="dt">pch =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>))</span>
-<span id="cb15-27"><a href="#cb15-27"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>], <span class="dt">pch =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>))</span>
-<span id="cb15-28"><a href="#cb15-28"></a></span>
-<span id="cb15-29"><a href="#cb15-29"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div></li>
+<span id="cb15-22"><a href="#cb15-22"></a></span>
+<span id="cb15-23"><a href="#cb15-23"></a><span class="co"># or more flexibly</span></span>
+<span id="cb15-24"><a href="#cb15-24"></a></span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="kw">plot</span>(beat_rate <span class="op">~</span><span class="st"> </span>temp, <span class="dt">xlab =</span> <span class="st">&quot;temperature&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;beat rate&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">data =</span> temora)</span>
+<span id="cb15-26"><a href="#cb15-26"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;5&quot;</span>], <span class="dt">pch =</span> <span class="dv">1</span>, </span>
+<span id="cb15-27"><a href="#cb15-27"></a>    <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>))</span>
+<span id="cb15-28"><a href="#cb15-28"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;10&quot;</span>], <span class="dt">pch =</span> <span class="dv">2</span>, </span>
+<span id="cb15-29"><a href="#cb15-29"></a>    <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>))</span>
+<span id="cb15-30"><a href="#cb15-30"></a><span class="kw">with</span>(temora, <span class="kw">points</span>(beat_rate[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>] <span class="op">~</span><span class="st"> </span>temp[Facclimitisation_temp <span class="op">==</span><span class="st"> &quot;20&quot;</span>], <span class="dt">pch =</span> <span class="dv">3</span>, </span>
+<span id="cb15-31"><a href="#cb15-31"></a>    <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb15-32"><a href="#cb15-32"></a></span>
+<span id="cb15-33"><a href="#cb15-33"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div></li>
 </ol>
 <p> </p>
 <ol start="17" style="list-style-type: decimal">

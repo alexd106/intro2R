@@ -17,11 +17,15 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
+Read [Chapter 2](https://intro2r.com/basics-r.html) to help you complete the questions in this exercise.
+
+\  
+
 1. Open up your RStudio Project from Exercise 1 and either create a new R script or continue with your previous R script. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don't forget to comment out your metadata with a `#` at the beginning of the line. 
 
 \  
 
-2. Let's use R as a fancy calculator. Find the natural log, log10, log2, square root and the natural antilog of 12.43. See [Section 2.1](https://intro2r.com/getting-started.html#getting-started) of the Introduction to R book for more information on mathematical functions in R. Don't forget to write your code in RStudio's script editor and source the code into the console.
+2. Let's use R as a fancy calculator. Find the natural log, log to the base 10, log to the base 2, square root and the natural antilog of 12.43. See [Section 2.1](https://intro2r.com/getting-started.html#getting-started) of the Introduction to R book for more information on mathematical functions in R. Don't forget to write your code in RStudio's script editor and source the code into the console.
 
     ```{r Q2, results = 'asis'}
     log(12.43)              # natural log
@@ -87,7 +91,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-8. Now you can use the information in your `weight` and `height` variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (in meters). Store the results of this calculation in a variable called `bmi`. Note: you don’t need to do this calculation for each child individually, you can use the vectors in the equation  – this is called vectorisation (see [Section 2.4.4](https://intro2r.com/vectors.html#vectorisation) of the Introduction to R book).
+8. Now you can use the information in your `weight` and `height` variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (in meters). Store the results of this calculation in a variable called `bmi`. Note: you don’t need to do this calculation for each child individually, you can use both vectors in the BMI equation  – this is called vectorisation (see [Section 2.4.4](https://intro2r.com/vectors.html#vectorisation) of the Introduction to R book).
 
     ```{r Q8}
     bmi <- weight/(height/100)^2    # don't forget to convert height to meters
@@ -111,7 +115,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-11.	Let's go mad! Generate the following sequences. You will need to experiment with the arguments to the `rep()` function to generate these sequences (see [Section 2.3](https://intro2r.com/using-functions-in-r.html#using-functions-in-r) for some clues):
+11.	Let's go sequence crazy! Generate the following sequences. You will need to experiment with the arguments to the `rep()` function to generate these sequences (see [Section 2.3](https://intro2r.com/using-functions-in-r.html#using-functions-in-r) for some clues):
 
     + 1 2 3 1 2 3 1 2 3
     + "a" "a" "a" "c" "c" "c" "e" "e" "e" "g" "g" "g"
@@ -168,7 +172,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-16. Almost there! In R, missing values are usually represented with an `NA`. Missing data can be tricky to deal with in R (and in statistics more generally) and cause some surprising behaviour when using some functions (see [Section 2.4.5](https://intro2r.com/vectors.html#na_vals) of the Introduction to R book). To explore this a little further let's create a vector called `mydata` with the values `2, 4, 1, 6, 8, 5, NA, 4, 7`. Notice the value of the 7^th^ element of `mydata` is missing. Now use the `mean()` function to calculate the mean of the values in `mydata`. What does R return? Confused? Next, take a look at the help page for the function `mean()`. Can you figure out how to alter your use of the `mean()` function to calculate the mean without this missing value?  
+16. Almost there! In R, missing values are usually represented with an `NA`. Missing data can be tricky to deal with in R (and in statistics more generally) and cause some surprising behaviour when using some functions (see [Section 2.4.5](https://intro2r.com/vectors.html#na_vals) of the Introduction to R book). To explore this a little further let's create a vector called `mydata` with the values `2, 4, 1, 6, 8, 5, NA, 4, 7`. Notice the value of the 7^th^ element of `mydata` is missing and represented with an `NA`. Now use the `mean()` function to calculate the mean of the values in `mydata`. What does R return? Confused? Next, take a look at the help page for the function `mean()`. Can you figure out how to alter your use of the `mean()` function to calculate the mean without this missing value?  
 
     ```{r Q16}
     mydata <- c(2, 4, 1, 6, 8, 5, NA, 4, 7)
@@ -179,7 +183,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-17. Finally, list all variables in your workspace that you have created in this exercise. Remove the variable `seq1` from the workspace. 
+17. Finally, list all variables in your workspace that you have created in this exercise. Remove the variable `seq1` from the workspace using the `rm()` function. 
 
     ```{r Q17}
     ls()          # list all variables in workspace

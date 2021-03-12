@@ -15,6 +15,10 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
+Read [Chapter 6](https://intro2r.com/stats-r.html) to help you complete the questions in this exercise.
+
+\  
+
 Although this short course is primarily focussed on introducing you to R, it wouldn't be complete if we didn't have a quick peek at some of R's statistical roots. Having said that, this will be a very brief overview with very little in the way of theory so don't worry if you get a little lost - this is just a taster, the main course is still to come!
 
 \  
@@ -67,11 +71,11 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-13. We will use the function `TukeyHSD()` to perform these comparisons. In order to use this function we have to refit the model using the `aov()` function on your model object (`gigartina.lm`) in the following way `TukeyHSD(aov(gigartina.lm))` to obtain a summary of the comparisons. Which groups are different from each other?
+13. We will use the function `TukeyHSD.lm()` from the `mosaic` package to perform these comparisons (you will need to install this package first and then use `library(mosaic)` to make the function available). Which groups are different from each other if we use the p-value cutoff (alpha) of p < 0.05?
 
 \  
 
-14. We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the `plot()` function with the `TukeyHSD(aov(gigartina.lm))`. Ask if you get stuck (or Google it!).
+14. We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the `plot()` function with the `TukeyHSD.lm(gigartina.lm)`. Ask if you get stuck (or Google it!).
 
 \  
 

@@ -574,12 +574,14 @@ $(document).ready(function () {
 <div id="exercise-2-basic-r-operations" class="section level2">
 <h2>Exercise 2 : Basic R operations</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/basics-r.html">Chapter 2</a> to help you complete the questions in this exercise.</p>
+<p> </p>
 <ol style="list-style-type: decimal">
 <li>Open up your RStudio Project from Exercise 1 and either create a new R script or continue with your previous R script. Make sure you include any metadata you feel is appropriate (title, description of task, date of creation etc). Don’t forget to comment out your metadata with a <code>#</code> at the beginning of the line.</li>
 </ol>
 <p> </p>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Let’s use R as a fancy calculator. Find the natural log, log10, log2, square root and the natural antilog of 12.43. See <a href="https://intro2r.com/getting-started.html#getting-started">Section 2.1</a> of the Introduction to R book for more information on mathematical functions in R. Don’t forget to write your code in RStudio’s script editor and source the code into the console.</p>
+<li><p>Let’s use R as a fancy calculator. Find the natural log, log to the base 10, log to the base 2, square root and the natural antilog of 12.43. See <a href="https://intro2r.com/getting-started.html#getting-started">Section 2.1</a> of the Introduction to R book for more information on mathematical functions in R. Don’t forget to write your code in RStudio’s script editor and source the code into the console.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">log</span>(<span class="fl">12.43</span>)              <span class="co"># natural log</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">log10</span>(<span class="fl">12.43</span>)            <span class="co"># log to base 10</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">log2</span>(<span class="fl">12.43</span>)             <span class="co"># log to base 2</span></span>
@@ -627,7 +629,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="8" style="list-style-type: decimal">
-<li><p>Now you can use the information in your <code>weight</code> and <code>height</code> variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (in meters). Store the results of this calculation in a variable called <code>bmi</code>. Note: you don’t need to do this calculation for each child individually, you can use the vectors in the equation – this is called vectorisation (see <a href="https://intro2r.com/vectors.html#vectorisation">Section 2.4.4</a> of the Introduction to R book).</p>
+<li><p>Now you can use the information in your <code>weight</code> and <code>height</code> variables to calculate the body mass index (BMI) for each child. The BMI is calculated as weight (in kg) divided by the square of the height (in meters). Store the results of this calculation in a variable called <code>bmi</code>. Note: you don’t need to do this calculation for each child individually, you can use both vectors in the BMI equation – this is called vectorisation (see <a href="https://intro2r.com/vectors.html#vectorisation">Section 2.4.4</a> of the Introduction to R book).</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>bmi &lt;-<span class="st"> </span>weight<span class="op">/</span>(height<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>    <span class="co"># don&#39;t forget to convert height to meters</span></span></code></pre></div></li>
 </ol>
 <p> </p>
@@ -642,7 +644,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="11" style="list-style-type: decimal">
-<li><p>Let’s go mad! Generate the following sequences. You will need to experiment with the arguments to the <code>rep()</code> function to generate these sequences (see <a href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section 2.3</a> for some clues):</p>
+<li><p>Let’s go sequence crazy! Generate the following sequences. You will need to experiment with the arguments to the <code>rep()</code> function to generate these sequences (see <a href="https://intro2r.com/using-functions-in-r.html#using-functions-in-r">Section 2.3</a> for some clues):</p>
 <ul>
 <li>1 2 3 1 2 3 1 2 3</li>
 <li>“a” “a” “a” “c” “c” “c” “e” “e” “e” “g” “g” “g”</li>
@@ -684,7 +686,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="16" style="list-style-type: decimal">
-<li><p>Almost there! In R, missing values are usually represented with an <code>NA</code>. Missing data can be tricky to deal with in R (and in statistics more generally) and cause some surprising behaviour when using some functions (see <a href="https://intro2r.com/vectors.html#na_vals">Section 2.4.5</a> of the Introduction to R book). To explore this a little further let’s create a vector called <code>mydata</code> with the values <code>2, 4, 1, 6, 8, 5, NA, 4, 7</code>. Notice the value of the 7<sup>th</sup> element of <code>mydata</code> is missing. Now use the <code>mean()</code> function to calculate the mean of the values in <code>mydata</code>. What does R return? Confused? Next, take a look at the help page for the function <code>mean()</code>. Can you figure out how to alter your use of the <code>mean()</code> function to calculate the mean without this missing value?</p>
+<li><p>Almost there! In R, missing values are usually represented with an <code>NA</code>. Missing data can be tricky to deal with in R (and in statistics more generally) and cause some surprising behaviour when using some functions (see <a href="https://intro2r.com/vectors.html#na_vals">Section 2.4.5</a> of the Introduction to R book). To explore this a little further let’s create a vector called <code>mydata</code> with the values <code>2, 4, 1, 6, 8, 5, NA, 4, 7</code>. Notice the value of the 7<sup>th</sup> element of <code>mydata</code> is missing and represented with an <code>NA</code>. Now use the <code>mean()</code> function to calculate the mean of the values in <code>mydata</code>. What does R return? Confused? Next, take a look at the help page for the function <code>mean()</code>. Can you figure out how to alter your use of the <code>mean()</code> function to calculate the mean without this missing value?</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>mydata &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">4</span>, <span class="dv">7</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="kw">mean</span>(mydata)    <span class="co"># returns NA!</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a></span>
@@ -692,7 +694,7 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="17" style="list-style-type: decimal">
-<li><p>Finally, list all variables in your workspace that you have created in this exercise. Remove the variable <code>seq1</code> from the workspace.</p>
+<li><p>Finally, list all variables in your workspace that you have created in this exercise. Remove the variable <code>seq1</code> from the workspace using the <code>rm()</code> function.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">ls</span>()          <span class="co"># list all variables in workspace</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="kw">rm</span>(seq1)      <span class="co"># remove variable seq1 from the workspace</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="kw">ls</span>()          <span class="co"># check seq1 has been removed</span></span></code></pre></div></li>

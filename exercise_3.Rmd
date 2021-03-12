@@ -23,7 +23,7 @@ Read [Chapter 3](https://intro2r.com/data-r.html) to help you complete the quest
 
 \  
 
-2. Download the data file *‘whaledata.xls’* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory you created in Exercise 1. 
+2. If you haven't already download the data file *‘whaledata.xlsx’* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory you created in Exercise 1. 
 
 \  
 
@@ -67,7 +67,7 @@ Read [Chapter 3](https://intro2r.com/data-r.html) to help you complete the quest
 
 \  
 
-11. However, when using functions in conditional statements you need to be careful. For example, write some code to extract all rows from the dataframe `whale` with depths greater than 1500 m and with a greater number of whales spotted than average. Can you see a problem with the output? Discuss the cause of this problem with an instructor and explore possible solutions.
+11. However, when using functions in conditional statements you need to be careful. For example, write some code to extract all rows from the dataframe `whale` with depths greater than 1500 m and with a greater number of whales spotted than average (hint: use the `mean()` function in your conditional statement). Can you see a problem with the output? Discuss the cause of this problem with an instructor and explore possible solutions.
 
 \  
 

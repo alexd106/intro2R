@@ -17,6 +17,10 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
+Read [Chapter 6](https://intro2r.com/stats-r.html) to help you complete the questions in this exercise.
+
+\  
+
 Although this short course is primarily focussed on introducing you to R, it wouldn't be complete if we didn't have a peek at some of R's statistical roots. Having said that, this will be a very brief overview with very little in the way of theory so don't worry if you get a little lost - this is just a taster, the main course is still to come!
 
 \  
@@ -296,18 +300,19 @@ Although this short course is primarily focussed on introducing you to R, it wou
 
 \  
 
-13. We will use the function `TukeyHSD()` to perform these comparisons. In order to use this function we have to refit the model using the `aov()` function on your model object (`gigartina.lm`) in the following way `TukeyHSD(aov(gigartina.lm))` to obtain a summary of the comparisons. Which groups are different from each other?
+13. We will use the function `TukeyHSD.lm()` from the `mosaic` package to perform these comparisons (you will need to install this package first and then use `library(mosaic)` to make the function available). Which groups are different from each other if we use the p-value cutoff (alpha) of p < 0.05?
 
     ```{r Q13, results = 'asis'}
     # what group mean is different from what? Post-hoc comparisons.
     # we will use Tukey's Honest significant difference method 
     # to compare group means.
+    # install.packages('mosaic')
     
-    gigartina.av <- aov(gigartina.lm)
+    library(mosaic)
     
     # compare the group means using TukeysHSD method
     
-    TukeyHSD(gigartina.av)
+    TukeyHSD.lm(gigartina.lm)
      
     #   Tukey multiple comparisons of means
     #     95% family-wise confidence level
@@ -324,19 +329,18 @@ Although this short course is primarily focussed on introducing you to R, it wou
     # Sstat-Sexpo  -9.4 -15.7184102  -3.08159 0.0016145
     
     # the null hypothesis for each comparison is
-    # drp1 - grp2 = 0 (i.e. no difference)
+    # grp1 - grp2 = 0 (i.e. no difference)
     
     # Sdecl-ASGM, Sexpo-ASGM, Sstat-ASGM and Sstat-Sexpo
     # are significantly different
-    
     ```
 
 \  
 
-14. We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the `plot()` function with the `TukeyHSD(aov(gigartina.lm))`. Ask if you get stuck (or Google it!).
+14. We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the `plot()` function with the `TukeyHSD.lm(gigartina.lm)`. Ask if you get stuck (or Google it!).
 
     ```{r Q14}
-    plot(TukeyHSD(gigartina.av), cex.axis = 0.5, las = 2)
+    plot(TukeyHSD.lm(gigartina.lm), cex.axis = 0.5, las = 2)
     ```
 
 \  

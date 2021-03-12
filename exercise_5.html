@@ -462,6 +462,8 @@ $(document).ready(function () {
 <div id="exercise-5-basic-statistics-in-r" class="section level2">
 <h2>Exercise 5: Basic statistics in R</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/stats-r.html">Chapter 6</a> to help you complete the questions in this exercise.</p>
+<p> </p>
 <p>Although this short course is primarily focussed on introducing you to R, it wouldn’t be complete if we didn’t have a quick peek at some of R’s statistical roots. Having said that, this will be a very brief overview with very little in the way of theory so don’t worry if you get a little lost - this is just a taster, the main course is still to come!</p>
 <p> </p>
 <ol style="list-style-type: decimal">
@@ -513,11 +515,11 @@ $(document).ready(function () {
 </ol>
 <p> </p>
 <ol start="13" style="list-style-type: decimal">
-<li>We will use the function <code>TukeyHSD()</code> to perform these comparisons. In order to use this function we have to refit the model using the <code>aov()</code> function on your model object (<code>gigartina.lm</code>) in the following way <code>TukeyHSD(aov(gigartina.lm))</code> to obtain a summary of the comparisons. Which groups are different from each other?</li>
+<li>We will use the function <code>TukeyHSD.lm()</code> from the <code>mosaic</code> package to perform these comparisons (you will need to install this package first and then use <code>library(mosaic)</code> to make the function available). Which groups are different from each other if we use the p-value cutoff (alpha) of p &lt; 0.05?</li>
 </ol>
 <p> </p>
 <ol start="14" style="list-style-type: decimal">
-<li>We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the <code>plot()</code> function with the <code>TukeyHSD(aov(gigartina.lm))</code>. Ask if you get stuck (or Google it!).</li>
+<li>We can also produce a plot of the comparisons to help us interpret the table of comparisons. Use the <code>plot()</code> function with the <code>TukeyHSD.lm(gigartina.lm)</code>. Ask if you get stuck (or Google it!).</li>
 </ol>
 <p> </p>
 <ol start="15" style="list-style-type: decimal">

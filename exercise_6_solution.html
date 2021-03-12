@@ -574,6 +574,8 @@ $(document).ready(function () {
 <div id="exercise-6-basic-programming-in-r" class="section level2">
 <h2>Exercise 6: Basic programming in R</h2>
 <p> </p>
+<p>Read <a href="https://intro2r.com/prog-r.html">Chapter 7</a> to help you complete the questions in this exercise.</p>
+<p> </p>
 <ol style="list-style-type: decimal">
 <li><p>Create a function to calculate the area of a circle. Test the function by finding the area of a circle with a diameter of 3.4 cm. Can you use it on a vector of data?</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># area of a circle</span></span>
@@ -683,11 +685,12 @@ $(document).ready(function () {
 <span id="cb5-9"><a href="#cb5-9"></a>        N[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span>N[i] <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(r <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>N[i]<span class="op">/</span>K))</span>
 <span id="cb5-10"><a href="#cb5-10"></a>    }</span>
 <span id="cb5-11"><a href="#cb5-11"></a>    Time &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span>time  <span class="co"># creates vector for x axis</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>    <span class="kw">plot</span>(Time, N, <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, time), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Population size (N)&quot;</span>, <span class="dt">main =</span> <span class="kw">paste</span>(<span class="st">&quot;r =&quot;</span>, r, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))  <span class="co"># plots     output</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a>}</span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># To run play around with the different parameters, especially r</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="kw">Ricker.model</span>(<span class="dt">nzero =</span> <span class="fl">0.1</span>, <span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">time =</span> <span class="dv">100</span>)</span></code></pre></div></li>
+<span id="cb5-12"><a href="#cb5-12"></a>    <span class="kw">plot</span>(Time, N, <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, time), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Population size (N)&quot;</span>, <span class="dt">main =</span> <span class="kw">paste</span>(<span class="st">&quot;r =&quot;</span>, </span>
+<span id="cb5-13"><a href="#cb5-13"></a>        r, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))  <span class="co"># plots     output</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>}</span>
+<span id="cb5-15"><a href="#cb5-15"></a></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co"># To run play around with the different parameters, especially r</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="kw">Ricker.model</span>(<span class="dt">nzero =</span> <span class="fl">0.1</span>, <span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">time =</span> <span class="dv">100</span>)</span></code></pre></div></li>
 </ol>
 <p> </p>
 <p>End of Exercise 6</p>
