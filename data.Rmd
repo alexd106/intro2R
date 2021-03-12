@@ -19,7 +19,7 @@ if (!file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r dat
 
 **Option 1: Download all the data at once.** 
 
-- Create a new RStudio project for this course (call it quadstatR if your imagination fails you!). If you're not sure how to create a new Project then see [Section 1.6](https://intro2r.com/rsprojs.html) of our Introduction to R book or watch [this short video](https://alexd106.github.io/QUADstatR/howto.html#rstudio_proj-vid).
+- Create a new RStudio project for this course (call it intro2r if your imagination fails you!). If you're not sure how to create a new Project then see [Section 1.6](https://intro2r.com/rsprojs.html) of our Introduction to R book or watch [this short video](https://alexd106.github.io/intro2R/howto.html#rstudio_proj-vid).
 
 - Once you're working in your RStudio project create a new directory in your Project directory called `data` (all lowercase). You can easily create this new directory by clicking on the 'New Folder' button in the 'Files' tab in RStudio (see [Section 1.8](https://intro2r.com/dir-struct.html) of our Introduction to R book for a set-by-step guide how to do this). 
 
@@ -29,11 +29,11 @@ if (!file.exists("data/all_data.zip")) system("rm data/all_data.zip ; zip -r dat
 
 **Option 2: Download individual datasets as needed.** 
 
-- Create a new RStudio project for this course (call it quadstatR if your imagination fails you!). If you're not sure how to create a new Project then see [Section 1.6](https://intro2r.com/rsprojs.html) of our Introduction to R book or watch [this short video](https://alexd106.github.io/QUADstatR/howto.html#rstudio_proj-vid).
+- Create a new RStudio project for this course (call it intro2r if your imagination fails you!). If you're not sure how to create a new Project then see [Section 1.6](https://intro2r.com/rsprojs.html) of our Introduction to R book or watch [this short video](https://alexd106.github.io/intro2R/howto.html#rstudio_proj-vid).
 
 - Once you're working in your RStudio project create a new directory in your Project directory called `data` (all lowercase). You can easily create this new directory by clicking on the 'New Folder' button in the 'Files' tab in RStudio (see [Section 1.8](https://intro2r.com/dir-struct.html) of our Introduction to R book for a set-by-step guide how to do this).  
 
-- Download individual data files as needed, saving them to the new `quadstatR/data` folder you just made. Right click on the data file link below and select _Save link as..._ (or similar) to save to the desired location.
+- Download individual data files as needed, saving them to the new `intro2r/data` folder you just made. Right click on the data file link below and select _Save link as..._ (or similar) to save to the desired location.
   
   
 ```{r, results='asis'}

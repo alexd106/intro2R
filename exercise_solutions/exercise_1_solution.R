@@ -1,5 +1,5 @@
 ## ----Q2----------------------------------------------------------------------------------------------
-# QUADstat - An Introduction to R course Exercise 1
+# An Introduction to R course Exercise 1
 # Date: 27/01/21
 # Created by: Professor Plum
 
