@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-Read [Chapter 2](https://intro2r.com/basics-r.html) to help you complete the questions in this exercise.
+This exercise will help you get familiar with performing some basic (but useful) operations with R in RStudio. You'll first practice using some of R's inbuilt mathematical operators and then move on to creating vectors using a variety of R functions. You'll also practice summarising and manipulating vectors (including vectorisation) and finally we'll take a look at how to deal with missing values in R. To help you through this exercise please read [Chapter 2](https://intro2r.com/basics-r.html) of the Introduction to R book. 
 
 \  
 

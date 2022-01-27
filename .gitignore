@@ -12,3 +12,4 @@
 .DS_Store
 # R markdown stuff
 *.log
+old_ex

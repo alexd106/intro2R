@@ -15,11 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-Read [Chapter 6](https://intro2r.com/stats-r.html) to help you complete the questions in this exercise.
-
-\  
-
-Although this short course is primarily focussed on introducing you to R, it wouldn't be complete if we didn't have a quick peek at some of R's statistical roots. Having said that, this will be a very brief overview with very little in the way of theory so don't worry if you get a little lost - this is just a taster, the main course is still to come!
+Although this short course is primarily focussed on introducing you to R, it wouldn't be complete if we didn't have a quick peek at some of R's statistical roots. Having said that, this will be a very brief overview with very little in the way of theory so don't worry if you get a little lost - this is just a taster and something you will build on in subsequent courses. During this exercise you will practice using the linear modelling framework in R to analyse datasets with various structures. You'll learn how to fit linear models, validate these models and finally interpret models. For more information about linear models (and other statistical approaches) see [Chapter 6](https://intro2r.com/stats-r.html).
 
 \  
 

@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-Read [Chapter 7](https://intro2r.com/prog-r.html) to help you complete the questions in this exercise.
+Read [Chapter 7](https://intro2r.com/prog-r.html) to help you complete the questions in this exercise. Click on the 'code' button to the right of each question to reveal the solutions code (but try to find a solution first!).
 
 \  
 

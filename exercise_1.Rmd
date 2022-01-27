@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALS
 
 \  
 
-Read [Chapter 1](https://intro2r.com/chap1.html) to help you complete the questions in this exercise.
+This exercise will introduce you to the different components of RStudio, introduce you to writing R scripts, assigning values to variables in R, getting help in R and setting up a typical project in RStudio. You should read (or refer back to) [Chapter 1](https://intro2r.com/chap1.html) to help you complete the questions in this exercise.
 
 \  
 
@@ -28,7 +28,7 @@ Read [Chapter 1](https://intro2r.com/chap1.html) to help you complete the questi
 
 \  
 
-3. Explore RStudio making sure you understand the functionality of each of the four windows (see [Section 1.3](https://intro2r.com/rstudio-orient.html#rstudio_orient) of the Introduction to R book for a summary and/or watch this [video](https://alexd106.github.io/intro2R/howto.html#rstudio-vid)). Take your time and check out each of the tabs in the windows. The function of some of these tabs will be obvious whereas others won't be useful right now. In general, you will write your R code in the script editor window (usually top left window) and then source your code into the R console (usually bottom left) by clicking anywhere in the relevant line of code with your mouse and then clicking on the 'Run' button at the top of the script editor window. If you don't like clicking buttons (I don't!) then you can use the keyboard shortcut 'ctrl + enter' (on Windows) or 'command + enter' (on Mac OSX). 
+3. Explore RStudio making sure you understand the functionality of each of the four windows (see [Section 1.3](https://intro2r.com/rstudio-orient.html#rstudio_orient) of the Introduction to R book for a summary and/or watch this [video](https://alexd106.github.io/intro2R/howto.html#rstudio-vid). Take your time and check out each of the tabs in the windows. The function of some of these tabs will be obvious whereas others won't be useful right now. In general, you will write your R code in the script editor window (usually top left window) and then source your code into the R console (usually bottom left) by clicking anywhere in the relevant line of code with your mouse and then clicking on the 'Run' button at the top of the script editor window. If you don't like clicking buttons (I don't!) then you can use the keyboard shortcut 'ctrl + enter' (on Windows) or 'command + enter' (on Mac OSX). 
 
 \  
 

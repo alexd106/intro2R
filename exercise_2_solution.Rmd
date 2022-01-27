@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 \  
 
-Read [Chapter 2](https://intro2r.com/basics-r.html) to help you complete the questions in this exercise.
+This exercise will help you get familiar with performing some basic (but useful) operations with R in RStudio. You'll first practice using some of R's inbuilt mathematical operators and then move on to creating vectors using a variety of R functions. You'll also practice summarising and manipulating vectors (including vectorisation) and finally we'll take a look at how to deal with missing values in R. To help you through this exercise please read [Chapter 2](https://intro2r.com/basics-r.html) of the Introduction to R book. Click on the 'code' button to the right of each question to reveal the solutions code (but try to find a solution first!).
 
 \  
 
@@ -62,7 +62,7 @@ Read [Chapter 2](https://intro2r.com/basics-r.html) to help you complete the que
 
 \  
 
-6. You can now do stuff to your `weight` vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your `weights` vector ([Section 2.3](https://intro2r.com/using-functions-in-r.html#using-functions-in-r)). Next, extract the weights for the first five children and store these weights in a new variable called `first_five`. Remember, you will need to use the square brackets `[ ]` to extract (aka indexing, subsetting) elements from a variable. [Section 2.4.1](https://intro2r.com/vectors.html#extracting-elements) introduces using the `[]` notation.
+6. You can now do stuff to your `weight` vector. Get R to calculate the mean, variance, standard deviation, range of weights and the number of children of your `weight` vector ([Section 2.3](https://intro2r.com/using-functions-in-r.html#using-functions-in-r)). Next, extract the weights for the first five children and store these weights in a new variable called `first_five`. Remember, you will need to use the square brackets `[ ]` to extract (aka indexing, subsetting) elements from a variable. [Section 2.4.1](https://intro2r.com/vectors.html#extracting-elements) introduces using the `[]` notation.
 
     ```{r Q6, results = 'asis'}
     mean(weight)                                # calculate mean 
@@ -71,8 +71,8 @@ Read [Chapter 2](https://intro2r.com/basics-r.html) to help you complete the que
     range(weight)                               # range of weight values
     length(weight)                              # number of observations
     
-    first_five <- weights[1:5]                  # extract first 5 weight values
-    first_five <- weights[c(1, 2, 3, 4, 5)]     # alternative method
+    first_five <- weight[1:5]                  # extract first 5 weight values
+    first_five <- weight[c(1, 2, 3, 4, 5)]     # alternative method
     ```
 
 \  

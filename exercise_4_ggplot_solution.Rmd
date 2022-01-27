@@ -19,6 +19,8 @@ knitr::opts_chunk$set(echo=TRUE, message = FALSE, warning = FALSE, eval = FALSE,
 
 Alternative (optional) solutions to Exercise 4 for those who use (or are interested in using) the `ggplot` approach to plotting data. See [Chapter 5](https://intro2r.com/graphics-r.html) of the Introduction to R book for more information about how to use `ggplot`.  
 
+In this exercise you'll practice using some of R's plotting functions to help you easily produce informative and useful plots of your data. You will also have the opportunity to practice customising plots to get them to look how you want them. Please read (or refer back to) [Chapter 4](https://intro2r.com/graphics-base-r.html) of the R book to help you complete the questions in this exercise. Click on the 'code' button to the right of each question to reveal the solutions code (but try to find a solution first!).
+
 \  
 
 ```{r packages}
