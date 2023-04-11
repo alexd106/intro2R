@@ -13,8 +13,8 @@
 
 <title>Formatting text in R markdown</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -52,6 +52,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -143,13 +144,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -185,6 +193,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -242,11 +253,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -275,8 +290,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -284,16 +299,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -340,7 +348,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -357,7 +365,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -383,7 +391,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-university"></span>
      
     Learn R
@@ -409,7 +417,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-file-contract"></span>
      
     Exercises
@@ -449,7 +457,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -522,7 +530,7 @@ $(document).ready(function () {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -537,10 +545,17 @@ $(document).ready(function () {
 
 
 <p> </p>
-<p>OK, before we go on to the next section let’s practice marking up some plain text using R markdown syntax.</p>
-<p>Create a new R markdown document in RStudio and save it with an appropriate file name on your computer (perhaps <code>squid_analysis.Rmd</code>). Make sure you fill out the ‘Title’ and ‘Author’ information and set the output option to HTML when you create your document. Next, copy and paste the text below into your R markdown document.</p>
+<p>OK, before we go on to the next section let’s practice marking up
+some plain text using R markdown syntax.</p>
+<p>Create a new R markdown document in RStudio and save it with an
+appropriate file name on your computer (perhaps
+<code>squid_analysis.Rmd</code>). Make sure you fill out the ‘Title’ and
+‘Author’ information and set the output option to HTML when you create
+your document. Next, copy and paste the text below into your R markdown
+document.</p>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Sampling and data description</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>These data were originally collected as part of a study published in  </span>
@@ -567,40 +582,68 @@ $(document).ready(function () {
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Some interesting background information on squid morphology can be  </span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>found here (https://en.wikipedia.org/wiki/Loligo_forbesii) and the  </span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>following image provides a useful summary of squid anatomy </span></code></pre></div>
-<p>You will also need to download <a href="images/squid_anatomy.jpg">this image</a>. Create a subdirectory called <code>images</code> in the same directory as your R markdown document and save the image file there (right click and then choose <code>save image as...</code> or similar). You will embed this image after your text in your R markdown document.</p>
+<p>You will also need to download <a
+href="images/squid_anatomy.jpg">this image</a>. Create a subdirectory
+called <code>images</code> in the same directory as your R markdown
+document and save the image file there (right click and then choose
+<code>save image as...</code> or similar). You will embed this image
+after your text in your R markdown document.</p>
 <p> </p>
-<p>Now mark it up using R markdown syntax so your rendered output document looks like this.</p>
+<p>Now mark it up using R markdown syntax so your rendered output
+document looks like this.</p>
 <p> </p>
 <blockquote>
 <p style="font-weight:400; font-size:32px">
 Sampling and data description
 </p>
-<p>These data were originally collected as part of a study published in Aquatic Living Resources (Smith <em>et al</em>., 2005). The aim of the study was to investigate the seasonal patterns of investment in somatic and reproductive tissues in the long finned squid <em>Loligo forbesi</em> caught in Scottish waters. Squid were caught monthly from December 1989 - July 1991 (<strong>month</strong> and <strong>year variables</strong>). After capture, each squid was given a unique specimen code (<strong>specimen variable</strong>) and the following variables measured:</p>
+<p>These data were originally collected as part of a study published in
+Aquatic Living Resources (Smith <em>et al</em>., 2005). The aim of the
+study was to investigate the seasonal patterns of investment in somatic
+and reproductive tissues in the long finned squid <em>Loligo
+forbesi</em> caught in Scottish waters. Squid were caught monthly from
+December 1989 - July 1991 (<strong>month</strong> and <strong>year
+variables</strong>). After capture, each squid was given a unique
+specimen code (<strong>specimen variable</strong>) and the following
+variables measured:</p>
 </blockquote>
 <blockquote>
 <ul>
 <li><strong>weight variable</strong> - body weight (g)</li>
-<li><strong>sex variable</strong> - sex (only female squid are included here)</li>
-<li><strong>DML variable</strong> - individual dorsal mantle length (mm)</li>
-<li><strong>eviscerate.weight variable</strong> - mantle weight measured without internal organs (g)</li>
+<li><strong>sex variable</strong> - sex (only female squid are included
+here)</li>
+<li><strong>DML variable</strong> - individual dorsal mantle length
+(mm)</li>
+<li><strong>eviscerate.weight variable</strong> - mantle weight measured
+without internal organs (g)</li>
 <li><strong>ovary.weight variable</strong> - gonad weight (g)</li>
-<li><strong>nid.weight variable</strong> - nidamental gland weight (g)</li>
-<li><strong>nid.length variable</strong> - nidamental gland length (g)<br />
+<li><strong>nid.weight variable</strong> - nidamental gland weight
+(g)</li>
+<li><strong>nid.length variable</strong> - nidamental gland length
+(g)<br />
 </li>
-<li><strong>dig.weight variable</strong> - digestive gland weight (g)</li>
+<li><strong>dig.weight variable</strong> - digestive gland weight
+(g)</li>
 </ul>
 </blockquote>
 <blockquote>
-<p>Each individual was also assigned a categorical measure of maturity (<strong>maturity.stage variable</strong>) ranging from 1 to 5 with 1 = immature, 5 = mature.<br />
-Some interesting background information on squid morphology can be found <a href="https://en.wikipedia.org/wiki/Loligo_forbesii">here</a> and the following image provides a useful summary of squid anatomy.<br />
+<p>Each individual was also assigned a categorical measure of maturity
+(<strong>maturity.stage variable</strong>) ranging from 1 to 5 with 1 =
+immature, 5 = mature.<br />
+Some interesting background information on squid morphology can be found
+<a href="https://en.wikipedia.org/wiki/Loligo_forbesii">here</a> and the
+following image provides a useful summary of squid anatomy.<br />
 <img src="images/squid_anatomy.jpg" alt="squid anatomy" /></p>
 </blockquote>
 <p> </p>
-<p>Once you’re happy with marking up your text, knit your R markdown document to a HTML file. Open this file in your web browser and check all your formatting. You could also try knitting to a pdf document.</p>
+<p>Once you’re happy with marking up your text, knit your R markdown
+document to a HTML file. Open this file in your web browser and check
+all your formatting. You could also try knitting to a pdf document.</p>
 <p> </p>
-<p>You can find the solution below (click on the ‘code’ button on the right)</p>
+<p>You can find the solution below (click on the ‘code’ button on the
+right)</p>
 <p> </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sampling and data description</span></span>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r fold.hide"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sampling and data description</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>These data were originally collected as part of a study published <span class="cf">in</span> Aquatic Living <span class="fu">Resources</span> (Smith <span class="sc">*</span>et al<span class="sc">*</span>., <span class="dv">2005</span>). The aim of the study was to investigate the seasonal patterns of investment <span class="cf">in</span> somatic and reproductive tissues <span class="cf">in</span> the long finned squid <span class="sc">*</span>Loligo forbesi<span class="sc">*</span> caught <span class="cf">in</span> Scottish waters. Squid were caught monthly from December <span class="dv">1989</span> <span class="sc">-</span> July <span class="dv">1991</span> (<span class="sc">**</span>month<span class="sc">**</span> and <span class="sc">**</span>year variables<span class="sc">**</span>). After capture, each squid was given a unique specimen <span class="fu">code</span> (<span class="sc">**</span>specimen variable<span class="sc">**</span>) and the following variables measured<span class="sc">:</span> </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="er">**</span>weight variable<span class="sc">**</span> <span class="sc">-</span> body <span class="fu">weight</span> (g)</span>

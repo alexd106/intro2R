@@ -13,8 +13,8 @@
 
 <title>Code chunks in R markdown</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -51,6 +51,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -133,13 +134,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -175,6 +183,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -232,11 +243,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -265,8 +280,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -274,16 +289,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -327,7 +335,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -344,7 +352,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -370,7 +378,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-university"></span>
      
     Learn R
@@ -396,7 +404,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-file-contract"></span>
      
     Exercises
@@ -436,7 +444,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -516,15 +524,41 @@ $(document).ready(function () {
 
 
 <p> </p>
-<p>During this exercise you will practice adding code chunks and inline R code to the R markdown document you created during the <a href="Rmarkdown_ex1.html">previous exercise</a>. The solutions to each section of the exercise can be revealed by clicking on the <code>Solution</code> button (don’t be too quick to do this though!). Once you have finished you can find my version of the <code>.Rmd</code> file <a href="squid_analysis.Rmd">here</a> and the rendered html document <a href="squid_analysis.html">here</a>. A pdf version of the document is <a href="squid_analysis.pdf">here</a>  </p>
-<p>So, the first thing you will need to do is open your <code>squid_analysis.Rmd</code> file in RStudio. You will already have a nicely marked up description of the data and the morphological variables measured during the study so we will continue with data import, exploration and some simple visualisations. You will need to download the <code>squid1.xlsx</code> file from <strong><a href="data.html"><i class="fa fa-download"></i> Data</a></strong> link, open it in excel and save it as a tab delimited file called <code>squid1.txt</code> (as we did during the R course).  </p>
-<p>Create a code chunk named <code>data-import</code> and include some R code to import the <code>squid1.txt</code> file into R using the <code>read.table()</code> function and assign it to a variable called <code>squid</code>. Within the code chunk get R to print out the structure of the <code>squid</code> variable. Add some text below the code chunk to explain (to your future self) what you are doing. Also write some text with inline R code to state how many observations are present (hint: use the <code>nrow()</code> function) in the dataset and how many variables were measured (hint: use the <code>ncol()</code> function).</p>
+<p>During this exercise you will practice adding code chunks and inline
+R code to the R markdown document you created during the <a
+href="Rmarkdown_ex1.html">previous exercise</a>. The solutions to each
+section of the exercise can be revealed by clicking on the
+<code>Solution</code> button (don’t be too quick to do this though!).
+Once you have finished you can find my version of the <code>.Rmd</code>
+file <a href="squid_analysis.Rmd">here</a> and the rendered html
+document <a href="squid_analysis.html">here</a>. A pdf version of the
+document is <a href="squid_analysis.pdf">here</a>  </p>
+<p>So, the first thing you will need to do is open your
+<code>squid_analysis.Rmd</code> file in RStudio. You will already have a
+nicely marked up description of the data and the morphological variables
+measured during the study so we will continue with data import,
+exploration and some simple visualisations. You will need to download
+the <code>squid1.xlsx</code> file from <strong><a
+href="data.html"><i class="fa fa-download"></i> Data</a></strong> link,
+open it in excel and save it as a tab delimited file called
+<code>squid1.txt</code> (as we did during the R course).  </p>
+<p>Create a code chunk named <code>data-import</code> and include some R
+code to import the <code>squid1.txt</code> file into R using the
+<code>read.table()</code> function and assign it to a variable called
+<code>squid</code>. Within the code chunk get R to print out the
+structure of the <code>squid</code> variable. Add some text below the
+code chunk to explain (to your future self) what you are doing. Also
+write some text with inline R code to state how many observations are
+present (hint: use the <code>nrow()</code> function) in the dataset and
+how many variables were measured (hint: use the <code>ncol()</code>
+function).</p>
 <p> </p>
 <div class="toggle">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, data-import}</span></span>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, data-import}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">squid &lt;- read.table(&#39;./data/squid1.txt&#39;, header = TRUE)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">str(squid)</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -533,13 +567,25 @@ Solution
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>for each squid. Details are shown above.</span></code></pre></div>
 </div>
 <p> </p>
-<p>Perhaps you might remember from <a href="exercise_4_solution.html">Exercise 4</a> that the <code>year</code>, <code>month</code> and <code>maturity.stage</code> variables were coded as integers in the original dataset (see the output from <code>str(squid)</code> above to confirm) but we want to recode them as factors. Create a new code chunk called <code>data-recode</code> and include R code to create a new variable for each of these variables in the <code>squid</code> dataframe and recode them as factors. Change the chunk option to hide this code in the rendered document. Write some text to describe that you have recoded the variables to let the reader know you’ve done this (even though you don’t show the code in the final document).</p>
+<p>Perhaps you might remember from <a
+href="exercise_4_solution.html">Exercise 4</a> that the
+<code>year</code>, <code>month</code> and <code>maturity.stage</code>
+variables were coded as integers in the original dataset (see the output
+from <code>str(squid)</code> above to confirm) but we want to recode
+them as factors. Create a new code chunk called <code>data-recode</code>
+and include R code to create a new variable for each of these variables
+in the <code>squid</code> dataframe and recode them as factors. Change
+the chunk option to hide this code in the rendered document. Write some
+text to describe that you have recoded the variables to let the reader
+know you’ve done this (even though you don’t show the code in the final
+document).</p>
 <p> </p>
 <div class="toggle">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, data-recode, echo=FALSE}</span></span>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, data-recode, echo=FALSE}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in"># convert variables to factors</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">squid$Fmaturity &lt;- factor(squid$maturity.stage)</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">squid$Fmonth &lt;- factor(squid$month) </span></span>
@@ -550,13 +596,27 @@ Solution
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">`squid`</span>. These recoded variables were named <span class="in">`Fmaturity`</span>, <span class="in">`Fmonth`</span> and <span class="in">`Fyear`</span>.</span></code></pre></div>
 </div>
 <p> </p>
-<p>Next create a code chunk (give it a suitable name) and write some code to create a table of the number of observations for each year and month combination (hint: remember the <code>table()</code> function?) Don’t forget to use the factor recoded versions of these variables. Use the <code>kable()</code> function from the <code>knitr</code> package to nicely render the table (remember you will need to use <code>library(knitr)</code> to load the package first). You might want to also include the argument <code>row.names = TRUE</code> when you use the <code>kable()</code> function so the table contains the month numbers. Another argument that is often useful to include is <code>format = 'markdown</code> which will ensure the table renders nicely in HTML and pdf formats. Write some text to highlight which year has the fewest number of observations and which year and month combinations have no observations.</p>
+<p>Next create a code chunk (give it a suitable name) and write some
+code to create a table of the number of observations for each year and
+month combination (hint: remember the <code>table()</code> function?)
+Don’t forget to use the factor recoded versions of these variables. Use
+the <code>kable()</code> function from the <code>knitr</code> package to
+nicely render the table (remember you will need to use
+<code>library(knitr)</code> to load the package first). You might want
+to also include the argument <code>row.names = TRUE</code> when you use
+the <code>kable()</code> function so the table contains the month
+numbers. Another argument that is often useful to include is
+<code>format = 'markdown</code> which will ensure the table renders
+nicely in HTML and pdf formats. Write some text to highlight which year
+has the fewest number of observations and which year and month
+combinations have no observations.</p>
 <p> </p>
 <div class="toggle">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Next, let&#39;s take a look at the number of observations across years and months.</span>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Next, let&#39;s take a look at the number of observations across years and months.</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, data-obs}</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">library(knitr)</span></span>
@@ -580,13 +640,20 @@ Solution
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>modelling these data.   </span></code></pre></div>
 </div>
 <p> </p>
-<p>We should also create a summary table of the number of observations for each level of maturity stage for each month. Create a code chunk and include code to do this but hide the code in the rendered document using the appropriate chunk option. If you feel like it, experiment with the <code>kableExtra</code> package to alter some of the formatting (text size etc). You may need to install the package before you can use it. Again, write some text to summarise your findings.</p>
+<p>We should also create a summary table of the number of observations
+for each level of maturity stage for each month. Create a code chunk and
+include code to do this but hide the code in the rendered document using
+the appropriate chunk option. If you feel like it, experiment with the
+<code>kableExtra</code> package to alter some of the formatting (text
+size etc). You may need to install the package before you can use it.
+Again, write some text to summarise your findings.</p>
 <p> </p>
 <div class="toggle">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Number of observations each month for each of the squid maturity stages are given in the table below.</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, maturity-obs, echo=FALSE}</span></span>
@@ -607,13 +674,23 @@ Solution
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>predominantly caught during these months.</span></code></pre></div>
 </div>
 <p> </p>
-<p>Ok, lets produce some exploratory plots in our document. The first thing we would like to know is whether there are any unusual observations in the variables; <code>DML</code>, <code>weight</code>, <code>nid.length</code> and <code>ovary.weight</code>. Create a code chunk containing code to plot cleveland dotplots of these variables. You can either plot one after the other or split the plotting device into 2 rows and 2 columns to plot them all together. This time we would like to show the code used to create these plots. Describe what you see and come up with a plausable explanation (refer back to Exercise 4 Question 7 for a hint.)</p>
+<p>Ok, lets produce some exploratory plots in our document. The first
+thing we would like to know is whether there are any unusual
+observations in the variables; <code>DML</code>, <code>weight</code>,
+<code>nid.length</code> and <code>ovary.weight</code>. Create a code
+chunk containing code to plot cleveland dotplots of these variables. You
+can either plot one after the other or split the plotting device into 2
+rows and 2 columns to plot them all together. This time we would like to
+show the code used to create these plots. Describe what you see and come
+up with a plausable explanation (refer back to Exercise 4 Question 7 for
+a hint.)</p>
 <p> </p>
 <div class="toggle">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Now let&#39;s check for any unusual observations in the variables; <span class="in">`DML`</span>, <span class="in">`weight`</span>,  </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">`nid.length`</span> and <span class="in">`ovary.weight`</span>. </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -635,13 +712,20 @@ Solution
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>subsequently removed from the data set.  </span></code></pre></div>
 </div>
 <p> </p>
-<p>Next, produce a boxplot of the <code>DML</code> variable against <code>Fmaturity</code> to examine whether the size of the squid changes with maturity stage. Change the chunk option to supress the R code in the final document and only display the plot. Write some text to summarise the main conclusions from the plot. Also include some inline R code to report the mean value of DML for each of the maturity stages.</p>
+<p>Next, produce a boxplot of the <code>DML</code> variable against
+<code>Fmaturity</code> to examine whether the size of the squid changes
+with maturity stage. Change the chunk option to supress the R code in
+the final document and only display the plot. Write some text to
+summarise the main conclusions from the plot. Also include some inline R
+code to report the mean value of DML for each of the maturity
+stages.</p>
 <p> </p>
 <div class="toggle">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Let&#39;s take a look at whether DML changes with maturity stage. </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, maturity-dml, echo=FALSE}</span></span>
@@ -658,13 +742,17 @@ Solution
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>and 5 (mean <span class="in">`r round(mean(squid$DM[squid$Fmaturity == 5]), digits = 2)`</span> mm).  </span></code></pre></div>
 </div>
 <p> </p>
-<p>It’s always good practice to include a summary of the version of R you have been using as well as a list of packages loaded. An easy way to do this is include <code>sessionInfo()</code> in a code chunk at the end of your document.</p>
+<p>It’s always good practice to include a summary of the version of R
+you have been using as well as a list of packages loaded. An easy way to
+do this is include <code>sessionInfo()</code> in a code chunk at the end
+of your document.</p>
 <p> </p>
 <div class="toggle">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, session-info, echo=FALSE}</span></span>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, session-info, echo=FALSE}</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">sessionInfo()</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>

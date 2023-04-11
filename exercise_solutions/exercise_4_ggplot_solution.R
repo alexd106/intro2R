@@ -1,4 +1,4 @@
-## ----packages-----------------------------------------------------------------------------------------------------
+## ----packages-----------------------------------------------------------------------------------------------------------------
 
 # make ggplot2, gridExtra and GGally packages available
 # Note: you may need to install these packages first
@@ -11,7 +11,7 @@ library(gridExtra)
 library(GGally)
 
 
-## ----Q4, results = 'asis'-----------------------------------------------------------------------------------------
+## ----Q4, results = 'asis'-----------------------------------------------------------------------------------------------------
 squid <- read.table('workshop/data/squid1.txt', header =TRUE, 
                      stringsAsFactors = TRUE)
 
@@ -56,10 +56,9 @@ str(squid)
 #  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4" "5"...
 #  $ Fmonth           : Factor w/ 12 levels "1","2","3","4" ...
 #  $ Fyear            : Factor w/ 3 levels "1989","1990",..1 ...
- 
 
 
-## ----Q5-----------------------------------------------------------------------------------------------------------
+## ----Q5-----------------------------------------------------------------------------------------------------------------------
 table(squid$Fmonth, squid$Fyear)
 
   #   1989 1990 1991
@@ -95,34 +94,27 @@ ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
 #       3                 2  0  0  1  1  0  0  0  0  0  0  0
 #       4                16  8  6 13  6  1  1  0  0  0  0  0
 #       5                18 21 23 16 23  3  0  0  0  0  0  0
-      
 
 
-
-## ----Q6-----------------------------------------------------------------------------------------------------------
+## ----Q6-----------------------------------------------------------------------------------------------------------------------
 p1 <- ggplot(data = squid) + 
   geom_point(aes(x = DML, y = as.numeric(rownames(squid)))) +
   ylab("")
 p1
-
 p2 <- ggplot(data = squid) +
   geom_point(aes(x = weight, y = as.numeric(rownames(squid)))) +
   ylab("") 
 p2
-
 p3 <- ggplot(data = squid) +
   geom_point(aes(x = nid.length, y = as.numeric(rownames(squid)))) +
   ylab("")
 p3
-
 p4 <- ggplot(data = squid) +
   geom_point(aes(x = ovary.weight, y = as.numeric(rownames(squid)))) +
   ylab("")
 p4
-
 # arrange all 4 plots in a single
 # graphics device
-
 pall <- grid.arrange(p1, p2, p3, p4, nrow = 2)
 pall
 # save the plot 
@@ -130,35 +122,28 @@ pall
 ggsave('workshop/figures/gg_dotplot.pdf', plot = pall, device = 'pdf')
 
 
-## ----Q7-----------------------------------------------------------------------------------------------------------
+## ----Q7-----------------------------------------------------------------------------------------------------------------------
 which(squid$nid.length > 400)
 # [1] 11
-
 squid$nid.length[11]
 # [1] 430.2
-
 squid$nid.length[11] <- 43.2
 squid$nid.length[11]
 # [1] 43.2
-
 ggplot(data = squid) +
   geom_point(aes(x = nid.length, y = as.numeric(rownames(squid)))) +
   ylab("")
 
 
-## ----Q8-----------------------------------------------------------------------------------------------------------
+## ----Q8-----------------------------------------------------------------------------------------------------------------------
 ggplot(data = squid) +
   geom_histogram(aes(DML))
-
 ggplot(data = squid) +
  geom_histogram(aes(weight))
-  
 ggplot(data = squid) +
  geom_histogram(aes(eviscerate.weight))
-
 ggplot(data = squid) +
   geom_histogram(aes(ovary.weight)) 
-
 # experimenting with different breaks
 bp1 <- ggplot(data = squid) +
           geom_histogram(aes(DML), bins = 20)
@@ -182,8 +167,7 @@ bpall <- grid.arrange(bp1, bp2, bp3, bp4, nrow = 2)
 ggsave('workshop/figures/gg_hist.pdf', plot = bpall, device = 'pdf')
 
 
-
-## ----Q9-----------------------------------------------------------------------------------------------------------
+## ----Q9-----------------------------------------------------------------------------------------------------------------------
 # clearly not linear
 # also note use of the classic theme
 ggplot(data = squid) +
@@ -197,7 +181,6 @@ squid$weight.log <- log(squid$weight)
 ggplot(data = squid) +
   geom_point(aes(x = DML, y = weight.log)) +
   theme_classic()
-
 ggplot(data = squid) +
   geom_point(aes(x = DML, y = weight.sqrt)) +
   theme_classic()
@@ -212,7 +195,7 @@ ggsave('output/gg_xy_weight.jpeg', device = 'jpeg')
 ggsave('output/gg_xy_weight.png', device = 'png')
 
 
-## ----Q10, tidy = TRUE---------------------------------------------------------------------------------------------
+## ----Q10, tidy = TRUE---------------------------------------------------------------------------------------------------------
 # note: Fmaturity is the recoded maturity.stage variable cerated in Q4
 ggplot(data = squid) +
   geom_boxplot(aes(x = Fmaturity, y = DML)) +
@@ -225,7 +208,7 @@ ggplot(data = squid) +
   geom_violin(aes(x = Fmaturity, y = DML))
 
 
-## ----Q11----------------------------------------------------------------------------------------------------------
+## ----Q11----------------------------------------------------------------------------------------------------------------------
 # use facet_wrap to produce a 
 # panel plot
 ggplot(data = squid) +
@@ -234,13 +217,12 @@ ggplot(data = squid) +
 
 
 
-## ----Q12, tidy = TRUE---------------------------------------------------------------------------------------------
+## ----Q12, tidy = TRUE---------------------------------------------------------------------------------------------------------
 library(GGally)
-
 ggpairs(squid[, c(5, 8, 9, 11, 12, 13)])
 
 
-## ----Q13a, tidy = TRUE--------------------------------------------------------------------------------------------
+## ----Q13a, tidy = TRUE--------------------------------------------------------------------------------------------------------
 # square root transform ovary weight
 squid$ovary.weight.sqrt <- sqrt(squid$ovary.weight)
 ggplot(data = squid) +

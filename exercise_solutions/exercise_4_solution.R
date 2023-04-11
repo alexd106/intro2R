@@ -1,6 +1,6 @@
-## ----Q4, results = 'asis'-----------------------------------------------------------------------------------------
-squid <- read.table('workshop/data/squid1.txt', header =TRUE,
-                    stringsAsFactors = TRUE)
+## ----Q4, results = 'asis'-----------------------------------------------------------------------------------------------------
+squid <- read.table('workshop/data/squid1.txt', header =TRUE, 
+                     stringsAsFactors = TRUE)
 
 str(squid)
 # 'data.frame':	519 obs. of  13 variables:
@@ -43,9 +43,10 @@ str(squid)
 #  $ Fmaturity        : Factor w/ 5 levels "1","2","3","4" "5"...
 #  $ Fmonth           : Factor w/ 12 levels "1","2","3","4" ...
 #  $ Fyear            : Factor w/ 3 levels "1989","1990",..1 ...
+ 
 
 
-## ----Q5-----------------------------------------------------------------------------------------------------------
+## ----Q5-----------------------------------------------------------------------------------------------------------------------
 table(squid$Fmonth, squid$Fyear)
 
   #   1989 1990 1991
@@ -81,9 +82,11 @@ ftable(xtabs(~ Fyear + Fmaturity + Fmonth, data = squid))
 #       3                 2  0  0  1  1  0  0  0  0  0  0  0
 #       4                16  8  6 13  6  1  1  0  0  0  0  0
 #       5                18 21 23 16 23  3  0  0  0  0  0  0
+      
 
 
-## ----Q6-----------------------------------------------------------------------------------------------------------
+
+## ----Q6-----------------------------------------------------------------------------------------------------------------------
 pdf('figures/ex4_dotplots.pdf')
 par(mfrow = c(2, 2))
 dotchart(squid$DML, main = "DML")
@@ -106,21 +109,18 @@ dotplot(as.matrix(squid[,c("DML", "weight", "nid.length", "ovary.weight")]),
         ylab = "Order of the data from text file")
 
 
-## ----Q7-----------------------------------------------------------------------------------------------------------
+## ----Q7-----------------------------------------------------------------------------------------------------------------------
 which(squid$nid.length > 400)
 # [1] 11
-
 squid$nid.length[11]
 # [1] 430.2
-
 squid$nid.length[11] <- 43.2
 squid$nid.length[11]
 # [1] 43.2
-
 dotchart(squid$nid.length, main = "nid length")
 
 
-## ----Q8-----------------------------------------------------------------------------------------------------------
+## ----Q8-----------------------------------------------------------------------------------------------------------------------
 pdf('workshop/figures/ex4_hist.pdf')
 par(mfrow = c(2,2))
 hist(squid$DML, main="", xlab = "DML")
@@ -151,7 +151,7 @@ brk4 <- seq(from = 80, to = 340, by = 2)
 hist(squid$DML, xlab = "DML", breaks = brk4, main = "brk: 2")
 
 
-## ----Q9-----------------------------------------------------------------------------------------------------------
+## ----Q9-----------------------------------------------------------------------------------------------------------------------
 # clearly not linear
 plot(squid$DML, squid$weight)
 
@@ -174,7 +174,7 @@ plot(squid$DML, squid$weight.sqrt)
 dev.off()
 
 
-## ----Q10, tidy = TRUE---------------------------------------------------------------------------------------------
+## ----Q10, tidy = TRUE---------------------------------------------------------------------------------------------------------
 # note: Fmaturity is the recoded maturity.stage variable cerated in Q4
 boxplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML")
 
@@ -183,16 +183,15 @@ library(vioplot)
 vioplot(DML ~ Fmaturity, data = squid, xlab = "maturity stage", ylab = "DML" , col = "lightblue")
 
 
-## ----Q11----------------------------------------------------------------------------------------------------------
-coplot(weight.sqrt ~ DML | Fmaturity, data = squid)
+## ----Q11----------------------------------------------------------------------------------------------------------------------
+coplot(DML ~ weight.sqrt | Fmaturity, data = squid)
 
 # using xyplot from the lattice package
-library(lattice)
-xyplot(weight.sqrt ~ DML | Fmaturity, data = squid)
+xyplot(DML ~ weight.sqrt | Fmaturity, data = squid)
 
 
 
-## ----Q12, tidy = TRUE---------------------------------------------------------------------------------------------
+## ----Q12, tidy = TRUE---------------------------------------------------------------------------------------------------------
 # vanilla pairs plot
 pairs(squid[,c(5, 8, 9, 11, 12, 13)])
 
@@ -204,7 +203,7 @@ pairs(squid[,c(5, 8, 9, 11, 12, 13)], diag.panel = panel.hist, upper.panel = pan
 			lower.panel = panel.smooth)
 
 
-## ----Q13a, tidy = TRUE--------------------------------------------------------------------------------------------
+## ----Q13a, tidy = TRUE--------------------------------------------------------------------------------------------------------
 # quick and dirty way
 # need to transform ovary.weight first
 squid$ovary.weight.sqrt <- sqrt(squid$ovary.weight)
@@ -217,8 +216,7 @@ labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
 cols <- as.numeric(levels(squid$Fmaturity))
 legend("topleft", labs,col = cols, pch = 1)
 
-
-## ----Q13b, tidy = TRUE--------------------------------------------------------------------------------------------
+## ----Q13b, tidy = TRUE--------------------------------------------------------------------------------------------------------
 # longer but more control
 
 # need to scales package to set transparency of points
@@ -235,7 +233,7 @@ with(squid, points(DML[Fmaturity == "2"], ovary.weight.sqrt[Fmaturity == "2"], c
 with(squid, points(DML[Fmaturity == "3"], ovary.weight.sqrt[Fmaturity == "3"], col = alpha("coral3", 0.7), pch = 16))
 with(squid, points(DML[Fmaturity == "4"], ovary.weight.sqrt[Fmaturity == "4"], col = alpha("lemonchiffon3", 0.7), pch = 16))
 with(squid, points(DML[Fmaturity == "5"], ovary.weight.sqrt[Fmaturity == "5"], col = alpha("darkorchid3", 0.7), pch = 16))
-    
+
 # include the legend
 labs <- c("stage 1", "stage 2", "stage 3", "stage 4","stage 5")
 cols <- c("deepskyblue3", "darkolivegreen3", "coral3", "lemonchiffon3", "darkorchid3")

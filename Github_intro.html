@@ -13,8 +13,8 @@
 
 <title>Version control with Git and GitHub</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -60,6 +60,7 @@
 
 
 
+
 <link rel="stylesheet" href="custom.css" type="text/css" />
 
 
@@ -84,6 +85,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -141,11 +145,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -174,8 +182,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -183,16 +191,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -315,7 +316,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -332,7 +333,7 @@ div.tocify {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -358,7 +359,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-university"></span>
      
     Learn R
@@ -384,7 +385,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-file-contract"></span>
      
     Exercises
@@ -424,7 +425,7 @@ div.tocify {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -504,20 +505,72 @@ div.tocify {
 
 
 <p> </p>
-<p>This short(ish!) tutorial will introduce you to the basics of using a version control system to keep track of all your important PhD documents and facilitate collaboration with colleagues and the wider world. The tutorial will focus on using the software ‘Git’ in combination with the web-based hosting service ‘GitHub’. By the end of the tutorial, you will be able to install and configure Git and GitHub on your computer and setup and work with a version controlled project in RStudio. We won’t be covering more advanced topics such as branching, forking and pull requests in much detail but I do give an overview <a href="#collab">later</a> on in the tutorial.</p>
-<p>I estimate that this tutorial should take you roughly 1.5 to 2.5 hours to complete in one sitting (to be honest I have no idea really so this is just a guess), but feel free to dip in and out over a longer period if that suits you better.</p>
-<p>Just a few notes of caution. In this tutorial we’ll be using RStudio to interface with Git as it gives you a nice friendly graphical user interface which generally makes life a little bit easier (and who doesn’t want that?). However, one downside to using RStudio with Git is that RStudio only provides pretty basic Git functionality through its menu system. That’s fine for most of what we’ll be doing during this tutorial (although I will introduce a few Git commands as we go along) but if you really want to benefit from using Git’s power you will need to <a href="#resources">learn</a> some Git commands and syntax. This leads me on to my next point. I’m not going to lie, Git can become a little bewildering and frustrating when you first start using it. This is mostly due to the terminology and liberal use of jargon associated with Git, but there’s no hiding the fact that it’s quite easy to get yourself and your Git repository into a pickle. Therefore, I have tried hard to keep things as straight forward as I can during this tutorial and as a result I do occasionally show you a couple of very ‘un-Git’ ways of doing things (mostly about reverting to previous versions of documents). Don’t get hung up about this, there’s no shame to using these low tech solutions and if it works then it works. Lastly, GitHub was not designed to host very large files and will warn you if you try to add files greater than 50 MB and block you adding files greater than 100 MB. If your project involves using large file sizes there are a <a href="https://help.github.com/en/github/managing-large-files/configuring-git-large-file-storage">few solutions</a> but I find the easiest is to host these files elsewhere (Googledrive, Dropbox etc) and create a link to them in a README file or R markdown document on Github.</p>
+<p>This short(ish!) tutorial will introduce you to the basics of using a
+version control system to keep track of all your important PhD documents
+and facilitate collaboration with colleagues and the wider world. The
+tutorial will focus on using the software ‘Git’ in combination with the
+web-based hosting service ‘GitHub’. By the end of the tutorial, you will
+be able to install and configure Git and GitHub on your computer and
+setup and work with a version controlled project in RStudio. We won’t be
+covering more advanced topics such as branching, forking and pull
+requests in much detail but I do give an overview <a
+href="#collab">later</a> on in the tutorial.</p>
+<p>I estimate that this tutorial should take you roughly 1.5 to 2.5
+hours to complete in one sitting (to be honest I have no idea really so
+this is just a guess), but feel free to dip in and out over a longer
+period if that suits you better.</p>
+<p>Just a few notes of caution. In this tutorial we’ll be using RStudio
+to interface with Git as it gives you a nice friendly graphical user
+interface which generally makes life a little bit easier (and who
+doesn’t want that?). However, one downside to using RStudio with Git is
+that RStudio only provides pretty basic Git functionality through its
+menu system. That’s fine for most of what we’ll be doing during this
+tutorial (although I will introduce a few Git commands as we go along)
+but if you really want to benefit from using Git’s power you will need
+to <a href="#resources">learn</a> some Git commands and syntax. This
+leads me on to my next point. I’m not going to lie, Git can become a
+little bewildering and frustrating when you first start using it. This
+is mostly due to the terminology and liberal use of jargon associated
+with Git, but there’s no hiding the fact that it’s quite easy to get
+yourself and your Git repository into a pickle. Therefore, I have tried
+hard to keep things as straight forward as I can during this tutorial
+and as a result I do occasionally show you a couple of very ‘un-Git’
+ways of doing things (mostly about reverting to previous versions of
+documents). Don’t get hung up about this, there’s no shame to using
+these low tech solutions and if it works then it works. Lastly, GitHub
+was not designed to host very large files and will warn you if you try
+to add files greater than 50 MB and block you adding files greater than
+100 MB. If your project involves using large file sizes there are a <a
+href="https://help.github.com/en/github/managing-large-files/configuring-git-large-file-storage">few
+solutions</a> but I find the easiest is to host these files elsewhere
+(Googledrive, Dropbox etc) and create a link to them in a README file or
+R markdown document on Github.</p>
 <p> </p>
 <div id="what-is-version-control" class="section level2">
 <h2>What is version control?</h2>
 <p> </p>
-<p>A <a href="https://en.wikipedia.org/wiki/Version_control">Version Control System</a> (VCS) keeps a record of all the changes you make to your files that make up a particular project and allows you to revert to previous versions of files if you need to. To put it another way, if you muck things up or accidentally lose important files you can easily roll back to a previous stage in your project to sort things out. Version control was originally designed for collaborative software development, but it’s equally useful for scientific research and collaborations (although admittedly a lot of the terms, jargon and functionality are focused on the software development side). There are many different version control systems currently available, but we’ we’ll focus on using <em>Git</em>, because it’s free and open source and it integrates nicely with RStudio. This means that its can easily become part of your usual workflow with minimal additional overhead.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Version_control">Version
+Control System</a> (VCS) keeps a record of all the changes you make to
+your files that make up a particular project and allows you to revert to
+previous versions of files if you need to. To put it another way, if you
+muck things up or accidentally lose important files you can easily roll
+back to a previous stage in your project to sort things out. Version
+control was originally designed for collaborative software development,
+but it’s equally useful for scientific research and collaborations
+(although admittedly a lot of the terms, jargon and functionality are
+focused on the software development side). There are many different
+version control systems currently available, but we’ we’ll focus on
+using <em>Git</em>, because it’s free and open source and it integrates
+nicely with RStudio. This means that its can easily become part of your
+usual workflow with minimal additional overhead.</p>
 <p> </p>
 </div>
 <div id="why-use-version-control" class="section level2">
 <h2>Why use version control?</h2>
 <p> </p>
-<p>So why should you worry about version control? Well, first of all it helps avoid this (familiar?) situation when you’re working on a project</p>
+<p>So why should you worry about version control? Well, first of all it
+helps avoid this (familiar?) situation when you’re working on a
+project</p>
 <p> </p>
 <div class="figure" style="text-align: center">
 <img src="images/Messy_folder.PNG" alt="You need version control" width="75%" />
@@ -530,15 +583,48 @@ You need version control
 <p> </p>
 <p><img src="images/final_doc.gif" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Version control automatically takes care of keeping a record of all the versions of a particular file and allows you to revert back to previous versions if you need to. Version control also helps you (especially the future you) keep track of all your files in a single place and it helps others (especially collaborators) review, contribute to and reuse your work through the GitHub website. Lastly, your files are always available from anywhere and on any computer, all you need is an internet connection.</p>
+<p>Version control automatically takes care of keeping a record of all
+the versions of a particular file and allows you to revert back to
+previous versions if you need to. Version control also helps you
+(especially the future you) keep track of all your files in a single
+place and it helps others (especially collaborators) review, contribute
+to and reuse your work through the GitHub website. Lastly, your files
+are always available from anywhere and on any computer, all you need is
+an internet connection.</p>
 <p> </p>
 </div>
 <div id="what-is-git-and-github" class="section level2">
 <h2>What is Git and GitHub?</h2>
 <p> </p>
-<p><strong>Git</strong> is a version control system originally developed by <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> that lets you track changes to a set of files. These files can be any type of file including the menagerie of files that typically make up a data orientated project (.pdf, .Rmd, .docx, .txt, .jpg etc) although plain text files work the best. All the files that make up a project is called a <strong>repository</strong> (or just <strong>repo</strong>).</p>
-<p><strong>GitHub</strong> is a web-based hosting service for Git repositories which allows you to create a remote copy of your local version-controlled project. This can be used as a backup or archive of your project or make it accessible to you and to your colleagues so you can work collaboratively.</p>
-<p>At the start of a project we typically (but not always) create a <strong>remote</strong> repository on GitHub, then <strong>clone</strong> (think of this as copying) this repository to our <strong>local</strong> computer (the one in front of you). This cloning is usually a one time event and you shouldn’t need to clone this repository again unless you really muck things up. Once you have cloned your repository you can then work locally on your project as usual, creating and saving files for your data analysis (scripts, R markdown documents, figures etc). Along the way you can take snapshots (called <strong>commits</strong>) of these files after you’ve made important changes. We can then <strong>push</strong> these changes to the remote GitHub repository to make a backup or make available to our collaborators. If other people are working on the same project (<strong>repository</strong>), or maybe you’re working on a different computer, you can <strong>pull</strong> any changes back to your local repository so everything is synchronised.</p>
+<p><strong>Git</strong> is a version control system originally developed
+by <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus
+Torvalds</a> that lets you track changes to a set of files. These files
+can be any type of file including the menagerie of files that typically
+make up a data orientated project (.pdf, .Rmd, .docx, .txt, .jpg etc)
+although plain text files work the best. All the files that make up a
+project is called a <strong>repository</strong> (or just
+<strong>repo</strong>).</p>
+<p><strong>GitHub</strong> is a web-based hosting service for Git
+repositories which allows you to create a remote copy of your local
+version-controlled project. This can be used as a backup or archive of
+your project or make it accessible to you and to your colleagues so you
+can work collaboratively.</p>
+<p>At the start of a project we typically (but not always) create a
+<strong>remote</strong> repository on GitHub, then
+<strong>clone</strong> (think of this as copying) this repository to our
+<strong>local</strong> computer (the one in front of you). This cloning
+is usually a one time event and you shouldn’t need to clone this
+repository again unless you really muck things up. Once you have cloned
+your repository you can then work locally on your project as usual,
+creating and saving files for your data analysis (scripts, R markdown
+documents, figures etc). Along the way you can take snapshots (called
+<strong>commits</strong>) of these files after you’ve made important
+changes. We can then <strong>push</strong> these changes to the remote
+GitHub repository to make a backup or make available to our
+collaborators. If other people are working on the same project
+(<strong>repository</strong>), or maybe you’re working on a different
+computer, you can <strong>pull</strong> any changes back to your local
+repository so everything is synchronised.</p>
 <p> </p>
 <p><img src="images/Github_cartoon2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -546,48 +632,105 @@ You need version control
 <div id="setup_git" class="section level2">
 <h2>Getting started</h2>
 <p> </p>
-<p>This tutorial assumes that you have already installed the latest versions of R and RStudio. If you haven’t done this yet you can find instructions <a href="setup.html">here</a>.</p>
+<p>This tutorial assumes that you have already installed the latest
+versions of R and RStudio. If you haven’t done this yet you can find
+instructions <a href="setup.html">here</a>.</p>
 <p> </p>
 <div id="install-git" class="section level3">
 <h3>Install Git</h3>
 <p> </p>
-<p>To get started, you first need to install Git. If you’re lucky you may already have Git installed (especially if you have a Mac or Linux computer). You can check if you already have Git installed by clicking on the Terminal tab in the Console window in RStudio and typing <code>git --version</code> (the space after the <code>git</code> command is important). If you see something that looks like <code>git version 2.25.0</code> (the version number may be different on your computer) then you already have Git installed (happy days). If you get an error (something like <code>git: command not found</code>) this means you don’t have Git installed (yet!).</p>
+<p>To get started, you first need to install Git. If you’re lucky you
+may already have Git installed (especially if you have a Mac or Linux
+computer). You can check if you already have Git installed by clicking
+on the Terminal tab in the Console window in RStudio and typing
+<code>git --version</code> (the space after the <code>git</code> command
+is important). If you see something that looks like
+<code>git version 2.25.0</code> (the version number may be different on
+your computer) then you already have Git installed (happy days). If you
+get an error (something like <code>git: command not found</code>) this
+means you don’t have Git installed (yet!).</p>
 <p> </p>
 <p><img src="images/git_version.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You can also do this check outside RStudio by opening up a separate Terminal if you want. On Windows go to the ‘Start menu’ and in the search bar (or run box) type <code>cmd</code> and press enter. On a Mac go to ‘Applications’ in Finder, click on the ‘Utilities’ folder and then on the ‘Terminal’ program. On a Linux machine simply open the Terminal (Ctrl+Alt+T often does it).</p>
-<p>To install Git on a <strong>Windows</strong> computer we recommend you download and install Git for Windows (also known as ‘Git Bash’). You can find the download file and installation instructions <a href="https://git-scm.com/downloads">here</a>.</p>
-<p>For those of you using a <strong>Mac</strong> computer we recommend you download Git from <a href="https://git-scm.com/downloads">here</a> and install in the usual way (double click on the installer package once downloaded). If you’ve previously installed Xcode on your Mac and want to use a more up to date version of Git then you will need to follow a few more steps documented <a href="https://github.com/timcharper/git_osx_installer">here</a>. If you’ve never heard of Xcode then don’t worry about it!</p>
-<p>For those of you lucky enough to be working on a <strong>Linux</strong> machine you can simply use your OS package manager to install Git from the official repository. For Ubuntu Linux (or variants of) open your Terminal and type</p>
+<p>You can also do this check outside RStudio by opening up a separate
+Terminal if you want. On Windows go to the ‘Start menu’ and in the
+search bar (or run box) type <code>cmd</code> and press enter. On a Mac
+go to ‘Applications’ in Finder, click on the ‘Utilities’ folder and then
+on the ‘Terminal’ program. On a Linux machine simply open the Terminal
+(Ctrl+Alt+T often does it).</p>
+<p>To install Git on a <strong>Windows</strong> computer we recommend
+you download and install Git for Windows (also known as ‘Git Bash’). You
+can find the download file and installation instructions <a
+href="https://git-scm.com/downloads">here</a>.</p>
+<p>For those of you using a <strong>Mac</strong> computer we recommend
+you download Git from <a href="https://git-scm.com/downloads">here</a>
+and install in the usual way (double click on the installer package once
+downloaded). If you’ve previously installed Xcode on your Mac and want
+to use a more up to date version of Git then you will need to follow a
+few more steps documented <a
+href="https://github.com/timcharper/git_osx_installer">here</a>. If
+you’ve never heard of Xcode then don’t worry about it!</p>
+<p>For those of you lucky enough to be working on a
+<strong>Linux</strong> machine you can simply use your OS package
+manager to install Git from the official repository. For Ubuntu Linux
+(or variants of) open your Terminal and type</p>
 <p> </p>
 <pre class="markup"><code>sudo apt update
 sudo apt install git</code></pre>
 <p> </p>
-<p>You will need administrative privileges to do this. For other versions of Linux see <a href="https://git-scm.com/download/linux">here</a> for further installation instructions.</p>
-<p>Whatever version of Git you’re installing, once the installation has finished verify that the installation process has been successful by running the command <code>git --version</code> in the Terminal tab in RStudio (as described above). On some installations of Git (yes I’m looking at you MS Windows) this may still produce an error as you will also need to setup RStudio so it can find the Git executable (described <a href="#rs_config">below</a>).</p>
+<p>You will need administrative privileges to do this. For other
+versions of Linux see <a
+href="https://git-scm.com/download/linux">here</a> for further
+installation instructions.</p>
+<p>Whatever version of Git you’re installing, once the installation has
+finished verify that the installation process has been successful by
+running the command <code>git --version</code> in the Terminal tab in
+RStudio (as described above). On some installations of Git (yes I’m
+looking at you MS Windows) this may still produce an error as you will
+also need to setup RStudio so it can find the Git executable (described
+<a href="#rs_config">below</a>).</p>
 <p> </p>
 </div>
 <div id="configure-git" class="section level3">
 <h3>Configure Git</h3>
 <p> </p>
-<p>After installing Git, you need to configure it so you can use it. Click on the Terminal tab in the Console window again and type the following:</p>
+<p>After installing Git, you need to configure it so you can use it.
+Click on the Terminal tab in the Console window again and type the
+following:</p>
 <p> </p>
 <pre><code>git config --global user.email &#39;you@youremail.com&#39;
 
 git config --global user.name &#39;Your Name&#39;</code></pre>
 <p> </p>
-<p>substituting <code>'Your Name'</code> for your actual name and <code>'you@youremail.com'</code> with your email address. We recommend you use your University email address as you will also use this address when you register for your GitHub account (coming up in a bit).</p>
-<p>If this was successful, you should see no error messages from these commands. To verify that you have successfully configured Git type the following into the Terminal</p>
+<p>substituting <code>'Your Name'</code> for your actual name and
+<code>'you@youremail.com'</code> with your email address. We recommend
+you use your University email address as you will also use this address
+when you register for your GitHub account (coming up in a bit).</p>
+<p>If this was successful, you should see no error messages from these
+commands. To verify that you have successfully configured Git type the
+following into the Terminal</p>
 <p> </p>
 <pre><code>git config --global --list</code></pre>
 <p> </p>
-<p>You should see both your <code>user.name</code> and <code>user.email</code> configured.</p>
+<p>You should see both your <code>user.name</code> and
+<code>user.email</code> configured.</p>
 <p> </p>
 </div>
 <div id="rs_config" class="section level3">
 <h3>Configure RStudio</h3>
 <p> </p>
-<p>As you can see above, Git can be used from the command line, but it also integrates well with RStudio, providing a friendly graphical user interface. If you want to use RStudio’s Git integration (we recommend you do - at least at the start), you need to check that the path to the Git executable is specified correctly. In RStudio, go to the menu <code>Tools</code> -&gt; <code>Global Options</code> -&gt; <code>Git/SVN</code> and make sure that ‘Enable version control interface for RStudio projects’ is ticked and that the ‘Git executable:’ path is correct for your installation. If it’s not correct hit the <code>Browse...</code> button and navigate to where you installed git and click on the executable file. You will need to restart RStudio after doing this.</p>
+<p>As you can see above, Git can be used from the command line, but it
+also integrates well with RStudio, providing a friendly graphical user
+interface. If you want to use RStudio’s Git integration (we recommend
+you do - at least at the start), you need to check that the path to the
+Git executable is specified correctly. In RStudio, go to the menu
+<code>Tools</code> -&gt; <code>Global Options</code> -&gt;
+<code>Git/SVN</code> and make sure that ‘Enable version control
+interface for RStudio projects’ is ticked and that the ‘Git executable:’
+path is correct for your installation. If it’s not correct hit the
+<code>Browse...</code> button and navigate to where you installed git
+and click on the executable file. You will need to restart RStudio after
+doing this.</p>
 <p> </p>
 <p><img src="images/git_path.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -595,41 +738,113 @@ git config --global user.name &#39;Your Name&#39;</code></pre>
 <div id="register-a-github-account" class="section level3">
 <h3>Register a GitHub account</h3>
 <p> </p>
-<p>If all you want to do is to keep track of files and file versions on your local computer then Git is sufficient. If however, you would like to make an off-site copy of your project or make it available to your collaborators then you will need a web-based hosting service for your Git repositories. This is where GitHub comes into play (there are also other services like <a href="https://about.gitlab.com/">GitLab</a>, <a href="https://bitbucket.org/product">Bitbucket</a> and <a href="https://savannah.gnu.org/">Savannah</a>). You can sign up for a free account on GitHub <a href="https://github.com/join?source=header-home">here</a>. You will need to specify a username, an email address and a strong password. We suggest that you use your University email address as this will also allow you to apply for a free <a href="https://help.github.com/en/github/teaching-and-learning-with-github-education/applying-for-an-educator-or-researcher-discount">educator or researcher account</a> later on which gives you some useful <a href="https://help.github.com/en/github/teaching-and-learning-with-github-education/about-github-education-for-educators-and-researchers">benefits</a> (don’t worry about this now though). When it comes to choosing a username we suggest you give this some thought. Choose a short(ish) rather than a long username, use all lowercase and hyphenate if you want to include multiple words, find a way of incorporating your actual name and lastly, choose a username that you will feel comfortable revealing to your future employer!</p>
-<p>Next click on the ‘Select a plan’ (you may have to solve a simple puzzle first to verify you’re human) and choose the ‘Free Plan’ option. Github will send an email to the email address you supplied for you to verify.</p>
-<p>Once you’ve completed all those steps you should have both Git and GitHub setup up ready for you to use (Finally!).</p>
+<p>If all you want to do is to keep track of files and file versions on
+your local computer then Git is sufficient. If however, you would like
+to make an off-site copy of your project or make it available to your
+collaborators then you will need a web-based hosting service for your
+Git repositories. This is where GitHub comes into play (there are also
+other services like <a href="https://about.gitlab.com/">GitLab</a>, <a
+href="https://bitbucket.org/product">Bitbucket</a> and <a
+href="https://savannah.gnu.org/">Savannah</a>). You can sign up for a
+free account on GitHub <a
+href="https://github.com/join?source=header-home">here</a>. You will
+need to specify a username, an email address and a strong password. We
+suggest that you use your University email address as this will also
+allow you to apply for a free <a
+href="https://help.github.com/en/github/teaching-and-learning-with-github-education/applying-for-an-educator-or-researcher-discount">educator
+or researcher account</a> later on which gives you some useful <a
+href="https://help.github.com/en/github/teaching-and-learning-with-github-education/about-github-education-for-educators-and-researchers">benefits</a>
+(don’t worry about this now though). When it comes to choosing a
+username we suggest you give this some thought. Choose a short(ish)
+rather than a long username, use all lowercase and hyphenate if you want
+to include multiple words, find a way of incorporating your actual name
+and lastly, choose a username that you will feel comfortable revealing
+to your future employer!</p>
+<p>Next click on the ‘Select a plan’ (you may have to solve a simple
+puzzle first to verify you’re human) and choose the ‘Free Plan’ option.
+Github will send an email to the email address you supplied for you to
+verify.</p>
+<p>Once you’ve completed all those steps you should have both Git and
+GitHub setup up ready for you to use (Finally!).</p>
 <p> </p>
 </div>
 </div>
 <div id="setting-up-a-project-in-rstudio" class="section level2">
 <h2>Setting up a project in RStudio</h2>
 <p> </p>
-<p>Now that you’re all set up, let’s create your first version controlled RStudio project. There are a couple of different approaches you can use to do this. You can either setup a remote GitHub repository first then connect an RStudio project to this repository (we’ll call this Option 1). Another option is to setup a local repository first and then link a remote GitHub repository to this repository (Option 2). You can also connect an existing project to a GitHub repository but we won’t cover this here. I suggest that if you’re completely new to Git and GitHub then use Option 1 as this approach sets up your local Git repository nicely and you can <strong>push</strong> and <strong>pull</strong> immediately. Option 2 requires a little more work and therefore there are more opportunities to go wrong. We will cover both of these options below.</p>
+<p>Now that you’re all set up, let’s create your first version
+controlled RStudio project. There are a couple of different approaches
+you can use to do this. You can either setup a remote GitHub repository
+first then connect an RStudio project to this repository (we’ll call
+this Option 1). Another option is to setup a local repository first and
+then link a remote GitHub repository to this repository (Option 2). You
+can also connect an existing project to a GitHub repository but we won’t
+cover this here. I suggest that if you’re completely new to Git and
+GitHub then use Option 1 as this approach sets up your local Git
+repository nicely and you can <strong>push</strong> and
+<strong>pull</strong> immediately. Option 2 requires a little more work
+and therefore there are more opportunities to go wrong. We will cover
+both of these options below.</p>
 <p> </p>
 <div id="opt1" class="section level3">
 <h3>Option 1 - GitHub first</h3>
 <p> </p>
-<p>To use the GitHub first approach you will first need to create a <strong>repository (repo)</strong> on GitHub. Go to your <a href="https://github.com/">GitHub page</a> and sign in if necessary. Click on the ‘Repositories’ tab at the top and then on the green ‘New’ button on the right</p>
+<p>To use the GitHub first approach you will first need to create a
+<strong>repository (repo)</strong> on GitHub. Go to your <a
+href="https://github.com/">GitHub page</a> and sign in if necessary.
+Click on the ‘Repositories’ tab at the top and then on the green ‘New’
+button on the right</p>
 <p> </p>
 <p><img src="images/new_repo.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Give your new repo a name (let’s call it <code>first_repo</code> for this tutorial), select ‘Public’, tick on the ‘Initialize this repository with a README’ (this is important) and then click on ‘Create repository’ (ignore the other options for now).</p>
+<p>Give your new repo a name (let’s call it <code>first_repo</code> for
+this tutorial), select ‘Public’, tick on the ‘Initialize this repository
+with a README’ (this is important) and then click on ‘Create repository’
+(ignore the other options for now).</p>
 <p> </p>
 <p><img src="images/new_repo_opt.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Your new GitHub repository will now be created. Notice the README has been rendered in GitHub and is in markdown (.md) format (see the other <a href="Rmarkdown_intro.html">tutorial</a> on R markdown if this doesn’t mean anything to you). Next click on the green ‘Clone or Download’ button and copy the <code>https//...</code> URL that pops up for later (either highlight it all and copy or click on the copy to clipboard icon to the right).</p>
+<p>Your new GitHub repository will now be created. Notice the README has
+been rendered in GitHub and is in markdown (.md) format (see the other
+<a href="Rmarkdown_intro.html">tutorial</a> on R markdown if this
+doesn’t mean anything to you). Next click on the green ‘Clone or
+Download’ button and copy the <code>https//...</code> URL that pops up
+for later (either highlight it all and copy or click on the copy to
+clipboard icon to the right).</p>
 <p> </p>
 <p><img src="images/new_repo_clone.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Ok, we now switch our attention to RStudio. In RStudio click on the <code>File</code> -&gt; <code>New Project</code> menu. In the pop up window select <code>Version Control</code>.</p>
+<p>Ok, we now switch our attention to RStudio. In RStudio click on the
+<code>File</code> -&gt; <code>New Project</code> menu. In the pop up
+window select <code>Version Control</code>.</p>
 <p> </p>
 <p><img src="images/proj_setup1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now paste the the URL you previously copied from GitHub into the <code>Repository URL:</code> box. This should then automatically fill out the <code>Project Directory Name:</code> section with the correct repository name (it’s important that the name of this directory has the same name as the repository you created in GitHub). You can then select where you want to create this directory by clicking on the <code>Browse</code> button opposite the <code>Create project as a subdirectory of:</code> option. Navigate to where you want the directory created and click OK. I also tick the <code>Open in new session</code> option.</p>
+<p>Now paste the the URL you previously copied from GitHub into the
+<code>Repository URL:</code> box. This should then automatically fill
+out the <code>Project Directory Name:</code> section with the correct
+repository name (it’s important that the name of this directory has the
+same name as the repository you created in GitHub). You can then select
+where you want to create this directory by clicking on the
+<code>Browse</code> button opposite the
+<code>Create project as a subdirectory of:</code> option. Navigate to
+where you want the directory created and click OK. I also tick the
+<code>Open in new session</code> option.</p>
 <p> </p>
 <p><img src="images/proj_setup2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>RStudio will now create a new directory with the same name as your repository on your local computer and will then <strong>clone</strong> your remote repository to this directory. The directory will contain three new files; <code>first_repo.Rproj</code> (or whatever you called your repository), <code>README.md</code> and <code>.gitignore</code>. You can check this out in the <code>Files</code> tab usually in the bottom right pane in RStudio. You will also have a <code>Git</code> tab in the top right pane with two files listed (we will come to this later on in the tutorial). That’s it for Option 1, you now have a remote GitHub repository set up and this is linked to your local repository managed by RStudio. Any changes you make to files in this directory will be version controlled by Git.</p>
+<p>RStudio will now create a new directory with the same name as your
+repository on your local computer and will then <strong>clone</strong>
+your remote repository to this directory. The directory will contain
+three new files; <code>first_repo.Rproj</code> (or whatever you called
+your repository), <code>README.md</code> and <code>.gitignore</code>.
+You can check this out in the <code>Files</code> tab usually in the
+bottom right pane in RStudio. You will also have a <code>Git</code> tab
+in the top right pane with two files listed (we will come to this later
+on in the tutorial). That’s it for Option 1, you now have a remote
+GitHub repository set up and this is linked to your local repository
+managed by RStudio. Any changes you make to files in this directory will
+be version controlled by Git.</p>
 <p> </p>
 <p><img src="images/proj_setup3.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -637,9 +852,17 @@ git config --global user.name &#39;Your Name&#39;</code></pre>
 <div id="opt2" class="section level3">
 <h3>Option 2 - RStudio first</h3>
 <p> </p>
-<p>An alternative approach is to create a local RStudio project first and then link to a remote Github repository. As I mentioned before, this option is more involved than Option 1 so feel free to skip this now and come back later to it if you’re interested. This option is also useful if you just want to create a local RStudio project linked to a local Git repository (i.e. no GitHub involved). If you want to do this then just follow the instructions below omitting the GitHub bit.</p>
+<p>An alternative approach is to create a local RStudio project first
+and then link to a remote Github repository. As I mentioned before, this
+option is more involved than Option 1 so feel free to skip this now and
+come back later to it if you’re interested. This option is also useful
+if you just want to create a local RStudio project linked to a local Git
+repository (i.e. no GitHub involved). If you want to do this then just
+follow the instructions below omitting the GitHub bit.</p>
 <p> </p>
-<p>In RStudio click on the <code>File</code> -&gt; <code>New Project</code> menu and select the <code>New Directory</code> option.</p>
+<p>In RStudio click on the <code>File</code> -&gt;
+<code>New Project</code> menu and select the <code>New Directory</code>
+option.</p>
 <p> </p>
 <p><img src="images/new_proj_RS1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -647,143 +870,310 @@ git config --global user.name &#39;Your Name&#39;</code></pre>
 <p> </p>
 <p><img src="images/proj_setup_RS.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>In the New Project window specify a <code>Directory name</code> (choose <code>second_repo</code> for this tutorial) and select where you would like to create this directory on you computer (click the <code>Browse</code> button). Make sure the <code>Create a git repository</code> option is ticked</p>
+<p>In the New Project window specify a <code>Directory name</code>
+(choose <code>second_repo</code> for this tutorial) and select where you
+would like to create this directory on you computer (click the
+<code>Browse</code> button). Make sure the
+<code>Create a git repository</code> option is ticked</p>
 <p> </p>
 <p><img src="images/new_proj_RS2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>This will create a version controlled directory called <code>second_repo</code> on your computer that contains two files, <code>second_repo.Rproj</code> and <code>.gitignore</code> (there might also be a <code>.Rhistory</code> file but ignore this). You can check this by looking in the <code>Files</code> tab in RStudio (usually in the bottom right pane).</p>
+<p>This will create a version controlled directory called
+<code>second_repo</code> on your computer that contains two files,
+<code>second_repo.Rproj</code> and <code>.gitignore</code> (there might
+also be a <code>.Rhistory</code> file but ignore this). You can check
+this by looking in the <code>Files</code> tab in RStudio (usually in the
+bottom right pane).</p>
 <p> </p>
 <p><img src="images/new_proj_RS3.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>OK, before we go on to create a repository on GitHub we need to do one more thing - we need to place our <code>second_repo.Rproj</code> and <code>.gitignore</code>files under version control. Unfortunately we haven’t covered this in detail yet so just follow the next few instructions (blindly!) and we’ll revisit them in the <a href="#use_git">Using Git</a> section of this tutorial.</p>
-<p>To get our two files under version control click on the ‘Git’ tab which is usually in the top tight pane in RStudio</p>
+<p>OK, before we go on to create a repository on GitHub we need to do
+one more thing - we need to place our <code>second_repo.Rproj</code> and
+<code>.gitignore</code>files under version control. Unfortunately we
+haven’t covered this in detail yet so just follow the next few
+instructions (blindly!) and we’ll revisit them in the <a
+href="#use_git">Using Git</a> section of this tutorial.</p>
+<p>To get our two files under version control click on the ‘Git’ tab
+which is usually in the top tight pane in RStudio</p>
 <p> </p>
 <p><img src="images/new_proj_RS4.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You can see that both files are listed. Next, tick the boxes under the ‘Staged’ column for both files and then click on the ‘Commit’ button.</p>
+<p>You can see that both files are listed. Next, tick the boxes under
+the ‘Staged’ column for both files and then click on the ‘Commit’
+button.</p>
 <p> </p>
 <p><img src="images/new_proj_RS5.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>This will take you to the ‘Review Changes’ window. Type in the commit message ‘First commit’ in the ‘Commit message’ window and click on the ‘Commit’ button. A new window will appear with some messages which you can ignore for now. Click ‘Close’ to close this window and also close the ‘Review Changes’ window. The two files should now have disappeared from the Git pane in RStudio indicating a successful commit.</p>
+<p>This will take you to the ‘Review Changes’ window. Type in the commit
+message ‘First commit’ in the ‘Commit message’ window and click on the
+‘Commit’ button. A new window will appear with some messages which you
+can ignore for now. Click ‘Close’ to close this window and also close
+the ‘Review Changes’ window. The two files should now have disappeared
+from the Git pane in RStudio indicating a successful commit.</p>
 <p> </p>
 <p><img src="images/new_proj_RS6.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>OK, that’s those two files now under version control. Now we need to create a new repository on GitHub. In your browser go to your <a href="https://github.com/">GitHub page</a> and sign in if necessary. Click on the ‘Repositories’ tab and then click on the green ‘New’ button on the right. Give your new repo the name <code>second_repo</code> (the same as your version controlled directory name) and select ‘Public’. This time <strong>do not</strong> tick the ‘Initialize this repository with a README’ (this is important) and then click on ‘Create repository’.</p>
+<p>OK, that’s those two files now under version control. Now we need to
+create a new repository on GitHub. In your browser go to your <a
+href="https://github.com/">GitHub page</a> and sign in if necessary.
+Click on the ‘Repositories’ tab and then click on the green ‘New’ button
+on the right. Give your new repo the name <code>second_repo</code> (the
+same as your version controlled directory name) and select ‘Public’.
+This time <strong>do not</strong> tick the ‘Initialize this repository
+with a README’ (this is important) and then click on ‘Create
+repository’.</p>
 <p> </p>
 <p><img src="images/new_proj_RS7.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>This will take you to a Quick setup page which provides you with some code for various situations. The code we are interested in is the code under <code>...or push an existing repository from the command line</code> heading.</p>
+<p>This will take you to a Quick setup page which provides you with some
+code for various situations. The code we are interested in is the code
+under
+<code>...or push an existing repository from the command line</code>
+heading.</p>
 <p> </p>
 <p><img src="images/new_proj_RS8.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Highlight and copy the first line of code (note: yours will be slightly different as it will include your GitHub username not mine)</p>
+<p>Highlight and copy the first line of code (note: yours will be
+slightly different as it will include your GitHub username not mine)</p>
 <p><code>git remote add origin https://github.com/alexd106/second_repo.git</code></p>
-<p>Switch to RStudio, click on the ‘Terminal’ tab and paste the command into the Terminal. Now go back to GitHub and copy the second line of code</p>
+<p>Switch to RStudio, click on the ‘Terminal’ tab and paste the command
+into the Terminal. Now go back to GitHub and copy the second line of
+code</p>
 <p><code>git push -u origin master</code></p>
-<p>and paste this into the Terminal in RStudio. You should see something like this</p>
+<p>and paste this into the Terminal in RStudio. You should see something
+like this</p>
 <p> </p>
 <p><img src="images/new_prog_RS9.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>If you take a look at your repo back on GitHub (click on the <code>/second_repo</code> link at the top) you will see the <code>second_repo.Rproj</code> and <code>.gitignore</code> files have now been <strong>pushed</strong> to GitHub from your local repository.</p>
+<p>If you take a look at your repo back on GitHub (click on the
+<code>/second_repo</code> link at the top) you will see the
+<code>second_repo.Rproj</code> and <code>.gitignore</code> files have
+now been <strong>pushed</strong> to GitHub from your local
+repository.</p>
 <p> </p>
 <p><img src="images/new_proj_RS10.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>The last thing we need to do is create and add a <strong>README</strong> file to your repository. A README file describes your project and is written using the same Markdown language you learned in the R markdown <a href="Rmarkdown_intro.html">tutorial</a>. A good README file makes it easy for others (or the future you!) to use your code and reproduce your project. You can create a README file in RStudio or in GitHub. Let’s use the second option.</p>
-<p>In your repository on GitHub click on the green <code>Add a README</code> button.</p>
+<p>The last thing we need to do is create and add a
+<strong>README</strong> file to your repository. A README file describes
+your project and is written using the same Markdown language you learned
+in the R markdown <a href="Rmarkdown_intro.html">tutorial</a>. A good
+README file makes it easy for others (or the future you!) to use your
+code and reproduce your project. You can create a README file in RStudio
+or in GitHub. Let’s use the second option.</p>
+<p>In your repository on GitHub click on the green
+<code>Add a README</code> button.</p>
 <p> </p>
 <p><img src="images/new_proj_RS11.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now write a short description of your project in the <code>&lt;&gt; Edit new file</code> section and then click on the green <code>Commit new file</code> button.</p>
+<p>Now write a short description of your project in the
+<code>&lt;&gt; Edit new file</code> section and then click on the green
+<code>Commit new file</code> button.</p>
 <p> </p>
 <p><img src="images/new_proj_RS12.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You should now see the <code>README.md</code> file listed in your repository. It won’t actually exist on your computer yet as you will need to <strong>pull</strong> these changes back to your local repository, but more about that in the next section.</p>
+<p>You should now see the <code>README.md</code> file listed in your
+repository. It won’t actually exist on your computer yet as you will
+need to <strong>pull</strong> these changes back to your local
+repository, but more about that in the next section.</p>
 <p> </p>
-<p>Whether you followed Option 1 or Option 2 (or both) you have now successfully setup a version controlled RStudio project (and associated directory) and linked this to a GitHub repository. Git will now monitor this directory for any changes you make to files and also if you add or delete files. If the steps above seem like a bit of an ordeal, just remember, you only need to do this once for each project and it gets much easier over time.</p>
+<p>Whether you followed Option 1 or Option 2 (or both) you have now
+successfully setup a version controlled RStudio project (and associated
+directory) and linked this to a GitHub repository. Git will now monitor
+this directory for any changes you make to files and also if you add or
+delete files. If the steps above seem like a bit of an ordeal, just
+remember, you only need to do this once for each project and it gets
+much easier over time.</p>
 <p> </p>
 </div>
 </div>
 <div id="use_git" class="section level2">
 <h2>Using Git</h2>
 <p> </p>
-<p>Now that we have our project and repositories (both local and remote) set up, it’s finally time to learn how to use Git in RStudio!</p>
-<p>Typically, when using Git your workflow will go something like this:</p>
+<p>Now that we have our project and repositories (both local and remote)
+set up, it’s finally time to learn how to use Git in RStudio!</p>
+<p>Typically, when using Git your workflow will go something like
+this:</p>
 <ol style="list-style-type: decimal">
-<li><p>You create/delete and edit files in your project directory on your computer as usual (saving these changes as you go)</p></li>
-<li><p>Once you’ve reached a natural ‘break point’ in your progress (i.e. you’d be sad if you lost this progress) you <strong>stage</strong> these files</p></li>
-<li><p>You then <strong>commit</strong> the changes you made to these staged files (along with a useful commit message) which creates a permanent snapshot of these changes</p></li>
-<li><p>You keep on with this cycle until you get to a point when you would like to <strong>push</strong> these changes to GitHub</p></li>
-<li><p>If you’re working with other people on the same project you may also need to <strong>pull</strong> their changes to your local computer</p></li>
+<li><p>You create/delete and edit files in your project directory on
+your computer as usual (saving these changes as you go)</p></li>
+<li><p>Once you’ve reached a natural ‘break point’ in your progress
+(i.e. you’d be sad if you lost this progress) you <strong>stage</strong>
+these files</p></li>
+<li><p>You then <strong>commit</strong> the changes you made to these
+staged files (along with a useful commit message) which creates a
+permanent snapshot of these changes</p></li>
+<li><p>You keep on with this cycle until you get to a point when you
+would like to <strong>push</strong> these changes to GitHub</p></li>
+<li><p>If you’re working with other people on the same project you may
+also need to <strong>pull</strong> their changes to your local
+computer</p></li>
 </ol>
 <p><img src="images/workflow_3.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>OK, let’s go through an example to help clarify this workflow. In RStudio open up the <code>first_repo.Rproj</code> you created previously during Option 1. Either use the <code>File</code> -&gt; <code>Open Project</code> menu or click on the top right project icon and select the appropriate project.</p>
+<p>OK, let’s go through an example to help clarify this workflow. In
+RStudio open up the <code>first_repo.Rproj</code> you created previously
+during Option 1. Either use the <code>File</code> -&gt;
+<code>Open Project</code> menu or click on the top right project icon
+and select the appropriate project.</p>
 <p> </p>
 <p><img src="images/first_Rmd0.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Create an R markdown document inside this project by clicking on the <code>File</code> -&gt; <code>New File</code> -&gt; <code>R markdown</code> menu (remember from the R markdown <a href="Rmarkdown_intro.html">tutorial</a>?).</p>
-<p>Once created, we can delete all the example R markdown code (except the YAML header) as usual and write some interesting R markdown text and include a plot. We’ll use the inbuilt <code>cars</code> dataset to do this. Save this file (cmd + s for Mac or ctrl + s in Windows). Your R markdown document should look something like the following (it doesn’t matter if it’s not exactly the same).</p>
+<p>Create an R markdown document inside this project by clicking on the
+<code>File</code> -&gt; <code>New File</code> -&gt;
+<code>R markdown</code> menu (remember from the R markdown <a
+href="Rmarkdown_intro.html">tutorial</a>?).</p>
+<p>Once created, we can delete all the example R markdown code (except
+the YAML header) as usual and write some interesting R markdown text and
+include a plot. We’ll use the inbuilt <code>cars</code> dataset to do
+this. Save this file (cmd + s for Mac or ctrl + s in Windows). Your R
+markdown document should look something like the following (it doesn’t
+matter if it’s not exactly the same).</p>
 <p> </p>
 <p><img src="images/first_Rmd.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Take a look at the ‘Git’ tab which should list your new R markdown document (<code>first_doc.Rmd</code> in this example) along with <code>first_repo.Rproj</code>, and <code>.gitignore</code> (you created these files previously when following Option 1).</p>
+<p>Take a look at the ‘Git’ tab which should list your new R markdown
+document (<code>first_doc.Rmd</code> in this example) along with
+<code>first_repo.Rproj</code>, and <code>.gitignore</code> (you created
+these files previously when following Option 1).</p>
 <p> </p>
 <p><img src="images/first_Rmd2.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Following our workflow, we now need to <strong>stage</strong> these files. To do this tick the boxes under the ‘Staged’ column for all files. Notice that there is a status icon next to the box which gives you an indication of how the files were changed. In our case all of the files are to be added (capital A) as we have just created them.</p>
+<p>Following our workflow, we now need to <strong>stage</strong> these
+files. To do this tick the boxes under the ‘Staged’ column for all
+files. Notice that there is a status icon next to the box which gives
+you an indication of how the files were changed. In our case all of the
+files are to be added (capital A) as we have just created them.</p>
 <p> </p>
 <p><img src="images/rstudio_git_cols.png" width="15%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>After you have staged the files the next step is to <strong>commit</strong> the files. This is done by clicking on the ‘Commit’ button.</p>
+<p>After you have staged the files the next step is to
+<strong>commit</strong> the files. This is done by clicking on the
+‘Commit’ button.</p>
 <p> </p>
 <p><img src="images/first_Rmd3.png" width="50%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>After clicking on the ‘Commit’ button you will be taken to the ‘Review Changes’ window. You should see the three files you staged from the previous step in the left pane. If you click on the file name <code>first_doc.Rmd</code> you will see the changes you have made to this file highlighted in the bottom pane. Any content that you have added is highlighted in green and deleted content is highlighted in red. As you have only just created this file, all the content is highlighted in green. To commit these files (take a snapshot) first enter a mandatory commit message in the ‘Commit message’ box. This message should be relatively short and informative (to you and your collaborators) and indicate why you made the changes, not what you changed. This makes sense as Git keeps track of <em>what</em> has changed and so it is best not to use commit messages for this purpose. It’s traditional to enter the message ‘First commit’ (or ‘Initial commit’) when you commit files for the first time. Now click on the ‘Commit’ button to commit these changes.</p>
+<p>After clicking on the ‘Commit’ button you will be taken to the
+‘Review Changes’ window. You should see the three files you staged from
+the previous step in the left pane. If you click on the file name
+<code>first_doc.Rmd</code> you will see the changes you have made to
+this file highlighted in the bottom pane. Any content that you have
+added is highlighted in green and deleted content is highlighted in red.
+As you have only just created this file, all the content is highlighted
+in green. To commit these files (take a snapshot) first enter a
+mandatory commit message in the ‘Commit message’ box. This message
+should be relatively short and informative (to you and your
+collaborators) and indicate why you made the changes, not what you
+changed. This makes sense as Git keeps track of <em>what</em> has
+changed and so it is best not to use commit messages for this purpose.
+It’s traditional to enter the message ‘First commit’ (or ‘Initial
+commit’) when you commit files for the first time. Now click on the
+‘Commit’ button to commit these changes.</p>
 <p> </p>
 <p><img src="images/first_Rmd4.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>A summary of the commit you just performed will be shown. Now click on the ‘Close’ button to return to the ‘Review Changes’ window. Note that the staged files have now been removed.</p>
+<p>A summary of the commit you just performed will be shown. Now click
+on the ‘Close’ button to return to the ‘Review Changes’ window. Note
+that the staged files have now been removed.</p>
 <p> </p>
 <p><img src="images/first_Rmd5.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now that you have committed your changes the next step is to <strong>push</strong> these changes to GitHub. Before you push your changes it’s good practice to first <strong>pull</strong> any changes from GitHub. This is especially important if both you and your collaborators are working on the same files as it keeps you local copy up to date and avoids any potential conflicts. In this case your repository will already be up to date but it’s a good habit to get into. To do this, click on the ‘Pull’ button on the top right of the ‘Review Changes’ window. Once you have pulled any changes click on the green ‘Push’ button to push your changes. You will see a summary of the push you just performed. Hit the ‘Close’ button and then close the ‘Review Changes’ window.</p>
-<p>  <img src="images/first_Rmd6.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Now that you have committed your changes the next step is to
+<strong>push</strong> these changes to GitHub. Before you push your
+changes it’s good practice to first <strong>pull</strong> any changes
+from GitHub. This is especially important if both you and your
+collaborators are working on the same files as it keeps you local copy
+up to date and avoids any potential conflicts. In this case your
+repository will already be up to date but it’s a good habit to get into.
+To do this, click on the ‘Pull’ button on the top right of the ‘Review
+Changes’ window. Once you have pulled any changes click on the green
+‘Push’ button to push your changes. You will see a summary of the push
+you just performed. Hit the ‘Close’ button and then close the ‘Review
+Changes’ window.</p>
+<p> 
+<img src="images/first_Rmd6.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>To confirm the changes you made to the project have been pushed to GitHub, open your GitHub page, click on the Repositories link and then click on the <code>first_repo</code> repository. You should see four files listed including the <code>first_doc.Rmd</code> you just pushed. Along side the file name you will see your last commit message (‘First commit’ in this case) and when you made the last commit.</p>
+<p>To confirm the changes you made to the project have been pushed to
+GitHub, open your GitHub page, click on the Repositories link and then
+click on the <code>first_repo</code> repository. You should see four
+files listed including the <code>first_doc.Rmd</code> you just pushed.
+Along side the file name you will see your last commit message (‘First
+commit’ in this case) and when you made the last commit.</p>
 <p> </p>
 <p><img src="images/first_Rmd7.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>To see the contents of the file click on the <code>first_doc.Rmd</code> file name.</p>
+<p>To see the contents of the file click on the
+<code>first_doc.Rmd</code> file name.</p>
 <p> </p>
 <p><img src="images/first_Rmd8.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
 <div id="tracking-changes" class="section level3">
 <h3>Tracking changes</h3>
 <p> </p>
-<p>After following the steps outlined above, you will have successfully modified an RStudio project by creating a new R markdown document, staged and then committed these changes and finally pushed the changes to your GitHub repository. Now let’s make some further changes to your R markdown file and follow the workflow once again but this time we ’ll take a look at how to identify changes made to files, examine the commit history and how to restore to a previous version of the document.</p>
-<p>In RStudio open up the <code>first_repo.Rproj</code> file you created previously (if not already open) then open the <code>first_doc.Rmd</code> file (click on the file name in the <code>Files</code> tab in RStudio).</p>
-<p>Let’s make some changes to this document. Delete the line beginning with ‘My first version controlled …’ and replace it with something more informative (see figure below). We will also change the plotted symbols to red and give the plot axes labels. Lastly, let’s add a summary table of the dataframe using the <code>kable()</code> and <code>summary()</code> functions (you may need to install the <code>knitr</code> package if you haven’t done so previously to use the <code>kable()</code> function) and finally render this document to pdf by changing the YAML option to <code>output: pdf_document</code>.</p>
+<p>After following the steps outlined above, you will have successfully
+modified an RStudio project by creating a new R markdown document,
+staged and then committed these changes and finally pushed the changes
+to your GitHub repository. Now let’s make some further changes to your R
+markdown file and follow the workflow once again but this time we ’ll
+take a look at how to identify changes made to files, examine the commit
+history and how to restore to a previous version of the document.</p>
+<p>In RStudio open up the <code>first_repo.Rproj</code> file you created
+previously (if not already open) then open the
+<code>first_doc.Rmd</code> file (click on the file name in the
+<code>Files</code> tab in RStudio).</p>
+<p>Let’s make some changes to this document. Delete the line beginning
+with ‘My first version controlled …’ and replace it with something more
+informative (see figure below). We will also change the plotted symbols
+to red and give the plot axes labels. Lastly, let’s add a summary table
+of the dataframe using the <code>kable()</code> and
+<code>summary()</code> functions (you may need to install the
+<code>knitr</code> package if you haven’t done so previously to use the
+<code>kable()</code> function) and finally render this document to pdf
+by changing the YAML option to <code>output: pdf_document</code>.</p>
 <p> </p>
 <p><img src="images/mod1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now save these changes and then click the <code>knit</code> button to render to pdf. A new pdf file named <code>first_doc.pdf</code> will be created which you can view by clicking on the file name in the <code>Files</code> tab in RStudio.</p>
-<p>Notice that these two files have been added to the <code>Git</code> tab in RStudio. The status icons indicate that the <code>first_doc.Rmd</code> file has been modified (capital M) and the <code>first_doc.pdf</code> file is currently untracked (question mark).</p>
+<p>Now save these changes and then click the <code>knit</code> button to
+render to pdf. A new pdf file named <code>first_doc.pdf</code> will be
+created which you can view by clicking on the file name in the
+<code>Files</code> tab in RStudio.</p>
+<p>Notice that these two files have been added to the <code>Git</code>
+tab in RStudio. The status icons indicate that the
+<code>first_doc.Rmd</code> file has been modified (capital M) and the
+<code>first_doc.pdf</code> file is currently untracked (question
+mark).</p>
 <p> </p>
 <p><img src="images/mod2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>To stage these files tick the ‘Staged’ box for each file and click on the ‘Commit’ button to take you to the ‘Review Changes’ window</p>
+<p>To stage these files tick the ‘Staged’ box for each file and click on
+the ‘Commit’ button to take you to the ‘Review Changes’ window</p>
 <p> </p>
 <p><img src="images/mod3.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Before you commit your changes notice the status of <code>first_doc.pdf</code> has changed from untracked to added (A). You can view the changes you have made to the <code>first_doc.Rmd</code> by clicking on the file name in the top left pane which will provide you with a useful summary of the changes in the bottom pane (technically called diffs). Lines that have been deleted are highlighted in red and lines that have been added are highlighted in green (note that from Git’s point of view, a modification to a line is actually two operations: the removal of the original line followed by the creation of a new line). Once you’re happy, commit these changes by writing a suitable commit message and click on the ‘Commit’ button.</p>
+<p>Before you commit your changes notice the status of
+<code>first_doc.pdf</code> has changed from untracked to added (A). You
+can view the changes you have made to the <code>first_doc.Rmd</code> by
+clicking on the file name in the top left pane which will provide you
+with a useful summary of the changes in the bottom pane (technically
+called diffs). Lines that have been deleted are highlighted in red and
+lines that have been added are highlighted in green (note that from
+Git’s point of view, a modification to a line is actually two
+operations: the removal of the original line followed by the creation of
+a new line). Once you’re happy, commit these changes by writing a
+suitable commit message and click on the ‘Commit’ button.</p>
 <p> </p>
 <p><img src="images/mod4.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>To push the changes to GitHub, click on the ‘Pull’ button first (remember this is good practice even though you are only collaborating with yourself at the moment) and then click on the ‘Push’ button. Go to your online GitHub repository and you will see your new commits, including the <code>first_doc.pdf</code> file you created when you rendered your R markdown document.</p>
+<p>To push the changes to GitHub, click on the ‘Pull’ button first
+(remember this is good practice even though you are only collaborating
+with yourself at the moment) and then click on the ‘Push’ button. Go to
+your online GitHub repository and you will see your new commits,
+including the <code>first_doc.pdf</code> file you created when you
+rendered your R markdown document.</p>
 <p> </p>
 <p><img src="images/mod5.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>To view the changes in <code>first_doc.Rmd</code> click on the file name for this file.</p>
+<p>To view the changes in <code>first_doc.Rmd</code> click on the file
+name for this file.</p>
 <p> </p>
 <p><img src="images/mod6.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -791,24 +1181,56 @@ git config --global user.name &#39;Your Name&#39;</code></pre>
 <div id="commit-history" class="section level3">
 <h3>Commit history</h3>
 <p> </p>
-<p>One of the great things about Git and GitHub is that you can view the history of all the commits you have made along with the associated commit messages. You can do this locally using RStudio (or the Git command line) or if you have pushed your commits to GitHub you can check them out on the GitHub website.</p>
-<p>To view your commit history in RStudio click on the ‘History’ button (the one that looks like a clock) in the Git pane to bring up the history view in the ‘Review Changes’ window. You can also click on the ‘Commit’ or ‘Diff’ buttons which takes you to the same window (you just need to additionally click on the ‘History’ button in the ‘Review Changes’ window).</p>
+<p>One of the great things about Git and GitHub is that you can view the
+history of all the commits you have made along with the associated
+commit messages. You can do this locally using RStudio (or the Git
+command line) or if you have pushed your commits to GitHub you can check
+them out on the GitHub website.</p>
+<p>To view your commit history in RStudio click on the ‘History’ button
+(the one that looks like a clock) in the Git pane to bring up the
+history view in the ‘Review Changes’ window. You can also click on the
+‘Commit’ or ‘Diff’ buttons which takes you to the same window (you just
+need to additionally click on the ‘History’ button in the ‘Review
+Changes’ window).</p>
 <p> </p>
 <p><img src="images/c_history.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>The history window is split into two parts. The top pane lists every commit you have made in this repository (with associated commit messages) starting with the most recent one at the top and oldest at the bottom. You can click on each of these commits and the bottom pane shows you the changes you have made along with a summary of the <strong>Date</strong> the commit was made, <strong>Author</strong> of the commit and the commit message (<strong>Subject</strong>). There is also a unique identifier for the commit (<strong>SHA</strong> - Secure Hash Algorithm) and a <strong>Parent</strong> SHA which identifies the previous commit. These SHA identifiers are really important as you can use them to view and revert to previous versions of files (details <a href="#undo">below</a>). You can also view the contents of each file by clicking on the ‘View file @ SHA key` link (in our case ’View file @ 2b4693d1’).</p>
+<p>The history window is split into two parts. The top pane lists every
+commit you have made in this repository (with associated commit
+messages) starting with the most recent one at the top and oldest at the
+bottom. You can click on each of these commits and the bottom pane shows
+you the changes you have made along with a summary of the
+<strong>Date</strong> the commit was made, <strong>Author</strong> of
+the commit and the commit message (<strong>Subject</strong>). There is
+also a unique identifier for the commit (<strong>SHA</strong> - Secure
+Hash Algorithm) and a <strong>Parent</strong> SHA which identifies the
+previous commit. These SHA identifiers are really important as you can
+use them to view and revert to previous versions of files (details <a
+href="#undo">below</a>). You can also view the contents of each file by
+clicking on the ‘View file @ SHA key` link (in our case ’View file @
+2b4693d1’).</p>
 <p> </p>
 <p><img src="images/c_history2.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You can also view your commit history on GitHub website but this will be limited to only those commits you have already pushed to GitHub. To view the commit history navigate to the repository and click on the ‘commits’ link (in our case the link will be labelled ‘3 commits’ as we have made 3 commits).</p>
+<p>You can also view your commit history on GitHub website but this will
+be limited to only those commits you have already pushed to GitHub. To
+view the commit history navigate to the repository and click on the
+‘commits’ link (in our case the link will be labelled ‘3 commits’ as we
+have made 3 commits).</p>
 <p> </p>
 <p><img src="images/c_history3.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You will see a list of all the commits you have made, along with commit messages, date of commit and the SHA identifier (these are the same SHA identifiers you saw in the RStudio history). You can even browse the repository at a particular point in time by clicking on the <code>&lt;&gt;</code> link. To view the changes in files associated with the commit simply click on the relevant commit link in the list.</p>
+<p>You will see a list of all the commits you have made, along with
+commit messages, date of commit and the SHA identifier (these are the
+same SHA identifiers you saw in the RStudio history). You can even
+browse the repository at a particular point in time by clicking on the
+<code>&lt;&gt;</code> link. To view the changes in files associated with
+the commit simply click on the relevant commit link in the list.</p>
 <p> </p>
 <p><img src="images/c_history4.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Which will display changes using the usual format of green for additions and red for deletions.</p>
+<p>Which will display changes using the usual format of green for
+additions and red for deletions.</p>
 <p> </p>
 <p><img src="images/c_history5.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -816,73 +1238,143 @@ git config --global user.name &#39;Your Name&#39;</code></pre>
 <div id="undo" class="section level3">
 <h3>Reverting changes</h3>
 <p> </p>
-<p>One the great things about using Git is that you are able to revert to previous versions of files if you’ve made a mistake, broke something or just prefer and earlier approach. How you do this will depend on whether the changes you want to discard have been staged, committed or pushed to GitHub. We’ll go through some common scenarios below mostly using RStudio but occasionally we will need to resort to using the Terminal (still in RStudio though).</p>
+<p>One the great things about using Git is that you are able to revert
+to previous versions of files if you’ve made a mistake, broke something
+or just prefer and earlier approach. How you do this will depend on
+whether the changes you want to discard have been staged, committed or
+pushed to GitHub. We’ll go through some common scenarios below mostly
+using RStudio but occasionally we will need to resort to using the
+Terminal (still in RStudio though).</p>
 <p> </p>
-<div id="changes-saved-but-not-staged-committed-or-pushed" class="section level4">
+<div id="changes-saved-but-not-staged-committed-or-pushed"
+class="section level4">
 <h4>Changes saved but not staged, committed or pushed</h4>
-<p>If you have saved changes to your file(s) but not staged, committed or pushed these files to GitHub you can right click on the offending file in the Git pane and select ‘Revert …’. This will roll back all of the changes you have made to the same state as your last commit. Just be aware that you cannot undo this operation so use with caution.</p>
+<p>If you have saved changes to your file(s) but not staged, committed
+or pushed these files to GitHub you can right click on the offending
+file in the Git pane and select ‘Revert …’. This will roll back all of
+the changes you have made to the same state as your last commit. Just be
+aware that you cannot undo this operation so use with caution.</p>
 <p> </p>
 <p><img src="images/revert1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You can also undo changes to just part of a file by opening up the ‘Diff’ window (click on the ‘Diff’ button in the Git pane). Select the line you wish to discard by double clicking on the line and then click on the ‘Discard line’ button. In a similar fashion you can discard chunks of code by clicking on the ‘Discard chunk’ button.</p>
+<p>You can also undo changes to just part of a file by opening up the
+‘Diff’ window (click on the ‘Diff’ button in the Git pane). Select the
+line you wish to discard by double clicking on the line and then click
+on the ‘Discard line’ button. In a similar fashion you can discard
+chunks of code by clicking on the ‘Discard chunk’ button.</p>
 <p> </p>
 <p><img src="images/revert2.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
 </div>
-<div id="staged-but-not-committed-and-not-pushed" class="section level4">
+<div id="staged-but-not-committed-and-not-pushed"
+class="section level4">
 <h4>Staged but not committed and not pushed</h4>
-<p>If you have staged your files, but not committed them then simply unstage them by clicking on the ‘Staged’ check box in the Git pane (or in the ‘Review Changes’ window) to remove the tick. You can then revert all or parts of the file as described in the section above.</p>
+<p>If you have staged your files, but not committed them then simply
+unstage them by clicking on the ‘Staged’ check box in the Git pane (or
+in the ‘Review Changes’ window) to remove the tick. You can then revert
+all or parts of the file as described in the section above.</p>
 <p> </p>
 </div>
 <div id="staged-and-committed-but-not-pushed" class="section level4">
 <h4>Staged and committed but not pushed</h4>
-<p>If you have made a mistake or have forgotten to include a file in your last commit which you have not yet pushed to GitHub, you can just fix your mistake, save your changes, and then amend your previous commit. You can do this by staging your file and then tick the ‘Amend previous commit` box in the ’Review Changes’ window before committing.</p>
+<p>If you have made a mistake or have forgotten to include a file in
+your last commit which you have not yet pushed to GitHub, you can just
+fix your mistake, save your changes, and then amend your previous
+commit. You can do this by staging your file and then tick the ‘Amend
+previous commit` box in the ’Review Changes’ window before
+committing.</p>
 <p> </p>
 <p><img src="images/revert3.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>If we check out our commit history you can see that our latest commit contains both changes to the file rather than having two separate commits. I use the amend commit approach alot but it’s important to understand that you should <strong>not</strong> do this if you have already pushed your last commit to GitHub as you are effectively rewriting history and all sorts bad things may happen!</p>
+<p>If we check out our commit history you can see that our latest commit
+contains both changes to the file rather than having two separate
+commits. I use the amend commit approach alot but it’s important to
+understand that you should <strong>not</strong> do this if you have
+already pushed your last commit to GitHub as you are effectively
+rewriting history and all sorts bad things may happen!</p>
 <p> </p>
 <p><img src="images/revert4.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>If you spot a mistake that has happened multiple commits back or you just want to revert to a previous version of a document you have a number of options.</p>
-<p><strong>Option 1</strong> - (probably the easiest but very unGit - but like, whatever!) is to look in your commit history in RStudio, find the commit that you would like to go back to and click on the ‘View file @’ button to show the file contents.</p>
+<p>If you spot a mistake that has happened multiple commits back or you
+just want to revert to a previous version of a document you have a
+number of options.</p>
+<p><strong>Option 1</strong> - (probably the easiest but very unGit -
+but like, whatever!) is to look in your commit history in RStudio, find
+the commit that you would like to go back to and click on the ‘View file
+@’ button to show the file contents.</p>
 <p> </p>
 <p><img src="images/revert5.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You can then copy the contents of the file to the clipboard and paste it into your current file to replace your duff code or text. Alternatively, you can click on the ‘Save As’ button and save the file with a different file name. Once you have saved your new file you can delete your current unwanted file and then carry on working on your new file. Don’t forget to stage and commit this new file.</p>
+<p>You can then copy the contents of the file to the clipboard and paste
+it into your current file to replace your duff code or text.
+Alternatively, you can click on the ‘Save As’ button and save the file
+with a different file name. Once you have saved your new file you can
+delete your current unwanted file and then carry on working on your new
+file. Don’t forget to stage and commit this new file.</p>
 <p> </p>
 <p><img src="images/revert6.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
-<p><strong>Option 2</strong> - (Git like) Go to your Git history, find the commit you would like to roll back to and write down (or copy) its SHA identifier.</p>
+<p><strong>Option 2</strong> - (Git like) Go to your Git history, find
+the commit you would like to roll back to and write down (or copy) its
+SHA identifier.</p>
 <p> </p>
 <p><img src="images/revert7.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now go to the Terminal in RStudio and type <code>git checkout &lt;SHA&gt; &lt;filename&gt;</code>. In our case the SHA key is <code>2b4693d1</code> and the filename is <code>first_doc.Rmd</code> so our command would look like this:</p>
+<p>Now go to the Terminal in RStudio and type
+<code>git checkout &lt;SHA&gt; &lt;filename&gt;</code>. In our case the
+SHA key is <code>2b4693d1</code> and the filename is
+<code>first_doc.Rmd</code> so our command would look like this:</p>
 <p> </p>
 <pre><code>git checkout 2b4693d1 first_doc.Rmd</code></pre>
 <p> </p>
-<p>The command above will copy the selected file version from the past and place it into the present. RStudio may ask you whether you want to reload the file as it now changed - select yes. You will also need to stage and commit the file as usual.</p>
-<p>If you want to revert all your files to the same state as a previous commit rather than just one file you can use (the single ‘dot’ <code>.</code> is important otherwise your HEAD will detach!):</p>
+<p>The command above will copy the selected file version from the past
+and place it into the present. RStudio may ask you whether you want to
+reload the file as it now changed - select yes. You will also need to
+stage and commit the file as usual.</p>
+<p>If you want to revert all your files to the same state as a previous
+commit rather than just one file you can use (the single ‘dot’
+<code>.</code> is important otherwise your HEAD will detach!):</p>
 <p> </p>
 <pre><code>git rm -r .
 git checkout 2b4693d1 .
 </code></pre>
 <p> </p>
-<p>Note that this will delete all files that you have created since you made this commit so be careful!</p>
+<p>Note that this will delete all files that you have created since you
+made this commit so be careful!</p>
 <p> </p>
 </div>
 <div id="staged-committed-and-pushed" class="section level4">
 <h4>Staged, committed and pushed</h4>
-<p>If you have already pushed your commits to GitHub you can use the <code>git checkout</code> strategy described above and then commit and push to update GitHub (although this is not really considered ‘best’ practice). Another approach would be to use <code>git revert</code> (Note: as far as I can tell <code>git revert</code> is not the same as the ‘Revert’ option in RStudio). The <code>revert</code> command in Git essentially creates a new commit based on a previous commit and therefore preserves all of your commit history. To rollback to a previous state (commit) you first need to identify the SHA for the commit you wish to go back to (as we did above) and then use the <code>revert</code> command in the Terminal. Let’s say we want to revert back to our ‘First commit’ which has a SHA identifier <code>d27e79f1</code>.</p>
+<p>If you have already pushed your commits to GitHub you can use the
+<code>git checkout</code> strategy described above and then commit and
+push to update GitHub (although this is not really considered ‘best’
+practice). Another approach would be to use <code>git revert</code>
+(Note: as far as I can tell <code>git revert</code> is not the same as
+the ‘Revert’ option in RStudio). The <code>revert</code> command in Git
+essentially creates a new commit based on a previous commit and
+therefore preserves all of your commit history. To rollback to a
+previous state (commit) you first need to identify the SHA for the
+commit you wish to go back to (as we did above) and then use the
+<code>revert</code> command in the Terminal. Let’s say we want to revert
+back to our ‘First commit’ which has a SHA identifier
+<code>d27e79f1</code>.</p>
 <p> </p>
 <p><img src="images/revert8.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>We can use the <code>revert</code> command as shown below in the Terminal. The <code>--no-commit</code> option is used to prevent us from having to deal with each intermediate commit.</p>
+<p>We can use the <code>revert</code> command as shown below in the
+Terminal. The <code>--no-commit</code> option is used to prevent us from
+having to deal with each intermediate commit.</p>
 <p> </p>
 <pre><code>git revert --no-commit d27e79f1..HEAD</code></pre>
 <p> </p>
-<p>Your <code>first_doc.Rmd</code> file will now revert back to the same state as it was when you did your ‘First commit’. Notice also that the <code>first_doc.pdf</code> file has been deleted as this wasn’t present when we made our first commit. You can now stage and commit these files with a new commit message and finally push them to GitHub. Notice that if we look at our commit history all of the commits we have made are still present.</p>
+<p>Your <code>first_doc.Rmd</code> file will now revert back to the same
+state as it was when you did your ‘First commit’. Notice also that the
+<code>first_doc.pdf</code> file has been deleted as this wasn’t present
+when we made our first commit. You can now stage and commit these files
+with a new commit message and finally push them to GitHub. Notice that
+if we look at our commit history all of the commits we have made are
+still present.</p>
 <p> </p>
 <p><img src="images/revert9.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -895,36 +1387,88 @@ git checkout 2b4693d1 .
 <div id="collab" class="section level3">
 <h3>Collaborate with Git</h3>
 <p> </p>
-<p>GitHub is a great tool for collaboration, it can seem scary and complicated at first, but it is worth investing some time to learn how it works. What makes GitHub so good for collaboration is that it is a <em>distributed system</em>, which means that every collaborator works on their own copy of the project and changes are then merged together in the remote repository. There are two main ways you can set up a collaborative project on GitHub. One is the workflow we went through above, where everybody connects their local repository to the same remote one; this system works well with small projects where different people mainly work on different aspects of the project but can quickly become unwieldy if many people are collaborating and are working on the same files (merge misery!). The second approach consists of every collaborator creating a copy (or <strong>fork</strong>) of the main repository, which becomes their remote repository. Every collaborator then needs to send a request (a <strong>pull request</strong>) to the owner of the main repository to incorporate any changes into the main repository and this includes a review process before the changes are integrated. More detail of these topics can be found in the <a href="#resources">Further resources</a> section.</p>
+<p>GitHub is a great tool for collaboration, it can seem scary and
+complicated at first, but it is worth investing some time to learn how
+it works. What makes GitHub so good for collaboration is that it is a
+<em>distributed system</em>, which means that every collaborator works
+on their own copy of the project and changes are then merged together in
+the remote repository. There are two main ways you can set up a
+collaborative project on GitHub. One is the workflow we went through
+above, where everybody connects their local repository to the same
+remote one; this system works well with small projects where different
+people mainly work on different aspects of the project but can quickly
+become unwieldy if many people are collaborating and are working on the
+same files (merge misery!). The second approach consists of every
+collaborator creating a copy (or <strong>fork</strong>) of the main
+repository, which becomes their remote repository. Every collaborator
+then needs to send a request (a <strong>pull request</strong>) to the
+owner of the main repository to incorporate any changes into the main
+repository and this includes a review process before the changes are
+integrated. More detail of these topics can be found in the <a
+href="#resources">Further resources</a> section.</p>
 <p> </p>
 </div>
 <div id="git-tips" class="section level3">
 <h3>Git tips</h3>
 <p> </p>
-<p>Generally speaking you should commit often (including amended commits) but push much less often. This makes collaboration easier and also makes the process of reverting to previous versions of documents much more straight forward. I generally only push changes to GitHub when I’m happy for my collaborators (or the rest of the world) to see my work. However, this is entirely up to you and depends on the project (and who you are working with) and what your priorities are when using Git.</p>
+<p>Generally speaking you should commit often (including amended
+commits) but push much less often. This makes collaboration easier and
+also makes the process of reverting to previous versions of documents
+much more straight forward. I generally only push changes to GitHub when
+I’m happy for my collaborators (or the rest of the world) to see my
+work. However, this is entirely up to you and depends on the project
+(and who you are working with) and what your priorities are when using
+Git.</p>
 <p> </p>
-<p>If you don’t want to track a file in your repository (maybe they are too large or transient files) you can get Git to ignore the file by right clicking on the filename in the Git pane and selecting ‘Ignore…’</p>
+<p>If you don’t want to track a file in your repository (maybe they are
+too large or transient files) you can get Git to ignore the file by
+right clicking on the filename in the Git pane and selecting
+‘Ignore…’</p>
 <p> </p>
 <p><img src="images/tip1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>This will add the filename to the <code>.gitignore</code> file. If you want to ignore multiple files or a particular type of file you can also include wildcards in the <code>.gitignore</code> file. For example to ignore all <code>png</code> files you can include the expression <code>*.png</code> in your <code>.gitignore</code> file and save.</p>
+<p>This will add the filename to the <code>.gitignore</code> file. If
+you want to ignore multiple files or a particular type of file you can
+also include wildcards in the <code>.gitignore</code> file. For example
+to ignore all <code>png</code> files you can include the expression
+<code>*.png</code> in your <code>.gitignore</code> file and save.</p>
 <p> </p>
-<p>If it all goes pear shaped and you end up completely trashing your Git repository don’t despair (we’ve all been there!). As long as your GitHub repository is good, all you need to do is delete the offending project directory on your computer, create a new RStudio project and link this with your remote GitHub repository using <a href="#opt2">Option 2</a>. Once you have cloned the remote repository you should be good to go.</p>
+<p>If it all goes pear shaped and you end up completely trashing your
+Git repository don’t despair (we’ve all been there!). As long as your
+GitHub repository is good, all you need to do is delete the offending
+project directory on your computer, create a new RStudio project and
+link this with your remote GitHub repository using <a
+href="#opt2">Option 2</a>. Once you have cloned the remote repository
+you should be good to go.</p>
 <p> </p>
 </div>
 </div>
 <div id="resources" class="section level2">
 <h2>Further resources</h2>
 <p> </p>
-<p>There are many good online guides to learn more about git and GitHub and as with any open source software there is a huge community that can be a great resource:</p>
+<p>There are many good online guides to learn more about git and GitHub
+and as with any open source software there is a huge community that can
+be a great resource:</p>
 <ul>
-<li><p>The British Ecological Society guide to <a href="https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf">Reproducible Code</a></p></li>
-<li><p>The <a href="https://guides.github.com/">GitHub guides</a></p></li>
-<li><p>The Mozilla Science Lab <a href="https://mozillascience.github.io/working-open-workshop/github_for_collaboration/">GitHub for Collaboration on Open Projects guide</a></p></li>
-<li><p>Jenny Bryan’s <a href="https://happygitwithr.com/">Happy Git and GitHub</a></p></li>
-<li><p>If you have done something terribly wrong and don’t know how to fix it try <a href="https://ohshitgit.com/">Oh Shit, Git</a> or if you’re easily offended <a href="https://dangitgit.com/">Dangit, Git</a></p></li>
+<li><p>The British Ecological Society guide to <a
+href="https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf">Reproducible
+Code</a></p></li>
+<li><p>The <a href="https://guides.github.com/">GitHub
+guides</a></p></li>
+<li><p>The Mozilla Science Lab <a
+href="https://mozillascience.github.io/working-open-workshop/github_for_collaboration/">GitHub
+for Collaboration on Open Projects guide</a></p></li>
+<li><p>Jenny Bryan’s <a href="https://happygitwithr.com/">Happy Git and
+GitHub</a></p></li>
+<li><p>If you have done something terribly wrong and don’t know how to
+fix it try <a href="https://ohshitgit.com/">Oh Shit, Git</a> or if
+you’re easily offended <a href="https://dangitgit.com/">Dangit,
+Git</a></p></li>
 </ul>
-<p>These are only a couple of examples, all you need to do is Google “version control with git and GitHub” to see how huge the community around these open source projects is and how many free resources are available for you to become a version control expert.</p>
+<p>These are only a couple of examples, all you need to do is Google
+“version control with git and GitHub” to see how huge the community
+around these open source projects is and how many free resources are
+available for you to become a version control expert.</p>
 </div>
 
 

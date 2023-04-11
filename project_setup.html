@@ -13,8 +13,8 @@
 
 <title>Setting up a reproducible project</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -54,6 +54,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -136,13 +137,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -177,6 +185,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -234,11 +245,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -267,8 +282,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -276,16 +291,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -408,7 +416,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -425,7 +433,7 @@ div.tocify {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -451,7 +459,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-university"></span>
      
     Learn R
@@ -477,7 +485,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-file-contract"></span>
      
     Exercises
@@ -517,7 +525,7 @@ div.tocify {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -597,27 +605,69 @@ div.tocify {
 
 
 <p> </p>
-<p>This short tutorial will introduce you to setting up and managing a project in RStudio to facilitate robust and reproducible research. We will also touch on creating an organised directory structure, giving files useful names, documenting data and workflows and good scripting practice.</p>
-<p>I estimate that this tutorial should take you roughly 30 minutes to 1 hour to complete in one sitting, but feel free to dip in and out over a longer period if that suits you better.</p>
-<p>This tutorial assumes that you have already installed the latest versions of R and RStudio. If you haven’t done this yet you can find instructions <a href="setup.html">here</a>.</p>
+<p>This short tutorial will introduce you to setting up and managing a
+project in RStudio to facilitate robust and reproducible research. We
+will also touch on creating an organised directory structure, giving
+files useful names, documenting data and workflows and good scripting
+practice.</p>
+<p>I estimate that this tutorial should take you roughly 30 minutes to 1
+hour to complete in one sitting, but feel free to dip in and out over a
+longer period if that suits you better.</p>
+<p>This tutorial assumes that you have already installed the latest
+versions of R and RStudio. If you haven’t done this yet you can find
+instructions <a href="setup.html">here</a>.</p>
 <p> </p>
 <div id="why-bother" class="section level2">
 <h2>Why bother?</h2>
 <p> </p>
-<p>As with most things in life, when it comes to dealing with data and data analysis things are so much simpler if you’re organised. Clear project organisation makes it easier for both you (especially the future you) and your collaborators to make sense of what you’ve done. There’s nothing more frustrating than coming back to a project months (sometimes years) later and have to spend days (or weeks) figuring out where everything is, what you did and why you did it. A well documented project that has a consistent and logical structure increases the liklihood that you can pick up where you left off with minimal fuss no matter how much time has passed. In addition, it’s much easier to write code to automate tasks when files are well organised and are sensibly named. This is even more relevant nowadays as it’s never been easier to collect vasts amount of data which can be saved across 1000’s or even 100,000’s of separate data files. Lastly, having a well organised project reduces the risk of introducing bugs or errors into your workflow and if they do occur (which inevitably they will at some point), it makes it easier to track down these errors and deal with them efficiently.</p>
-<p>Thankfully, there are some nice features in R and RStudio that make it quite easy to manage a project. There are also a few simple steps you can take right at the start of any project to help keep things shipshape.</p>
+<p>As with most things in life, when it comes to dealing with data and
+data analysis things are so much simpler if you’re organised. Clear
+project organisation makes it easier for both you (especially the future
+you) and your collaborators to make sense of what you’ve done. There’s
+nothing more frustrating than coming back to a project months (sometimes
+years) later and have to spend days (or weeks) figuring out where
+everything is, what you did and why you did it. A well documented
+project that has a consistent and logical structure increases the
+liklihood that you can pick up where you left off with minimal fuss no
+matter how much time has passed. In addition, it’s much easier to write
+code to automate tasks when files are well organised and are sensibly
+named. This is even more relevant nowadays as it’s never been easier to
+collect vasts amount of data which can be saved across 1000’s or even
+100,000’s of separate data files. Lastly, having a well organised
+project reduces the risk of introducing bugs or errors into your
+workflow and if they do occur (which inevitably they will at some
+point), it makes it easier to track down these errors and deal with them
+efficiently.</p>
+<p>Thankfully, there are some nice features in R and RStudio that make
+it quite easy to manage a project. There are also a few simple steps you
+can take right at the start of any project to help keep things
+shipshape.</p>
 <p> </p>
 </div>
 <div id="projects-in-rstudio" class="section level2">
 <h2>Projects in RStudio</h2>
 <p> </p>
-<p>A great way of keeping things organised is to use RStudio Projects. An RStudio Project keeps all of your R scripts, R markdown documents, R functions and data together in one place. The nice thing about RStudio Projects is that each project has its own directory, workspace, history and source documents so different analyses that you are working on are kept completely separate from each other. This means that you can have multiple instances of RStudio open at the same time (if that’s your thing) or you can switch very easily between projects without fear of them interfering with each other.</p>
-<p>To create a project, open RStudio and select <code>File</code> -&gt; <code>New Project...</code> from the menu. You can create either an entirely new project, a project from an existing directory or a version controlled project (see the <a href="Github_intro.html">GitHub tutorial</a> for further details about this). In this tutorial we will create a project in a new directory.</p>
+<p>A great way of keeping things organised is to use RStudio Projects.
+An RStudio Project keeps all of your R scripts, R markdown documents, R
+functions and data together in one place. The nice thing about RStudio
+Projects is that each project has its own directory, workspace, history
+and source documents so different analyses that you are working on are
+kept completely separate from each other. This means that you can have
+multiple instances of RStudio open at the same time (if that’s your
+thing) or you can switch very easily between projects without fear of
+them interfering with each other.</p>
+<p>To create a project, open RStudio and select <code>File</code> -&gt;
+<code>New Project...</code> from the menu. You can create either an
+entirely new project, a project from an existing directory or a version
+controlled project (see the <a href="Github_intro.html">GitHub
+tutorial</a> for further details about this). In this tutorial we will
+create a project in a new directory.</p>
 <p> </p>
 <p><img src="images/new_proj.png" width="60%" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
-<p>You can also create a new project by clicking on the ‘Project’ button in the top right of RStudio and selecting ‘New Project…’</p>
+<p>You can also create a new project by clicking on the ‘Project’ button
+in the top right of RStudio and selecting ‘New Project…’</p>
 <p> </p>
 <p><img src="images/new_proj1.png" width="30%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -625,43 +675,108 @@ div.tocify {
 <p> </p>
 <p><img src="images/new_proj2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now enter the name of the directory you want to create in the ‘Directory name:’ field (we’ll call it <code>first_project</code> for this tutorial). If you want to change the location of the directory on your computer click the ‘Browse…’ button and navigate to where you would like to create the directory. I always tick the ‘Open in new session’ box as well. Finally, hit the ‘Create Project’ to create the new project.</p>
+<p>Now enter the name of the directory you want to create in the
+‘Directory name:’ field (we’ll call it <code>first_project</code> for
+this tutorial). If you want to change the location of the directory on
+your computer click the ‘Browse…’ button and navigate to where you would
+like to create the directory. I always tick the ‘Open in new session’
+box as well. Finally, hit the ‘Create Project’ to create the new
+project.</p>
 <p> </p>
 <p><img src="images/new_proj3.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Once your new project has been created you will now have a new folder on your computer that contains an RStudio project file called <code>first_project.Rproj</code>. This <code>.Rproj</code> file contains various project options (but you shouldn’t really interact with it) and can also be used as a shortcut for opening the project directly from the file system (just double click on it). You can check this out in the ‘Files’ tab in RStudio (or in Finder if you’re on a Mac or File Explorer in Windows).</p>
+<p>Once your new project has been created you will now have a new folder
+on your computer that contains an RStudio project file called
+<code>first_project.Rproj</code>. This <code>.Rproj</code> file contains
+various project options (but you shouldn’t really interact with it) and
+can also be used as a shortcut for opening the project directly from the
+file system (just double click on it). You can check this out in the
+‘Files’ tab in RStudio (or in Finder if you’re on a Mac or File Explorer
+in Windows).</p>
 <p> </p>
 <p><img src="images/new_proj4.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>The last thing I suggest you do is select <code>Tools</code> -&gt; <code>Project Options...</code> from the menu. Click on the ‘General’ tab on the left hand side and then change the values for ‘Restore .RData into workspace at startup’ and ‘Save workspace to .RData on exit’ from ‘Default’ to ‘No’. This ensures that every time you open your project you start with a clean R session. You don’t have to do this (many people don’t) but I prefer to start with a completely clean workspace whenever I open my projects to avoid any potential conflicts with things I did in previous sessions. The downside to this is that you will need to rerun your R code every time you open you project.</p>
+<p>The last thing I suggest you do is select <code>Tools</code> -&gt;
+<code>Project Options...</code> from the menu. Click on the ‘General’
+tab on the left hand side and then change the values for ‘Restore .RData
+into workspace at startup’ and ‘Save workspace to .RData on exit’ from
+‘Default’ to ‘No’. This ensures that every time you open your project
+you start with a clean R session. You don’t have to do this (many people
+don’t) but I prefer to start with a completely clean workspace whenever
+I open my projects to avoid any potential conflicts with things I did in
+previous sessions. The downside to this is that you will need to rerun
+your R code every time you open you project.</p>
 <p> </p>
 <p><img src="images/new_proj5.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now that you have an RStudio project set up you can start creating R scripts (or <a href="Rmarkdown_intro.html">R markdown</a> documents) or whatever you need to complete you project. All of the R scripts will now be contained within the RStudio project and saved in the project folder.</p>
+<p>Now that you have an RStudio project set up you can start creating R
+scripts (or <a href="Rmarkdown_intro.html">R markdown</a> documents) or
+whatever you need to complete you project. All of the R scripts will now
+be contained within the RStudio project and saved in the project
+folder.</p>
 <p> </p>
 </div>
 <div id="working-directories" class="section level2">
 <h2>Working directories</h2>
 <p> </p>
-<p>The working directory is the default location where R will look for files you want to load and where it will put any files you save. One of the great things about using RStudio Projects is that when you open a project it will automatically set your working directory to the appropriate location. You can check the file path of your working directory by looking at bar at the top of the Console pane. Note: the <code>~</code> symbol above is shorthand for <code>/Users/nhy163/</code> on my Mac computer (the same on Linux computers).</p>
+<p>The working directory is the default location where R will look for
+files you want to load and where it will put any files you save. One of
+the great things about using RStudio Projects is that when you open a
+project it will automatically set your working directory to the
+appropriate location. You can check the file path of your working
+directory by looking at bar at the top of the Console pane. Note: the
+<code>~</code> symbol above is shorthand for <code>/Users/nhy163/</code>
+on my Mac computer (the same on Linux computers).</p>
 <p> </p>
 <p><img src="images/dir_struct.png" width="80%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>You can also use the <code>getwd()</code> function in the Console which returns the file path of the current working directory.</p>
+<p>You can also use the <code>getwd()</code> function in the Console
+which returns the file path of the current working directory.</p>
 <p> </p>
 <p><img src="images/dir_struct2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>In the example above, my working directory is a folder called ‘first_project’ which is a subfolder of "Teaching’ in my ‘Alex’ folder which in turn is in a ‘Documents’ folder located in the ‘nhy163’ folder which itself is in the ‘Users’ folder. On a Windows based computer my working directory would also include a drive letter (i.e. <code>C:/Users/nhy163/Documents/Alex/Teaching/first_project</code>).</p>
-<p>If you weren’t using an RStudio Project then you would have to set your working directory using the <code>setwd()</code> function at the start of every R script (something I did for many years).</p>
+<p>In the example above, my working directory is a folder called
+‘first_project’ which is a subfolder of “Teaching’ in my ‘Alex’ folder
+which in turn is in a ‘Documents’ folder located in the ‘nhy163’ folder
+which itself is in the ‘Users’ folder. On a Windows based computer my
+working directory would also include a drive letter
+(i.e. <code>C:/Users/nhy163/Documents/Alex/Teaching/first_project</code>).</p>
+<p>If you weren’t using an RStudio Project then you would have to set
+your working directory using the <code>setwd()</code> function at the
+start of every R script (something I did for many years).</p>
 <p> </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;/Users/nhy163/Documents/Alex/Teaching/first_project&#39;</span>)</span></code></pre></div>
 <p> </p>
-<p>However, the problem with <code>setwd()</code> is that it uses an <em>absolute</em> file path which is specific to the computer you are working on. If you want to send your script to someone else (or if you’re working on a different computer) this absolute file path is not going to work on your friend/colleagues computer as their directory configuration will be different (you are unlikely to have a directory structure <code>/Users/nhy163/Documents/Alex/Teaching/</code> on your computer). This results in a project that is not self-contained and not easily portable. RStudio solves this problem by allowing you to use <em>relative</em> file paths which are relative to the <em>Root</em> project directory. The Root project directory is just the directory that contains the <code>.Rproj</code> file (<code>first_project.Rproj</code> in our case). If you want to share your analysis with someone else, all you need to do is save the entire project directory and send to your to your collaborator. They would then just need to open the project file and any R scripts that contain references to relative file paths will just work. For example, let’s say that you’ve created a subdirectory called <code>raw_data</code> in your Root project directory that contains a tab delimited datafile called <code>mydata.txt</code> (we will cover directory structures below). To import this datafile in an RStudio project all you need to include in your R script is</p>
+<p>However, the problem with <code>setwd()</code> is that it uses an
+<em>absolute</em> file path which is specific to the computer you are
+working on. If you want to send your script to someone else (or if
+you’re working on a different computer) this absolute file path is not
+going to work on your friend/colleagues computer as their directory
+configuration will be different (you are unlikely to have a directory
+structure <code>/Users/nhy163/Documents/Alex/Teaching/</code> on your
+computer). This results in a project that is not self-contained and not
+easily portable. RStudio solves this problem by allowing you to use
+<em>relative</em> file paths which are relative to the <em>Root</em>
+project directory. The Root project directory is just the directory that
+contains the <code>.Rproj</code> file (<code>first_project.Rproj</code>
+in our case). If you want to share your analysis with someone else, all
+you need to do is save the entire project directory and send to your to
+your collaborator. They would then just need to open the project file
+and any R scripts that contain references to relative file paths will
+just work. For example, let’s say that you’ve created a subdirectory
+called <code>raw_data</code> in your Root project directory that
+contains a tab delimited datafile called <code>mydata.txt</code> (we
+will cover directory structures below). To import this datafile in an
+RStudio project all you need to include in your R script is</p>
 <p> </p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataf <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&#39;raw_data/mydata.txt&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>)</span></code></pre></div>
 <p> </p>
-<p>Because the file path <code>raw_data/mydata.txt</code> is relative to the project directory it doesn’t matter where you collaborator saves the project directory on their computer it will still work.</p>
-<p>If you weren’t using an RStudio project then you would have to use either of the options below neither of which would work on a different computer.</p>
+<p>Because the file path <code>raw_data/mydata.txt</code> is relative to
+the project directory it doesn’t matter where you collaborator saves the
+project directory on their computer it will still work.</p>
+<p>If you weren’t using an RStudio project then you would have to use
+either of the options below neither of which would work on a different
+computer.</p>
 <p> </p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/Users/nhy163/Documents/Alex/Teaching/first_project/&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -672,7 +787,14 @@ div.tocify {
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>dataf <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;/Users/nhy163/Documents/Alex/Teaching/first_project/raw_data/mydata.txt&quot;</span>,</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
 <p> </p>
-<p>For those of you who want to take the notion of relative file paths a step further, take a look at the <code>here()</code> function in the <code>here</code> <a href="https://github.com/r-lib/here">package</a>. The <code>here()</code> function allows you to automagically build file paths for any file relative to the project root directory that are also operating system agnostic (works on a Mac or Windows machine). For example, to import our <code>mydata.txt</code> file from the <code>raw_data</code> directory just use</p>
+<p>For those of you who want to take the notion of relative file paths a
+step further, take a look at the <code>here()</code> function in the
+<code>here</code> <a href="https://github.com/r-lib/here">package</a>.
+The <code>here()</code> function allows you to automagically build file
+paths for any file relative to the project root directory that are also
+operating system agnostic (works on a Mac or Windows machine). For
+example, to import our <code>mydata.txt</code> file from the
+<code>raw_data</code> directory just use</p>
 <p> </p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)  <span class="co"># you may need to install the here package first</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dataf <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">here</span>(<span class="st">&quot;raw_data&quot;</span>, <span class="st">&quot;mydata.txt&quot;</span>), <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>)</span>
@@ -685,7 +807,10 @@ div.tocify {
 <div id="directory-structure" class="section level2">
 <h2>Directory structure</h2>
 <p> </p>
-<p>In addition to using RStudio Projects, it’s also really good practice to structure your directory in a consistent and logical way to help both you and your collaborators. I frequently use the following directory structure in my R based projects</p>
+<p>In addition to using RStudio Projects, it’s also really good practice
+to structure your directory in a consistent and logical way to help both
+you and your collaborators. I frequently use the following directory
+structure in my R based projects</p>
 <p> </p>
 <pre><code>
     Root
@@ -706,21 +831,49 @@ div.tocify {
 <p> </p>
 <p>In my working directory I have the following directories:</p>
 <ul>
-<li><p><strong>Root</strong> - This is your project directory containing your .Rproj file.</p></li>
-<li><p><strong>data</strong> - I store all my data in this directory. The subdirectory called <code>raw_data</code> contains raw data files and only raw data files. These files should be treated as <strong>read only</strong> and should not be changed in any way. If you need to process/clean/modify your data do this in R (not MS Excel) as you can document (and justify) any changes made. Any processed data should be saved to a separate file and stored in the <code>processed_data</code> subdirectory. Information about data collection methods, details of data download and any other useful metadata should be saved in a text document (see README text files below) in the <code>metadata</code> subdirectory.</p></li>
-<li><p><strong>R</strong> - This is an optional directory where I save all of my custom R functions I have written for the current analysis. These can then be sourced into R using the <code>source()</code> function.</p></li>
-<li><p><strong>Rmd</strong> - An optional directory where I save my R markdown documents.</p></li>
-<li><p><strong>scripts</strong> - All of the main R scripts I have written for the current project are saved here.</p></li>
-<li><p><strong>output</strong> - Outputs from my R scripts such as plots, HTML files and data summaries are saved in this directory. This helps me and my collaborators distinguish what files are outputs and which are source files.</p></li>
+<li><p><strong>Root</strong> - This is your project directory containing
+your .Rproj file.</p></li>
+<li><p><strong>data</strong> - I store all my data in this directory.
+The subdirectory called <code>raw_data</code> contains raw data files
+and only raw data files. These files should be treated as <strong>read
+only</strong> and should not be changed in any way. If you need to
+process/clean/modify your data do this in R (not MS Excel) as you can
+document (and justify) any changes made. Any processed data should be
+saved to a separate file and stored in the <code>processed_data</code>
+subdirectory. Information about data collection methods, details of data
+download and any other useful metadata should be saved in a text
+document (see README text files below) in the <code>metadata</code>
+subdirectory.</p></li>
+<li><p><strong>R</strong> - This is an optional directory where I save
+all of my custom R functions I have written for the current analysis.
+These can then be sourced into R using the <code>source()</code>
+function.</p></li>
+<li><p><strong>Rmd</strong> - An optional directory where I save my R
+markdown documents.</p></li>
+<li><p><strong>scripts</strong> - All of the main R scripts I have
+written for the current project are saved here.</p></li>
+<li><p><strong>output</strong> - Outputs from my R scripts such as
+plots, HTML files and data summaries are saved in this directory. This
+helps me and my collaborators distinguish what files are outputs and
+which are source files.</p></li>
 </ul>
 <p> </p>
-<p>Of course, the structure described above is just what works for me most of the time and should be viewed as a starting point for your own needs. I tend to have a fairly consistent directory structure across my projects as this allows me to quickly orientate myself when I return to a project after a while. Having said that, different projects will have different requirements so I happily add and remove directories as required.</p>
+<p>Of course, the structure described above is just what works for me
+most of the time and should be viewed as a starting point for your own
+needs. I tend to have a fairly consistent directory structure across my
+projects as this allows me to quickly orientate myself when I return to
+a project after a while. Having said that, different projects will have
+different requirements so I happily add and remove directories as
+required.</p>
 <p> </p>
-<p>You can create your directory structure using Windows Explorer (or Finder on a Mac) or within RStudio by clicking on the ‘New folder’ button in the ‘Files’ pane.</p>
+<p>You can create your directory structure using Windows Explorer (or
+Finder on a Mac) or within RStudio by clicking on the ‘New folder’
+button in the ‘Files’ pane.</p>
 <p> </p>
 <p><img src="images/dir_struct3.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>An alternative approach is to use the <code>dir.create()</code> function in the R Console</p>
+<p>An alternative approach is to use the <code>dir.create()</code>
+function in the R Console</p>
 <p> </p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create directory called &#39;data&#39;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&#39;data&#39;</span>)</span>
@@ -737,33 +890,80 @@ div.tocify {
 <div id="file-names" class="section level2">
 <h2>File names</h2>
 <p> </p>
-<p>What you call your files matters more than you might think. Naming files is also more difficult than you think. The key requirement for a ‘good’ file name is that it’s informative whilst also being relatively short. This is not always an easy compromise and often requires some thought. Ideally you should try to avoid the following!</p>
+<p>What you call your files matters more than you might think. Naming
+files is also more difficult than you think. The key requirement for a
+‘good’ file name is that it’s informative whilst also being relatively
+short. This is not always an easy compromise and often requires some
+thought. Ideally you should try to avoid the following!</p>
 <p> </p>
 <div class="figure" style="text-align: center">
 <img src="images/xkcd_files.png" alt="source:https://xkcd.com/1459/" width="30%" />
 <p class="caption">
-source:<a href="https://xkcd.com/1459/" class="uri">https://xkcd.com/1459/</a>
+source:<a href="https://xkcd.com/1459/"
+class="uri">https://xkcd.com/1459/</a>
 </p>
 </div>
 <p> </p>
-<p>Although there’s not really a recognised standard approach to naming files (actually <a href="https://en.wikipedia.org/wiki/Filename">there is</a>, just not everyone uses it), there are a couple of things to bear in mind.</p>
+<p>Although there’s not really a recognised standard approach to naming
+files (actually <a href="https://en.wikipedia.org/wiki/Filename">there
+is</a>, just not everyone uses it), there are a couple of things to bear
+in mind.</p>
 <p> </p>
 <ul>
-<li><p>First, avoid using spaces in file names by replacing them with underscores or even hyphens. Why does this matter? One reason is that some command line software (especially many bioinformatic tools) won’t recognise a file name with a space and you’ll have to go through all sorts of shenanigans using escape characters to make sure spaces are handled correctly. Even if you don’t think you will ever use command line software you may be doing so indirectly. Take R markdown for example, if you want to render an R markdown document to pdf using the <code>rmarkdown</code> package you will actually be using a command line LaTeX engine under the hood. Another good reason not to use spaces in file names is that it makes searching for file names (or parts of file names) using <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> in R (or any other language) much more difficult.</p></li>
-<li><p>For the reasons given above, avoid using special characters (i.e. @£$%^&amp;*():;&lt;&gt;?{}/) in your file names.</p></li>
-<li><p>If you are versioning your files with sequential numbers (i.e. file1, file2, file3 …) and you have more than 9 files you should use 01, 02, 03 .. 10 as this will ensure the files are printed in the correct order (see what happens if you don’t). If you have more than 99 files then use 001, 002, 003 …etc.</p></li>
-<li><p>If your file names include dates, use the ISO 8601 format YYYY-MM-DD (or YYYYMMDD) to ensure your files are sorted in proper chronological order.</p></li>
-<li><p>Never use the word <em>final</em> in any file name - it never is!</p></li>
+<li><p>First, avoid using spaces in file names by replacing them with
+underscores or even hyphens. Why does this matter? One reason is that
+some command line software (especially many bioinformatic tools) won’t
+recognise a file name with a space and you’ll have to go through all
+sorts of shenanigans using escape characters to make sure spaces are
+handled correctly. Even if you don’t think you will ever use command
+line software you may be doing so indirectly. Take R markdown for
+example, if you want to render an R markdown document to pdf using the
+<code>rmarkdown</code> package you will actually be using a command line
+LaTeX engine under the hood. Another good reason not to use spaces in
+file names is that it makes searching for file names (or parts of file
+names) using <a
+href="https://en.wikipedia.org/wiki/Regular_expression">regular
+expressions</a> in R (or any other language) much more
+difficult.</p></li>
+<li><p>For the reasons given above, avoid using special characters
+(i.e. @£$%^&amp;*():;&lt;&gt;?{}/) in your file names.</p></li>
+<li><p>If you are versioning your files with sequential numbers
+(i.e. file1, file2, file3 …) and you have more than 9 files you should
+use 01, 02, 03 .. 10 as this will ensure the files are printed in the
+correct order (see what happens if you don’t). If you have more than 99
+files then use 001, 002, 003 …etc.</p></li>
+<li><p>If your file names include dates, use the ISO 8601 format
+YYYY-MM-DD (or YYYYMMDD) to ensure your files are sorted in proper
+chronological order.</p></li>
+<li><p>Never use the word <em>final</em> in any file name - it never
+is!</p></li>
 </ul>
 <p> </p>
-<p>Whatever file naming convention you decide to use, try to adopt early, stick with it and be consistent. You’ll thank me!</p>
+<p>Whatever file naming convention you decide to use, try to adopt
+early, stick with it and be consistent. You’ll thank me!</p>
 <p> </p>
 </div>
 <div id="project-documentation" class="section level2">
 <h2>Project documentation</h2>
 <p> </p>
-<p>A quick note or two about writing R code and creating R scripts. Unless you’re doing something really quick and dirty I suggest that you always write your R code as an R script. R scripts are what make R so useful. Not only do you have a complete record of your analysis, from data manipulation, visualisation and statistical analysis, you can also share this code (and data) with friends, colleagues and importantly when you submit and publish your research to a journal. With this in mind, make sure you include in your R script all the information required to make your work reproducible (author names, dates, sampling design etc). This information could be included as a series of comments <code>#</code> or, even better, by mixing executable code with narrative into an <a href="#Rmarkdown_intro.html">R markdown</a> document. It’s also good practice to include the output of the <code>sessionInfo()</code> function at the end of any script which prints the R version, details of the operating system and also loaded packages.</p>
-<p>Here is an example of including meta-information at the start of an R script</p>
+<p>A quick note or two about writing R code and creating R scripts.
+Unless you’re doing something really quick and dirty I suggest that you
+always write your R code as an R script. R scripts are what make R so
+useful. Not only do you have a complete record of your analysis, from
+data manipulation, visualisation and statistical analysis, you can also
+share this code (and data) with friends, colleagues and importantly when
+you submit and publish your research to a journal. With this in mind,
+make sure you include in your R script all the information required to
+make your work reproducible (author names, dates, sampling design etc).
+This information could be included as a series of comments
+<code>#</code> or, even better, by mixing executable code with narrative
+into an <a href="#Rmarkdown_intro.html">R markdown</a> document. It’s
+also good practice to include the output of the
+<code>sessionInfo()</code> function at the end of any script which
+prints the R version, details of the operating system and also loaded
+packages.</p>
+<p>Here is an example of including meta-information at the start of an R
+script</p>
 <p> </p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Title: Time series analysis of snouters</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -793,18 +993,55 @@ source:<a href="https://xkcd.com/1459/" class="uri">https://xkcd.com/1459/</a>
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <p> </p>
-<p>This is just one example and there are no hard and fast rules so feel free to develop a system that works for you. A really useful shortcut in RStudio is to automatically include a time and date stamp in your R script. To do this, write <code>ts</code> where you want to insert your time stamp in your R script and then press the ‘shift + tab’ keys. RStudio will magically convert <code>ts</code> into the current date and time and also automatically comment out this line with a <code>#</code>. Another really useful RStudio shortcut is to comment out multiple lines in your script with a <code>#</code> symbol. To do this, highlight the lines of text you want to comment and then press ‘ctrl + shift + c’. To uncomment the lines just use ‘ctrl + shift + c’ again.</p>
-<p>In addition to including metadata in your R scripts it’s also common practice to create a separate text file to record important information. By convention these text files are named <code>README</code>. I often include a <code>README</code> file in the directory where I keep my raw data. In this file I include details about when data were collected (or downloaded), how data were collected, information about specialised equipment, preservation methods, type and version of any machines used (i.e. sequencing equipment) etc. You can create a README file for your project in RStudio by clicking on the <code>File</code> -&gt; <code>New File</code> -&gt; <code>Text File</code> menu.</p>
+<p>This is just one example and there are no hard and fast rules so feel
+free to develop a system that works for you. A really useful shortcut in
+RStudio is to automatically include a time and date stamp in your R
+script. To do this, write <code>ts</code> where you want to insert your
+time stamp in your R script and then press the ‘shift + tab’ keys.
+RStudio will magically convert <code>ts</code> into the current date and
+time and also automatically comment out this line with a <code>#</code>.
+Another really useful RStudio shortcut is to comment out multiple lines
+in your script with a <code>#</code> symbol. To do this, highlight the
+lines of text you want to comment and then press ‘ctrl + shift + c’. To
+uncomment the lines just use ‘ctrl + shift + c’ again.</p>
+<p>In addition to including metadata in your R scripts it’s also common
+practice to create a separate text file to record important information.
+By convention these text files are named <code>README</code>. I often
+include a <code>README</code> file in the directory where I keep my raw
+data. In this file I include details about when data were collected (or
+downloaded), how data were collected, information about specialised
+equipment, preservation methods, type and version of any machines used
+(i.e. sequencing equipment) etc. You can create a README file for your
+project in RStudio by clicking on the <code>File</code> -&gt;
+<code>New File</code> -&gt; <code>Text File</code> menu.</p>
 <p> </p>
 </div>
 <div id="r-style-guide" class="section level2">
 <h2>R style guide</h2>
 <p> </p>
-<p>How you write your code is more or less up to you although your goal should be to make it as easy to read as possible (for you and others). Whilst there are no rules (and no code police), I encourage you to get into the habit of writing readable R code by adopting a particular style. I suggest that you follow Google’s <a href="https://google.github.io/styleguide/Rguide.html">R style guide</a> whenever possible. This style guide will help you decide where to use spaces, how to indent code and how to use square <code>[ ]</code> and curly <code>{ }</code> brackets amongst other things. If all that sounds like too much hard work you can install the <code>styler</code> package which includes an RStudio add-in to allow you to automatically restyle selected code (or entire files and projects) with the click of your mouse. You can find more information about the <code>styler</code> package including how to install <a href="https://www.tidyverse.org/blog/2017/12/styler-1.0.0/">here</a>. Once installed, you can highlight the code you want to restyle, click on the ‘Addins’ button at the top of RStudio and select the ‘Style Selection’ option. Here is an example of poorly formatted R code</p>
+<p>How you write your code is more or less up to you although your goal
+should be to make it as easy to read as possible (for you and others).
+Whilst there are no rules (and no code police), I encourage you to get
+into the habit of writing readable R code by adopting a particular
+style. I suggest that you follow Google’s <a
+href="https://google.github.io/styleguide/Rguide.html">R style guide</a>
+whenever possible. This style guide will help you decide where to use
+spaces, how to indent code and how to use square <code>[ ]</code> and
+curly <code>{ }</code> brackets amongst other things. If all that sounds
+like too much hard work you can install the <code>styler</code> package
+which includes an RStudio add-in to allow you to automatically restyle
+selected code (or entire files and projects) with the click of your
+mouse. You can find more information about the <code>styler</code>
+package including how to install <a
+href="https://www.tidyverse.org/blog/2017/12/styler-1.0.0/">here</a>.
+Once installed, you can highlight the code you want to restyle, click on
+the ‘Addins’ button at the top of RStudio and select the ‘Style
+Selection’ option. Here is an example of poorly formatted R code</p>
 <p> </p>
 <p><img src="images/before_rcode.png" width="75%" style="display: block; margin: auto;" /></p>
 <p> </p>
-<p>Now highlight the code and use the <code>styler</code> package to reformat</p>
+<p>Now highlight the code and use the <code>styler</code> package to
+reformat</p>
 <p> </p>
 <p><img src="images/styler.png" width="60%" style="display: block; margin: auto;" /></p>
 <p> </p>
@@ -816,9 +1053,35 @@ source:<a href="https://xkcd.com/1459/" class="uri">https://xkcd.com/1459/</a>
 <div id="backing-up-projects" class="section level2">
 <h2>Backing up projects</h2>
 <p> </p>
-<p>Don’t be that person who loses hard won (and often expensive) data and analyses. Don’t be that person who thinks it’ll never happen to me - it will! Always think of the absolute worst case scenario, something that makes you wake up in a cold sweat at night, and do all you can to make sure this never happens. Just to be clear, if you’re relying on copying your precious files to an external hard disk or USB stick this is <strong>NOT</strong> an effective backup strategy. These things go wrong all the time as you lob them into your rucksack or ‘bag for life’ and then lug them between your office and home. Even if you do leave them plugged into your computer what happens when the building burns down (I did say worst case!)?</p>
-<p>Ideally, your backups should be offsite and incremental. Happily there are numerous options for backing up your files. The first place to look is in your own institute. Most (all?) Universities have some form of network based storage that should be easily accessible and is also underpinned by a comprehensive disaster recovery plan. Other options include cloud based services such as Google Docs and Dropbox (to name but a few), but make sure you’re not storing sensitive data on these services and are comfortable with the often eye watering privacy policies.</p>
-<p>Whilst these services are pretty good at storing files, they don’t really help with incremental backups. Finding previous versions of files often involves spending inordinate amounts of time trawling through multiple files named <em>‘final.doc’</em>, <em>‘final_v2.doc’</em> and <em>‘final_usethisone.doc’</em> etc until you find the one you were looking for. The best way I know for both backing up files and managing different versions of files is to use Git and GitHub. To find out more about how you can use RStudio, Git and GitHub together see this <a href="Github_intro.html">tutorial</a>.</p>
+<p>Don’t be that person who loses hard won (and often expensive) data
+and analyses. Don’t be that person who thinks it’ll never happen to me -
+it will! Always think of the absolute worst case scenario, something
+that makes you wake up in a cold sweat at night, and do all you can to
+make sure this never happens. Just to be clear, if you’re relying on
+copying your precious files to an external hard disk or USB stick this
+is <strong>NOT</strong> an effective backup strategy. These things go
+wrong all the time as you lob them into your rucksack or ‘bag for life’
+and then lug them between your office and home. Even if you do leave
+them plugged into your computer what happens when the building burns
+down (I did say worst case!)?</p>
+<p>Ideally, your backups should be offsite and incremental. Happily
+there are numerous options for backing up your files. The first place to
+look is in your own institute. Most (all?) Universities have some form
+of network based storage that should be easily accessible and is also
+underpinned by a comprehensive disaster recovery plan. Other options
+include cloud based services such as Google Docs and Dropbox (to name
+but a few), but make sure you’re not storing sensitive data on these
+services and are comfortable with the often eye watering privacy
+policies.</p>
+<p>Whilst these services are pretty good at storing files, they don’t
+really help with incremental backups. Finding previous versions of files
+often involves spending inordinate amounts of time trawling through
+multiple files named <em>‘final.doc’</em>, <em>‘final_v2.doc’</em> and
+<em>‘final_usethisone.doc’</em> etc until you find the one you were
+looking for. The best way I know for both backing up files and managing
+different versions of files is to use Git and GitHub. To find out more
+about how you can use RStudio, Git and GitHub together see this <a
+href="Github_intro.html">tutorial</a>.</p>
 <p> </p>
 <p> </p>
 </div>

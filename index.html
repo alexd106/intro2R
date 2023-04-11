@@ -13,8 +13,8 @@
 
 <title>An Introduction to R</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -60,6 +60,7 @@
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -137,11 +141,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -170,8 +178,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -179,16 +187,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -232,7 +233,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -249,7 +250,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-book"></span>
      
     R Book
@@ -275,7 +276,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-university"></span>
      
     Learn R
@@ -301,7 +302,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-file-contract"></span>
      
     Exercises
@@ -341,7 +342,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-question-circle"></span>
      
     Info
@@ -424,8 +425,23 @@ $(document).ready(function () {
 <div id="course-introduction" class="section level3">
 <h3>Course Introduction</h3>
 <p> </p>
-<p>Welcome to our <em>Introduction to R</em> training course. During this course we hope to introduce you to using R, an interactive environment for statistical computing. R in itself is not difficult to learn, but just like any new language the initial learning curve can be a little steep and you will need to use it frequently otherwise it’s easy to forget.</p>
-<p>A few notes about this course. We have tried to simplify the content of this course as much as possible and have based it on 15 years experience teaching (and learning!) R. It is not intended as an introductory statistics course, although we will be using some basic statistics to highlight some of R’s capabilities. Our aim is to help you climb the initial learning curve and provide you with the basic skills to enable you to further your experience in using R. We have included a number of practical <a href="exercises.html">exercises</a> for you to work through during the course and encourage you complete these in your own time - you certainly won’t learn how to use R by watching other people do it!</p>
+<p>Welcome to our <em>Introduction to R</em> training course. During
+this course we hope to introduce you to using R, an interactive
+environment for statistical computing. R in itself is not difficult to
+learn, but just like any new language the initial learning curve can be
+a little steep and you will need to use it frequently otherwise it’s
+easy to forget.</p>
+<p>A few notes about this course. We have tried to simplify the content
+of this course as much as possible and have based it on 15 years
+experience teaching (and learning!) R. It is not intended as an
+introductory statistics course, although we will be using some basic
+statistics to highlight some of R’s capabilities. Our aim is to help you
+climb the initial learning curve and provide you with the basic skills
+to enable you to further your experience in using R. We have included a
+number of practical <a href="exercises.html">exercises</a> for you to
+work through during the course and encourage you complete these in your
+own time - you certainly won’t learn how to use R by watching other
+people do it!</p>
 <p> </p>
 <hr />
 </div>
@@ -434,32 +450,102 @@ $(document).ready(function () {
 <p> </p>
 <div id="how-do-i-use-this-website" class="section level4">
 <h4>How do I use this website?</h4>
-<p>How you use this website to support your learning and understanding of R is of course up to you. Having said that here are few pointers that have worked for people in the past. The first thing you will need to do is download and install both R and RStudio on your computer. Take a look at the <strong><i class="fa fa-cog" aria-hidden="true"></i> Setup</strong> link on the navbar at the top of this page for further instructions on how to set up your computer and download the required datasets. At the heart of this course is our ‘Introduction to R book’ which you can find by clicking on the <strong><i class="fa fa-book" aria-hidden="true"></i> R Book</strong> link in the navbar. The book is split into 9 Chapters which cover different aspects of using R and RStudio, from general orientation, basic R operations, importing and manipulating data, plotting data, programming in R, R markdown and using version control. You can test your understanding of each of these components by completing the associated exercises which you can find by clicking on <strong><i class="fa fa-file-contract" aria-hidden="true"></i> Exercises</strong>. You will also find the solutions to the exercises here but we suggest that you don’t peek at the solutions too quickly and only use them to confirm your answers or if you get stuck and feel like throwing your keyboard out of the window! There are also some additional resources such as lecture slides we use during our in person courses, short how-to videos walking you through some important topics which you can find in the <strong><i class="fa fa-university" aria-hidden="true"></i> Learn R</strong> link. We’ve also created some stand alone tutorials covering topics such as RStudio Projects, R markdown and version control using Git and GitHub which can be found under the <strong><i class="fa fa-desktop" aria-hidden="true"></i> Tutorials</strong> link. We suggest that you take a look at the tutorials once you’ve finished the core part of this course.</p>
+<p>How you use this website to support your learning and understanding
+of R is of course up to you. Having said that here are few pointers that
+have worked for people in the past. The first thing you will need to do
+is download and install both R and RStudio on your computer. Take a look
+at the <strong><i class="fa fa-cog" aria-hidden="true"></i>
+Setup</strong> link on the navbar at the top of this page for further
+instructions on how to set up your computer and download the required
+datasets. At the heart of this course is our ‘Introduction to R book’
+which you can find by clicking on the
+<strong><i class="fa fa-book" aria-hidden="true"></i> R Book</strong>
+link in the navbar. The book is split into 9 Chapters which cover
+different aspects of using R and RStudio, from general orientation,
+basic R operations, importing and manipulating data, plotting data,
+programming in R, R markdown and using version control. You can test
+your understanding of each of these components by completing the
+associated exercises which you can find by clicking on
+<strong><i class="fa fa-file-contract" aria-hidden="true"></i>
+Exercises</strong>. You will also find the solutions to the exercises
+here but we suggest that you don’t peek at the solutions too quickly and
+only use them to confirm your answers or if you get stuck and feel like
+throwing your keyboard out of the window! There are also some additional
+resources such as lecture slides we use during our in person courses,
+short how-to videos walking you through some important topics which you
+can find in the
+<strong><i class="fa fa-university" aria-hidden="true"></i> Learn
+R</strong> link. We’ve also created some stand alone tutorials covering
+topics such as RStudio Projects, R markdown and version control using
+Git and GitHub which can be found under the
+<strong><i class="fa fa-desktop" aria-hidden="true"></i>
+Tutorials</strong> link. We suggest that you take a look at the
+tutorials once you’ve finished the core part of this course.</p>
 <p> </p>
 </div>
-<div id="what-are-the-pre-requisites-for-this-course" class="section level4">
+<div id="what-are-the-pre-requisites-for-this-course"
+class="section level4">
 <h4>What are the pre-requisites for this course?</h4>
-<p>This course assumes no previous experience or knowledge of using either R or RStudio. It also doesn’t assume any knowledge of programming or using a command-line interface, but if you have some experience, the content won’t come as so much of a shock. But don’t panic. Command-line interfaces and programming languages like R are incredibly powerful and will be utterly transformative to your research. There’s a learning curve, and it’s pretty steep in the beginning, but it’s surmountable and the payoff is worth it!</p>
+<p>This course assumes no previous experience or knowledge of using
+either R or RStudio. It also doesn’t assume any knowledge of programming
+or using a command-line interface, but if you have some experience, the
+content won’t come as so much of a shock. But don’t panic. Command-line
+interfaces and programming languages like R are incredibly powerful and
+will be utterly transformative to your research. There’s a learning
+curve, and it’s pretty steep in the beginning, but it’s surmountable and
+the payoff is worth it!</p>
 <p> </p>
 </div>
 <div id="why-are-you-not-teaching-us-tidyverse" class="section level4">
 <h4>Why are you not teaching us ‘tidyverse’?</h4>
-<p>We have thought long and hard about whether to teach this course only using the <a href="https://www.tidyverse.org/" target="_blank">‘tidyverse’</a> collection of packages and approaches (if you’ve never heard of ‘tidyverse’ before then don’t worry about it!). Although we do cover the tidyverse package ‘ggplot2’, we decided that it was more important that by the end of the course you have a good fundamental grasp of base R which will provide you with the foundation to go on and learn ‘tidyverse’ approaches in your own time (if you want to). Having said that, if you have previous experience using ‘tidyverse’ then feel free to complete the course exercises using this approach.</p>
+<p>We have thought long and hard about whether to teach this course only
+using the <a href="https://www.tidyverse.org/"
+target="_blank">‘tidyverse’</a> collection of packages and approaches
+(if you’ve never heard of ‘tidyverse’ before then don’t worry about
+it!). Although we do cover the tidyverse package ‘ggplot2’, we decided
+that it was more important that by the end of the course you have a good
+fundamental grasp of base R which will provide you with the foundation
+to go on and learn ‘tidyverse’ approaches in your own time (if you want
+to). Having said that, if you have previous experience using ‘tidyverse’
+then feel free to complete the course exercises using this approach.</p>
 <p> </p>
 </div>
 <div id="i-dont-likewant-to-use-rstudio" class="section level4">
 <h4>I don’t like/want to use RStudio</h4>
-<p>Not a problem. Feel free to use the IDE or script editor of your choice. One of the great things about R is that <em>YOU</em> decide how you want to use it. See <a href="https://alexd106.github.io/Rbook/alternatives-to-rstudio.html">Chapter 1</a> of our ‘Introduction to R’ book for some suggested alternatives.</p>
+<p>Not a problem. Feel free to use the IDE or script editor of your
+choice. One of the great things about R is that <em>YOU</em> decide how
+you want to use it. See <a
+href="https://alexd106.github.io/Rbook/alternatives-to-rstudio.html">Chapter
+1</a> of our ‘Introduction to R’ book for some suggested
+alternatives.</p>
 <p> </p>
 </div>
 <div id="what-do-i-do-once-i-finish-the-course" class="section level4">
 <h4>What do I do once I finish the course?</h4>
-<p>The only way to get more comfortable using R is to use R! We strongly suggest that having completed this course you start using R to summarise, manipulate, plot and analyse your own data as soon as possible. If you don’t have any data yet, then ask your friends/supervisor/family for some (I’m sure they will be delighted!) or follow one of the many excellent tutorials available online (see the <a href="resources.html">resources</a> page for more information). Our suggestion to you, is that whilst you are getting to grips with R, uninstall any other statistics software you have on your computer and only use R. This may seem a little extreme but will hopefully remove the temptation to ‘just do it quickly’ in a more familiar environment and consequently slow down your learning of R. Believe us, anything you can do in your existing statistics software package you can do in R (often better and more efficiently).</p>
+<p>The only way to get more comfortable using R is to use R! We strongly
+suggest that having completed this course you start using R to
+summarise, manipulate, plot and analyse your own data as soon as
+possible. If you don’t have any data yet, then ask your
+friends/supervisor/family for some (I’m sure they will be delighted!) or
+follow one of the many excellent tutorials available online (see the <a
+href="resources.html">resources</a> page for more information). Our
+suggestion to you, is that whilst you are getting to grips with R,
+uninstall any other statistics software you have on your computer and
+only use R. This may seem a little extreme but will hopefully remove the
+temptation to ‘just do it quickly’ in a more familiar environment and
+consequently slow down your learning of R. Believe us, anything you can
+do in your existing statistics software package you can do in R (often
+better and more efficiently).</p>
 <p> </p>
 </div>
 <div id="can-i-give-you-feedback-on-this-course" class="section level4">
 <h4>Can I give you feedback on this course?</h4>
-<p>Yes please do! We welcome any and all constructive feedback to help improve this resource. You can find a short (3 minute) feedback form to complete by following this <a href="https://forms.gle/U7MbyhRWyLomjyFY7">link</a>. All feed back is anonymous and only used to help us improve our course material. Many thanks.</p>
+<p>Yes please do! We welcome any and all constructive feedback to help
+improve this resource. You can find a short (3 minute) feedback form to
+complete by following this <a
+href="https://forms.gle/U7MbyhRWyLomjyFY7">link</a>. All feed back is
+anonymous and only used to help us improve our course material. Many
+thanks.</p>
 </div>
 </div>
 
