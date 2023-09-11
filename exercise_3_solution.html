@@ -100,11 +100,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -113,14 +113,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -570,7 +570,7 @@ a good free alternative) and save it as a tab delimited file type (see
 <a
 href="https://intro2r.com/importing-data.html#saving-files-to-import">Section
 3.3.1</a> of the Introduction to R book or watch this <a
-href="https://alexd106.github.io/PGR-R/howto.html#import-vid">video</a>
+href="https://alexd106.github.io/BI5009/howto.html#import-vid">video</a>
 if you’re not sure how to do this). Name the file
 <em>‘whaledata.txt’</em> and save it to the <code>data</code> directory.
 If you’re a Windows user be careful with file extensions (things like
@@ -606,11 +606,12 @@ appropriate arguments when using the <code>read.table()</code> function
 name (such as <code>whale</code>). Take a look at <a
 href="https://intro2r.com/importing-data.html#import_fnc">Section
 3.2.2</a> of the Introduction to R book or watch this <a
-href="https://alexd106.github.io/PGR-R/howto.html#import-vid">video</a>
+href="https://alexd106.github.io/BI5009/howto.html#import-vid">video</a>
 if you need any further information.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>whale <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&#39;data/whaledata.txt&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>whale <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&#39;data/whaledata.txt&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>                    <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p> </p>
-<p>6. Once you’ve imported your data file nothing much seems to happen
+<p>6. Once you have imported your data file nothing much seems to happen
 (don’t worry, this is normal). To examine the contents of the dataframe
 one option would be to just type the variable name (<code>whale</code>)
 into the console. This is probably not a good idea and doesn’t really
@@ -628,23 +629,23 @@ copy this information from the console and paste it into your R script
 does this dataset have? How many variables are in this dataset? What
 type of variables are <code>month</code> and
 <code>water.noise</code>?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(whale)         <span class="co"># display the first 5 rows </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(whale)        <span class="co"># display the variable names</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(whale)          <span class="co"># display the structure of the dataframe whale</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;data.frame&#39;: 100 obs. of  8 variables:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ month          : Factor w/ 2 levels &quot;May&quot;,&quot;October&quot;: 1 1 1 1 ...</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ time.at.station: int  1344 1633 743 1050 1764 580 459 ...</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ water.noise    : Factor w/ 3 levels &quot;high&quot;,&quot;low&quot;,&quot;medium&quot;: 2 3 3 3 ...</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ number.whales  : int  7 13 12 10 12 10 5 8 11 12 ...</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ latitude       : num  60.4 60.4 60.5 60.3 60.4 ...</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ longitude      : num  -4.18 -4.19 -4.62 -4.35 -5.2 ...</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ depth          : int  520 559 1006 540 1000 1000 993 988 ...</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#  $ gradient       : int  415 405 88 409 97 173 162 162 245 161 ..</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># the dataframe whale has 100 observations</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># the dataframe whale has 8 variables</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># the variables month and water.noise are factors</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">head</span>(whale)         <span class="co"># display the first 5 rows </span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">names</span>(whale)        <span class="co"># display the variable names</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">str</span>(whale)          <span class="co"># display the structure of the dataframe whale</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># &#39;data.frame&#39;: 100 obs. of  8 variables:</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#  $ month          : Factor w/ 2 levels &quot;May&quot;,&quot;October&quot;: 1 1 1 1 ...</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#  $ time.at.station: int  1344 1633 743 1050 1764 580 459 ...</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#  $ water.noise    : Factor w/ 3 levels &quot;high&quot;,&quot;low&quot;,&quot;medium&quot;: 2 3 3 3 ...</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#  $ number.whales  : int  7 13 12 10 12 10 5 8 11 12 ...</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#  $ latitude       : num  60.4 60.4 60.5 60.3 60.4 ...</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#  $ longitude      : num  -4.18 -4.19 -4.62 -4.35 -5.2 ...</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#  $ depth          : int  520 559 1006 540 1000 1000 993 988 ...</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#  $ gradient       : int  415 405 88 409 97 173 162 162 245 161 ..</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co"># the dataframe whale has 100 observations</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co"># the dataframe whale has 8 variables</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co"># the variables month and water.noise are factors</span></span></code></pre></div>
 <p> </p>
 <p>7. You can get another useful summary of your dataframe by using the
 <code>summary()</code> function. This will provide you with some useful
@@ -653,20 +654,20 @@ depends on whether the variable is a factor or a number. Another useful
 feature of the <code>summary()</code> function is that it will also
 count the number of missing values in each variable. Which variables
 have missing values and how many?</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(whale)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: I have removed the last 3 column information to save space!</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#    month    time.at.station  water.noise number.whales      latitude        </span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a> <span class="co"># May    :50   Min.   :  60.0   high  :15   Min.   : 0.00   Min.   :60.29   </span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># October:50   1st Qu.: 693.8   low   :28   1st Qu.: 9.00   1st Qu.:60.69   </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a> <span class="co">#              Median :1077.5   medium:57   Median :11.00   Median :61.29  </span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a> <span class="co">#              Mean   :1064.7               Mean   :11.56   Mean   :61.16  </span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> <span class="co">#              3rd Qu.:1349.2               3rd Qu.:14.00   3rd Qu.:61.59     </span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a> <span class="co">#              Max.   :2158.0               Max.   :28.00   Max.   :62.10     </span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a> <span class="co">#                                           NA&#39;s   :1    </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># the variable number.whales has one missing value (NA)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">summary</span>(whale)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: I have removed the last 3 column information to save space!</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a> <span class="co">#    month    time.at.station  water.noise number.whales      latitude        </span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a> <span class="co"># May    :50   Min.   :  60.0   high  :15   Min.   : 0.00   Min.   :60.29   </span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a> <span class="co"># October:50   1st Qu.: 693.8   low   :28   1st Qu.: 9.00   1st Qu.:60.69   </span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a> <span class="co">#              Median :1077.5   medium:57   Median :11.00   Median :61.29  </span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a> <span class="co">#              Mean   :1064.7               Mean   :11.56   Mean   :61.16  </span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a> <span class="co">#              3rd Qu.:1349.2               3rd Qu.:14.00   3rd Qu.:61.59     </span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a> <span class="co">#              Max.   :2158.0               Max.   :28.00   Max.   :62.10     </span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a> <span class="co">#                                           NA&#39;s   :1    </span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co"># the variable number.whales has one missing value (NA)</span></span></code></pre></div>
 <p> </p>
 <p>8. Summarising and manipulating dataframes is a key skill to acquire
 when learning R. Although there are many ways to do this, we will
@@ -677,7 +678,7 @@ you used previously with vectors. The key thing to remember when using
 which columns you want inside the <code>[ ]</code> (see <a
 href="https://intro2r.com/wrangling-data-frames.html#positional-indexes">Section
 3.4.1</a> and this <a
-href="https://alexd106.github.io/PGR-R/howto.html#dataw-vid">video</a>
+href="https://alexd106.github.io/BI5009/howto.html#dataw-vid">video</a>
 for some additional background information and a few examples). Let’s
 practice.</p>
 <ol style="list-style-type: lower-alpha">
@@ -696,23 +697,23 @@ columns except the last column. Remember, for some of these questions
 you can specify the columns you want either by position or by name.
 Practice both ways. Do you have a preference? If so why?</p></li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first 10 rows and first 4 columns</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>whale.sub <span class="ot">&lt;-</span> whale[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]                                      </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows and columns 1, 3 and 6</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>whale.num <span class="ot">&lt;-</span> whale[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative way of indexing columns with named indexes</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>whale.num <span class="ot">&lt;-</span> whale[, <span class="fu">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;water.noise&quot;</span>, <span class="st">&quot;number.whales&quot;</span>)]    </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># first 50 rows and all columns</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>whale.may <span class="ot">&lt;-</span> whale[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, ]  </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding first 10 rows and last column using negative indexing</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="dv">8</span>]  </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># more general way if you have lots of columns</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="fu">c</span>(<span class="fu">ncol</span>(whale))] </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: this doesn&#39;t work for named columns</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="fu">c</span>(<span class="st">&quot;gradient&quot;</span>)]   </span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># first 10 rows and first 4 columns</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>whale.sub <span class="ot">&lt;-</span> whale[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]                                      </span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># all rows and columns 1, 3 and 6</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>whale.num <span class="ot">&lt;-</span> whale[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)] </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># alternative way of indexing columns with named indexes</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>whale.num <span class="ot">&lt;-</span> whale[, <span class="fu">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;water.noise&quot;</span>, <span class="st">&quot;number.whales&quot;</span>)]    </span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co"># first 50 rows and all columns</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>whale.may <span class="ot">&lt;-</span> whale[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, ]  </span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># excluding first 10 rows and last column using negative indexing</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="dv">8</span>]  </span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co"># more general way if you have lots of columns</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="fu">c</span>(<span class="fu">ncol</span>(whale))] </span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: this doesn&#39;t work for named columns</span></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>whale.last <span class="ot">&lt;-</span> whale[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="sc">-</span><span class="fu">c</span>(<span class="st">&quot;gradient&quot;</span>)]   </span></code></pre></div>
 <p> </p>
 <p>9. In addition to extracting rows and columns from your dataframe by
 position you can also use conditional statements to select particular
@@ -734,26 +735,28 @@ than the median value of gradient (132)</li>
 -6.0 and -4.0</li>
 <li>all rows that do not have a water noise level of medium</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>whale<span class="fl">.1200</span> <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>depth <span class="sc">&gt;</span> <span class="dv">1200</span>, ]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>whale<span class="fl">.200</span> <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="dv">200</span>, ]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>whale.low <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span>, ]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>whale.h.may <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;high&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;May&quot;</span>, ]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>whale.subset <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="dv">132</span>, ]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>whale.lat.long <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>latitude <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>latitude <span class="sc">&lt;</span> <span class="dv">61</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>longitude <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">6</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>longitude <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">4</span>, ]</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>whale.nomed <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">!=</span> <span class="st">&quot;medium&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>whale<span class="fl">.1200</span> <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>depth <span class="sc">&gt;</span> <span class="dv">1200</span>, ]</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>whale<span class="fl">.200</span> <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="dv">200</span>, ]</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>whale.low <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span>, ]</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>whale.h.may <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;high&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;May&quot;</span>, ]</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>whale.subset <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="dv">132</span>, ]</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>whale.lat.long <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>latitude <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>latitude <span class="sc">&lt;</span> <span class="dv">61</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>longitude <span class="sc">&gt;</span> <span class="sc">-</span><span class="dv">6</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>longitude <span class="sc">&lt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>    <span class="sc">-</span><span class="dv">4</span>, ]</span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>whale.nomed <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>water.noise <span class="sc">!=</span> <span class="st">&quot;medium&quot;</span>, ]</span></code></pre></div>
 <p> </p>
 <p>10. A really neat feature of extracting rows based on conditional
 statements is that you can include R functions within the statement
 itself. To practice this, modify your answer to the gradient question in
-Q9 to use the <code>median()</code> function rather than hard coding the
-value 132.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>whale.subset <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="fu">median</span>(whale<span class="sc">$</span>gradient), ]</span></code></pre></div>
+Q9e to use the <code>median()</code> function rather than hard coding
+the value 132.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>whale.subset <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>water.noise <span class="sc">==</span> <span class="st">&quot;low&quot;</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>gradient <span class="sc">&gt;</span> <span class="fu">median</span>(whale<span class="sc">$</span>gradient),</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>    ]</span></code></pre></div>
 <p> </p>
 <p>11. However, when using functions in conditional statements you need
 to be careful. For example, write some code to extract all rows from the
@@ -762,28 +765,27 @@ greater number of whales spotted than average (hint: use the
 <code>mean()</code> function in your conditional statement). Can you see
 a problem with the output? Discuss the cause of this problem with an
 instructor and explore possible solutions.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># results in a dataframe filled with NAs.</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>whale.new <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>depth <span class="sc">&gt;</span> <span class="dv">1500</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>number.whales <span class="sc">&gt;</span> <span class="fu">mean</span>(whale<span class="sc">$</span>number.whales), ]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.  use the na.rm argument to</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ignore NAs</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>whale.new <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>depth <span class="sc">&gt;</span> <span class="dv">1500</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>number.whales <span class="sc">&gt;</span> <span class="fu">mean</span>(whale<span class="sc">$</span>number.whales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># results in a dataframe filled with NAs.</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>whale.new <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>depth <span class="sc">&gt;</span> <span class="dv">1500</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>number.whales <span class="sc">&gt;</span> <span class="fu">mean</span>(whale<span class="sc">$</span>number.whales), ]</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># the variable number.whales contains 1 NA value. By default the mean function will return an NA.  use</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co"># the na.rm argument to ignore NAs</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>whale.new <span class="ot">&lt;-</span> whale[whale<span class="sc">$</span>depth <span class="sc">&gt;</span> <span class="dv">1500</span> <span class="sc">&amp;</span> whale<span class="sc">$</span>number.whales <span class="sc">&gt;</span> <span class="fu">mean</span>(whale<span class="sc">$</span>number.whales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), ]</span></code></pre></div>
 <p> </p>
 <p>12. Although you have concentrated on using the square bracket
 <code>[ ]</code> notation to extract rows and columns from your
 dataframe, there are of course many other approaches. One such approach
 is to use the <code>subset()</code> function (see <code>?subset</code>
-or search for the <code>subset</code> function in the Introduction to R
-book to find more information). Use the <code>subset()</code> function
-to extract all rows in ‘May’ with a time at station less than 1000
-minutes and a depth greater than 1000 m. Also use <code>subset()</code>
-to extract data collected in ‘October’ from latitudes greater than 61
-degrees but only include the columns <code>month</code>,
-<code>latitude</code>, <code>longitude</code> and
-<code>number.whales</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;May&quot;</span> <span class="sc">&amp;</span> time.at.station <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> depth <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> latitude <span class="sc">&gt;</span> <span class="dv">61</span>, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;number.whales&quot;</span>))</span></code></pre></div>
+or search the Introduction to R book for the term ‘subset’for more
+details). Use the <code>subset()</code> function to extract all rows in
+’May’ with a time at station less than 1000 minutes and a depth greater
+than 1000 m. Also use <code>subset()</code> to extract data collected in
+‘October’ from latitudes greater than 61 degrees but only include the
+columns <code>month</code>, <code>latitude</code>,
+<code>longitude</code> and <code>number.whales</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;May&quot;</span> <span class="sc">&amp;</span> time.at.station <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> depth <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">subset</span>(whale, month <span class="sc">==</span> <span class="st">&quot;October&quot;</span> <span class="sc">&amp;</span> latitude <span class="sc">&gt;</span> <span class="dv">61</span>, <span class="at">select =</span> <span class="fu">c</span>(<span class="st">&quot;month&quot;</span>, <span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;number.whales&quot;</span>))</span></code></pre></div>
 <p> </p>
 <p>13. Another useful way to manipulated your dataframes is to sort the
 rows based on the value of a variable (or combinations of variables).
@@ -797,32 +799,28 @@ practice with a straight forward example. Use the <code>order()</code>
 function to sort all rows in the <code>whale</code> dataframe in
 ascending order of depth (shallowest to deepest). Store this sorted
 dataframe in a variable called <code>whale.depth.sort</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>whale.depth.sort <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>depth), ]</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>whale.depth.sort <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>depth), ]</span></code></pre></div>
 <p> </p>
 <p>14. Now for something a little more complicated. Sort all rows in the
 <code>whale</code> dataframe by ascending order of depth within each
 level of water noise. The trick here is to remember that you can order
-by more than one variable when using the <code>order()</code> function
-(see <a
-href="https://intro2r.com/wrangling-data-frames.html#ordering-data-frames">Section
-3.4.3</a> again). Don’t forget to assign your sorted dataframe to a new
-variable with a sensible name. Repeat the previous ordering but this
-time order by <strong>descending</strong> order of depth within each
-level of water noise.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># notice how the variable water.noise has been ordered - why?</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>whale.sorted <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>depth), ]        </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use &#39;-&#39; to reverse the order of depth</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>whale.rev.sorted <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>water.noise, <span class="sc">-</span>whale<span class="sc">$</span>depth), ]   </span></code></pre></div>
+by more than one variable when using the <code>order()</code> function.
+Don’t forget to assign your sorted dataframe to a new variable with a
+sensible name. Repeat the previous ordering but this time order by
+<strong>decending</strong> order of depth within each level of water
+noise.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># notice how the variable water.noise has been ordered - why?</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>whale.sorted <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>depth), ]        </span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># use &#39;-&#39; to reverse the order of depth</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>whale.rev.sorted <span class="ot">&lt;-</span> whale[<span class="fu">order</span>(whale<span class="sc">$</span>water.noise, <span class="sc">-</span>whale<span class="sc">$</span>depth), ]   </span></code></pre></div>
 <p> </p>
 <p>15. Often, we would like to summarise variables by, for example,
 calculating a mean, median or counting the number of observations. To do
 this for a single variable it’s fairly straight forward :</p>
-<p> </p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(whale<span class="sc">$</span>time.at.station)     <span class="co"># mean time at station</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(whale<span class="sc">$</span>depth)             <span class="co"># median depth</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(whale<span class="sc">$</span>number.whales)     <span class="co"># number of observations</span></span></code></pre></div>
-<p> </p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">mean</span>(whale<span class="sc">$</span>time.at.station)     <span class="co"># mean time at station</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">median</span>(whale<span class="sc">$</span>depth)             <span class="co"># median depth</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">length</span>(whale<span class="sc">$</span>number.whales)     <span class="co"># number of observations</span></span></code></pre></div>
 <p>15. (cont) Perhaps more interestingly, you might want summarise one
 variable conditional on the level of another factor variable. For
 example, write some R code to calculate the mean number of whales
@@ -830,20 +828,20 @@ sighted at each of the three levels of water noise (see <a
 href="https://intro2r.com/summarising-data-frames.html#summarising-data-frames">Section
 3.5</a> for a few hints). Next, calculate the median number of whales
 sighted at each level of water noise and for each month.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(whale<span class="sc">$</span>number.whales, whale<span class="sc">$</span>water.noise, mean)      <span class="co"># notice the NA?</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use the na.rm argument again</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(whale<span class="sc">$</span>number.whales, whale<span class="sc">$</span>water.noise, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)    </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative method using the with() function. see ?with</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(whale, <span class="fu">tapply</span>(number.whales, water.noise, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))   </span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># when using multiple factors these need to be supplied as a list</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(whale<span class="sc">$</span>number.whales, <span class="fu">list</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>month), median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)    </span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">tapply</span>(whale<span class="sc">$</span>number.whales, whale<span class="sc">$</span>water.noise, mean)      <span class="co"># notice the NA?</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co"># use the na.rm argument again</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="fu">tapply</span>(whale<span class="sc">$</span>number.whales, whale<span class="sc">$</span>water.noise, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)    </span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co"># alternative method using the with() function. see ?with</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="fu">with</span>(whale, <span class="fu">tapply</span>(number.whales, water.noise, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))   </span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># when using multiple factors these need to be supplied as a list</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="fu">tapply</span>(whale<span class="sc">$</span>number.whales, <span class="fu">list</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>month), median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)    </span></code></pre></div>
 <p> </p>
 <p>16. Another useful function for summarising dataframes is
-<code>aggregate()</code>. Refer back to the book (search for
-<code>aggregate</code>) to look up how to use this function (or see
+<code>aggregate()</code>. Search in the R book for the function
+aggregate to see how to use this function (or see
 <code>?aggregate</code>). Use the <code>aggregate()</code> function to
 calculate the mean of time at station, number of whales, depth and
 gradient for each level of water noise (don’t forget about that sneaky
@@ -852,14 +850,15 @@ depth and gradient for each level of water noise for each month.
 (Optional): For an extra bonus point see if you can figure out how to
 modify your previous code to display the mean values to 2 decimal places
 rather than the default of 3 decimal places.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(whale[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="at">by =</span> <span class="fu">list</span>(<span class="at">water.noise =</span> whale<span class="sc">$</span>water.noise), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(whale[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="at">by =</span> <span class="fu">list</span>(<span class="at">water.noise =</span> whale<span class="sc">$</span>water.noise, <span class="at">month =</span> whale<span class="sc">$</span>month), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># optional question. Need to specify a function &#39;on the fly&#39; using function(x){}</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(whale[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="at">by =</span> <span class="fu">list</span>(<span class="at">water.noise =</span> whale<span class="sc">$</span>water.noise, <span class="at">month =</span> whale<span class="sc">$</span>month), <span class="cf">function</span>(x) {</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">aggregate</span>(whale[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="at">by =</span> <span class="fu">list</span>(<span class="at">water.noise =</span> whale<span class="sc">$</span>water.noise), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">aggregate</span>(whale[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="at">by =</span> <span class="fu">list</span>(<span class="at">water.noise =</span> whale<span class="sc">$</span>water.noise, <span class="at">month =</span> whale<span class="sc">$</span>month), mean,</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co"># optional question. Need to specify a function &#39;on the fly&#39; using function(x){}</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="fu">aggregate</span>(whale[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>)], <span class="at">by =</span> <span class="fu">list</span>(<span class="at">water.noise =</span> whale<span class="sc">$</span>water.noise, <span class="at">month =</span> whale<span class="sc">$</span>month), <span class="cf">function</span>(x) {</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>})</span></code></pre></div>
 <p> </p>
 <p>17. Knowing how many observations are present for each factor level
 (or combinations of factor levels) is useful to determine whether you
@@ -867,20 +866,20 @@ have an adequate sample size (for subsequent modelling for example). Use
 the <code>table()</code> function to determine the number of
 observations for each level of water noise (see <a
 href="https://intro2r.com/summarising-data-frames.html#summarising-data-frames">Section
-3.5</a> again for more information). Next use the same function to
-display the number of observations for each combination of water noise
-and month. (Optional): The <code>xtabs()</code> function is very
-flexible for creating tables of counts for factor combinations (aka
-contingency tables). Take a look at the Introduction to R book, the help
-file or Google to figure out how to use the <code>xtabs()</code>
-function to replicate your use of the <code>table()</code> function.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using table</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(whale<span class="sc">$</span>water.noise)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>month)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># using xtabs</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> water.noise, <span class="at">data =</span> whale)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> month <span class="sc">+</span> water.noise, <span class="at">data =</span> whale)</span></code></pre></div>
+3.5</a> for a few tips). Next use the same function to display the
+number of observations for each combination of water noise and month.
+(Optional): The <code>xtabs()</code> function is very flexible for
+creating tables of counts for factor combinations (aka contingency
+tables). Take a look at the help file (or Google) to figure out how to
+use the <code>xtabs()</code> function to replicate your use of the
+<code>table()</code> function.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># using table</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">table</span>(whale<span class="sc">$</span>water.noise)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">table</span>(whale<span class="sc">$</span>water.noise, whale<span class="sc">$</span>month)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co"># using xtabs</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> water.noise, <span class="at">data =</span> whale)</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> month <span class="sc">+</span> water.noise, <span class="at">data =</span> whale)</span></code></pre></div>
 <p> </p>
 <p>18. Ok, we have spent quite a bit of time (and energy) learning how
 to import and manipulate dataframes. The last thing we need to cover is
@@ -895,7 +894,7 @@ variable names in the first row of the file, but you don’t want to
 include the row names. Also, make sure the file is a tab delimited file.
 Once you have create your file, try to open it in Microsoft Excel (or
 open source equivalent).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(whale.num, <span class="st">&quot;output/whale_num.txt&quot;</span>, <span class="at">col.names =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">write.table</span>(whale.num, <span class="st">&quot;output/whale_num.txt&quot;</span>, <span class="at">col.names =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
 <p> </p>
 <p>End of Exercise 3</p>
 </div>

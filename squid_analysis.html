@@ -100,11 +100,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -113,14 +113,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -562,17 +562,18 @@ immature, 5 = mature.</p>
 found <a href="https://en.wikipedia.org/wiki/Loligo_forbesii">here</a>
 and the following image provides a useful summary of squid anatomy.</p>
 <div style="page-break-after: always;"></div>
-<div class="figure">
-<img src="images/squid_anatomy.jpg" style="width:70.0%" alt="" />
-<p class="caption">squid anatomy</p>
+<div class="float">
+<img src="images/squid_anatomy.jpg" style="width:70.0%"
+alt="squid anatomy" />
+<div class="figcaption">squid anatomy</div>
 </div>
 <p> </p>
 </div>
 <div id="data-import-and-exploration" class="section level3">
 <h3>Data import and exploration</h3>
 <p> </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>squid <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./data/squid1.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(squid, <span class="at">vec.len =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>squid <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;./data/squid1.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">str</span>(squid, <span class="at">vec.len =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    519 obs. of  13 variables:
 ##  $ sample.no        : int  105128901 105128901 105128901 105128901 105128901 ...
 ##  $ specimen         : int  1002 1003 1005 1007 1008 ...
@@ -598,8 +599,8 @@ dataframe <code>squid</code>. These recoded variables were named
 <p>Next, let’s take a look at the number of observations across years
 and months.</p>
 <p> </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(squid<span class="sc">$</span>Fmonth, squid<span class="sc">$</span>Fyear), <span class="at">row.names =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(squid<span class="sc">$</span>Fmonth, squid<span class="sc">$</span>Fyear), <span class="at">row.names =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">&quot;markdown&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -802,11 +803,11 @@ months.</p>
 <code>DML</code>, <code>weight</code>, <code>nid.length</code> and
 <code>ovary.weight</code>.</p>
 <p> </p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>DML, <span class="at">main =</span> <span class="st">&quot;DML&quot;</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>weight, <span class="at">main =</span> <span class="st">&quot;weight&quot;</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>nid.length, <span class="at">main =</span> <span class="st">&quot;nid length&quot;</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>ovary.weight, <span class="at">main =</span> <span class="st">&quot;ovary weight&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>DML, <span class="at">main =</span> <span class="st">&quot;DML&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>weight, <span class="at">main =</span> <span class="st">&quot;weight&quot;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>nid.length, <span class="at">main =</span> <span class="st">&quot;nid length&quot;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">dotchart</span>(squid<span class="sc">$</span>ovary.weight, <span class="at">main =</span> <span class="st">&quot;ovary weight&quot;</span>)</span></code></pre></div>
 <p><img src="squid_analysis_files/figure-html/dotplot-1.png" width="672" /></p>
 <p> </p>
 <p>It looks like the variable <code>nid.length</code> contains an
@@ -829,7 +830,7 @@ remained reasonably consistent for maturity stages 4 (mean 238.6 mm) and
 </div>
 <div id="session-information" class="section level3">
 <h3>Session Information</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <!-- But i prefere to use the pander package as it wraps long lines nicely when rendering to PDF. I have hidden this code and output in the final document but all you need to do is remove echo=FALSE argument from the code chunk. -->
 <p><strong>R version 4.2.1 (2022-06-23)</strong></p>
 <p><strong>Platform:</strong> x86_64-apple-darwin17.0 (64-bit)</p>
@@ -843,20 +844,20 @@ en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8</p>
 <em>htmltools(v.0.5.4)</em>, <em>dplyr(v.1.1.0)</em>,
 <em>stringr(v.1.5.0)</em> and <em>knitr(v.1.42)</em></p>
 <p><strong>loaded via a namespace (and not attached):</strong>
-<em>Rcpp(v.1.0.10)</em>, <em>pillar(v.1.8.1)</em>,
+<em>Rcpp(v.1.0.10)</em>, <em>pillar(v.1.9.0)</em>,
 <em>bslib(v.0.4.2)</em>, <em>compiler(v.4.2.1)</em>,
 <em>formatR(v.1.14)</em>, <em>jquerylib(v.0.1.4)</em>,
 <em>highr(v.0.10)</em>, <em>tools(v.4.2.1)</em>,
 <em>digest(v.0.6.31)</em>, <em>viridisLite(v.0.4.1)</em>,
 <em>jsonlite(v.1.8.4)</em>, <em>evaluate(v.0.20)</em>,
-<em>lifecycle(v.1.0.3)</em>, <em>tibble(v.3.1.8)</em>,
+<em>lifecycle(v.1.0.3)</em>, <em>tibble(v.3.2.1)</em>,
 <em>gtable(v.0.3.1)</em>, <em>pkgconfig(v.2.0.3)</em>,
-<em>rlang(v.1.0.6)</em>, <em>cli(v.3.6.0)</em>,
+<em>rlang(v.1.1.1)</em>, <em>cli(v.3.6.1)</em>,
 <em>rstudioapi(v.0.14)</em>, <em>yaml(v.2.3.7)</em>,
 <em>xfun(v.0.37)</em>, <em>fastmap(v.1.1.0)</em>,
-<em>xml2(v.1.3.3)</em>, <em>httr(v.1.4.4)</em>, <em>withr(v.2.5.0)</em>,
+<em>xml2(v.1.3.3)</em>, <em>httr(v.1.4.6)</em>, <em>withr(v.2.5.0)</em>,
 <em>systemfonts(v.1.0.4)</em>, <em>generics(v.0.1.3)</em>,
-<em>vctrs(v.0.5.2)</em>, <em>sass(v.0.4.5)</em>,
+<em>vctrs(v.0.6.3)</em>, <em>sass(v.0.4.5)</em>,
 <em>webshot(v.0.5.4)</em>, <em>grid(v.4.2.1)</em>,
 <em>tidyselect(v.1.2.0)</em>, <em>svglite(v.2.1.1)</em>,
 <em>glue(v.1.6.2)</em>, <em>R6(v.2.5.1)</em>, <em>fansi(v.1.0.4)</em>,

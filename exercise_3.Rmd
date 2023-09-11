@@ -23,11 +23,11 @@ Read [Chapter 3](https://intro2r.com/data-r.html) to help you complete the quest
 
 \  
 
-2\. If you haven't already, download the data file *‘whaledata.xlsx’* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory you created in Exercise 1. 
+2\. If you haven't already, download the data file *‘whaledata.xlsx’* from the **[<i class="fa fa-download"></i> Data](data.html)** link and save it to the `data` directory you created in Exercise 1.
 
 \  
 
-3\. Open this file in Microsoft Excel (or even better use an open source equivalent - [LibreOffice](https://www.libreoffice.org/download/download/) is a good free alternative) and save it as a tab delimited file type (see [Section 3.3.1](https://intro2r.com/importing-data.html#saving-files-to-import) of the Introduction to R book or watch this [video](https://alexd106.github.io/PGR-R/howto.html#import-vid) if you're not sure how to do this). Name the file *‘whaledata.txt'* and save it to the `data` directory. If you're a Windows user be careful with file extensions (things like *.txt*). By default, Windows doesn't show you the file extension (maybe the boffins at Microsoft don't think you need to know complicated things like this?) so if you enter *'whaledata.txt'* as a filename you might end up with a filename *'whaledata.txt.txt*'! 
+3\. Open this file in Microsoft Excel (or even better use an open source equivalent - [LibreOffice](https://www.libreoffice.org/download/download/) is a good free alternative) and save it as a tab delimited file type (see [Section 3.3.1](https://intro2r.com/importing-data.html#saving-files-to-import) of the Introduction to R book or watch this [video](https://alexd106.github.io/BI5009/howto.html#import-vid) if you're not sure how to do this). Name the file *‘whaledata.txt'* and save it to the `data` directory. If you're a Windows user be careful with file extensions (things like *.txt*). By default, Windows doesn't show you the file extension (maybe the boffins at Microsoft don't think you need to know complicated things like this?) so if you enter *'whaledata.txt'* as a filename you might end up with a filename *'whaledata.txt.txt*'! 
 
 \  
 
@@ -35,11 +35,11 @@ Read [Chapter 3](https://intro2r.com/data-r.html) to help you complete the quest
 
 \  
 
-5\. Now let's import the *‘whaledata.txt'* file into R. To do this you will use the workhorse function of data importing,  `read.table()`. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don't forget to include the appropriate arguments when using the `read.table()` function (remember that header?) and assign it a variable with an appropriate name (such as `whale`). Take a look at [Section 3.2.2](https://intro2r.com/importing-data.html#import_fnc) of the Introduction to R book or watch this [video](https://alexd106.github.io/PGR-R/howto.html#import-vid) if you need any further information.
+5\. Now let's import the *‘whaledata.txt'* file into R. To do this you will use the workhorse function of data importing,  `read.table()`. This function is incredibly flexible and can import many different file types (take a look at the help file) including our tab delimited file. Don't forget to include the appropriate arguments when using the `read.table()` function (remember that header?) and assign it a variable with an appropriate name (such as `whale`). Take a look at [Section 3.2.2](https://intro2r.com/importing-data.html#import_fnc) of the Introduction to R book or watch this [video](https://alexd106.github.io/BI5009/howto.html#import-vid) if you need any further information.
 
 \  
 
-6\. Once you've imported your data file nothing much seems to happen (don't worry, this is normal). To examine the contents of the dataframe one option would be to just type the variable name (`whale`) into the console. This is probably not a good idea and doesn't really tell you anything about the dataframe other than there's alot of data (try it)! A slightly better option is to use the `head()` function to display the first 5 rows of your dataframe. Again, this is likely to just fill up your console. A better option would be to use the `names()` function which will return a vector of variable names from your dataset. However, all you get are the names of the variables but no other information. A much, much better option is to use the `str()` function to display the structure of the dataset and a neat summary of your variables. Another advantage is that you can copy this information from the console and paste it into your R script (making sure it's commented) for later reference. How many observations does this dataset have? How many variables are in this dataset? What type of variables are `month` and `water.noise`?
+6\. Once you have imported your data file nothing much seems to happen (don't worry, this is normal). To examine the contents of the dataframe one option would be to just type the variable name (`whale`) into the console. This is probably not a good idea and doesn't really tell you anything about the dataframe other than there's alot of data (try it)! A slightly better option is to use the `head()` function to display the first 5 rows of your dataframe. Again, this is likely to just fill up your console. A better option would be to use the `names()` function which will return a vector of variable names from your dataset. However, all you get are the names of the variables but no other information. A much, much better option is to use the `str()` function to display the structure of the dataset and a neat summary of your variables. Another advantage is that you can copy this information from the console and paste it into your R script (making sure it's commented) for later reference. How many observations does this dataset have? How many variables are in this dataset? What type of variables are `month` and `water.noise`?
 
 \  
 
@@ -47,7 +47,7 @@ Read [Chapter 3](https://intro2r.com/data-r.html) to help you complete the quest
 
 \  
 
-8\. Summarising and manipulating dataframes is a key skill to acquire when learning R. Although there are many ways to do this, we will concentrate on using the square bracket `[ ]` notation which you used previously with vectors. The key thing to remember when using `[ ]` with dataframes is that dataframes have two dimensions (think rows and columns) so you always need to specify which rows and which columns you want inside the `[ ]` (see [Section 3.4.1](https://intro2r.com/wrangling-data-frames.html#positional-indexes) and this [video](https://alexd106.github.io/PGR-R/howto.html#dataw-vid) for some additional background information and a few examples). Let's practice. 
+8\. Summarising and manipulating dataframes is a key skill to acquire when learning R. Although there are many ways to do this, we will concentrate on using the square bracket `[ ]` notation which you used previously with vectors. The key thing to remember when using `[ ]` with dataframes is that dataframes have two dimensions (think rows and columns) so you always need to specify which rows and which columns you want inside the `[ ]` (see [Section 3.4.1](https://intro2r.com/wrangling-data-frames.html#positional-indexes) and this [video](https://alexd106.github.io/BI5009/howto.html#dataw-vid) for some additional background information and a few examples). Let's practice. 
 
 a) Extract all the elements of the first 10 rows and the first 4 columns of the `whale` dataframe and assign to a new variable called `whale.sub`. 
 
@@ -55,7 +55,7 @@ b) Next, extract all observations (remember - rows) from the `whale` dataframe a
 
 c) Now, extract the first 50 rows and all columns form the original dataframe and assign to a variable `whale.may` (there's a better way to do this with conditional statements - see below). 
 
-d) Finally, extract all rows except the first 10 rows and all columns except the last column. Remember, for some of these questions you can specify the columns you want either by position or by name. Practice both ways. Do you have a preference? If so why?  
+d) Finally, extract all rows except the first 10 rows and all columns except the last column. Remember, for some of these questions you can specify the columns you want either by position or by name. Practice both ways. Do you have a preference? If so why?
 
 \  
 
@@ -67,11 +67,11 @@ d) Finally, extract all rows except the first 10 rows and all columns except the
 - water.noise level of 'high' in the month of 'May'
 - month of 'October', water noise level of ‘low’ and gradient greater than the median value of gradient (132)
 - all observations from between latitudes 60.0 and 61.0 and longitudes -6.0 and -4.0
-- all rows that do not have a water noise level of medium
+- all rows that do not have a water noise level of mediumm
 
 \  
 
-10\. A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9 to use the `median()` function rather than hard coding the value 132. 
+10\. A really neat feature of extracting rows based on conditional statements is that you can include R functions within the statement itself. To practice this, modify your answer to the gradient question in Q9e to use the `median()` function rather than hard coding the value 132. 
 
 \  
 
@@ -79,7 +79,7 @@ d) Finally, extract all rows except the first 10 rows and all columns except the
 
 \  
 
-12\. Although you have concentrated on using the square bracket `[ ]` notation to extract rows and columns from your dataframe, there are of course many other approaches. One such approach is to use the `subset()` function (see `?subset` or search for the `subset` function in the Introduction to R book to find more information). Use the `subset()` function to extract all rows in 'May' with a time at station less than 1000 minutes and a depth greater than 1000 m. Also use `subset()` to extract data collected in 'October' from latitudes greater than 61 degrees but only include the columns `month`, `latitude`, `longitude` and `number.whales`.
+12\. Although you have concentrated on using the square bracket `[ ]` notation to extract rows and columns from your dataframe, there are of course many other approaches. One such approach is to use the `subset()` function (see `?subset` or search the Introduction to R book for the term 'subset'for more details). Use the `subset()` function to extract all rows in 'May' with a time at station less than 1000 minutes and a depth greater than 1000 m. Also use `subset()` to extract data collected in 'October' from latitudes greater than 61 degrees but only include the columns `month`, `latitude`, `longitude` and `number.whales`.
 
 \  
 
@@ -93,29 +93,25 @@ d) Finally, extract all rows except the first 10 rows and all columns except the
 
 15\. Often, we would like to summarise variables by, for example, calculating a mean, median or counting the number of observations. To do this for a single variable it's fairly straight forward : 
 
-\  
-
 ```{r Q15}
 mean(whale$time.at.station)     # mean time at station
 median(whale$depth)             # median depth
 length(whale$number.whales)     # number of observations
 ```
 
-\  
-
 15\. (cont) Perhaps more interestingly, you might want summarise one variable conditional on the level of another factor variable. For example, write some R code to calculate the mean number of whales sighted at each of the three levels of water noise (see [Section 3.5](https://intro2r.com/summarising-data-frames.html#summarising-data-frames) for a few hints). Next, calculate the median number of whales sighted at each level of water noise and for each month.
 
 \  
 
-16\. Another useful function for summarising dataframes is `aggregate()`. Refer back to the book (search for `aggregate`) to look up how to use this function (or see `?aggregate`). Use the `aggregate()` function to calculate the mean of time at station, number of whales, depth and gradient for each level of water noise (don't forget about that sneaky NA value). Next calculate the mean of time at station, number of whales, depth and gradient for each level of water noise for each month. (Optional): For an extra bonus point see if you can figure out how to modify your previous code to display the mean values to 2 decimal places rather than the default of 3 decimal places.
+16\. Another useful function for summarising dataframes is `aggregate()`. Search in the R book for the function aggregate to see how to use this function (or see `?aggregate`). Use the `aggregate()` function to calculate the mean of time at station, number of whales, depth and gradient for each level of water noise (don't forget about that sneaky NA value). Next calculate the mean of time at station, number of whales, depth and gradient for each level of water noise for each month. (Optional): For an extra bonus point see if you can figure out how to modify your previous code to display the mean values to 2 decimal places rather than the default of 3 decimal places.
 
 \  
 
-17\. Knowing how many observations are present for each factor level (or combinations of factor levels) is useful to determine whether you have an adequate sample size (for subsequent modelling for example). Use the `table()` function to determine the number of observations for each level of water noise (see [Section 3.5](https://intro2r.com/summarising-data-frames.html#summarising-data-frames) again for more information). Next use the same function to display the number of observations for each combination of water noise and month. (Optional): The `xtabs()` function is very flexible for creating tables of counts for factor combinations (aka contingency tables). Take a look at the Introduction to R book, the help file or Google to figure out how to use the `xtabs()` function to replicate your use of the `table()` function.   
+17\. Knowing how many observations are present for each factor level (or combinations of factor levels) is useful to determine whether you have an adequate sample size (for subsequent modelling for example). Use the `table()` function to determine the number of observations for each level of water noise (see [Section 3.5](https://intro2r.com/summarising-data-frames.html#summarising-data-frames) for a few tips). Next use the same function to display the number of observations for each combination of water noise and month. (Optional): The `xtabs()` function is very flexible for creating tables of counts for factor combinations (aka contingency tables). Take a look at the help file (or Google) to figure out how to use the `xtabs()` function to replicate your use of the `table()` function.       
 
 \  
 
-18\. Ok, we have spent quite a bit of time (and energy) learning how to import and manipulate dataframes. The last thing we need to cover is how to export dataframes from R to an external file (see [Section 3.6](https://intro2r.com/exporting-data.html#exporting-data) of the book for more details). Let's say you want to export the dataframe `whale.num` you created previously (see Q8) to a file called 'whale_num.txt' in your `output` directory which you created in Exercise 1. To do this you will need to use the `write.table()` function. You want to include the the variable names in the first row of the file, but you don't want to include the row names. Also, make sure the file is a tab delimited file. Once you have create your file, try to open it in Microsoft Excel (or open source equivalent).     
+18\. Ok, we have spent quite a bit of time (and energy) learning how to import and manipulate dataframes. The last thing we need to cover is how to export dataframes from R to an external file (see [Section 3.6](https://intro2r.com/exporting-data.html#exporting-data) of the book for more details). Let's say you want to export the dataframe `whale.num` you created previously (see Q8) to a file called 'whale_num.txt' in your `output` directory which you created in Exercise 1. To do this you will need to use the `write.table()` function. You want to include the the variable names in the first row of the file, but you don't want to include the row names. Also, make sure the file is a tab delimited file. Once you have create your file, try to open it in Microsoft Excel (or open source equivalent).    
 
 \  
 

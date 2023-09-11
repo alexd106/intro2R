@@ -492,17 +492,17 @@ stage and month (aka a contingency table).</p>
 <p>6. The humble cleveland dotplot is a great way of identifying if you
 have potential outliers in continuous variables (See <a
 href="https://intro2r.com/simple-base-r-plots.html#dotcharts">Section
-4.2.4</a>. Create dotplots (using the <code>dotchart()</code> function)
+4.2.4</a>). Create dotplots (using the <code>dotchart()</code> function)
 for the following variables; <code>DML</code>, <code>weight</code>,
 <code>nid.length</code> and <code>ovary.weight</code>. Do these
 variables contain any unusually large or small observations? Don’t
 forget, if you prefer to create a single figure with all 4 plots you can
 always split your plotting device into 2 rows and 2 columns (see <a
-href="https://intro2r.com/mult-graphs.html#mult_graphs">Section 4.4</a>
+href="https://intro2r.com/mult_graphs.html#mult_graphs">Section 4.4</a>
 of the book). Use the <code>pdf()</code> function to save a pdf version
 of your plot(s) in your <code>output</code> directory you created in
 Exercise 1 (see <a
-href="https://intro2r.com/export-plots.html#export_plots">Section
+href="https://intro2r.com/export_plots.html#export_plots">Section
 4.5</a> of the book to see how the <code>pdf()</code> function works). I
 have also included some alternative code in the <a
 href="exercise_4_solution.html">solutions for this exercise</a> using
@@ -565,9 +565,9 @@ these variables when creating your new plots (ask if you’re not sure how
 to do this). Which transformation best linearises this relationship?
 Again, save your plots as a pdf file (or try saving in your
 <code>output</code> directory as jpeg or png format using the
-<code>jpeg()</code> or <code>png()</code> functions (<a
-href="https://intro2r.com/export-plots.html#export_plots">Section
-4.5</a>) if you feel the need for a change!).</p>
+<code>jpeg()</code> or <code>png()</code> functions - <a
+href="https://intro2r.com/export_plots.html#export_plots">Section
+4.5</a> if you feel the need for a change!).</p>
 <p> </p>
 <p>10. When visualising differences in a continuous variable between
 levels of a factor (categorical variable) then a boxplot is your friend
@@ -583,23 +583,23 @@ plot. A violin plot is a combination of a boxplot and a <a
 href="https://www.statmethods.net/graphs/density.html">kernel density
 plot</a> and is great at visualising the distribution of a variable. To
 create a violin plot you will first need to install the
-<code>vioplot</code> package from CRAN and make it available
+<code>vioplot</code> package from CRAN and make it available using
 <code>library(vioplot)</code>. You can now use the
 <code>vioplot()</code> function in pretty much the same way as you
 created your boxplot (again <a
 href="https://intro2r.com/simple-base-r-plots.html#box-and-violin-plots">Section
-4.2.3</a> of the book walks you though this).</p>
+4.2.3</a> of the book walks you through this).</p>
 <p> </p>
 <p>11. To visualise the relationship between two continuous variables
 but for different levels of a factor variable you can create a
 conditional scatterplot. Use the <code>coplot()</code> function (<a
 href="https://intro2r.com/simple-base-r-plots.html#coplots">Section
-4.2.6</a>) to plot the relationship between DML and square root
-transformed weight (you created this variable in Q8) for each level of
-maturity stage. Does the relationship between DML and weight look
-different for each maturity stage (suggesting an interaction)? If you
-prefer, you can also create a similar plot using the
-<code>xyplot()</code> function (<a
+4.2.6</a>) to plot the relationship between DML on the x axis and square
+root transformed weight on the y axis (you created this variable in Q8)
+for each level of maturity stage. Does the relationship between DML and
+weight look different for each maturity stage (suggesting an
+interaction)? If you prefer, you can also create a similar plot using
+the <code>xyplot()</code> function (<a
 href="https://intro2r.com/simple-base-r-plots.html#lattice-plots">Section
 4.2.7</a>) from the <code>lattice</code> package (don’t forget to make
 the function available by using <code>library(lattice)</code>
@@ -637,7 +637,7 @@ for each level of maturity stage. Produce a legend explaining the
 different colours and place it in a suitable position on the plot.
 Format the graph further to make it suitable for inclusion into your
 paper/thesis (i.e. add axes labels, change the axes scales etc). See <a
-href="https://intro2r.com/custom-plot.html#custom_plot">Section 4.3</a>
+href="https://intro2r.com/custom_plot.html#custom_plot">Section 4.3</a>
 for more details about customising plots.</p>
 <p> </p>
 <p><sup>1</sup> Smith JM et al (2005) Seasonal patterns of investment in

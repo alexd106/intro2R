@@ -100,11 +100,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -113,14 +113,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -553,24 +553,27 @@ you complete the questions in this exercise. We’ll also bounce
 occasionally to <a href="https://intro2r.com/basics_r.html">Chapter
 2</a> for a few questions where links will be provided.</p>
 <p> </p>
-<p>1. Start RStudio on your computer. If you haven’t already done so,
-create a new RStudio Project (select File –&gt; New Project on the main
-menu). Create the Project in a new directory by selecting ‘New
-Directory’ and then select ‘New Project’. Give the Project a suitable
-name (intro2r maybe - see <a
+<ol style="list-style-type: decimal">
+<li>Start RStudio on your computer. Create a new RStudio Project (select
+File –&gt; New Project on the main menu). Create the Project in a new
+directory by selecting ‘New Directory’ and then select ‘New Project’.
+Give the Project a suitable name in the ‘Directory name:’ box (maybe
+‘BI5009_statistics’? - see <a
 href="https://intro2r.com/file_names.html">Section 1.9</a> of the
-Introduction to R book for a discussion on naming files and directories)
-in the ‘Directory name:’ box and choose where you would like to create
-this Project directory by clicking on the ‘Browse’ button. Finally
-create the project by clicking on the ‘Create Project’ button. This will
-be your main RStudio Project file and directory which you will use
-throughout this course. If you’re confused see <a
+Introduction to R book for a discussion on naming files and
+directories). Choose where you would like to create this Project
+directory by clicking on the ‘Browse’ button. Finally create the project
+by clicking on the ‘Create Project’ button. This will be your main
+RStudio Project file and directory which you will use throughout this
+course. If you’re confused see <a
 href="https://intro2r.com/rsprojs.html">Section 1.6</a> of the
 introduction to R Book which covers RStudio Projects or watch the
 ‘RStudio Projects’ video <a
-href="https://alexd106.github.io/BI5009/howto.html">here</a>.</p>
+href="https://alexd106.github.io/BI5009/howto.html#rstudio_proj-vid">here</a>.</li>
+</ol>
 <p> </p>
-<p>2. Now create a new R script inside this Project by selecting File
+<ol start="2" style="list-style-type: decimal">
+<li>Now create a new R script inside this Project by selecting File
 –&gt; New File –&gt; R Script from the main menu (or use the shortcut
 button). Before you start writing any code save this script by selecting
 File –&gt; Save from the main menu. Call this script ‘exercise_1’ or
@@ -585,16 +588,15 @@ know who wrote the script, when it was written and what the script does
 script making sure that you place a <code>#</code> at the beginning of
 every line to let R know this is a comment. See <a
 href="https://intro2r.com/proj-doc.html">Section 1.10</a> for a little
-more detail.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An Introduction to R course Exercise 1</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 27/01/21</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Created by: Professor Plum</span></span></code></pre></div>
+more detail.</li>
+</ol>
 <p> </p>
-<p>3. Explore RStudio making sure you understand the functionality of
-each of the four windows (see <a
-href="https://intro2r.com/rstudio-orient.html#rstudio_orient">Section
-1.3</a> of the Introduction to R book for a summary and/or watch this <a
-href="https://alexd106.github.io/intro2R/howto.html#rstudio-vid">video</a>).
+<ol start="3" style="list-style-type: decimal">
+<li>Explore RStudio making sure you understand the functionality of each
+of the four windows. Take a look at <a
+href="https://intro2r.com/rstudio_orient.html">Section 1.3</a> of the
+Introduction to R book for more details or watch this <a
+href="https://alexd106.github.io/BI5009/howto.html#rstudio-vid">video</a>.
 Take your time and check out each of the tabs in the windows. The
 function of some of these tabs will be obvious whereas others won’t be
 useful right now. In general, you will write your R code in the script
@@ -603,79 +605,96 @@ the R console (usually bottom left) by clicking anywhere in the relevant
 line of code with your mouse and then clicking on the ‘Run’ button at
 the top of the script editor window. If you don’t like clicking buttons
 (I don’t!) then you can use the keyboard shortcut ‘ctrl + enter’ (on
-Windows) or ‘command + enter’ (on Mac OSX).</p>
+Windows) or ‘command + enter’ (on Mac OSX).</li>
+</ol>
 <p> </p>
-<p>4. Now to practice writing code in the script editor and sourcing
+<ol start="4" style="list-style-type: decimal">
+<li><p>Now to practice writing code in the script editor and sourcing
 this code into the R console. Let’s display the help file for the
 function <code>mean</code>. In your script type
 <code>help('mean')</code> and source this code into the console. Notice
 that the help file is displayed in the bottom right window (if not then
 click on the ‘Help’ tab). Examine the different components of the help
 file (especially the examples section at the end of the help file). See
-<a href="https://intro2r.com/help.html#r-help">Section 2.5.1</a> of the
-Introduction to R book for more information about help files.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)          <span class="co"># different methods of using help</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>?mean</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<a href="https://intro2r.com/help.html">Section 2.5</a> of the
+Introduction to R book for more details on using the help functions.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">help</span>(mean)          <span class="co"># different methods of using help</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>?mean</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">help</span>(<span class="st">&quot;mean&quot;</span>)</span></code></pre></div></li>
+</ol>
 <p> </p>
-<p>5. The content displayed in the bottom right window is context
-dependent. For example if we write the code <code>plot(1:10)</code> and
-source it into the R console the bottom right window will display this
-plot (don’t worry about understanding the R code right now, hopefully
-this will become clear later on in the course!).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)    <span class="co">#dont worry about what 1:10 does just yet</span></span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li><p>The content displayed in the bottom right window is context
+dependent. For example if we write the code <code>plot(1:10)</code> in
+our script and then source it into the R console the bottom right window
+will display this plot (don’t worry about understanding the R code right
+now, hopefully this will become clear later on in the course!).</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)    <span class="co">#dont worry about what 1:10 does just yet</span></span></code></pre></div></li>
+</ol>
 <p> </p>
-<p>6. Next, let’s practice creating a variable and assigning a value to
+<ol start="6" style="list-style-type: decimal">
+<li><p>Next, let’s practice creating a variable and assigning a value to
 this variable. Take a look at <a
 href="https://intro2r.com/objects-in-r.html">Section 2.2</a> of the
 Introduction to R book for further information on how to do this or if
 you prefer watch the <a
-href="https://alexd106.github.io/PGR-R/howto.html#objs-vid">Objects in R
-video</a>. Create a variable called <code>first_num</code> and assign it
-the value <code>42</code>. Click on the ‘Environment’ tab in the top
+href="https://alexd106.github.io/BI5009/howto.html#objs-vid">Objects in
+R video</a>. Create a variable called <code>first_num</code> and assign
+it the value <code>42</code>. Click on the ‘Environment’ tab in the top
 right window to display the variable and value. Now create another
 variable called <code>first_char</code> and assign it a value
 <code>"my first character"</code>. Notice this variable is now also
 displayed in the ‘Environment’ along with it’s value and class
 (<code>chr</code> - short for character class).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>first_num <span class="ot">&lt;-</span> <span class="dv">42</span>    <span class="co"># create variable first_num and assign the value 42</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>first_char <span class="ot">&lt;-</span> <span class="st">&quot;my first character&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>first_num <span class="ot">&lt;-</span> <span class="dv">42</span>    <span class="co"># create variable first_num and assign the value 42</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>first_char <span class="ot">&lt;-</span> <span class="st">&quot;my first character&quot;</span></span></code></pre></div></li>
+</ol>
 <p> </p>
-<p>7. Remove the variable <code>first_num</code> from your environment
-using the <code>rm()</code> function. Check out the ‘Environment’ tab to
-ensure the variable has been removed. Alternatively, use the
+<ol start="7" style="list-style-type: decimal">
+<li><p>Remove the variable <code>first_num</code> from your environment
+using the <code>rm()</code> function. Use the code
+<code>rm(first_num)</code> to do this. Check out the ‘Environment’ tab
+to ensure the variable has been removed. Alternatively, use the
 <code>ls()</code> function to list all objects in your environment.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(first_num)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()          <span class="co"># list all variables in the workspace </span></span></code></pre></div>
-<p> </p>
-<p>8. Let’s see what happens if we assign another value to an existing
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">rm</span>(first_num)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">ls</span>()          <span class="co"># list all variables in the workspace </span></span></code></pre></div>
+<p> </p></li>
+<li><p>Let’s see what happens if we assign another value to an existing
 variable. Assign the value <code>"my second character"</code> to the
 variable <code>first_char</code> you created in Q6. Notice the value has
 changed in the ‘Environment’. To display the value of
-<code>first_char</code> enter the name of the variable in the console.
+<code>first.char</code> enter the name of the variable in the console.
 Don’t to forget to save your R script periodically!</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>first_char <span class="ot">&lt;-</span> <span class="st">&quot;my second variable&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>first_char    <span class="co"># display the value </span></span></code></pre></div>
-<p> </p>
-<p>9. OK, let’s leave RStudio for a minute. Using your favourite web
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>first_char <span class="ot">&lt;-</span> <span class="st">&quot;my second variable&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>first_char    <span class="co"># display the value </span></span></code></pre></div>
+<p> </p></li>
+<li><p>OK, let’s leave RStudio for a minute. Using your favourite web
 browser, navigate to the <a href="http://www.r-project.org">R-project
 website</a> and explore links that catch your eye. Make sure you find
 the R manuals page and the user contributed documents section. Download
-any manuals that you think you might find useful and save them on your
-computer (or USB drive).</p>
+any manuals that you think you might find useful (some are listed in the
+course manual) and save them on your computer (or USB drive).</p></li>
+</ol>
 <p> </p>
-<p>10. Click on the ‘Search’ link on the R-Project website. Use ‘Rseek’
-to search for the term ‘mixed model p values’ (this is a controversial
-subject!) and explore anything that looks interesting. Learning how to
+<ol start="10" style="list-style-type: decimal">
+<li>Click on the ‘Search’ link on the R-Project website. Use ‘Rseek’ to
+search for the term ‘mixed model p values’ (this is a controversial
+subject!) and explore anything that looks interesting. Also experiment
+with the ‘R site search’ and ‘Nabble R Forum’ links. Learning how to
 search for help when you run into a problem when using R is an acquired
 skill and something you get better at over time. One note of caution,
-often you’ll find many different solutions to solving a problem in R,
+often you will find many different solutions to solving a problem in R,
 some written by experienced R users and others by people with less
 experience. Whichever solution you choose make sure you understand what
 the code is doing and thoroughly test it to make sure it’s doing what
-you want.</p>
+you want.</li>
+</ol>
 <p> </p>
-<p>11. OK, back to RStudio. Sometimes you may forget the exact name of a
+<ol start="11" style="list-style-type: decimal">
+<li><p>OK, back to RStudio. Sometimes you may forget the exact name of a
 function you want to use so it would be useful to be able to search
 through all the function names. For example, you want to create a design
 plot but can only remember that the name of the function has the word
@@ -686,38 +705,37 @@ Introduction to R book). Look through the list and once you have figured
 what the correct function is then bring up the help file for this
 function (Hint: the function name probably has the words ‘plot’ and
 ‘design’ in it!).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">&quot;plot&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">&#39;plot.design&#39;</span>)</span></code></pre></div>
-<p> </p>
-<p>12. Another strategy would be to use the <code>help.search()</code>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">&quot;plot&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">help</span>(<span class="st">&#39;plot.design&#39;</span>)</span></code></pre></div>
+<p> </p></li>
+<li><p>Another strategy would be to use the <code>help.search()</code>
 function to search through R’s help files. Search the R help system for
 instances of the character string ‘plot’. Take a look at <a
 href="https://intro2r.com/help.html#r-help">Section 2.5.1</a> for more
 information. Also, see if you can figure out how to narrow your search
 by only searching for ‘plot’ in the <code>nlme</code> package (hint: see
-the help page for <code>help.search()</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;plot&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>??plot     <span class="co"># shortcut for help.search function</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;plot&quot;</span>, <span class="at">package =</span> <span class="st">&quot;nlme&quot;</span>)</span></code></pre></div>
-<p> </p>
-<p>13. R’s working directory is the default location of any files you
+the help page for <code>help.search()</code>).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;plot&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>??plot     <span class="co"># shortcut for help.search function</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;plot&quot;</span>, <span class="at">package =</span> <span class="st">&quot;nlme&quot;</span>)</span></code></pre></div>
+<p> </p></li>
+<li><p>R’s working directory is the default location of any files you
 read into R, or export from R. Although you won’t be importing or
 exporting files just yet (that’s tomorrows job) it’s useful to be able
 to determine what your current working directory is. So, read <a
 href="https://intro2r.com/work-d.html">Section 1.7</a> of the
 Introduction to R book to introduce yourself to working directories and
 figure out how to display your current working directory.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()    <span class="co"># displays the current working directory </span></span></code></pre></div>
-<p> </p>
-<p>14. Let’s finish up by creating some additional useful directories in
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">getwd</span>()    <span class="co"># displays the current working directory </span></span></code></pre></div>
+<p> </p></li>
+<li><p>Let’s finish up by creating some additional useful directories in
 your Project directory. If you’ve followed the <strong>Data
 <i class="fa fa-download" aria-hidden="true"></i></strong> instructions
 when downloading datasets for this course you will already have a
 directory called <code>data</code> in your Project (if you didn’t then
 take a look at the instructions under <strong>Data
-<i class="fa fa-download" aria-hidden="true"></i></strong> <a
-href="https://alexd106.github.io/PGR-R/data.html">here</a> to create
+<i class="fa fa-download" aria-hidden="true"></i></strong> to create
 this directory). Now let’s create another directory called
 <code>output</code> where you’ll save data files and plots you generate
 later on during this course. This time, instead of clicking on the ‘New
@@ -732,15 +750,19 @@ create a subdirectory in your <code>output</code> directory called
 <code>figures</code> to store all your fancy R plots for your thesis.
 You can list all the files in your directories using the
 <code>list.files()</code> function. Can you figure out how to list the
-directories as well? (hint: see <code>?list.files</code> or <a
+directories as well? (hint: see <code>?listfiles</code> or <a
 href="https://intro2r.com/dir-struct.html">Section 1.8</a> of the course
 book).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="at">path =</span> <span class="st">&#39;output&#39;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="at">path =</span> <span class="st">&#39;output/figures&#39;</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">include.dirs =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="at">path =</span> <span class="st">&#39;data&#39;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="at">path =</span> <span class="st">&#39;output&#39;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">include.dirs =</span> <span class="cn">TRUE</span>)</span></code></pre></div></li>
+</ol>
 <p> </p>
-<p>15. Don’t to forget to save your R script. Close your Project by
-selecting File –&gt; Close Project on the main menu.</p>
+<ol start="15" style="list-style-type: decimal">
+<li>Don’t to forget to save your R script. Close your Project by
+selecting File –&gt; Close Project on the main menu.</li>
+</ol>
 <p> </p>
 <p>End of Exercise 1</p>
 </div>
