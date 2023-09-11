@@ -19,9 +19,8 @@ knitr::include_graphics("images/alex.png")
 
 \ 
 
-Alex is a Reader in Biostatistics at the University of Aberdeen and has been teaching (and learning) R for the last 15 years. 
+Alex is a Reader in Biostatistics at the University of Aberdeen and has been teaching (and learning) R for the last 20 years. 
 
-- Email: a(dot)douglas(at)abdn(dot)ac(dot)uk
 - Web: https://www.abdn.ac.uk/people/a.douglas/
 - Twitter: https://twitter.com/Scedacity
 - GitHub: https://github.com/alexd106
